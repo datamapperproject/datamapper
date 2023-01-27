@@ -94,7 +94,7 @@ svg {
   position: absolute;
   top: 90%;
   left: 10%;
-  width: 80%;
+  width: 40%;
   height:5%;
   align-items: center;
   justify-content: center; 
@@ -104,8 +104,8 @@ svg {
 {
   position: absolute;
   top: 90%;
-  left: 10%;
-  width: 80%;
+  left: 50%;
+  width: 40%;
   height:5%;
   align-items: center;
   justify-content: center; 
