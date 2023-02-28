@@ -1,0 +1,528 @@
+{
+ "name": "Start Design research",
+ "size": 4,
+ "text" :  "Start your journey by clicking on the circle",
+ "children": [
+  {
+   "name": "Sence",
+   "size": 3,
+   "text" :  "The needs and aspirations of people are not always voiced nor heard. The structuring power of institutions is often overlooked. Natural environments and their nonhuman inhabitants are routinely marginalised ",
+   "children": [
+    {
+     "name": "needs",
+     "size": 2,
+     "text" : 	"Record of human and nonhuman needs, expressed in flexible ways", 
+     "children": [
+      {
+         "name": "by withnessing" , 
+         "size": 1, 
+         "text" : "Witness the everyday lives of individuals and communities",
+         "tools" : [
+            {"name":"camera" , "fit": 7},
+             {"name":"speak to people", "fit":10}
+         ]
+      },
+      {
+         "name": "by feeling", 
+         "size": 1, 
+         "text" :  "Feel for the rules and resources of social institutions",
+         "tools" : [
+            {"name":"camera" , "fit": 3},
+            {"name":"notebook", "fit":10}
+         ]
+      }
+     ]
+    },
+    {
+     "name": "aspiration",
+     "size": 2,
+     "text" : 	"Record of human and nonhuman aspiration, expressed in flexible ways", 
+     "children": [
+        {
+         "name": "by acknowladging",
+         "size": 1, 
+         "text" : "Acknowledge urgent demands for reform and discern weak signals of change",
+         "tools" : [
+            {"name":"eye" , "fit": 10},
+             {"name":"notebook", "fit":3}
+         ]
+      }
+     ]
+    },
+    {
+     "name": "desires",
+     "size": 2,
+     "text" : 	"Record of human and nonhuman latent desires, expressed in flexible ways", 
+     "children": [
+        {
+         "name": "by whitnessing" , 
+         "size": 1, 
+         "text" : "Witness the everyday lives of individuals and communities",
+         "tools" : [
+            {"name":"camera" , "fit": 7},
+             {"name":"eye", "fit":10}
+         ]
+        },
+        {
+         "name": "by feeling", 
+         "size": 1, 
+         "text" :  "Feel for the rules and resources of social institutions",
+         "tools" : [
+            {"name":"speak with people" , "fit": 3},
+             {"name":"eye", "fit":10}
+         ]
+        },
+        {
+         "name": "by acknowladging", 
+         "size": 1, 
+         "text" : "Acknowledge urgent demands for reform and discern weak signals of change",
+         "tools" : [
+            {"name":"eye" , "fit": 10},
+             {"name":"notebook", "fit":4}
+         ]
+
+        }
+     ]
+    },
+    {
+     "name": "interdependece",
+     "size": 2,
+     "text" : 	"Record of the interdependence of all life forms.", 
+     "children": [
+        {
+         "name": "by mapping", 
+         "size": 1, 
+         "text" : "Map human-environment interdependencies",
+         "tools" : [
+            {"name":"voice recorder" , "fit": 10},
+             {"name":"notebook", "fit":5}
+         ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+    "name": "Theoresise",
+    "size": 3,
+    "text" :  "Complex challenges are too novel, unique and ambiguous to be approached without the comparative perspective that context provides",
+    "children": [
+     {
+      "name": "needs",
+      "size": 2,
+      "text" : "Needs of a given challenge compared to those in other places and times", 
+      "children": [
+       {
+         "name": "by collecting" , 
+         "size": 1 , 
+         "text" : "Collect and cite relevant contextual information",
+         "tools" : [
+            {"name":"internet search" , "fit": 10},
+             {"name":"notebook", "fit":4}
+         ]
+      },
+       {
+         "name": "by comparing", 
+         "size": 1, 
+         "text" : "Compare and cite relevant contextual information",
+         "tools" : [
+            {"name":"internet search" , "fit": 6},
+             {"name":"excel", "fit":10}
+         ]
+      },
+       {
+         "name": "by historizing", 
+         "size": 1, 
+         "text" : "Historicise and cite relevant contextual information",
+         "tools" : [
+            {"name":"visit archiv" , "fit": 10},
+             {"name":"excel", "fit":2}
+         ]
+      },
+       {
+         "name": "by recording", 
+         "size": 1, 
+         "text" : "Record how local issues were articulated, addressed and solved" ,
+         "tools" : [
+            {"name":"voice recorder" , "fit": 5},
+             {"name":"camera", "fit":10}
+         ]
+      }
+      ]
+     },
+     {
+      "name": "aspirations",
+      "size": 2,
+      "children": [
+         {
+            "name": "by recording", 
+            "size": 1, 
+            "text" : "Record how local aspirations were articulated, addressed and solved" ,
+            "tools" : [
+               {"name":"voice recorder" , "fit": 6},
+                {"name":"camera", "fit":10}
+            ]
+         }
+      ]
+     },
+     {
+      "name": "desires",
+      "size": 2,
+      "children": [
+         {
+            "name": "by recording", 
+            "size": 1, 
+            "text" : "Record how local desires were articulated, addressed and solved" ,
+            "tools" : [
+               {"name":"notebook" , "fit": 3},
+               {"name":"voice recorder" , "fit": 5},
+                {"name":"camera", "fit":10}
+            ]
+         }
+      ]
+     },
+     {
+      "name": "cases",
+      "size": 2,
+      "children": [
+         {
+            "name": "by developing codes" , 
+            "size": 1, 
+            "text" : "Develop codes that may be transmissible and adaptable to other settings",
+            "tools" : [
+               {"name":"excel" , "fit": 6},
+                {"name":"notebook", "fit":10}
+            ]
+         },
+         {
+            "name": "by developing rules", 
+            "size": 1, 
+            "text" : "Develop rules that may be transmissible and adaptable to other settings",
+            "tools" : [
+               {"name":"excel" , "fit": 3},
+                {"name":"notebook", "fit":10}
+            ]
+         },
+         {
+            "name": "by developing typologies", 
+            "size": 1, 
+            "text" : "Develop typologies that may be transmissible and adaptable to other settings",
+            "tools" : [
+               {"name":"notebook" , "fit": 6},
+                {"name":"excel", "fit":10}
+            ]
+         }
+      ]
+     }
+    ]
+  },
+  {
+     "name": "Gather",
+     "size": 3,
+     "text": "Complex challenges generate extensive data trails that can help to focus the task of generating solutions",
+     "children": [
+      {
+       "name": "Data",
+       "size": 2,
+       "children": [
+        {
+         "name": "by assesing quantitative data" , 
+         "size": 1,
+         "tools" : [
+            {"name":"qgis" , "fit": 5},
+             {"name":"urscape", "fit":10}
+         ]
+        },
+        {
+         "name": "by assesing qualitative data" , 
+         "size": 1,
+         "tools" : [
+            {"name":"qgis" , "fit": 2},
+             {"name":"urscape", "fit":10}
+         ]
+
+        },
+        {
+         "name": "by clean data", 
+         "size": 1,        
+          "tools" : [
+            {"name":"qgis" , "fit": 10},
+             {"name":"arcgis", "fit":3}
+         ]
+        },
+        {
+         "name": "by identifing gaps", 
+         "size": 1,
+         "tools" : [
+            {"name":"arcgis", "fit":3},
+            {"name":"qgis", "fit":7},
+             {"name":"urscape", "fit":10}
+         ]
+      },
+        {
+         "name": "by curate privacy protection", 
+         "size": 1,
+         "tools" : [
+            {"name":"urscape" , "fit": 10},
+            {"name":"qgis", "fit":7},
+             {"name":"excel", "fit":5}
+         ]
+      }
+       ]
+      }
+     ]
+  },
+  {
+      "name": "Experiment with",
+      "size": 3,
+      "text": "Solution spaces help focus the work of innovation [and production of ideas -- Latin from Greek idea ‘form, pattern’, from the base of idein ‘to see’]",
+      "children": [
+       {
+        "name": "pattern",
+        "size": 2,
+        "children": [
+         {
+            "name": "by using heuristic aproaches" , 
+            "size": 1,
+            "tools" : [
+               {"name":"acrgis" , "fit": 1},
+               {"name":"qgis" , "fit": 7},
+               {"name":"urscape", "fit":10}
+            ]
+         },
+         {
+            "name": "by using satisficing aproaches" , 
+            "size": 1,
+            "tools" : [
+               {"name":"qgis" , "fit": 4},
+               {"name":"acrgis" , "fit": 2},
+               {"name":"urscape", "fit":10}
+            ]
+         }
+        ]
+       },
+       {
+        "name": "data intersect",
+        "size": 2,
+        "children": [
+         {
+            "name": "by encouraging rapid iteration" , 
+            "size": 1,
+            "tools" : [
+               {"name":"qgis" , "fit": 1},
+               {"name":"acrgis" , "fit": 2},
+               {"name":"urscape", "fit":10}
+            ]
+         }
+
+        ]
+       }
+       ,
+       {
+        "name": "identify fragments",
+        "size": 2,
+        "children": [
+         {
+            "name": " with chontroled experiments" , 
+            "size": 1,
+            "tools" : [
+               {"name":"qgis" , "fit": 2},
+               {"name":"acrgis" , "fit": 3},
+               {"name":"urscape", "fit":10}
+            ]
+         }
+        ]
+       },
+       {
+        "name": "generate ideas",
+        "size": 2,
+        "children": [
+         {
+            "name": "with play" , 
+            "size": 1,
+            "tools" : [
+               {"name":"notebook" , "fit": 3},
+               {"name":"urscape", "fit":10}
+            ]
+         }
+        ]
+       }
+      ]
+  },
+  {
+      "name": "Situate",
+      "size": 3,
+      "text": "Ideas flourish in response to specific cultural, economic and environmental situations",
+      "children": [
+       {
+        "name": "transmute insights",
+        "size": 2,
+        "children": [
+         {
+            "name": "in spatial way" , 
+            "size": 1,
+            "tools" : [
+               {"name":"workshop" , "fit": 2},
+               {"name":"virtual reality", "fit":9}
+            ]
+         },
+         {
+            "name": "in tangible way" , 
+            "size": 1,
+            "tools" : [
+               {"name":"workshop", "fit":4}
+            ]
+
+         },
+         {
+            "name": "in functional way" , 
+            "size": 1,
+            "tools" : [
+               {"name":"Physical model" , "fit": 8}
+            ]
+         }
+        ]
+       },
+       {
+        "name": "transmute ideas",
+        "size": 2,
+        "children": [
+         
+            {
+               "name": "in spatial way" , 
+               "size": 1,
+               "tools" : [
+                  {"name":"physical model" , "fit": 8},
+                  {"name":"virtual reality", "fit":5}
+               ]
+            },
+            {
+               "name": "in tangible way" , 
+               "size": 1,
+               "tools" : [
+                  {"name":"virtual reality", "fit":2}
+               ]
+            },
+            {
+               "name": "in functional way" , 
+               "size": 1,
+               "tools" : [
+                  {"name":"unity" , "fit": 8}
+               ]
+            }
+         
+        ]
+       }
+       ,
+       {
+         "name": "solutions",
+         "size": 2,
+         "children": [
+          
+             {
+                "name": "by refinig " , 
+                "size": 1,
+                "tools" : [
+                  {"name":"unity" , "fit": 8}
+               ]
+             },
+             {
+                "name": "by staging" , 
+                "size": 1,
+                "tools" : [
+                  {"name":"workshop" , "fit": 8}
+               ]
+             }
+          
+         ]
+        }
+        
+      ]
+  },
+  {
+      "name": "Engage",
+      "size": 3,
+      "text": "People and institutions are diverse. They have distinctive motivations, world views and ways of working. If they are to be involved in crafting solutions they must be engaged to do so",
+      "children": [
+       {
+        "name": "Stakeholders",
+        "size": 2,
+        "children": [
+         {
+            "name": "by diagrams" , 
+            "size": 1,
+            "tools" : [
+               {"name":"Rhino3D" , "fit": 5},
+               {"name":"Adobe Suit" , "fit": 10}
+            ]
+         },
+         {
+            "name": "by 3D models" , 
+            "size": 1,
+            "tools" : [
+               {"name":"workshop" , "fit": 1},
+               {"name":"Rhino3D" , "fit": 8}
+            ]
+         },
+         {
+            "name": "by film" , 
+            "size": 1,
+            "tools" : [
+               {"name":"Adobe Suit" , "fit": 10},
+               {"name":"workshop" , "fit": 5}
+            ]
+         },
+         {
+            "name": "by photography" , 
+            "size": 1,
+            "tools" : [
+               {"name":"mobile phone" , "fit": 10},
+               {"name":"workshop" , "fit": 2}
+            ]
+         },
+         {
+            "name": "by theatre" , 
+            "size": 1,
+            "tools" : [
+               {"name":"workshop" , "fit": 10}
+            ]
+         },
+         {
+            "name": "by music" , 
+            "size": 1,
+            "tools" : [
+               {"name":"Adobe Suit" , "fit": 3},
+               {"name":"workshop" , "fit": 10}
+            ]
+         },
+         {
+            "name": "by food" , 
+            "size": 1,
+            "tools" : [
+               {"name":"mobile phone" , "fit": 3},
+               {"name":"workshop" , "fit": 10}
+            ]
+         },
+         {
+            "name": "by instalations" , 
+            "size": 1,
+            "tools" : [
+               {"name":"Adobe Suit" , "fit": 4},
+               {"name":"Exhibition" , "fit": 10}
+            ]
+         },
+         {
+            "name": "by prototypes" , 
+            "size": 1,
+            "tools" : [
+               {"name":"Adobe Suit" , "fit": 5},
+               {"name":"workshop" , "fit": 10}
+            ]
+         }
+        ]
+       }
+
+      ]
+  }
+ ]
+}
