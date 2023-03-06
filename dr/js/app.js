@@ -4,12 +4,14 @@ const svgns = "http://www.w3.org/2000/svg";
 var width = 1200,
     height = 700,
     root;
-
+ var nodes;
 var  i = 0;
+var testX =0;
+var gi =0;
 var test =0;
 var force = d3.layout.force()
     .linkDistance(100)
-    .charge(-370)
+    .charge(-170)
     .gravity(.05)
     .size([width, height])
     .on("tick", tick);
@@ -55,7 +57,7 @@ d3.json("graph.json", function(error, json) {
 
 function update() {
 
-  var nodes = flatten(root);
+ nodes = flatten(root);
   var links = d3.layout.tree().links(nodes);
 
 
@@ -93,7 +95,7 @@ function update() {
       .call(force.drag);
 
  force.drag().on("dragend", dragend);    
-
+ force.drag().on("dragstart", dragstart);
   nodeEnter.append("circle")
       .attr("opacity", function(d) { 
        if (d.size ===4) return  test
@@ -115,38 +117,65 @@ function update() {
       ;
 
 
-      node.selectAll("circle").attr("r", function(d) { 
-        return 20 + d.sum * 2;}); 
+  node.selectAll("circle").attr("r", function(d) { 
+    return 20 + d.sum * 2;}); 
 
-        function dragend(d) {
+    function dragstart(d) {
+      console.log(d)
+      testX = d.x;
+    }
+
+  function dragend(d) {
       
-          d3.selectAll('circle').each(function(e, i) {
-          var distance = Math.sqrt(Math.pow(e.x - d.x, 2) + Math.pow(e.y- d.y, 2));
-          var inside = distance < 40 + d.sum * 2;
-          if(inside && distance >0)
-          {
-             links.push({"source": d , "target": e})
-             console.log("yes");
-             link = link.data(links, function(f) { return f.target.id; });
-             link.exit().remove();
-             link.enter().insert("line", ".node")
+    if (testX === d.x)
+        {
+           console.log("ignoring")
+           return;
+
+        }
+    d3.selectAll('circle').each(function(e, i) {
+    var distance = Math.sqrt(Math.pow(e.x - d.x, 2) + Math.pow(e.y- d.y, 2));
+    var inside = distance < 40 + d.sum * 2;
+    if(inside && distance >0)
+    {
+      links.push({"source": d , "target": e})
+   
+      link = link.data(links, function(f) { return f.target.id; });
+      link.exit().remove();
+      link.enter().insert("line", ".node")
                  .attr("class", "link")
                  .attr("opacity", 1);
 
-                 
-                
+      force
+           .nodes(nodes)
+          .links(links)
+           .start();
+       
 
-             force
-                 .nodes(nodes)
-                 .links(links)
-                 .start();
-          }
-        });
+ 
+      if(d.groupID)
+             e.groupID = d.groupID;
+     else if (e.groupID)
+              d.groupID = e.groupID; 
+      else
+        {
+          d.groupID = gi;
+          e.groupID = gi;
+                     ++gi;
+        }    
+        console.log(" dragging ");
+         updateGroups();
         }
+
+      });
+      }
 
 }
 
 function tick() {
+
+
+
   link.attr("x1", function(d) { return d.source.x; })
       .attr("y1", function(d) { return d.source.y; })
       .attr("x2", function(d) { return d.target.x; })
@@ -155,11 +184,21 @@ function tick() {
 
   node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-  updateGroupSelection();
+  updateGroups();
 }
+document.onkeydown = function (e) {
+  
+  force.charge(0)   
+  .gravity(0)
+  .start();
 
+};
 
-
+document.onkeyup = function (e) {
+  force.charge(-170)
+  .gravity(.05)
+  .start();
+};
 
 function color(d) {
   return d.selected && d.size ===4 ? "#5EBF71"
@@ -299,85 +338,132 @@ function updateSize(nodes) {
 }
 
 //Assign function to listen slider events
-var slider = document.getElementById("myRange");
-slider.oninput = function() {
-  document.getElementById("label").innerHTML = "Group by tool fit : " + this.value*10 + "%";
-  updateGroupSelection();
-}
+// var slider = document.getElementById("myRange");
+// slider.oninput = function() {
+//   document.getElementById("label").innerHTML = "Group by tool fit : " + this.value*10 + "%";
+//   updateGroupSelection();
+// }
 
-function updateGroupSelection()
+function updateGroups()
 {
+  //delete previsous
+  while (groupsLayer.firstChild) {
+    groupsLayer.removeChild(groupsLayer.firstChild);}
 
-  if(slider.value ==0)
-       return;
-    // Fill dictionary with tools and hows points
-    var hows = {};
-    function toolsCollect(child)
-    {
-       if(child.tools && child.selected)
+  var groups = {};
+  function groupsCollect(child)
+  {
+     if(child.children )
+        {
+          for(var i =0; i< child.children.length;++i)
           {
-            for(var i =0; i< child.tools.length;++i)
+            if(child.children[i].groupID)
             {
-              if(child.tools[i].fit>= slider.value)
+              if(groups[child.children[i].groupID])
               {
-                if(hows[child.tools[i].name])
-                {
-                  hows[child.tools[i].name] += " " + child.x+","+child.y;
-                } else
-                {
-                  hows[child.tools[i].name]= child.x+","+child.y ;
-                }
-            }
-            }
+                groups[child.children[i].groupID] += " " + child.children[i].x+","+child.children[i].y;
+              } else
+              {
+                groups[child.children[i].groupID]= child.children[i].x+","+child.children[i].y ;
+              }
           }
-       if(child.children)
-            child.children.forEach(toolsCollect)
-    } 
+          }
+        }
+     if(child.children)
+          child.children.forEach(groupsCollect)
+  } 
+  //console.log(groups)
 
-    d3.selectAll(".node").data().forEach(toolsCollect)
+   d3.selectAll(".node").data().forEach(groupsCollect);
 
-    while (groupsLayer.firstChild) {
-      groupsLayer.removeChild(groupsLayer.firstChild);
+   for (var key in groups) {
 
-  }
-    index = 0;
-    for (var key in hows) {
-
-        let poly = document.createElementNS(svgns ,'polyline');
-         poly.id = key;
-         poly.setAttributeNS(null, "points", hows[key]);
-         poly.setAttributeNS(null, "fill", "none");
-         poly.setAttribute ("stroke" ,"#c6c6c6");
-         poly.setAttribute ("stroke-width" ,100);
-         poly.setAttribute ("stroke-linejoin" ,"round");
-         poly.setAttribute ("stroke-linecap" ,"round");
-         poly.setAttribute ("stroke-opacity" ,.3);
-         groupsLayer.append(poly);
-         var bbox = poly.getBoundingClientRect();
-
-
-         textX =  bbox.x < width/2 ? 20:  width - 150;
-         textY =  bbox.y + bbox.height/2 - (index  % 3)*25;
-         ++index;
-         let text= document.createElementNS(svgns ,'text');
-         text.id = key;
-         text.setAttributeNS(null, "x", textX );
-         text.setAttributeNS(null, "y", textY );
-         text.setAttributeNS(null,"font-size","20");
-         text.setAttributeNS(null,"font-family",'Helvetica Neue');
-         text.setAttribute ("fill" ,"#c6c6c6");
-         text.innerHTML = key;
-
-         poly.addEventListener('mouseenter', function(e) {
-          poly.setAttribute('stroke', '#87b5dd');
-          text.setAttribute('fill', '#87b5dd');
-         });
-         poly.addEventListener('mouseleave', function(e) {
-          poly.setAttribute('stroke', "#c6c6c6");
-          text.setAttribute('fill', "#c6c6c6");
-         });
-         groupsLayer.append(text);
-      
-  }
+    let poly = document.createElementNS(svgns ,'polyline');
+     poly.id = key;
+     poly.setAttributeNS(null, "points", groups[key]);
+     poly.setAttributeNS(null, "fill", "none");
+     poly.setAttribute ("stroke" ,"#c6c6c6");
+     poly.setAttribute ("stroke-width" ,100);
+     poly.setAttribute ("stroke-linejoin" ,"round");
+     poly.setAttribute ("stroke-linecap" ,"round");
+     poly.setAttribute ("stroke-opacity" ,.3);
+     groupsLayer.append(poly);
+   }
 
 }
+// function updateGroupSelection()
+// {
+
+//   if(slider.value ==0)
+//        return;
+//     // Fill dictionary with tools and hows points
+//     var hows = {};
+//     function toolsCollect(child)
+//     {
+//        if(child.tools && child.selected)
+//           {
+//             for(var i =0; i< child.tools.length;++i)
+//             {
+//               if(child.tools[i].fit>= slider.value)
+//               {
+//                 if(hows[child.tools[i].name])
+//                 {
+//                   hows[child.tools[i].name] += " " + child.x+","+child.y;
+//                 } else
+//                 {
+//                   hows[child.tools[i].name]= child.x+","+child.y ;
+//                 }
+//             }
+//             }
+//           }
+//        if(child.children)
+//             child.children.forEach(toolsCollect)
+//     } 
+
+//     d3.selectAll(".node").data().forEach(toolsCollect)
+
+//     while (groupsLayer.firstChild) {
+//       groupsLayer.removeChild(groupsLayer.firstChild);
+
+//   }
+//     index = 0;
+//     for (var key in hows) {
+
+//         let poly = document.createElementNS(svgns ,'polyline');
+//          poly.id = key;
+//          poly.setAttributeNS(null, "points", hows[key]);
+//          poly.setAttributeNS(null, "fill", "none");
+//          poly.setAttribute ("stroke" ,"#c6c6c6");
+//          poly.setAttribute ("stroke-width" ,100);
+//          poly.setAttribute ("stroke-linejoin" ,"round");
+//          poly.setAttribute ("stroke-linecap" ,"round");
+//          poly.setAttribute ("stroke-opacity" ,.3);
+//          groupsLayer.append(poly);
+//          var bbox = poly.getBoundingClientRect();
+
+
+//          textX =  bbox.x < width/2 ? 20:  width - 150;
+//          textY =  bbox.y + bbox.height/2 - (index  % 3)*25;
+//          ++index;
+//          let text= document.createElementNS(svgns ,'text');
+//          text.id = key;
+//          text.setAttributeNS(null, "x", textX );
+//          text.setAttributeNS(null, "y", textY );
+//          text.setAttributeNS(null,"font-size","20");
+//          text.setAttributeNS(null,"font-family",'Helvetica Neue');
+//          text.setAttribute ("fill" ,"#c6c6c6");
+//          text.innerHTML = key;
+
+//          poly.addEventListener('mouseenter', function(e) {
+//           poly.setAttribute('stroke', '#87b5dd');
+//           text.setAttribute('fill', '#87b5dd');
+//          });
+//          poly.addEventListener('mouseleave', function(e) {
+//           poly.setAttribute('stroke', "#c6c6c6");
+//           text.setAttribute('fill', "#c6c6c6");
+//          });
+//          groupsLayer.append(text);
+      
+//   }
+
+//}

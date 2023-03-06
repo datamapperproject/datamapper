@@ -20,12 +20,9 @@
             <div class="box intput" id= "input" style="overflow-y:auto;">
              
                 <form>
-                  <br><br><br><br><br><br><br><br><br><br>
+                  <br><br><br><br><br><br><br><br><br><br><br><br>
                   <br> 
-                  <h6>Short Name</h6>
-                  <input  class= "input" type="name" maxlength="10" placeholder="max 10 characters" id="shortNameID">
-                  <br> <br> 
-                  <h6>Full Name</h6>
+                  <h6>Name</h6>
                   <input class= "input" type="name" placeholder="full name of the dataset " id="nameID">
                   <br> <br> 
                   <h6>Theme</h6>
@@ -34,6 +31,11 @@
                      <option>demography</option>
                      <option>economy</option>
                      <option>transport</option>
+                     <option>geography</option>
+                     <option>agriculture</option>
+                     <option>soil</option>
+                     <option>geography</option>
+                     <option>climate</option>
                      <option>other</option>
                    </select>
                    <br> <br> 
@@ -45,7 +47,7 @@
                    </select>
                    <br> <br> 
                    <h6>Spatial Resolution</h6>
-                   <select class= "input" id="spatial resolution">
+                   <select class= "input" id="spatialResolutionID">
                     <option>non spatial</option>
                     <option>10 km</option>
                     <option>1 km</option>
@@ -57,8 +59,22 @@
                     <option>1 m</option>
                   </select>
                   <br> <br> 
+                  <h6>Spatial Extend</h6>
+                  <select class= "input" id="spatialExtendID" onchange="onChangeSpatialExtend()">
+                    <option>non spatial</option>
+                    <option>global</option>
+                    <option>constinet</option>
+                    <option>nation</option>
+                    <option>region</option>
+                    <option>city</option>
+                    <option>distric</option>
+                    <option>neigborhood</option>
+                    <option>building</option>
+                  </select>
+                  <input class= "input" type="name" placeholder="location name" id="spatialExtendTextID" style="display:none;">
+                  <br> <br>
                   <h6>Temporal Resolution</h6>
-                  <select class= "input" id="temporal resolution">
+                  <select class= "input" id="temporalResolutionID" onchange="onChangeTemporalExtend()">
                     <option>adhoc</option>
                     <option>yearly</option>
                     <option>monthly</option>
@@ -68,19 +84,116 @@
                     <option>minutely</option>
                   </select>
                   <br> <br>
-                  <h6>Spatial Extend (From -To)</h6>
-                  <input class= "input" type="name" placeholder="min Longtitude , Lattitude" id="minSpaceExtendID">  
-                  <input class= "input"  type="name" placeholder="max Longtitude , Lattitude" id="maxSpaceExtendID">
-                  <br> <br>
                   <h6>Temporal Extend (From -To)</h6>
-                  <input class= "input" type="name" placeholder="startting date" id="minTimeExtendID">
-                  <input class= "input" type="name" placeholder="ending date" id="maxTimeExtendID">
+                  <select class= "input" id="fromYearID" style="display:none;">
+                    <option>2010</option>
+                    <option>2011</option>
+                    <option>2012</option>
+                    <option>2013</option>
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <options>2023</option>
+                  </select>
+                  <select class= "input" id="fromMonthID" style="display:none;">
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>Decemebr</option>
+                  </select>
+                  <input class= "input" type="text" placeholder="from day" id="fromDayID" style="display:none;">
+                  <input class= "input" type="text" placeholder="from hour" id="fromHourID" style="display:none;">
+                  <input class= "input" type="text" placeholder="from minute" id="fromMinuteID" style="display:none;">
+                  <select class= "input" id="toYearID" style="display:inline;">
+                    <option>2010</option>
+                    <option>2011</option>
+                    <option>2012</option>
+                    <option>2013</option>
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <option selected="selected">2023</option>
+                  </select>
+                  <select class= "input" id="toMonthID" style="display:none;">
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>Decemebr</option>
+                  </select>
+                  <input class= "input" type="text" placeholder="to day" id="toDayID" style="display:none;">
+                  <input class= "input" type="text" placeholder="to hour" id="toHourID" style="display:none;">
+                  <input class= "input" type="text" placeholder="to minute" id="toMinuteID" style="display:none;">
                   <br> <br>
                   <h6>Data units</h6>
-                  <input class= "input" type="text" placeholder="data units" id="unitID">
+                  <select class= "input" id="unitID" onchange="onUnitChanged()">
+                    <option>n/a</option>
+                    <option>percentage</option>
+                    <option>ratio</option>
+                    <option>index</option>
+                    <option>yield</option>
+                    <option>people per sqkm</option>
+                    <option>people per ha<</option>
+                    <option>people per sqm</option>
+                    <option>Other</option>
+                  </select>
+                  <input class= "input" type="text" placeholder="type units" id="customUnitID" style="display:none;">
                   <br> <br>
+                  <h6>For which product is dataset used</h6>
+                  <select class= "input" id="producID" onchange="onProductChanged(0)">
+                    <option>n/a</option>
+                    <option>Walkability</option>
+                    <option>Access to water</option>
+                    <option>Access to hospital</option>
+                    <option>Densification</option>
+                    <option>Park mantaince</option>
+                    <option>Desakota<</option>
+                    <option>Other</option>
+                  </select>
+                  <input class= "input" type="text" placeholder=" eg: Walkability" id="productTextID" style="display:none;">
+
+                  <br> <br>
+
                   <h6>Source of data</h6>
-                  <input class= "input" type="text" placeholder="source " id="sourceID">
+                  <select class= "input" id="sourceID" onchange="onSourceChanged(0)">
+                    <option>n/a</option>
+                    <option>Nasa</option>
+                    <option>CIESIN</option>
+                    <option>Fao</option>
+                    <option>Worldpop</option>
+                    <option>usgs</option>
+                    <option>Harvard<</option>
+                    <option>Other</option>
+                  </select>
+                  <input class= "input" type="text" placeholder="source" id="sourceTextID" style="display:none;">
+
                   <br> <br>
                   <h6>Link to data</h6>
                   <input class= "input" type="text" placeholder="link" id="linkID">
@@ -89,7 +202,14 @@
                   <input class= "input" type="text" placeholder="email" id="contactID">
                   <br> <br>
                   <h6>Known issues of data</h6>
-                  <input class= "input" type="text" placeholder="description" id="issuesID">
+                  <select class= "input" id="issuesID" onchange="onSourceChanged(0)">
+                    <option>non</option>
+                    <option>low quality</option>
+                    <option>missing patches</option>
+                    <option>random wrong values</option>
+                    <option>Other</option>
+                  </select>
+                  <input class= "input" type="text" placeholder="description" id="issuesTextID">
                   <br> <br>
                   <h6>To start a new entry, please submit the current metadata information</h6>
                   <input class= "input" type="button" onclick="enable()" value="Submit">
@@ -117,6 +237,7 @@
     </div>
     <div class= "buttoncsv"> 
     <input class= "csv"  type="button" onclick="download()" value="Download csv" >
+    <input class= "csv"  type="button" onclick="upload()" value="Upload csv" >
   </div>
     <script src="js/app.js"></script>
 </body>
