@@ -7,7 +7,7 @@ var width = 1200,
  var nodes;
 var  i = 0;
 var testX =0;
-var gi =0;
+var gi =1;
 var test =0;
 var force = d3.layout.force()
     .linkDistance(100)
@@ -273,10 +273,7 @@ function collapsed(root) {
 		   node._children = node.children;
 		   node.children = null;
       
-
 	   	node._children.forEach(hideChildren);
-      
-
 	  }
   }
   root.children.forEach(hideChildren);
@@ -325,9 +322,7 @@ function updateSize(nodes) {
             count = count + node.children[i].sum;
           }
         }
-
         node.sum = count;
-
      }
      else
      {
@@ -372,7 +367,7 @@ function updateGroups()
      if(child.children)
           child.children.forEach(groupsCollect)
   } 
-  //console.log(groups)
+  console.log(groups)
 
    d3.selectAll(".node").data().forEach(groupsCollect);
 
