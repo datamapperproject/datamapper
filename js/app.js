@@ -28,7 +28,6 @@ var spatialExtendTextEl = document.getElementById("spatialExtendTextID");
 var contactInput =  document.getElementById("contactID");
 var issuesInputEl =  document.getElementById("issuesID");
 var issuesTextEl =  document.getElementById("issuesTextID");
-console.log(issuesTextEl)
 var unitsInputEl =  document.getElementById("unitID");
 var unitsTextEl =  document.getElementById("customUnitID");
 var panel =  document.getElementById("panelID");
@@ -57,7 +56,7 @@ function enable() {
         count : dataExists(sr.options[sr.selectedIndex].text,  tr.options[tr.selectedIndex].text),
         landuse : landuseInput.options[landuseInput.selectedIndex].text,
         type : typeInput.options[landuseInput.selectedIndex].text,
-        name: nameInput.value,
+        fullName: nameInput.value,
         source: getSelected(sourceInputEl, sourceTextEl),
         link: linkInput.value,
         spatialExtendType: spatialExtendEl.value,
@@ -88,22 +87,14 @@ function enable() {
       contact: contactInput.value,
       product: getSelected(productInputEl, productTextEl),
       timeStamp: new Date(),
-      dataUnits: getSelected(unitsInputEl, unitsTextEl),
+      units: getSelected(unitsInputEl, unitsTextEl),
    } 
      data.push(record);
      cleanData.push(cleanRecord)
      updateGraph();
 }
 
-function dataExists(srt, trt){
-  var id = 0;
-  for(var i=0; i<data.length; i++){
-      if(data[i].spatialResolution === srt 
-        && data[i].temporalResolution === trt) 
-         id = id +1;
-  }
-  return id;
-}
+
 
 function drawLines() {
 
@@ -186,15 +177,16 @@ function mouseEnter(e,data)
   panel.style.left = e.clientX + 'px';
   panel.style.top =  e.clientY + 'px';
   panel.style.display = 'inline-block';
-  panel.innerHTML = "Name: " + data.name + " <br>" +
-                    "Landuse: " + data.trt + " <br>" + 
-                    "Type: " + data.type + " <br>" +
-                    "Spatial resolution: " + data.srt + " <br>" + 
-                    "Temporal resolution: " + data.trt + " <br>" +  
-                    "Min Spatial Extent: " + data.minSpatial + " <br>" + 
-                    "Max Spatial Extent: " + data.maxSpatial + " <br>" + 
-                    "Min Temporal Extent: " + data.minTime + " <br>" + 
-                    "Max Temporal Extent: " + data.maxTime + " <br>" + 
+  panel.innerHTML = "Name: " + data.fullName + " <br>" +
+                    "Landuse: " + data.landuse + " <br>" + 
+                    "Type: " + data.fileType + " <br>" +
+                    "Spatial resolution: " + data.spatialResolution + " <br>" + 
+                    "Spatial Extend Type: " + data.spatialExtendType + " <br>" + 
+                    "Spatial Extend Location: " + data.spatialExtendLocaltion + " <br>" + 
+                    "Temporal resolution: " + data.temporalResolution + " <br>" +  
+                    "Min Temporal Extent: " + data.minTimeExtend + " <br>" + 
+                    "Max Temporal Extent: " + data.maxTimeExtend + " <br>" + 
+                    "Product: " + data.product+ " <br>"  +
                     "Units: " + data.units+ " <br>"  +
                     "Source: " + data.source+ " <br>" +  
                     "Link: " + data.link+ " <br>" +  
@@ -269,8 +261,7 @@ function upload()
         result.push(obj);
       }
       
-      console.log(result);
-      cleanData = cleanData.concat(result);
+      cleanData = cleanData.concat(result)
       // add extra fields to result
       for (let i =0; i< result.length;i++)
       {
@@ -278,15 +269,24 @@ function upload()
         result[i].trv = indexMatchingText(tr, result[i].temporalResolution);
         result[i].draw = true;
         result[i].count = dataExists(result[i].spatialResolution, result[i].temporalResolution);
+        data.push(result[i])
       }
 
-      data = data.concat(result);
+      //data = data.concat(result);
       updateGraph();
     }
   }
   input.click();
 }
-
+function dataExists(srt, trt){
+  var id = 0;
+  for(var i=0; i<data.length; i++){
+      if(data[i].spatialResolution === srt 
+        && data[i].temporalResolution === trt) 
+         id = id +1;
+  }
+  return id;
+}
 function indexMatchingText(ele, text) {
 
   for (var i=0; i<ele.options.length;i++) {
@@ -302,7 +302,7 @@ function onChangeSpatialExtend(){
 
   var selectEl = document.getElementById("spatialExtendID");
   var textEl = document.getElementById("spatialExtendTextID");
-    console.log(selectEl.value )
+  
     if (selectEl.value === "global" || selectEl.value === "non spatial") {
     textEl.style.display = "none";
   } else {
