@@ -1,21 +1,21 @@
 {
  "name": "Ignore this",
- "size": 4,
+ "size": 0,
  "text" :  "Ignore this, just technical stuff",
  "children": [
   {
-   "name": "Sence",
-   "size": 3,
-   "text" :  "The needs and aspirations of people are not always voiced nor heard. The structuring power of institutions is often overlooked. Natural environments and their nonhuman inhabitants are routinely marginalised ",
+   "name": "Promp Sence",
+   "size": 1,
+   "text" :  "Sense",
    "children": [
     {
-     "name": "needs",
+     "name": "Sence",
      "size": 2,
-     "text" : 	"Record of human and nonhuman needs, expressed in flexible ways", 
+     "text" : 	"The needs and aspirations of people are not always voiced nor heard. The structuring power of institutions is often overlooked. Natural environments and their nonhuman inhabitants are routinely marginalised", 
      "children": [
       {
          "name": "by withnessing" , 
-         "size": 1, 
+         "size": 3, 
          "text" : "Witness the everyday lives of individuals and communities",
          "tools" : [
             {"name":"camera" , "fit": 7},
@@ -24,7 +24,7 @@
       },
       {
          "name": "by feeling", 
-         "size": 1, 
+         "size": 3, 
          "text" :  "Feel for the rules and resources of social institutions",
          "tools" : [
             {"name":"camera" , "fit": 3},
@@ -35,12 +35,12 @@
     },
     {
      "name": "aspiration",
-     "size": 2,
-     "text" : 	"Record of human and nonhuman aspiration, expressed in flexible ways", 
+     "size": 1,
+     "text" : 	"Aspiration", 
      "children": [
         {
          "name": "by acknowladging",
-         "size": 1, 
+         "size": 2, 
          "text" : "Acknowledge urgent demands for reform and discern weak signals of change",
          "tools" : [
             {"name":"eye" , "fit": 10},
@@ -51,12 +51,12 @@
     },
     {
      "name": "desires",
-     "size": 2,
-     "text" : 	"Record of human and nonhuman latent desires, expressed in flexible ways", 
+     "size": 1,
+     "text" : 	"Desires", 
      "children": [
         {
          "name": "by whitnessing" , 
-         "size": 1, 
+         "size": 2, 
          "text" : "Witness the everyday lives of individuals and communities",
          "tools" : [
             {"name":"camera" , "fit": 7},
@@ -65,7 +65,7 @@
         },
         {
          "name": "by feeling", 
-         "size": 1, 
+         "size": 2, 
          "text" :  "Feel for the rules and resources of social institutions",
          "tools" : [
             {"name":"speak with people" , "fit": 3},
@@ -74,7 +74,7 @@
         },
         {
          "name": "by acknowladging", 
-         "size": 1, 
+         "size": 2, 
          "text" : "Acknowledge urgent demands for reform and discern weak signals of change",
          "tools" : [
             {"name":"eye" , "fit": 10},
@@ -86,12 +86,12 @@
     },
     {
      "name": "interdependece",
-     "size": 2,
+     "size": 1,
      "text" : 	"Record of the interdependence of all life forms.", 
      "children": [
         {
          "name": "by mapping", 
-         "size": 1, 
+         "size": 2, 
          "text" : "Map human-environment interdependencies",
          "tools" : [
             {"name":"voice recorder" , "fit": 10},
@@ -104,8 +104,8 @@
   },
   {
     "name": "Theoresise",
-    "size": 3,
-    "text" :  "Complex challenges are too novel, unique and ambiguous to be approached without the comparative perspective that context provides",
+    "size": 1,
+    "text" :  "Theorisise",
     "children": [
      {
       "name": "needs",
@@ -114,7 +114,7 @@
       "children": [
        {
          "name": "by collecting" , 
-         "size": 1 , 
+         "size": 3 , 
          "text" : "Collect and cite relevant contextual information",
          "tools" : [
             {"name":"internet search" , "fit": 10},
@@ -123,7 +123,7 @@
       },
        {
          "name": "by comparing", 
-         "size": 1, 
+         "size": 3, 
          "text" : "Compare and cite relevant contextual information",
          "tools" : [
             {"name":"internet search" , "fit": 6},
@@ -132,7 +132,7 @@
       },
        {
          "name": "by historizing", 
-         "size": 1, 
+         "size": 3, 
          "text" : "Historicise and cite relevant contextual information",
          "tools" : [
             {"name":"visit archiv" , "fit": 10},
@@ -141,7 +141,7 @@
       },
        {
          "name": "by recording", 
-         "size": 1, 
+         "size": 3, 
          "text" : "Record how local issues were articulated, addressed and solved" ,
          "tools" : [
             {"name":"voice recorder" , "fit": 5},
@@ -156,7 +156,7 @@
       "children": [
          {
             "name": "by recording", 
-            "size": 1, 
+            "size": 3, 
             "text" : "Record how local aspirations were articulated, addressed and solved" ,
             "tools" : [
                {"name":"voice recorder" , "fit": 6},
@@ -171,7 +171,7 @@
       "children": [
          {
             "name": "by recording", 
-            "size": 1, 
+            "size": 3, 
             "text" : "Record how local desires were articulated, addressed and solved" ,
             "tools" : [
                {"name":"notebook" , "fit": 3},
@@ -187,7 +187,7 @@
       "children": [
          {
             "name": "by developing codes" , 
-            "size": 1, 
+            "size": 3, 
             "text" : "Develop codes that may be transmissible and adaptable to other settings",
             "tools" : [
                {"name":"excel" , "fit": 6},
@@ -196,7 +196,7 @@
          },
          {
             "name": "by developing rules", 
-            "size": 1, 
+            "size": 3, 
             "text" : "Develop rules that may be transmissible and adaptable to other settings",
             "tools" : [
                {"name":"excel" , "fit": 3},
@@ -205,7 +205,7 @@
          },
          {
             "name": "by developing typologies", 
-            "size": 1, 
+            "size": 3, 
             "text" : "Develop typologies that may be transmissible and adaptable to other settings",
             "tools" : [
                {"name":"notebook" , "fit": 6},
@@ -218,8 +218,8 @@
   },
   {
      "name": "Gather",
-     "size": 3,
-     "text": "Complex challenges generate extensive data trails that can help to focus the task of generating solutions",
+     "size": 1,
+     "text": "Gather",
      "children": [
       {
        "name": "Data",
@@ -227,7 +227,7 @@
        "children": [
         {
          "name": "by assesing quantitative data" , 
-         "size": 1,
+         "size": 3,
          "tools" : [
             {"name":"qgis" , "fit": 5},
              {"name":"urscape", "fit":10}
@@ -235,7 +235,7 @@
         },
         {
          "name": "by assesing qualitative data" , 
-         "size": 1,
+         "size": 3,
          "tools" : [
             {"name":"qgis" , "fit": 2},
              {"name":"urscape", "fit":10}
@@ -244,7 +244,7 @@
         },
         {
          "name": "by clean data", 
-         "size": 1,        
+         "size": 3,        
           "tools" : [
             {"name":"qgis" , "fit": 10},
              {"name":"arcgis", "fit":3}
@@ -252,7 +252,7 @@
         },
         {
          "name": "by identifing gaps", 
-         "size": 1,
+         "size": 3,
          "tools" : [
             {"name":"arcgis", "fit":3},
             {"name":"qgis", "fit":7},
@@ -261,7 +261,7 @@
       },
         {
          "name": "by curate privacy protection", 
-         "size": 1,
+         "size": 3,
          "tools" : [
             {"name":"urscape" , "fit": 10},
             {"name":"qgis", "fit":7},
@@ -274,8 +274,8 @@
   },
   {
       "name": "Experiment with",
-      "size": 3,
-      "text": "Solution spaces help focus the work of innovation [and production of ideas -- Latin from Greek idea ‘form, pattern’, from the base of idein ‘to see’]",
+      "size": 1,
+      "text": "Experiment",
       "children": [
        {
         "name": "pattern",
@@ -283,7 +283,7 @@
         "children": [
          {
             "name": "by using heuristic aproaches" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"acrgis" , "fit": 1},
                {"name":"qgis" , "fit": 7},
@@ -292,7 +292,7 @@
          },
          {
             "name": "by using satisficing aproaches" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"qgis" , "fit": 4},
                {"name":"acrgis" , "fit": 2},
@@ -307,7 +307,7 @@
         "children": [
          {
             "name": "by encouraging rapid iteration" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"qgis" , "fit": 1},
                {"name":"acrgis" , "fit": 2},
@@ -324,7 +324,7 @@
         "children": [
          {
             "name": " with chontroled experiments" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"qgis" , "fit": 2},
                {"name":"acrgis" , "fit": 3},
@@ -339,7 +339,7 @@
         "children": [
          {
             "name": "with play" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"notebook" , "fit": 3},
                {"name":"urscape", "fit":10}
@@ -351,8 +351,8 @@
   },
   {
       "name": "Situate",
-      "size": 3,
-      "text": "Ideas flourish in response to specific cultural, economic and environmental situations",
+      "size": 1,
+      "text": "Situate",
       "children": [
        {
         "name": "transmute insights",
@@ -360,7 +360,7 @@
         "children": [
          {
             "name": "in spatial way" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"workshop" , "fit": 2},
                {"name":"virtual reality", "fit":9}
@@ -368,7 +368,7 @@
          },
          {
             "name": "in tangible way" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"workshop", "fit":4}
             ]
@@ -376,7 +376,7 @@
          },
          {
             "name": "in functional way" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"Physical model" , "fit": 8}
             ]
@@ -390,7 +390,7 @@
          
             {
                "name": "in spatial way" , 
-               "size": 1,
+               "size": 3,
                "tools" : [
                   {"name":"physical model" , "fit": 8},
                   {"name":"virtual reality", "fit":5}
@@ -398,14 +398,14 @@
             },
             {
                "name": "in tangible way" , 
-               "size": 1,
+               "size": 3,
                "tools" : [
                   {"name":"virtual reality", "fit":2}
                ]
             },
             {
                "name": "in functional way" , 
-               "size": 1,
+               "size": 3,
                "tools" : [
                   {"name":"unity" , "fit": 8}
                ]
@@ -421,14 +421,14 @@
           
              {
                 "name": "by refinig " , 
-                "size": 1,
+                "size": 3,
                 "tools" : [
                   {"name":"unity" , "fit": 8}
                ]
              },
              {
                 "name": "by staging" , 
-                "size": 1,
+                "size": 3,
                 "tools" : [
                   {"name":"workshop" , "fit": 8}
                ]
@@ -441,8 +441,8 @@
   },
   {
       "name": "Engage",
-      "size": 3,
-      "text": "People and institutions are diverse. They have distinctive motivations, world views and ways of working. If they are to be involved in crafting solutions they must be engaged to do so",
+      "size": 1,
+      "text": "Engage",
       "children": [
        {
         "name": "Stakeholders",
@@ -450,7 +450,7 @@
         "children": [
          {
             "name": "by diagrams" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"Rhino3D" , "fit": 5},
                {"name":"Adobe Suit" , "fit": 10}
@@ -458,7 +458,7 @@
          },
          {
             "name": "by 3D models" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"workshop" , "fit": 1},
                {"name":"Rhino3D" , "fit": 8}
@@ -466,7 +466,7 @@
          },
          {
             "name": "by film" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"Adobe Suit" , "fit": 10},
                {"name":"workshop" , "fit": 5}
@@ -474,7 +474,7 @@
          },
          {
             "name": "by photography" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"mobile phone" , "fit": 10},
                {"name":"workshop" , "fit": 2}
@@ -482,14 +482,14 @@
          },
          {
             "name": "by theatre" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"workshop" , "fit": 10}
             ]
          },
          {
             "name": "by music" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"Adobe Suit" , "fit": 3},
                {"name":"workshop" , "fit": 10}
@@ -497,7 +497,7 @@
          },
          {
             "name": "by food" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"mobile phone" , "fit": 3},
                {"name":"workshop" , "fit": 10}
@@ -505,7 +505,7 @@
          },
          {
             "name": "by instalations" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"Adobe Suit" , "fit": 4},
                {"name":"Exhibition" , "fit": 10}
@@ -513,7 +513,7 @@
          },
          {
             "name": "by prototypes" , 
-            "size": 1,
+            "size": 3,
             "tools" : [
                {"name":"Adobe Suit" , "fit": 5},
                {"name":"workshop" , "fit": 10}

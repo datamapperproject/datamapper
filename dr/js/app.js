@@ -11,8 +11,8 @@ var testX =0;
 var gi =1;
 var test =0;
 var force = d3.layout.force()
-    .linkDistance(100)
-    .charge(-170)
+    .linkDistance(140)
+    .charge(-200)
     .gravity(.05)
     .size([width, height])
     .on("tick", tick);
@@ -71,7 +71,7 @@ function update() {
       .attr("class", "link")
       .attr("opacity", function(d) { 
 
-        if (d.source.size ===4) return  test
+        if (d.source.size ===0) return  test
         else return 1});;
 
   // Restart the force layout.
@@ -95,34 +95,70 @@ function update() {
       .on("mouseout", function (d) {ha.call(zoom);description.text ( "");})
       .call(force.drag);
 
+
+
  force.drag().on("dragend", dragend);    
  force.drag().on("dragstart", dragstart);
-  nodeEnter.append("circle")
+  nodeEnter.append("rect")
       .attr("opacity", function(d) { 
-       if (d.size ===4) return  test
+       if (d.size ===0) return  test
        else return 1})
        .style("stroke",colorStroke)
        ;
 
-  nodeEnter.append("text")
-      .attr("dy", ".35em")
-      .text(function(d) { return d.name; })
-      .attr("opacity", function(d) { 
 
-        if (d.size ===4) return  test
-        else return 1});;;
-      //.text(function(d) { return d.parrentIdx + " | " + d.id; }); for testing
+// create node with div as child text label
+  nodeEnter.append("foreignObject")
+      .attr("width", 80)
+      //.attr("height", 40)
+      .attr("height", function(d){ if (d.text) return Math.sqrt(d.text.length*100); else return 0; })
+      .attr("x", function(d) { return -40;})
+      //.attr("y", function(d) { return -20;})
+      .attr("y", function(d) { if (d.text) return -Math.sqrt(d.text.length*50); else return 0; })
+      .attr("opacity", function(d) {
+        if (d.size ===0) return  test
+        else return 1})
+      .append("xhtml:div")
+      .attr("class", "node-label")
+      .html(function(d) { return d.text; })
+    // make text appear in the middle of the div
+      .style("display", "flex")
+      .style("align-items", "center")
+      .style("justify-content", "center")
+      .style("text-align", "center")
+      //.style("font-size", function(d) { if (d.text) return Math.sqrt(4000/(d.text.length+1)) + "px"; else return "0px"; })
+      .style("font-size", "12px")
+// long text is fitting to div size
+      .style("word-wrap", "break-word")
+      ;
+  
 
-  node.select("circle")
+  // nodeEnter.append("text")
+  //     .attr("dy", ".35em")
+  //     .text(function(d) { return d.name; })
+  //     .attr("opacity", function(d) { 
+
+  //       if (d.size ===4) return  test
+  //       else return 1});
+
+  node.select("rect")
       .style("fill", color)
       ;
 
 
-  node.selectAll("circle").attr("r", function(d) { 
-    return 20 + d.sum * 2;}); 
+  node.selectAll("rect")
+       .attr("width", function(d) { return 80;})
+       //.attr("height", function(d) { return 40;})
+       .attr("height", function(d) {if (d.text) return Math.sqrt(d.text.length*100); else return 0;})
+       .attr("x", function(d) { return -40;})
+       .attr("y", function(d) {if (d.text) return -Math.sqrt(d.text.length*50); else return 0;})
+       .attr("rx", 10)
+       .attr("ry", 10);
+
+       // add rectangle to node 
+
 
     function dragstart(d) {
-      console.log(d)
       testX = d.x;
     }
 
@@ -130,11 +166,9 @@ function update() {
       
     if (testX === d.x)
         {
-           console.log("ignoring")
            return;
-
         }
-    d3.selectAll('circle').each(function(e, i) {
+    d3.selectAll('rect').each(function(e, i) {
     var distance = Math.sqrt(Math.pow(e.x - d.x, 2) + Math.pow(e.y- d.y, 2));
     var inside = distance < 40 + d.sum * 2;
     if(inside && distance >0)
@@ -334,11 +368,10 @@ function updateSize(nodes) {
 }
 
 //Assign function to listen slider events
-// var slider = document.getElementById("myRange");
-// slider.oninput = function() {
-//   document.getElementById("label").innerHTML = "Group by tool fit : " + this.value*10 + "%";
-//   updateGroupSelection();
-// }
+var slider = document.getElementById("myRange");
+slider.oninput = function() {
+  //TODO
+}
 
 function updateGroups()
 {
@@ -368,8 +401,6 @@ function updateGroups()
      if(child.children)
           child.children.forEach(groupsCollect)
   } 
-  console.log(groups)
-
    d3.selectAll(".node").data().forEach(groupsCollect);
 
    for (var key in groups) {
@@ -385,81 +416,5 @@ function updateGroups()
      poly.setAttribute ("stroke-opacity" ,.3);
      groupsLayer.append(poly);
    }
-
 }
-// function updateGroupSelection()
-// {
 
-//   if(slider.value ==0)
-//        return;
-//     // Fill dictionary with tools and hows points
-//     var hows = {};
-//     function toolsCollect(child)
-//     {
-//        if(child.tools && child.selected)
-//           {
-//             for(var i =0; i< child.tools.length;++i)
-//             {
-//               if(child.tools[i].fit>= slider.value)
-//               {
-//                 if(hows[child.tools[i].name])
-//                 {
-//                   hows[child.tools[i].name] += " " + child.x+","+child.y;
-//                 } else
-//                 {
-//                   hows[child.tools[i].name]= child.x+","+child.y ;
-//                 }
-//             }
-//             }
-//           }
-//        if(child.children)
-//             child.children.forEach(toolsCollect)
-//     } 
-
-//     d3.selectAll(".node").data().forEach(toolsCollect)
-
-//     while (groupsLayer.firstChild) {
-//       groupsLayer.removeChild(groupsLayer.firstChild);
-
-//   }
-//     index = 0;
-//     for (var key in hows) {
-
-//         let poly = document.createElementNS(svgns ,'polyline');
-//          poly.id = key;
-//          poly.setAttributeNS(null, "points", hows[key]);
-//          poly.setAttributeNS(null, "fill", "none");
-//          poly.setAttribute ("stroke" ,"#c6c6c6");
-//          poly.setAttribute ("stroke-width" ,100);
-//          poly.setAttribute ("stroke-linejoin" ,"round");
-//          poly.setAttribute ("stroke-linecap" ,"round");
-//          poly.setAttribute ("stroke-opacity" ,.3);
-//          groupsLayer.append(poly);
-//          var bbox = poly.getBoundingClientRect();
-
-
-//          textX =  bbox.x < width/2 ? 20:  width - 150;
-//          textY =  bbox.y + bbox.height/2 - (index  % 3)*25;
-//          ++index;
-//          let text= document.createElementNS(svgns ,'text');
-//          text.id = key;
-//          text.setAttributeNS(null, "x", textX );
-//          text.setAttributeNS(null, "y", textY );
-//          text.setAttributeNS(null,"font-size","20");
-//          text.setAttributeNS(null,"font-family",'Helvetica Neue');
-//          text.setAttribute ("fill" ,"#c6c6c6");
-//          text.innerHTML = key;
-
-//          poly.addEventListener('mouseenter', function(e) {
-//           poly.setAttribute('stroke', '#87b5dd');
-//           text.setAttribute('fill', '#87b5dd');
-//          });
-//          poly.addEventListener('mouseleave', function(e) {
-//           poly.setAttribute('stroke', "#c6c6c6");
-//           text.setAttribute('fill', "#c6c6c6");
-//          });
-//          groupsLayer.append(text);
-      
-//   }
-
-//}
