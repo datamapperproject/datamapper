@@ -11,8 +11,8 @@ var testX =0;
 var gi =1;
 var test =0;
 var force = d3.layout.force()
-    .linkDistance(140)
-    .charge(-200)
+    .linkDistance(150)
+    .charge(-900)
     .gravity(.05)
     .size([width, height])
     .on("tick", tick);
@@ -45,6 +45,8 @@ ha.call(zoom);
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
+var buttons;    
+
 d3.json("graph.json", function(error, json) {
   if (error) throw error;
 
@@ -63,16 +65,13 @@ function update() {
 
 
   
-  updateSize(nodes)
+  //updateSize(nodes);
   // Update links.
   link = link.data(links, function(d) { return d.target.id; });
   link.exit().remove();
   link.enter().insert("line", ".node")
       .attr("class", "link")
-      .attr("opacity", function(d) { 
-
-        if (d.source.size ===0) return  test
-        else return 1});;
+      .attr("opacity", function(d) { if (d.source.size ===0) return  0;else return 1});;
 
   // Restart the force layout.
   force
@@ -90,9 +89,9 @@ function update() {
 
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
-      .on("click", click)
-      .on("mouseover", function (d) {ha.on('.zoom', null); ;description.text ( d.text);})
-      .on("mouseout", function (d) {ha.call(zoom);description.text ( "");})
+    
+       .on("mouseover", function (d) {ha.on('.zoom', null);})
+       .on("mouseout", function (d) {ha.call(zoom);})
       .call(force.drag);
 
 
@@ -100,9 +99,9 @@ function update() {
  force.drag().on("dragend", dragend);    
  force.drag().on("dragstart", dragstart);
   nodeEnter.append("rect")
+      .on("click", click)
       .attr("opacity", function(d) { 
-       if (d.size ===0) return  test
-       else return 1})
+       if (d.size ===0) return  0; else return 1})
        .style("stroke",colorStroke)
        ;
 
@@ -110,42 +109,99 @@ function update() {
 // create node with div as child text label
   nodeEnter.append("foreignObject")
       .attr("width", 80)
-      //.attr("height", 40)
       .attr("height", function(d){ if (d.text) return Math.sqrt(d.text.length*100); else return 0; })
       .attr("x", function(d) { return -40;})
-      //.attr("y", function(d) { return -20;})
       .attr("y", function(d) { if (d.text) return -Math.sqrt(d.text.length*50); else return 0; })
-      .attr("opacity", function(d) {
-        if (d.size ===0) return  test
-        else return 1})
       .append("xhtml:div")
+      .on("click", click)
       .attr("class", "node-label")
       .html(function(d) { return d.text; })
-    // make text appear in the middle of the div
       .style("display", "flex")
       .style("align-items", "center")
       .style("justify-content", "center")
       .style("text-align", "center")
-      //.style("font-size", function(d) { if (d.text) return Math.sqrt(4000/(d.text.length+1)) + "px"; else return "0px"; })
       .style("font-size", "12px")
-// long text is fitting to div size
+      .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
       .style("word-wrap", "break-word")
       ;
-  
 
-  // nodeEnter.append("text")
-  //     .attr("dy", ".35em")
-  //     .text(function(d) { return d.name; })
-  //     .attr("opacity", function(d) { 
+      // create node with button as child text label
+      buttons = nodeEnter.append("foreignObject")
+      .attr("width", 100)
+      .attr("height", 20)
+      .attr("x", function(d) { return -40;})
+      .attr("y", function(d) { if (d.text) return -Math.sqrt(d.text.length*50) -20; else return 0; })
+      .append("xhtml:button")
+      .attr("opacity", function(d) {if (d.size ===0) return  0; else return 1})
+      .style("background-color", "lightblue")
+      .attr("class", "button-label")
+      .attr("id",function(d) { return "button"+ d.id;})
+      .html(function(d) { return "pin"; })
+      .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
+      .style("font-size", "12px")
+      .on("click", pin)
+      ;
+      function pin (d)
+      {
+        //select the button and update test value
+        if(d.fixed)
+        {
+           d.fixed = false;
+           d3.select(this).html("pin");
 
-  //       if (d.size ===4) return  test
-  //       else return 1});
+        } else
+        {
+
+          d.fixed = true;
+          d3.select(this).html("unpin");
+        }
+        
+      }
+
+      //add image to node
+      nodeEnter.append("image")
+      .attr("xlink:href", "thumpup.png")
+      .attr("id",function(d) { return "thumb"+ d.id;})
+      .attr("opacity", function(d) {if (d.size ===0) return  0; else return 1})
+      .attr("x", function(d) { return 20;})
+      .attr("y", function(d) { if (d.text) return Math.sqrt(d.text.length*50)-30; else return 50; })
+      .attr("width", function(d) { if (d.children === undefined) return 30; else return 0;})
+      .attr("height", function(d) { if (d.children === undefined) return 30; else return 0;})
+      .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
+      .on("click", test)
+      ;
+
+      // add text to node on position of image
+      nodeEnter.append("text")
+      .attr("id",function(d) { return "text"+ d.id;})
+      .attr("x", function(d) { return 35;})
+      .attr("y", function(d) { if (d.text) return Math.sqrt(d.text.length*50)-10; else return 50; })
+      .attr("width", function(d) { if (d.children === undefined) return 20; else return 0;})
+      .attr("height", function(d) { if (d.children === undefined) return 20; else return 0;})
+      .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
+      .style("font-size", "12px")
+      .style("fill", "white")
+      .text(function(d) { return d.likes; })
+      ;
+
+      function test (d)
+      {
+        //select the button and update test value
+        if(d.children === undefined)
+        {
+        d.likes += 1;
+        d3.select(this).html(d.likes);
+        var text = document.getElementById( "text" + d.id);
+        text.textContent = d.likes;
+        updateSize(nodes);
+        }
+      }
 
   node.select("rect")
       .style("fill", color)
       ;
 
-
+    
   node.selectAll("rect")
        .attr("width", function(d) { return 80;})
        //.attr("height", function(d) { return 40;})
@@ -156,7 +212,6 @@ function update() {
        .attr("ry", 10);
 
        // add rectangle to node 
-
 
     function dragstart(d) {
       testX = d.x;
@@ -170,9 +225,11 @@ function update() {
         }
     d3.selectAll('rect').each(function(e, i) {
     var distance = Math.sqrt(Math.pow(e.x - d.x, 2) + Math.pow(e.y- d.y, 2));
-    var inside = distance < 40 + d.sum * 2;
-    if(inside && distance >0)
+
+    console.log(distance)
+    if(distance < 50 && e.id !== d.id )
     {
+      console.log("dragend");
       links.push({"source": d , "target": e})
    
       link = link.data(links, function(f) { return f.target.id; });
@@ -210,7 +267,6 @@ function update() {
 function tick() {
 
 
-
   link.attr("x1", function(d) { return d.source.x; })
       .attr("y1", function(d) { return d.source.y; })
       .attr("x2", function(d) { return d.target.x; })
@@ -219,18 +275,20 @@ function tick() {
 
   node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
+
+
   updateGroups();
 }
 document.onkeydown = function (e) {
   
   force.charge(0)   
-  .gravity(0)
+  .gravity(.05)
   .start();
 
 };
 
 document.onkeyup = function (e) {
-  force.charge(-170)
+  force.charge(-970)
   .gravity(.05)
   .start();
 };
@@ -289,6 +347,8 @@ function init(root) {
 
   function initChildren(node,  pi) {
     node.id = i++;
+    node.likes = 0;
+    node.pin = false;
     node.parrentIdx = pi;
    
 	  if(node.children) {
@@ -314,6 +374,7 @@ function collapsed(root) {
   root.children.forEach(hideChildren);
   //hideChildren(root);
 }
+// Duplicate the node
 function inser(object) {
 
   function check(node) {
@@ -329,7 +390,9 @@ function inser(object) {
         size:1, 
         index: object.index, 
         selected: true,
-        tools: object.tools
+        tools: object.tools,
+        text: object.text,
+        likes: 0,
       }
        
        node.children.push(clone);
@@ -349,22 +412,32 @@ function updateSize(nodes) {
   function sum(node) {
     if(node.children)
      { 
-       var count =1;
+       var count =0;
        for (var i =0; i<  node.children.length; ++i)
         {
-          if (node.children[i].selected ===true)
-          {
-            count = count + node.children[i].sum;
-          }
+            count = count + node.children[i].likes;
         }
-        node.sum = count;
+        node.likes =  count;
      }
-     else
-     {
-       node.sum = 1;
-     }
+
+     //update foreiner object  button label of this node
+      var thumb = document.getElementById( "thumb" + node.id);
+      var text = document.getElementById( "text" + node.id);
+      console.log(thumb);
+      if(thumb && node.children != undefined)
+      {
+            // Set width of button
+            thumb.setAttribute("width",  30 )
+            thumb.setAttribute("height",  30)
+            //set text as likes
+            text.textContent = node.likes;
+
+      }
+
+        
   }
   nodes.forEach(function(item, index){sum(item)});
+  console.log(nodes);
 }
 
 //Assign function to listen slider events
