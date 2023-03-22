@@ -11,11 +11,17 @@ var testX =0;
 var gi =1;
 var test =0;
 var force = d3.layout.force()
-    .linkDistance(150)
+    .linkDistance(50)
     .charge(-900)
     .gravity(.05)
+    .friction(0.8)
+    .linkStrength(0.2)
+    .theta(0.8)
+    .alpha(0.1)
     .size([width, height])
     .on("tick", tick);
+
+// make force move slower
 
 var svg = d3.select("#svg")
     .attr("width", width)
@@ -45,7 +51,31 @@ ha.call(zoom);
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
-var buttons;    
+var buttons;   
+
+// draw grid 100x100
+for (var x = 0; x <= width; x += 100) {
+    svg.append("line")
+        .attr("x1", x)
+        .attr("y1", 0)
+        .attr("x2", x)
+        .attr("y2", height)
+        .attr("stroke", "lightgrey")
+        .attr("stroke-width", 1)
+        .attr("opacity", 0.5);
+}
+for (var y = 0; y <= height; y += 100) {
+    svg.append("line")
+        .attr("x1", 0)
+        .attr("y1", y)
+        .attr("x2", width)
+        .attr("y2", y)
+        .attr("stroke", "lightgrey")
+        .attr("stroke-width", 1)
+        .attr("opacity", 0.5);
+}
+
+
 
 d3.json("graph.json", function(error, json) {
   if (error) throw error;
@@ -89,15 +119,17 @@ function update() {
 
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
-    
-       .on("mouseover", function (d) {ha.on('.zoom', null);})
-       .on("mouseout", function (d) {ha.call(zoom);})
+      .on("mouseover", function (d) {ha.on('.zoom', null);})
+      .on("mouseout", function (d) {ha.call(zoom);})
       .call(force.drag);
 
 
 
  force.drag().on("dragend", dragend);    
  force.drag().on("dragstart", dragstart);
+
+
+
   nodeEnter.append("rect")
       .on("click", click)
       .attr("opacity", function(d) { 
@@ -108,10 +140,10 @@ function update() {
 
 // create node with div as child text label
   nodeEnter.append("foreignObject")
-      .attr("width", 80)
+      .attr("width", 70)
       .attr("height", function(d){ if (d.text) return Math.sqrt(d.text.length*100); else return 0; })
-      .attr("x", function(d) { return -40;})
-      .attr("y", function(d) { if (d.text) return -Math.sqrt(d.text.length*50); else return 0; })
+      .attr("x", function(d) { return -35;})
+      .attr("y", function(d) { if (d.text) return -5; else return 0; })
       .append("xhtml:div")
       .on("click", click)
       .attr("class", "node-label")
@@ -125,46 +157,36 @@ function update() {
       .style("word-wrap", "break-word")
       ;
 
-      // create node with button as child text label
-      buttons = nodeEnter.append("foreignObject")
-      .attr("width", 100)
-      .attr("height", 20)
-      .attr("x", function(d) { return -40;})
-      .attr("y", function(d) { if (d.text) return -Math.sqrt(d.text.length*50) -20; else return 0; })
-      .append("xhtml:button")
-      .attr("opacity", function(d) {if (d.size ===0) return  0; else return 1})
-      .style("background-color", "lightblue")
-      .attr("class", "button-label")
-      .attr("id",function(d) { return "button"+ d.id;})
-      .html(function(d) { return "pin"; })
+
+     // apped image to node
+  nodeEnter.append("image")
+      .attr("xlink:href", "pin.png")
+      .attr("id",function(d) { return "pin"+ d.id;})
+      .attr("x", function(d) { return -47;})
+      .attr("y", function(d) { if (d.text) return -20 ; else return 0; })
+      .attr("width", 15)
+      .attr("height", 15)
       .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
-      .style("font-size", "12px")
-      .on("click", pin)
+      .on("click", function(d) {       
+            if(d.fixed)
+             {
+                 d.fixed = false;
+                 d3.select(this).attr("xlink:href", "pin.png")
+              } else
+              {
+                d.fixed = true;
+                d3.select(this).attr("xlink:href", "unpin.png")
+         }})
       ;
-      function pin (d)
-      {
-        //select the button and update test value
-        if(d.fixed)
-        {
-           d.fixed = false;
-           d3.select(this).html("pin");
 
-        } else
-        {
-
-          d.fixed = true;
-          d3.select(this).html("unpin");
-        }
-        
-      }
 
       //add image to node
       nodeEnter.append("image")
-      .attr("xlink:href", "thumpup.png")
+      .attr("xlink:href", "thump.png")
       .attr("id",function(d) { return "thumb"+ d.id;})
       .attr("opacity", function(d) {if (d.size ===0) return  0; else return 1})
       .attr("x", function(d) { return 20;})
-      .attr("y", function(d) { if (d.text) return Math.sqrt(d.text.length*50)-30; else return 50; })
+      .attr("y", function(d) { if (d.text) return -35; else return 0; })
       .attr("width", function(d) { if (d.children === undefined) return 30; else return 0;})
       .attr("height", function(d) { if (d.children === undefined) return 30; else return 0;})
       .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
@@ -175,7 +197,7 @@ function update() {
       nodeEnter.append("text")
       .attr("id",function(d) { return "text"+ d.id;})
       .attr("x", function(d) { return 35;})
-      .attr("y", function(d) { if (d.text) return Math.sqrt(d.text.length*50)-10; else return 50; })
+      .attr("y", function(d) { if (d.text) return -15; else return 50; })
       .attr("width", function(d) { if (d.children === undefined) return 20; else return 0;})
       .attr("height", function(d) { if (d.children === undefined) return 20; else return 0;})
       .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
@@ -193,6 +215,7 @@ function update() {
         d3.select(this).html(d.likes);
         var text = document.getElementById( "text" + d.id);
         text.textContent = d.likes;
+        document.getElementById( "thumb" + d.id).setAttribute("href", "thumpup.png")
         updateSize(nodes);
         }
       }
@@ -204,10 +227,9 @@ function update() {
     
   node.selectAll("rect")
        .attr("width", function(d) { return 80;})
-       //.attr("height", function(d) { return 40;})
-       .attr("height", function(d) {if (d.text) return Math.sqrt(d.text.length*100); else return 0;})
+       .attr("height", function(d) {if (d.text) return Math.sqrt(d.text.length*100) +10; else return 0;})
        .attr("x", function(d) { return -40;})
-       .attr("y", function(d) {if (d.text) return -Math.sqrt(d.text.length*50); else return 0;})
+       .attr("y", function(d) {if (d.text) return -10; else return 0;})
        .attr("rx", 10)
        .attr("ry", 10);
 
@@ -215,6 +237,11 @@ function update() {
 
     function dragstart(d) {
       testX = d.x;
+      // if (d.fixed)
+      // {
+      // d.x = d.px = Math.round(d.x / 100) * 100;
+      // d.y = d.py = Math.round(d.y / 100) * 100;
+      // }
     }
 
   function dragend(d) {
@@ -260,8 +287,13 @@ function update() {
         }
 
       });
+      if (d.fixed)
+      {
+      d.x = d.px = Math.round(d.x / 100) * 100;
+      d.y = d.py = Math.round(d.y / 100) * 100;
       }
-
+      }
+ 
 }
 
 function tick() {
@@ -293,15 +325,23 @@ document.onkeyup = function (e) {
   .start();
 };
 
+// function color(d) {
+//   return d.selected && d.size ===4 ? "#5EBF71"
+//       :d.selected && d.size ===3 ? "#83DF78"
+//       : d.selected && d.size ===2 ? "#B0F578"
+//       : d.selected && d.size ===1 ? "#D2EB73"
+//       : d._children && d.size ===3 ? "#ffffff"
+//       : d._children && d.size ===2 ? "#ffffff"
+//       : "#ffffff" ; // leaf node
+// }
+
+
 function color(d) {
-  return d.selected && d.size ===4 ? "#5EBF71"
-      :d.selected && d.size ===3 ? "#83DF78"
-      : d.selected && d.size ===2 ? "#B0F578"
-      : d.selected && d.size ===1 ? "#D2EB73"
-      : d._children && d.size ===3 ? "#ffffff"
-      : d._children && d.size ===2 ? "#ffffff"
+  return d.selected  ? d.color
+      : d._children ? "#ffffff"
       : "#ffffff" ; // leaf node
 }
+
 function colorStroke(d) {
   return d.selected ? "#999999"
       : "#999999" ; // leaf node
@@ -429,6 +469,7 @@ function updateSize(nodes) {
             // Set width of button
             thumb.setAttribute("width",  30 )
             thumb.setAttribute("height",  30)
+            thumb.setAttribute("href", "thumpup.png")
             //set text as likes
             text.textContent = node.likes;
 

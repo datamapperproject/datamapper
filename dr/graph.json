@@ -1,21 +1,24 @@
 {
  "name": "Ignore this",
  "size": 0,
- "text" :  "Ignore this, just technical stuff",
+ "text" :  "Ignore this",
  "children": [
   {
    "name": "Promp Sence",
    "size": 1,
+   "color": "#f45f5f",
    "text" :  "Sense",
    "children": [
     {
      "name": "Sence",
      "size": 2,
+     "color": "#ff7f7f",
      "text" : 	"The needs and aspirations of people are not always voiced nor heard. The structuring power of institutions is often overlooked. Natural environments and their nonhuman inhabitants are routinely marginalised", 
      "children": [
       {
          "name": "by withnessing" , 
          "size": 3, 
+         "color": "#ff9999",
          "text" : "Witness the everyday lives of individuals and communities",
          "tools" : [
             {"name":"camera" , "fit": 7},
@@ -25,6 +28,7 @@
       {
          "name": "by feeling", 
          "size": 3, 
+         "color": "#ff9999",
          "text" :  "Feel for the rules and resources of social institutions",
          "tools" : [
             {"name":"camera" , "fit": 3},
@@ -35,12 +39,14 @@
     },
     {
      "name": "aspiration",
-     "size": 1,
+     "size": 2,
+     "color": "#ff7f7f",
      "text" : 	"Aspiration", 
      "children": [
         {
          "name": "by acknowladging",
-         "size": 2, 
+         "size": 3, 
+         "color": "#ff9999",
          "text" : "Acknowledge urgent demands for reform and discern weak signals of change",
          "tools" : [
             {"name":"eye" , "fit": 10},
@@ -51,12 +57,14 @@
     },
     {
      "name": "desires",
-     "size": 1,
+     "size": 2,
+     "color": "#ff7f7f",
      "text" : 	"Desires", 
      "children": [
         {
          "name": "by whitnessing" , 
-         "size": 2, 
+         "size": 3, 
+         "color": "#ff9999",
          "text" : "Witness the everyday lives of individuals and communities",
          "tools" : [
             {"name":"camera" , "fit": 7},
@@ -65,7 +73,8 @@
         },
         {
          "name": "by feeling", 
-         "size": 2, 
+         "size": 3, 
+         "color": "#ff9999",
          "text" :  "Feel for the rules and resources of social institutions",
          "tools" : [
             {"name":"speak with people" , "fit": 3},
@@ -74,7 +83,8 @@
         },
         {
          "name": "by acknowladging", 
-         "size": 2, 
+         "size": 3,
+         "color": "#ff9999", 
          "text" : "Acknowledge urgent demands for reform and discern weak signals of change",
          "tools" : [
             {"name":"eye" , "fit": 10},
@@ -86,12 +96,14 @@
     },
     {
      "name": "interdependece",
-     "size": 1,
+     "size": 2,
+     "color": "#ff7f7f",
      "text" : 	"Record of the interdependence of all life forms.", 
      "children": [
         {
          "name": "by mapping", 
-         "size": 2, 
+         "size": 3, 
+         "color": "#ff9999", 
          "text" : "Map human-environment interdependencies",
          "tools" : [
             {"name":"voice recorder" , "fit": 10},
@@ -105,16 +117,19 @@
   {
     "name": "Theoresise",
     "size": 1,
+    "color": "#ffe566",
     "text" :  "Theorisise",
     "children": [
      {
       "name": "needs",
       "size": 2,
+      "color": "ffee99",
       "text" : "Needs of a given challenge compared to those in other places and times", 
       "children": [
        {
          "name": "by collecting" , 
          "size": 3 , 
+         "color": "fff2b2",
          "text" : "Collect and cite relevant contextual information",
          "tools" : [
             {"name":"internet search" , "fit": 10},
@@ -124,6 +139,7 @@
        {
          "name": "by comparing", 
          "size": 3, 
+         "color": "fff2b2",
          "text" : "Compare and cite relevant contextual information",
          "tools" : [
             {"name":"internet search" , "fit": 6},
@@ -142,6 +158,7 @@
        {
          "name": "by recording", 
          "size": 3, 
+         "color": "fff2b2",
          "text" : "Record how local issues were articulated, addressed and solved" ,
          "tools" : [
             {"name":"voice recorder" , "fit": 5},
@@ -153,11 +170,13 @@
      {
       "name": "aspirations",
       "size": 2,
+      "color": "ffee99",
       "text" : "dummy text for aspirations",
       "children": [
          {
             "name": "by recording", 
             "size": 3, 
+            "color": "fff2b2",
             "text" : "Record how local aspirations were articulated, addressed and solved" ,
             "tools" : [
                {"name":"voice recorder" , "fit": 6},
@@ -169,11 +188,13 @@
      {
       "name": "desires",
       "size": 2,
+      "color": "ffee99",
       "text" : "dummy text for desires",
       "children": [
          {
             "name": "by recording", 
             "size": 3, 
+            "color": "fff2b2",
             "text" : "Record how local desires were articulated, addressed and solved" ,
             "tools" : [
                {"name":"notebook" , "fit": 3},
@@ -186,11 +207,13 @@
      {
       "name": "cases",
       "size": 2,
+      "color": "ffee99",
       "text" : "dummy text for cases",
       "children": [
          {
             "name": "by developing codes" , 
             "size": 3, 
+            "color": "fff2b2",
             "text" : "Develop codes that may be transmissible and adaptable to other settings",
             "tools" : [
                {"name":"excel" , "fit": 6},
@@ -200,6 +223,7 @@
          {
             "name": "by developing rules", 
             "size": 3, 
+            "color": "fff2b2",
             "text" : "Develop rules that may be transmissible and adaptable to other settings",
             "tools" : [
                {"name":"excel" , "fit": 3},
@@ -209,6 +233,7 @@
          {
             "name": "by developing typologies", 
             "size": 3, 
+            "color": "fff2b2",
             "text" : "Develop typologies that may be transmissible and adaptable to other settings",
             "tools" : [
                {"name":"notebook" , "fit": 6},
@@ -222,16 +247,19 @@
   {
      "name": "Gather",
      "size": 1,
+     "color": "99ff66",
        "text" :  "Gather",
      "children": [
       {
        "name": "Data",
        "size": 2,
+       "color": "b2ff8c",
          "text" : "Dummy text for Data",
        "children": [
         {
          "name": "by assesing quantitative data" , 
          "size": 3,
+         "color": "#ccffcc",
          "text": "Dummy text for Gather data by assesing quantitative data",
          "tools" : [
             {"name":"qgis" , "fit": 5},
@@ -241,6 +269,7 @@
         {
          "name": "by assesing qualitative data" , 
          "size": 3,
+         "color": "#ccffcc",
          "text": "Dummy text for Gather data by assesing qualitative data",
          "tools" : [
             {"name":"qgis" , "fit": 2},
@@ -251,6 +280,7 @@
         {
          "name": "by clean data", 
          "size": 3,   
+         "color": "#ccffcc",
          "text": "Dummy text for Gather data by clean data",     
           "tools" : [
             {"name":"qgis" , "fit": 10},
@@ -260,6 +290,7 @@
         {
          "name": "by identifing gaps", 
          "size": 3,
+         "color": "#ccffcc",
          "text": "Dummy text for Gather data by identifing gaps",
          "tools" : [
             {"name":"arcgis", "fit":3},
@@ -270,6 +301,7 @@
         {
          "name": "by curate privacy protection", 
          "size": 3,
+         "color": "#ccffcc",
          "text": "Dummy text for Gather data by curate privacy protection",
          "tools" : [
             {"name":"urscape" , "fit": 10},
@@ -284,16 +316,19 @@
   {
       "name": "Experiment with",
       "size": 1,
+      "color": "66ffe2",
       "text": "Experiment",
       "children": [
        {
         "name": "pattern",
         "size": 2,
+         "color": "8cffeb",
          "text": "Dummy text for Experiment with pattern",
         "children": [
          {
             "name": "by using heuristic aproaches" , 
             "size": 3,
+            "color": "#ccffff",
             "text": "Dummy text for Experiment with pattern by using heuristic aproaches", 
             "tools" : [
                {"name":"acrgis" , "fit": 1},
@@ -304,6 +339,7 @@
          {
             "name": "by using satisficing aproaches" , 
             "size": 3,
+            "color": "#ccffff",
             "text": "Dummy text for Experiment with pattern by using satisficing aproaches",
             "tools" : [
                {"name":"qgis" , "fit": 4},
@@ -316,11 +352,13 @@
        {
         "name": "data intersect",
         "size": 2,
+         "color": "8cffeb",
         "text":"Dummy text for data intersect",
         "children": [
          {
             "name": "by encouraging rapid iteration" , 
             "size": 3,
+            "color": "#ccffff",
             "tools" : [
                {"name":"qgis" , "fit": 1},
                {"name":"acrgis" , "fit": 2},
@@ -334,11 +372,13 @@
        {
         "name": "identify fragments",
         "size": 2,
+         "color": "8cffeb",
          "text":"Dummy text for identify fragments",
         "children": [
          {
             "name": " with chontroled experiments" , 
             "size": 3,
+            "color": "#ccffff",
             "text":"Dummy text for identify fragmentss with chontroled experiments",
             "tools" : [
                {"name":"qgis" , "fit": 2},
@@ -351,6 +391,7 @@
        {
         "name": "generate ideas",
         "size": 2,
+         "color": "8cffeb",
          "text":"Dummy text for generate ideas",
         "children": [
          {
@@ -368,16 +409,19 @@
   {
       "name": "Situate",
       "size": 1,
+      "color": "6677ff",
       "text": "Situate",
       "children": [
        {
         "name": "transmute insights",
-        "size": 2,
+        "size": 2,   
+         "color": "8c8cff",
         "text":"Dummy text for situate transmute insights",
         "children": [
          {
             "name": "in spatial way" , 
             "size": 3,
+            "color": "#ccccff",
             "text":"Dummy text for situate transmute insights in spatial way",
             "tools" : [
                {"name":"workshop" , "fit": 2},
@@ -387,6 +431,7 @@
          {
             "name": "in tangible way" , 
             "size": 3,
+            "color": "#ccccff",
             "text":"Dummy text for situate transmute insights in tangible way",
             "tools" : [
                {"name":"workshop", "fit":4}
@@ -396,6 +441,7 @@
          {
             "name": "in functional way" , 
             "size": 3,
+            "color": "#ccccff",
             "text":"Dummy text for situate transmute insights in functional way",
             "tools" : [
                {"name":"Physical model" , "fit": 8}
@@ -406,12 +452,14 @@
        {
         "name": "transmute ideas",
         "size": 2,
+         "color": "8c8cff",
          "text":"Dummy text for situate transmute ideas",
         "children": [
          
             {
                "name": "in spatial way" , 
                "size": 3,
+               "color": "#ccccff",
                "text":"Dummy text for situate transmute ideas in spatial way",
                "tools" : [
                   {"name":"physical model" , "fit": 8},
@@ -421,6 +469,7 @@
             {
                "name": "in tangible way" , 
                "size": 3,
+               "color": "#ccccff",
                "text":"Dummy text for situate transmute ideas in tangible way",
                "tools" : [
                   {"name":"virtual reality", "fit":2}
@@ -429,6 +478,7 @@
             {
                "name": "in functional way" , 
                "size": 3,
+               "color": "#ccccff",
                "text":"Dummy text for situate transmute ideas in functional way",
                "tools" : [
                   {"name":"unity" , "fit": 8}
@@ -441,12 +491,14 @@
        {
          "name": "solutions",
          "size": 2,
+         "color": "8c8cff",
          "text":"Dummy text for situate solutions",
          "children": [
           
              {
                 "name": "by refinig " , 
                 "size": 3,
+                  "color": "#ccccff",
                   "text":"Dummy text for situate solutions by refinig",
                 "tools" : [
                   {"name":"unity" , "fit": 8}
@@ -455,6 +507,7 @@
              {
                 "name": "by staging" , 
                 "size": 3,
+                  "color": "#ccccff",
                   "text":"Dummy text for situate solutions by staging",
                 "tools" : [
                   {"name":"workshop" , "fit": 8}
@@ -469,16 +522,19 @@
   {
       "name": "Engage",
       "size": 1,
+      "color": "#e266ff",
       "text": "Engage",
       "children": [
        {
         "name": "Stakeholders",
         "size": 2,
+         "color": "#e2a3ff",
          "text":"Dummy text for engage stakeholders",
         "children": [
          {
             "name": "by diagrams" , 
             "size": 3,
+            "color": "#e2ccff",
             "text":"Dummy text for engage stakeholders by diagrams",
             "tools" : [
                {"name":"Rhino3D" , "fit": 5},
@@ -488,6 +544,7 @@
          {
             "name": "by 3D models" , 
             "size": 3,
+            "color": "#e2ccff",
             "text":"Dummy text for engage stakeholders by 3D models",
             "tools" : [
                {"name":"workshop" , "fit": 1},
@@ -497,6 +554,7 @@
          {
             "name": "by film" , 
             "size": 3,
+            "color": "#e2ccff",
             "text":"Dummy text for engage stakeholders by film",
             "tools" : [
                {"name":"Adobe Suit" , "fit": 10},
@@ -506,6 +564,7 @@
          {
             "name": "by photography" , 
             "size": 3,
+            "color": "#e2ccff",
             "text":"Dummy text for engage stakeholders by photography",
             "tools" : [
                {"name":"mobile phone" , "fit": 10},
@@ -515,6 +574,7 @@
          {
             "name": "by theatre" , 
             "size": 3,
+            "color": "#e2ccff",
             "text":"Dummy text for engage stakeholders by theatre",
             "tools" : [
                {"name":"workshop" , "fit": 10}
@@ -523,6 +583,7 @@
          {
             "name": "by music" , 
             "size": 3,
+            "color": "#e2ccff",
             "text":"Dummy text for engage stakeholders by music",
             "tools" : [
                {"name":"Adobe Suit" , "fit": 3},
@@ -532,6 +593,7 @@
          {
             "name": "by food" , 
             "size": 3,
+            "color": "#e2ccff",
             "text":"Dummy text for engage stakeholders by food",
             "tools" : [
                {"name":"mobile phone" , "fit": 3},
@@ -541,6 +603,7 @@
          {
             "name": "by instalations" , 
             "size": 3,
+            "color": "#e2ccff",
             "text":"Dummy text for engage stakeholders by instalations",
             "tools" : [
                {"name":"Adobe Suit" , "fit": 4},
@@ -550,6 +613,7 @@
          {
             "name": "by prototypes" , 
             "size": 3,
+            "color": "#e2ccff",
             "text":"Dummy text for engage stakeholders by prototypes",
             "tools" : [
                {"name":"Adobe Suit" , "fit": 5},

@@ -36,6 +36,7 @@ var productTextEl =  document.getElementById("productTextID");
 var sourceInputEl =  document.getElementById("sourceID");
 var sourceTextEl =  document.getElementById("sourceTextID");
 drawLines();
+getCSV();
 
 function getSelected(selectEl, textEl) {
   var text = textEl.value;
@@ -172,6 +173,108 @@ function updateGraph()
     }
 }
 
+// get csv from google sheet
+function getCSV() {
+  // get sheet id from link
+  var link = "https://docs.google.com/spreadsheets/d/{sheet_id}}/edit?usp=sharing
+  var sheetId = link.split("/")[5];
+  var url = "https://docs.google.com/spreadsheets/d/"+sheetId +"/gviz/tq?tqx=out:csv"       
+  var request = new XMLHttpRequest();
+  
+  // get data from request
+  request.open("GET", url, true);
+  request.send(null);
+  request.onreadystatechange = function () {
+    if (request.readyState === 4 && request.status === 200) {
+      var type = request.getResponseHeader("Content-Type");
+      if (type.indexOf("text") !== 1) {
+        var responseText = request.responseText;
+        //remove quates from responseText
+        responseText = responseText.replace(/"/g, "");
+        processCSV(responseText);
+      }
+    }
+  }
+}
+//Upload csv file to google sheet with rest api POST http request
+function postReq(url, callback, request = null) {
+  const accessToken = "###"; // <--- Please set your access token here.
+
+  // Sample request body?
+  var request = {
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "15:41 02/08/2019",
+     "Steven",
+     "20",
+     "Male",
+     "test@mail.com",
+     "FooBar"
+    ]
+   ]
+  };
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url);
+  xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken); // Added
+  xhr.setRequestHeader('Content-Type', 'application/json'); // Added
+  xhr.onload = function (e) {
+      if (e) console.log(e);
+      if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+              console.log(xhr.responseText);
+              callback(xhr.responseText.toString());
+          } else {
+              callback(null);
+              console.log(xhr.status);
+          }
+      } else {
+          console.log(xhr.status);
+      };
+  };
+  xhr.send(JSON.stringify(request)); // Modified
+};
+
+
+
+
+function processCSV(content) {
+        // parse csv file and add to data
+        console.log(content);
+        var lines = content.split("\n");
+        var result = [];
+        var headers=lines[0].split(",");
+        for(var i=1;i<lines.length;i++){
+          var obj = {};
+          var currentline=lines[i].split(",");
+  
+          //if currentLine is empty then skip 
+          if(currentline.length < 2)  continue;
+            
+          for(var j=0;j<headers.length;j++){
+            obj[headers[j]] = currentline[j];
+          }
+          result.push(obj);
+        }
+        
+        cleanData = cleanData.concat(result)
+        // add extra fields to result
+        for (let i =0; i< result.length;i++)
+        {
+          result[i].srv = indexMatchingText(sr, result[i].spatialResolution);
+          result[i].trv = indexMatchingText(tr, result[i].temporalResolution);
+          result[i].draw = true;
+          result[i].count = dataExists(result[i].spatialResolution, result[i].temporalResolution);
+          data.push(result[i])
+        }
+  
+        //data = data.concat(result);
+        updateGraph();
+
+
+}
+
 function mouseEnter(e,data)
 {
   panel.style.left = e.clientX + 'px';
@@ -243,37 +346,8 @@ function upload()
     // here we tell the reader what to do when it's done reading...
     reader.onload = readerEvent => {
       var content = readerEvent.target.result; // this is the content!
-
-      // parse csv file and add to data
-      var lines = content.split("\n");
-      var result = [];
-      var headers=lines[0].split(",");
-      for(var i=1;i<lines.length;i++){
-        var obj = {};
-        var currentline=lines[i].split(",");
-
-        //if currentLine is empty then skip 
-        if(currentline.length < 2)  continue;
-          
-        for(var j=0;j<headers.length;j++){
-          obj[headers[j]] = currentline[j];
-        }
-        result.push(obj);
-      }
-      
-      cleanData = cleanData.concat(result)
-      // add extra fields to result
-      for (let i =0; i< result.length;i++)
-      {
-        result[i].srv = indexMatchingText(sr, result[i].spatialResolution);
-        result[i].trv = indexMatchingText(tr, result[i].temporalResolution);
-        result[i].draw = true;
-        result[i].count = dataExists(result[i].spatialResolution, result[i].temporalResolution);
-        data.push(result[i])
-      }
-
-      //data = data.concat(result);
-      updateGraph();
+      console.log("LOL");
+      processCSV(content);
     }
   }
   input.click();
