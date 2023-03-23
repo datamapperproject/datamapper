@@ -21,11 +21,13 @@ var force = d3.layout.force()
     .size([width, height])
     .on("tick", tick);
 
-// make force move slower
+
 
 var svg = d3.select("#svg")
     .attr("width", width)
-    .attr("height", height).append("g");
+    .attr("height", height)
+    .append("g");
+
 svg.append("g")
     .attr("class", "groups")
     .attr("id", "groups")
@@ -52,30 +54,18 @@ var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
 var buttons;   
+// draw crosses on grid 50x50
 
-// draw grid 100x100
-for (var x = 0; x <= width; x += 100) {
-    svg.append("line")
-        .attr("x1", x)
-        .attr("y1", 0)
-        .attr("x2", x)
-        .attr("y2", height)
-        .attr("stroke", "lightgrey")
-        .attr("stroke-width", 1)
-        .attr("opacity", 0.5);
+for (var x = -width ; x <= 2*width; x += 50) {
+  for (var y = -height; y <= 2*height; y += 50) {
+    //draw little squares
+    svg.append("circle")
+        .attr("cx", x)
+        .attr("cy", y)
+        .attr("r", 1,5)
+        .attr("fill", "lightgrey")
+  }
 }
-for (var y = 0; y <= height; y += 100) {
-    svg.append("line")
-        .attr("x1", 0)
-        .attr("y1", y)
-        .attr("x2", width)
-        .attr("y2", y)
-        .attr("stroke", "lightgrey")
-        .attr("stroke-width", 1)
-        .attr("opacity", 0.5);
-}
-
-
 
 d3.json("graph.json", function(error, json) {
   if (error) throw error;
@@ -119,8 +109,20 @@ function update() {
 
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
-      .on("mouseover", function (d) {ha.on('.zoom', null);})
-      .on("mouseout", function (d) {ha.call(zoom);})
+      .on("mouseover", function (d) {
+        ha.on('.zoom', null);
+        //get pin image and set display to flex
+        if(d.size>0)
+        d3.select("#pin"+d.id).style("display", "flex");
+    })
+      .on("mouseout", function (d) {
+        ha.call(zoom);
+        //get pin image and set display to none if image is not unpin.png
+        if(d3.select("#pin"+d.id).attr("xlink:href") === "pin.png")
+        {
+            d3.select("#pin"+d.id).style("display", "none");
+        }
+      })
       .call(force.drag);
 
 
@@ -141,7 +143,7 @@ function update() {
 // create node with div as child text label
   nodeEnter.append("foreignObject")
       .attr("width", 70)
-      .attr("height", function(d){ if (d.text) return Math.sqrt(d.text.length*100); else return 0; })
+      .attr("height",  getRectHeight )
       .attr("x", function(d) { return -35;})
       .attr("y", function(d) { if (d.text) return -5; else return 0; })
       .append("xhtml:div")
@@ -153,6 +155,7 @@ function update() {
       .style("justify-content", "center")
       .style("text-align", "center")
       .style("font-size", "12px")
+      .style("font-family", "Helvetica")
       .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
       .style("word-wrap", "break-word")
       ;
@@ -160,13 +163,14 @@ function update() {
 
      // apped image to node
   nodeEnter.append("image")
+  .attr ("id", function(d) { return "pin"+ d.id;})
       .attr("xlink:href", "pin.png")
       .attr("id",function(d) { return "pin"+ d.id;})
-      .attr("x", function(d) { return -47;})
-      .attr("y", function(d) { if (d.text) return -20 ; else return 0; })
+      .attr("x", function(d) { return -51;})
+      .attr("y", function(d) { if (d.text) return -22 ; else return 0; })
       .attr("width", 15)
       .attr("height", 15)
-      .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
+      .style("display", "none")
       .on("click", function(d) {       
             if(d.fixed)
              {
@@ -186,7 +190,7 @@ function update() {
       .attr("id",function(d) { return "thumb"+ d.id;})
       .attr("opacity", function(d) {if (d.size ===0) return  0; else return 1})
       .attr("x", function(d) { return 20;})
-      .attr("y", function(d) { if (d.text) return -35; else return 0; })
+      .attr("y", function(d) { if (d.text) return -30; else return 0; })
       .attr("width", function(d) { if (d.children === undefined) return 30; else return 0;})
       .attr("height", function(d) { if (d.children === undefined) return 30; else return 0;})
       .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
@@ -197,7 +201,7 @@ function update() {
       nodeEnter.append("text")
       .attr("id",function(d) { return "text"+ d.id;})
       .attr("x", function(d) { return 35;})
-      .attr("y", function(d) { if (d.text) return -15; else return 50; })
+      .attr("y", function(d) { if (d.text) return -10; else return 50; })
       .attr("width", function(d) { if (d.children === undefined) return 20; else return 0;})
       .attr("height", function(d) { if (d.children === undefined) return 20; else return 0;})
       .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
@@ -227,11 +231,12 @@ function update() {
     
   node.selectAll("rect")
        .attr("width", function(d) { return 80;})
-       .attr("height", function(d) {if (d.text) return Math.sqrt(d.text.length*100) +10; else return 0;})
+       .attr("height", getRectHeight )
        .attr("x", function(d) { return -40;})
        .attr("y", function(d) {if (d.text) return -10; else return 0;})
-       .attr("rx", 10)
-       .attr("ry", 10);
+      //  .attr("rx", 10)
+      //  .attr("ry", 10)
+       ;
 
        // add rectangle to node 
 
@@ -242,6 +247,13 @@ function update() {
       // d.x = d.px = Math.round(d.x / 100) * 100;
       // d.y = d.py = Math.round(d.y / 100) * 100;
       // }
+    }
+
+    // get rect height
+    function getRectHeight(d)
+    { 
+      if(d.text) return Math.round(Math.sqrt(d.text.split(" ").length*1200)/10)*10;
+      else return 0;
     }
 
   function dragend(d) {
@@ -289,8 +301,8 @@ function update() {
       });
       if (d.fixed)
       {
-      d.x = d.px = Math.round(d.x / 100) * 100;
-      d.y = d.py = Math.round(d.y / 100) * 100;
+        d.x = d.px = Math.round(d.x / 50) * 50;
+        d.y = d.py = Math.round(d.y / 50) * 50;
       }
       }
  
