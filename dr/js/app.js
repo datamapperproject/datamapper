@@ -1,10 +1,11 @@
 const svgns = "http://www.w3.org/2000/svg";
 
 
-
-var width = 1200,
-    height = 700,
-    root;
+// get real size of svg element
+var width = document.documentElement.clientWidth,
+    height = document.documentElement.clientHeight;
+    console.log(width,height);
+ var   root;
  var nodes;
 var  i = 0;
 var testX =0;
@@ -20,7 +21,6 @@ var force = d3.layout.force()
     .alpha(0.1)
     .size([width, height])
     .on("tick", tick);
-
 
 
 var svg = d3.select("#svg")
@@ -54,8 +54,8 @@ var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
 var buttons;   
-// draw crosses on grid 50x50
 
+// draw crosses on grid 50x50
 for (var x = -width ; x <= 2*width; x += 50) {
   for (var y = -height; y <= 2*height; y += 50) {
     //draw little squares
@@ -90,6 +90,7 @@ function update() {
   link = link.data(links, function(d) { return d.target.id; });
   link.exit().remove();
   link.enter().insert("line", ".node")
+      .attr("id", function(d) { return "link"+ d.target.id;})
       .attr("class", "link")
       .attr("opacity", function(d) { if (d.source.size ===0) return  0;else return 1});;
 
@@ -109,11 +110,20 @@ function update() {
 
   var nodeEnter = node.enter().append("g")
       .attr("class", "node")
+      .attr("id", function(d) { return "node"+ d.id;})
       .on("mouseover", function (d) {
         ha.on('.zoom', null);
         //get pin image and set display to flex
         if(d.size>0)
-        d3.select("#pin"+d.id).style("display", "flex");
+        {        
+            d3.select("#pin"+d.id).style("display", "flex");
+            d3.select("#x"+d.id).style("display", "flex");
+            d3.select("#thumb"+d.id).style("display", "flex");
+        }
+        const light = shadeColor(  d.color ,50);
+        d3.select("#rect"+d.id).style("fill",light);
+        //change opacity of the rect
+
     })
       .on("mouseout", function (d) {
         ha.call(zoom);
@@ -122,15 +132,26 @@ function update() {
         {
             d3.select("#pin"+d.id).style("display", "none");
         }
+        if(d3.select("#x"+d.id).attr("xlink:href") === "x.png")
+        {
+            d3.select("#x"+d.id).style("display", "none");
+        }
+        if(d3.select("#thumb"+d.id).attr("xlink:href") === "thump.png")
+            d3.select("#thumb"+d.id).style("display", "none");
+
+        if(d.children|| (d.selected && d.size>0))
+        {
+          d3.select("#rect"+d.id).style("fill",d.color);
+            
+        } else
+        {
+          d3.select("#rect"+d.id).style("fill", "white");
+        }
       })
       .call(force.drag);
 
-
-
  force.drag().on("dragend", dragend);    
  force.drag().on("dragstart", dragstart);
-
-
 
   nodeEnter.append("rect")
       .on("click", click)
@@ -142,9 +163,9 @@ function update() {
 
 // create node with div as child text label
   nodeEnter.append("foreignObject")
-      .attr("width", 70)
+      .attr("width", function(d) { return getRectWidth(d) -10})
       .attr("height",  getRectHeight )
-      .attr("x", function(d) { return -35;})
+      .attr("x", function(d) { return -getRectWidth(d)/2 +5;})
       .attr("y", function(d) { if (d.text) return -5; else return 0; })
       .append("xhtml:div")
       .on("click", click)
@@ -161,12 +182,11 @@ function update() {
       ;
 
 
-     // apped image to node
+     // apped pin to node
   nodeEnter.append("image")
-  .attr ("id", function(d) { return "pin"+ d.id;})
       .attr("xlink:href", "pin.png")
       .attr("id",function(d) { return "pin"+ d.id;})
-      .attr("x", function(d) { return -51;})
+      .attr("x", function(d) { return -getRectWidth(d)/2 -11;;})
       .attr("y", function(d) { if (d.text) return -22 ; else return 0; })
       .attr("width", 15)
       .attr("height", 15)
@@ -184,29 +204,58 @@ function update() {
       ;
 
 
+     // apped x to node
+     nodeEnter.append("image")
+      .attr("xlink:href", "x.png")
+      .attr("id",function(d) { return "x"+ d.id;})
+      .attr("x", function(d) { return getRectWidth(d)/2 -10;})
+      .attr("y", function(d) {  return -25;})
+      .attr("width", 15)
+      .attr("height", 15)
+      .style("display", "none")
+      .on("click", function(d) {   
+            // remove node
+            d3.select("#node"+d.id).remove();
+            // remove link
+            d3.select("#link"+d.id).remove();
+            // remove pin
+            d3.select("#pin"+d.id).remove();
+            // remove x
+            d3.select("#x"+d.id).remove();
+            // remove thumb
+            d3.select("#thumb"+d.id).remove();
+            // remove text
+            d3.select("#text"+d.id).remove();
+            // remove image
+            d3.select("#image"+d.id).remove();
+     
+           })
+      ;
+
+
       //add image to node
       nodeEnter.append("image")
       .attr("xlink:href", "thump.png")
       .attr("id",function(d) { return "thumb"+ d.id;})
       .attr("opacity", function(d) {if (d.size ===0) return  0; else return 1})
-      .attr("x", function(d) { return 20;})
-      .attr("y", function(d) { if (d.text) return -32; else return 0; })
+      .attr("x", function(d) { return getRectWidth(d)/2 -15;})
+      .attr("y", function(d) { if (d.text) return getRectHeight(d)-30; else return 0; })
       .attr("width", function(d) { if (d.children === undefined) return 30; else return 0;})
       .attr("height", function(d) { if (d.children === undefined) return 30; else return 0;})
-      .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
+      .style("display", function(d) {  return  "none";})
       .on("click", test)
       ;
 
       // add text to node on position of image
       nodeEnter.append("text")
       .attr("id",function(d) { return "text"+ d.id;})
-      .attr("x", function(d) { return 35;})
-      .attr("y", function(d) { if (d.text) return -12; else return 50; })
+      .attr("x", function(d) { return getRectWidth(d)/2 -1;;})
+      .attr("y", function(d) { if (d.text) return getRectHeight(d)-11; else return 50; })
       .attr("width", function(d) { if (d.children === undefined) return 20; else return 0;})
       .attr("height", function(d) { if (d.children === undefined) return 20; else return 0;})
-      .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
       .style("font-size", "12px")
       .style("fill", "white")
+      .attr("opacity", 0)
       .text(function(d) { return d.likes; })
       ;
 
@@ -219,6 +268,7 @@ function update() {
         d3.select(this).html(d.likes);
         var text = document.getElementById( "text" + d.id);
         text.textContent = d.likes;
+        text.setAttribute("opacity", 1);
         document.getElementById( "thumb" + d.id).setAttribute("href", "thumpup.png")
         updateSize(nodes);
         }
@@ -230,9 +280,10 @@ function update() {
 
     
   node.selectAll("rect")
-       .attr("width", function(d) { return 80;})
+       .attr("id",function(d) { return "rect"+ d.id;})
+       .attr("width", getRectWidth)
        .attr("height", getRectHeight )
-       .attr("x", function(d) { return -40;})
+       .attr("x", function(d) { return -getRectWidth(d)/2;})
        .attr("y", function(d) {if (d.text) return -10; else return 0;})
       //  .attr("rx", 10)
       //  .attr("ry", 10)
@@ -242,17 +293,23 @@ function update() {
 
     function dragstart(d) {
       testX = d.x;
-      // if (d.fixed)
-      // {
-      // d.x = d.px = Math.round(d.x / 100) * 100;
-      // d.y = d.py = Math.round(d.y / 100) * 100;
-      // }
     }
 
     // get rect height
     function getRectHeight(d)
     { 
       if(d.text) return Math.round(Math.sqrt(d.text.split(" ").length*1200)/10)*10;
+      else return 0;
+    }
+    function getRectWidth(d)
+    { 
+      if(d.text) 
+      {
+        if( Math.sqrt(d.text.split(" ").length <10) )return 80;
+        else return 160;
+         
+      }
+ 
       else return 0;
     }
 
@@ -282,8 +339,6 @@ function update() {
           .links(links)
            .start();
        
-
- 
       if(d.groupID)
              e.groupID = d.groupID;
      else if (e.groupID)
@@ -309,8 +364,6 @@ function update() {
 }
 
 function tick() {
-
-
   link.attr("x1", function(d) { return d.source.x; })
       .attr("y1", function(d) { return d.source.y; })
       .attr("x2", function(d) { return d.target.x; })
@@ -318,9 +371,6 @@ function tick() {
       ;
 
   node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-
-
-
   updateGroups();
 }
 document.onkeydown = function (e) {
@@ -336,17 +386,6 @@ document.onkeyup = function (e) {
   .gravity(.05)
   .start();
 };
-
-// function color(d) {
-//   return d.selected && d.size ===4 ? "#5EBF71"
-//       :d.selected && d.size ===3 ? "#83DF78"
-//       : d.selected && d.size ===2 ? "#B0F578"
-//       : d.selected && d.size ===1 ? "#D2EB73"
-//       : d._children && d.size ===3 ? "#ffffff"
-//       : d._children && d.size ===2 ? "#ffffff"
-//       : "#ffffff" ; // leaf node
-// }
-
 
 function color(d) {
   return d.selected  ? d.color
@@ -444,6 +483,7 @@ function inser(object) {
         selected: true,
         tools: object.tools,
         text: object.text,
+        color: object.color,
         likes: 0,
       }
        
@@ -475,15 +515,19 @@ function updateSize(nodes) {
      //update foreiner object  button label of this node
       var thumb = document.getElementById( "thumb" + node.id);
       var text = document.getElementById( "text" + node.id);
-      console.log(thumb);
+
       if(thumb && node.children != undefined)
       {
             // Set width of button
             thumb.setAttribute("width",  30 )
             thumb.setAttribute("height",  30)
             thumb.setAttribute("href", "thumpup.png")
+            d3.select("#thumb" + node.id).style("display", "flex");
             //set text as likes
             text.textContent = node.likes;
+          
+           // set text opacity to 1
+            text.setAttribute("opacity", 1);
 
       }
 
@@ -544,3 +588,9 @@ function updateGroups()
    }
 }
 
+
+function shadeColor(color, amount) {
+
+  return '#' + color.replace(/^#/, '').replace(/../g, color => ('0'+Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+
+}
