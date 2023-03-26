@@ -12,7 +12,7 @@ var testX =0;
 var gi =1;
 var test =0;
 var force = d3.layout.force()
-    .linkDistance(50)
+    .linkDistance(100)
     .charge(-900)
     .gravity(.05)
     .friction(0.8)
@@ -118,7 +118,7 @@ function update() {
         {        
             d3.select("#pin"+d.id).style("display", "flex");
             d3.select("#x"+d.id).style("display", "flex");
-            d3.select("#thumb"+d.id).style("display", "flex");
+            //d3.select("#thumb"+d.id).style("display", "flex");
         }
         const light = shadeColor(  d.color ,50);
         d3.select("#rect"+d.id).style("fill",light);
@@ -136,8 +136,8 @@ function update() {
         {
             d3.select("#x"+d.id).style("display", "none");
         }
-        if(d3.select("#thumb"+d.id).attr("xlink:href") === "thump.png")
-            d3.select("#thumb"+d.id).style("display", "none");
+        // if(d3.select("#thumb"+d.id).attr("xlink:href") === "thump.png")
+        //     d3.select("#thumb"+d.id).style("display", "none");
 
         if(d.children|| (d.selected && d.size>0))
         {
@@ -174,7 +174,7 @@ function update() {
       .style("display", "flex")
       .style("align-items", "center")
       .style("justify-content", "center")
-      .style("text-align", "center")
+      .style("text-align", "left")
       .style("font-size", "12px")
       .style("font-family", "Helvetica")
       .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
@@ -234,30 +234,30 @@ function update() {
 
 
       //add image to node
-      nodeEnter.append("image")
-      .attr("xlink:href", "thump.png")
-      .attr("id",function(d) { return "thumb"+ d.id;})
-      .attr("opacity", function(d) {if (d.size ===0) return  0; else return 1})
-      .attr("x", function(d) { return getRectWidth(d)/2 -16;})
-      .attr("y", function(d) { if (d.text) return getRectHeight(d)-26; else return 0; })
-      .attr("width", function(d) { if (d.children === undefined) return 30; else return 0;})
-      .attr("height", function(d) { if (d.children === undefined) return 30; else return 0;})
-      .style("display", function(d) {  return  "none";})
-      .on("click", test)
-      ;
+      // nodeEnter.append("image")
+      // .attr("xlink:href", "thump.png")
+      // .attr("id",function(d) { return "thumb"+ d.id;})
+      // .attr("opacity", function(d) {if (d.size ===0) return  0; else return 1})
+      // .attr("x", function(d) { return getRectWidth(d)/2 -16;})
+      // .attr("y", function(d) { if (d.text) return getRectHeight(d)-26; else return 0; })
+      // .attr("width", function(d) { if (d.children === undefined) return 30; else return 0;})
+      // .attr("height", function(d) { if (d.children === undefined) return 30; else return 0;})
+      // .style("display", function(d) {  return  "none";})
+      // .on("click", test)
+      // ;
 
-      // add text to node on position of image
-      nodeEnter.append("text")
-      .attr("id",function(d) { return "text"+ d.id;})
-      .attr("x", function(d) { return getRectWidth(d)/2 -1;;})
-      .attr("y", function(d) { if (d.text) return getRectHeight(d)-8; else return 50; })
-      .attr("width", function(d) { if (d.children === undefined) return 20; else return 0;})
-      .attr("height", function(d) { if (d.children === undefined) return 20; else return 0;})
-      .style("font-size", "12px")
-      .style("fill", "white")
-      .attr("opacity", 0)
-      .text(function(d) { return d.likes; })
-      ;
+      // // add text to node on position of image
+      // nodeEnter.append("text")
+      // .attr("id",function(d) { return "text"+ d.id;})
+      // .attr("x", function(d) { return getRectWidth(d)/2 -1;;})
+      // .attr("y", function(d) { if (d.text) return getRectHeight(d)-8; else return 50; })
+      // .attr("width", function(d) { if (d.children === undefined) return 20; else return 0;})
+      // .attr("height", function(d) { if (d.children === undefined) return 20; else return 0;})
+      // .style("font-size", "12px")
+      // .style("fill", "white")
+      // .attr("opacity", 0)
+      // .text(function(d) { return d.likes; })
+      // ;
 
       function test (d)
       {
@@ -285,8 +285,8 @@ function update() {
        .attr("height", getRectHeight )
        .attr("x", function(d) { return -getRectWidth(d)/2;})
        .attr("y", function(d) {if (d.text) return -10; else return 0;})
-      //  .attr("rx", 10)
-      //  .attr("ry", 10)
+        .attr("rx", function(d) {if (d.size ===6) return 60; else return 0;})
+        .attr("ry", function(d) {if (d.size ===6) return 60; else return 0;})
        ;
 
        // add rectangle to node 
@@ -298,19 +298,20 @@ function update() {
     // get rect height
     function getRectHeight(d)
     { 
-      if(d.text) return Math.round(Math.sqrt(d.text.split(" ").length*1200)/10)*10;
+      if(d.text) return Math.round(Math.sqrt(d.text.split(" ").length*1400)/10)*10;
       else return 0;
     }
     function getRectWidth(d)
     { 
-      if(d.text) 
-      {
-        if( Math.sqrt(d.text.split(" ").length <10) )return 80;
-        else return 160;
+      // if(d.text) 
+      // {
+      //   if( Math.sqrt(d.text.split(" ").length <10) )return 80;
+      //   else return 160;
          
-      }
+      // }
  
-      else return 0;
+      //else return 0;
+      return 120;
     }
 
   function dragend(d) {

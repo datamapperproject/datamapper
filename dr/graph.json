@@ -1,113 +1,60 @@
 {
- "name": "Ignore this",
+ "name": "",
  "size": 0,
- "text" :  "Ignore this",
+ "text" :  "",
  "children": [
   {
-   "name": "Promp Sence",
+   "name": "Action",
    "size": 1,
    "color": "#f45f5f",
    "text" :  "Sense",
    "children": [
     {
-     "name": "Sence",
+     "name": "Prompt",
      "size": 2,
      "color": "#ff7f7f",
-     "text" : 	"The needs and aspirations of people are not always voiced nor heard. The structuring power of institutions is often overlooked. Natural environments and their nonhuman inhabitants are routinely marginalised", 
+     "text" : 	"Sense human and nonhuman needs to articulate challenges", 
      "children": [
       {
-         "name": "by withnessing" , 
+         "name": "Why" , 
          "size": 3, 
          "color": "#ff9999",
-         "text" : "Witness the everyday lives of individuals and communities",
-         "tools" : [
-            {"name":"camera" , "fit": 7},
-             {"name":"speak to people", "fit":10}
-         ]
-      },
-      {
-         "name": "by feeling", 
-         "size": 3, 
-         "color": "#ff9999",
-         "text" :  "Feel for the rules and resources of social institutions",
-         "tools" : [
-            {"name":"camera" , "fit": 3},
-            {"name":"notebook", "fit":10}
-         ]
-      }
-     ]
-    },
-    {
-     "name": "aspiration",
-     "size": 2,
-     "color": "#ff7f7f",
-     "text" : 	"Aspiration", 
-     "children": [
-        {
-         "name": "by acknowladging",
-         "size": 3, 
-         "color": "#ff9999",
-         "text" : "Acknowledge urgent demands for reform and discern weak signals of change",
-         "tools" : [
-            {"name":"eye" , "fit": 10},
-             {"name":"notebook", "fit":3}
-         ]
-      }
-     ]
-    },
-    {
-     "name": "desires",
-     "size": 2,
-     "color": "#ff7f7f",
-     "text" : 	"Desires", 
-     "children": [
-        {
-         "name": "by whitnessing" , 
-         "size": 3, 
-         "color": "#ff9999",
-         "text" : "Witness the everyday lives of individuals and communities",
-         "tools" : [
-            {"name":"camera" , "fit": 7},
-             {"name":"eye", "fit":10}
-         ]
-        },
-        {
-         "name": "by feeling", 
-         "size": 3, 
-         "color": "#ff9999",
-         "text" :  "Feel for the rules and resources of social institutions",
-         "tools" : [
-            {"name":"speak with people" , "fit": 3},
-             {"name":"eye", "fit":10}
-         ]
-        },
-        {
-         "name": "by acknowladging", 
-         "size": 3,
-         "color": "#ff9999", 
-         "text" : "Acknowledge urgent demands for reform and discern weak signals of change",
-         "tools" : [
-            {"name":"eye" , "fit": 10},
-             {"name":"notebook", "fit":4}
-         ]
-
-        }
-     ]
-    },
-    {
-     "name": "interdependece",
-     "size": 2,
-     "color": "#ff7f7f",
-     "text" : 	"Record of the interdependence of all life forms.", 
-     "children": [
-        {
-         "name": "by mapping", 
-         "size": 3, 
-         "color": "#ff9999", 
-         "text" : "Map human-environment interdependencies",
-         "tools" : [
-            {"name":"voice recorder" , "fit": 10},
-             {"name":"notebook", "fit":5}
+         "text" : "The needs and aspirations of people are not always voiced nor heard. The structuring power of institutions is often overlooked. Natural environments and their nonhuman inhabitants are routinely marginalised.",
+         "children": [
+            {
+               "name": "What" , 
+               "size": 4, 
+               "color": "#ff9999",
+               "text" : "Human and nonhuman needs have shape, scale and density. Aspiration has pattern and texture. People, institutions, and their environments knit together with varying resolution and coherence.",
+               "children": [
+                  {
+                     "name": "How" , 
+                     "size": 5, 
+                     "color": "#ff9999",
+                     "text" : "Witness the everyday lives of individuals and communities. Feel for the rules and resources of social institutions. Map human-environment interdependencies. Acknowledge urgent demands for reform and intuit weak signals of change.",
+                     "children": [
+                        {
+                           "name": "Tools" , 
+                           "size": 6, 
+                           "color": "#ff9999",
+                           "text" : "Tool Sence A"
+                        },
+                        {
+                           "name": "Tools" , 
+                           "size": 6, 
+                           "color": "#ff9999",
+                           "text" : "Tool Sence B"
+                        },
+                        {
+                           "name": "Tools" , 
+                           "size": 6, 
+                           "color": "#ff9999",
+                           "text" : "Tool Sence C"
+                        }
+                     ]
+                  }
+               ]
+            }
          ]
       }
      ]
@@ -115,516 +62,295 @@
    ]
   },
   {
-    "name": "Theoresise",
+    "name": "Action",
     "size": 1,
     "color": "#ffe566",
-    "text" :  "Theorisise",
+    "text" :  "Theorise",
     "children": [
      {
-      "name": "needs",
+      "name": "Prompt",
       "size": 2,
       "color": "ffee99",
-      "text" : "Needs of a given challenge compared to those in other places and times", 
+      "text" : "Theorise challenges to thicken context", 
       "children": [
        {
-         "name": "by collecting" , 
+         "name": "Why" , 
          "size": 3 , 
          "color": "fff2b2",
-         "text" : "Collect and cite relevant contextual information",
-         "tools" : [
-            {"name":"internet search" , "fit": 10},
-             {"name":"notebook", "fit":4}
-         ]
-      },
-       {
-         "name": "by comparing", 
-         "size": 3, 
-         "color": "fff2b2",
-         "text" : "Compare and cite relevant contextual information",
-         "tools" : [
-            {"name":"internet search" , "fit": 6},
-             {"name":"excel", "fit":10}
-         ]
-      },
-       {
-         "name": "by historizing", 
-         "size": 3, 
-         "text" : "Historicise and cite relevant contextual information",
-         "tools" : [
-            {"name":"visit archiv" , "fit": 10},
-             {"name":"excel", "fit":2}
-         ]
-      },
-       {
-         "name": "by recording", 
-         "size": 3, 
-         "color": "fff2b2",
-         "text" : "Record how local issues were articulated, addressed and solved" ,
-         "tools" : [
-            {"name":"voice recorder" , "fit": 5},
-             {"name":"camera", "fit":10}
-         ]
+         "text" : "Theory offers conceptual and comparative perspectives that reveal the context behind even seemingly novel and unique complex challenges.",
+         "children": [
+            {
+              "name": "What" , 
+              "size": 4 , 
+              "color": "fff2b2",
+              "text" : "Context is both specific and general. It provides a local setting for needs and aspirations, as well as a thick medium for the emergence of principles, concepts, and possibilities.",
+              "children": [
+               {
+                 "name": "How" , 
+                 "size": 5, 
+                 "color": "fff2b2",
+                 "text" : "Collect and compare relevant contextual information to theorise the specific circumstances of a given challenge. Historicise and cite the information appropriately. Record how local issues were articulated, addressed, and addressed. Develop codes, rules and typologies that may be transmissible and adaptable to other settings.",
+                 "children": [
+                  {
+                    "name": "Tools" , 
+                    "size": 6, 
+                    "color": "fff2b2",
+                    "text" : "Tool Theorise A"
+                 },
+                   {
+                     "name": "Tools" , 
+                     "size": 6, 
+                     "color": "fff2b2",
+                     "text" : "Tool Theorise B"
+                   },
+                   {
+                     "name": "Tools" , 
+                     "size": 6, 
+                     "color": "fff2b2",
+                     "text" : "Tool Theorise C"
+                   }
+                 ]
+              }
+              ]
+           }
+        ]
       }
-      ]
-     },
-     {
-      "name": "aspirations",
-      "size": 2,
-      "color": "ffee99",
-      "text" : "dummy text for aspirations",
-      "children": [
-         {
-            "name": "by recording", 
-            "size": 3, 
-            "color": "fff2b2",
-            "text" : "Record how local aspirations were articulated, addressed and solved" ,
-            "tools" : [
-               {"name":"voice recorder" , "fit": 6},
-                {"name":"camera", "fit":10}
-            ]
-         }
-      ]
-     },
-     {
-      "name": "desires",
-      "size": 2,
-      "color": "ffee99",
-      "text" : "dummy text for desires",
-      "children": [
-         {
-            "name": "by recording", 
-            "size": 3, 
-            "color": "fff2b2",
-            "text" : "Record how local desires were articulated, addressed and solved" ,
-            "tools" : [
-               {"name":"notebook" , "fit": 3},
-               {"name":"voice recorder" , "fit": 5},
-                {"name":"camera", "fit":10}
-            ]
-         }
-      ]
-     },
-     {
-      "name": "cases",
-      "size": 2,
-      "color": "ffee99",
-      "text" : "dummy text for cases",
-      "children": [
-         {
-            "name": "by developing codes" , 
-            "size": 3, 
-            "color": "fff2b2",
-            "text" : "Develop codes that may be transmissible and adaptable to other settings",
-            "tools" : [
-               {"name":"excel" , "fit": 6},
-                {"name":"notebook", "fit":10}
-            ]
-         },
-         {
-            "name": "by developing rules", 
-            "size": 3, 
-            "color": "fff2b2",
-            "text" : "Develop rules that may be transmissible and adaptable to other settings",
-            "tools" : [
-               {"name":"excel" , "fit": 3},
-                {"name":"notebook", "fit":10}
-            ]
-         },
-         {
-            "name": "by developing typologies", 
-            "size": 3, 
-            "color": "fff2b2",
-            "text" : "Develop typologies that may be transmissible and adaptable to other settings",
-            "tools" : [
-               {"name":"notebook" , "fit": 6},
-                {"name":"excel", "fit":10}
-            ]
-         }
       ]
      }
     ]
   },
   {
-     "name": "Gather",
+     "name": "Action",
      "size": 1,
      "color": "daf925",
-       "text" :  "Gather",
+     "text" :  "Gather",
      "children": [
       {
-       "name": "Data",
+       "name": "Prompt",
        "size": 2,
        "color": "e5fc64",
-         "text" : "Dummy text for Data",
+       "text" : "Gather best available data to shape solution spaces",
        "children": [
         {
-         "name": "by assesing quantitative data" , 
+         "name": "Why" , 
          "size": 3,
          "color": "#eefc9f",
-         "text": "Dummy text for Gather data by assesing quantitative data",
-         "tools" : [
-            {"name":"qgis" , "fit": 5},
-             {"name":"urscape", "fit":10}
+         "text": "Complex challenges generate vast and diverse data trails. Gathering this data can help shape virtual spaces which are conducive for generating credible solutions.",
+         "children": [
+          {
+           "name": "What" , 
+           "size": 4,
+           "color": "#eefc9f",
+           "text": "Solution spaces set boundaries for effective experimentation. These boundaries are influenced by diverse, partial and often conflicting kinds of data. Therefore, solution spaces are necessarily hybrid, provisional, and flexible.",
+           "children": [
+            {
+             "name": "How" , 
+             "size": 5,
+             "color": "#eefc9f",
+             "text": "Critically evaluate available quantitative and qualitative data for coherence, currency, and compatibility. Clean, structure and curate data with appropriate privacy and sovereignty protections. Preserve the incommensurability of non-translatable data types, such as text, numbers, images, and audio. Identify any gaps in the data and supplement it with complementary sources.",
+             "children": [
+              {
+               "name": "Tools" , 
+               "size": 6,
+               "color": "#eefc9f",
+               "text": "Tool Gather A"
+              },
+              {
+               "name": "Tools" , 
+               "size": 6,
+               "color": "#eefc9f",
+               "text": "Tool Gather B"
+              },
+              {
+               "name": "Tools" , 
+               "size": 6,
+               "color": "#eefc9f",
+               "text": "Tool Gather C"
+              }
+             ]
+            }
+           ]
+          }
          ]
-        },
-        {
-         "name": "by assesing qualitative data" , 
-         "size": 3,
-         "color": "#eefc9f",
-         "text": "Dummy text for Gather data by assesing qualitative data",
-         "tools" : [
-            {"name":"qgis" , "fit": 2},
-             {"name":"urscape", "fit":10}
-         ]
-
-        },
-        {
-         "name": "by clean data", 
-         "size": 3,   
-         "color": "#eefc9f",
-         "text": "Dummy text for Gather data by clean data",     
-          "tools" : [
-            {"name":"qgis" , "fit": 10},
-             {"name":"arcgis", "fit":3}
-         ]
-        },
-        {
-         "name": "by identifing gaps", 
-         "size": 3,
-         "color": "#eefc9f",
-         "text": "Dummy text for Gather data by identifing gaps",
-         "tools" : [
-            {"name":"arcgis", "fit":3},
-            {"name":"qgis", "fit":7},
-             {"name":"urscape", "fit":10}
-         ]
-      },
-        {
-         "name": "by curate privacy protection", 
-         "size": 3,
-         "color": "#ccffcc",
-         "text": "Dummy text for Gather data by curate privacy protection",
-         "tools" : [
-            {"name":"urscape" , "fit": 10},
-            {"name":"qgis", "fit":7},
-             {"name":"excel", "fit":5}
-         ]
-      }
+        }
        ]
       }
      ]
   },
   {
-      "name": "Experiment with",
+      "name": "Action",
       "size": 1,
       "color": "c8c9b1",
       "text": "Experiment",
       "children": [
        {
-        "name": "pattern",
+        "name": "Prompt",
         "size": 2,
          "color": "ddddd4",
-         "text": "Dummy text for Experiment with pattern",
+         "text": "Experiment across solution spaces to generate robust ideas",
         "children": [
          {
-            "name": "by using heuristic aproaches" , 
+            "name": "Why" , 
             "size": 3,
             "color": "#ecede6",
-            "text": "Dummy text for Experiment with pattern by using heuristic aproaches", 
-            "tools" : [
-               {"name":"acrgis" , "fit": 1},
-               {"name":"qgis" , "fit": 7},
-               {"name":"urscape", "fit":10}
+            "text": "Robust ideas which are feasible scalable and adaptable to different contexts, audiences, and situations emerge from experimentation in conducive spaces", 
+            "children": [
+             {
+                "name": "What" , 
+                "size": 4,
+                "color": "#ecede6",
+                "text": "Robust ideas have the power to drive action. They are fostered by experimentation and fuelled by imagination. They transform perceptions into meaningful representations that can inform and guide potential courses of action in the world.", 
+                "children": [
+                 {
+                    "name": "How" , 
+                    "size": 5,
+                    "color": "#ecede6",
+                    "text": "Make safe physical and social settings to foster creative risk-taking, openness and critical inquiry. Use heuristic or ‘satisficing’ approaches, especially where the solution space is broad and uneven, to encourage rapid iteration of ideas. Combine with more controlled experimentation in scientific, social scientific and creative research traditions.", 
+                    "children": [
+                     {
+                        "name": "Tools" , 
+                        "size": 6,
+                        "color": "#ecede6",
+                        "text": "Tool Experiment A"
+                     },
+                     {
+                        "name": "Tools" , 
+                        "size": 6,
+                        "color": "#ecede6",
+                        "text": "Tool Experiment B"
+                     },
+                     {
+                        "name": "Tools" , 
+                        "size": 6,
+                        "color": "#ecede6",
+                        "text": "Tool Experiment C"
+                     }
+                    ]
+                 }
+                ]
+             }
             ]
-         },
-         {
-            "name": "by using satisficing aproaches" , 
-            "size": 3,
-            "color": "#ecede6",
-            "text": "Dummy text for Experiment with pattern by using satisficing aproaches",
-            "tools" : [
-               {"name":"qgis" , "fit": 4},
-               {"name":"acrgis" , "fit": 2},
-               {"name":"urscape", "fit":10}
-            ]
-         }
-        ]
-       },
-       {
-        "name": "data intersect",
-        "size": 2,
-         "color": "ddddd4",
-        "text":"Dummy text for data intersect",
-        "children": [
-         {
-            "name": "by encouraging rapid iteration" , 
-            "size": 3,
-            "color": "ecede6",
-            "tools" : [
-               {"name":"qgis" , "fit": 1},
-               {"name":"acrgis" , "fit": 2},
-               {"name":"urscape", "fit":10}
-            ]
-         }
 
-        ]
-       }
-       ,
-       {
-        "name": "identify fragments",
-        "size": 2,
-         "color": "ddddd4",
-         "text":"Dummy text for identify fragments",
-        "children": [
-         {
-            "name": " with chontroled experiments" , 
-            "size": 3,
-            "color": "ecede6",
-            "text":"Dummy text for identify fragmentss with chontroled experiments",
-            "tools" : [
-               {"name":"qgis" , "fit": 2},
-               {"name":"acrgis" , "fit": 3},
-               {"name":"urscape", "fit":10}
-            ]
          }
         ]
-       },
-       {
-        "name": "generate ideas",
-        "size": 2,
-         "color": "ddddd4",
-         "text":"Dummy text for generate ideas",
-        "children": [
-         {
-            "name": "with play" , 
-            "size": 3,
-            "color": "ecede6",
-            "tools" : [
-               {"name":"notebook" , "fit": 3},
-               {"name":"urscape", "fit":10}
-            ]
          }
-        ]
-       }
       ]
   },
   {
-      "name": "Situate",
+      "name": "Action",
       "size": 1,
       "color": "757da5",
       "text": "Situate",
       "children": [
        {
-        "name": "transmute insights",
+        "name": "Prompt",
         "size": 2,   
-         "color": "848bb2",
-        "text":"Dummy text for situate transmute insights",
-        "children": [
-         {
-            "name": "in spatial way" , 
-            "size": 3,
-            "color": "#99a0c6",
-            "text":"Dummy text for situate transmute insights in spatial way",
-            "tools" : [
-               {"name":"workshop" , "fit": 2},
-               {"name":"virtual reality", "fit":9}
-            ]
-         },
-         {
-            "name": "in tangible way" , 
-            "size": 3,
-            "color": "#99a0c6",
-            "text":"Dummy text for situate transmute insights in tangible way",
-            "tools" : [
-               {"name":"workshop", "fit":4}
-            ]
-
-         },
-         {
-            "name": "in functional way" , 
-            "size": 3,
-            "color": "#99a0c6",
-            "text":"Dummy text for situate transmute insights in functional way",
-            "tools" : [
-               {"name":"Physical model" , "fit": 8}
-            ]
-         }
-        ]
-       },
-       {
-        "name": "transmute ideas",
-        "size": 2,
-         "color": "848bb2",
-         "text":"Dummy text for situate transmute ideas",
-        "children": [
-         
-            {
-               "name": "in spatial way" , 
-               "size": 3,
-               "color": "#99a0c6",
-               "text":"Dummy text for situate transmute ideas in spatial way",
-               "tools" : [
-                  {"name":"physical model" , "fit": 8},
-                  {"name":"virtual reality", "fit":5}
-               ]
-            },
-            {
-               "name": "in tangible way" , 
-               "size": 3,
-               "color": "#99a0c6",
-               "text":"Dummy text for situate transmute ideas in tangible way",
-               "tools" : [
-                  {"name":"virtual reality", "fit":2}
-               ]
-            },
-            {
-               "name": "in functional way" , 
-               "size": 3,
-               "color": "#99a0c6",
-               "text":"Dummy text for situate transmute ideas in functional way",
-               "tools" : [
-                  {"name":"unity" , "fit": 8}
-               ]
-            }
-         
-        ]
-       }
-       ,
-       {
-         "name": "solutions",
-         "size": 2,
-         "color": "848bb2",
-         "text":"Dummy text for situate solutions",
+        "color": "848bb2",
+        "text":"Situate ideas in the context of the problem",
          "children": [
-          
-             {
-                "name": "by refinig " , 
-                "size": 3,
-                  "color": "#99a0c6",
-                  "text":"Dummy text for situate solutions by refinig",
-                "tools" : [
-                  {"name":"unity" , "fit": 8}
+          {
+               "name": "Why" , 
+               "size": 3,
+               "color": "#a1a8c4",
+               "text":"Ideas are most effective when they are situated in the context of the problem. This helps to ensure that they are relevant, feasible, and scalable.",
+               "children": [
+                {
+                  "name": "What" , 
+                  "size": 4,
+                  "color": "#a1a8c4",
+                  "text":"Ideas are most effective when they are situated in the context of the problem. This helps to ensure that they are relevant, feasible, and scalable.",
+                  "children": [
+                   {
+                     "name": "How" , 
+                     "size": 5,
+                     "color": "#a1a8c4",
+                     "text":"Ideas are most effective when they are situated in the context of the problem. This helps to ensure that they are relevant, feasible, and scalable.",
+                     "children": [
+                      {
+                           "name": "Tools" , 
+                           "size": 6,
+                           "color": "#a1a8c4",
+                           "text": "Tool Situate A"
+                      },
+                      {
+                           "name": "Tools" , 
+                           "size": 6,
+                           "color": "#a1a8c4",
+                           "text": "Tool Situate B"
+                      },
+                      {
+                           "name": "Tools" , 
+                           "size": 6,
+                           "color": "#a1a8c4",
+                           "text": "Tool Situate C"
+                      }
+                     ]
+                   }
+                  ]
+                }
                ]
-             },
-             {
-                "name": "by staging" , 
-                "size": 3,
-                  "color": "#99a0c6",
-                  "text":"Dummy text for situate solutions by staging",
-                "tools" : [
-                  {"name":"workshop" , "fit": 8}
-               ]
-             }
-          
+          }
          ]
-        }
-        
+      }
       ]
   },
   {
-      "name": "Engage",
+      "name": "Action",
       "size": 1,
       "color": "#896f84",
       "text": "Engage",
       "children": [
        {
-        "name": "Stakeholders",
+        "name": "Prompt",
         "size": 2,
          "color": "#a88fa2",
-         "text":"Dummy text for engage stakeholders",
-        "children": [
-         {
-            "name": "by diagrams" , 
-            "size": 3,
-            "color": "#c1a6bb",
-            "text":"Dummy text for engage stakeholders by diagrams",
-            "tools" : [
-               {"name":"Rhino3D" , "fit": 5},
-               {"name":"Adobe Suit" , "fit": 10}
-            ]
-         },
-         {
-            "name": "by 3D models" , 
-            "size": 3,
-            "color": "#c1a6bb",
-            "text":"Dummy text for engage stakeholders by 3D models",
-            "tools" : [
-               {"name":"workshop" , "fit": 1},
-               {"name":"Rhino3D" , "fit": 8}
-            ]
-         },
-         {
-            "name": "by film" , 
-            "size": 3,
-            "color": "#c1a6bb",
-            "text":"Dummy text for engage stakeholders by film",
-            "tools" : [
-               {"name":"Adobe Suit" , "fit": 10},
-               {"name":"workshop" , "fit": 5}
-            ]
-         },
-         {
-            "name": "by photography" , 
-            "size": 3,
-            "color": "#c1a6bb",
-            "text":"Dummy text for engage stakeholders by photography",
-            "tools" : [
-               {"name":"mobile phone" , "fit": 10},
-               {"name":"workshop" , "fit": 2}
-            ]
-         },
-         {
-            "name": "by theatre" , 
-            "size": 3,
-            "color": "#c1a6bb",
-            "text":"Dummy text for engage stakeholders by theatre",
-            "tools" : [
-               {"name":"workshop" , "fit": 10}
-            ]
-         },
-         {
-            "name": "by music" , 
-            "size": 3,
-            "color": "#c1a6bb",
-            "text":"Dummy text for engage stakeholders by music",
-            "tools" : [
-               {"name":"Adobe Suit" , "fit": 3},
-               {"name":"workshop" , "fit": 10}
-            ]
-         },
-         {
-            "name": "by food" , 
-            "size": 3,
-            "color": "#c1a6bb",
-            "text":"Dummy text for engage stakeholders by food",
-            "tools" : [
-               {"name":"mobile phone" , "fit": 3},
-               {"name":"workshop" , "fit": 10}
-            ]
-         },
-         {
-            "name": "by instalations" , 
-            "size": 3,
-            "color": "#c1a6bb",
-            "text":"Dummy text for engage stakeholders by instalations",
-            "tools" : [
-               {"name":"Adobe Suit" , "fit": 4},
-               {"name":"Exhibition" , "fit": 10}
-            ]
-         },
-         {
-            "name": "by prototypes" , 
-            "size": 3,
-            "color": "#c1a6bb",
-            "text":"Dummy text for engage stakeholders by prototypes",
-            "tools" : [
-               {"name":"Adobe Suit" , "fit": 5},
-               {"name":"workshop" , "fit": 10}
-            ]
-         }
-        ]
+         "text":"Engage with stakeholders to refine ideas",
+         "children": [
+          {
+               "name": "Why" , 
+               "size": 3,
+               "color": "#c6b3c4",
+               "text":"Ideas are most effective when they are situated in the context of the problem. This helps to ensure that they are relevant, feasible, and scalable.",
+               "children": [
+                {
+                  "name": "What" , 
+                  "size": 4,
+                  "color": "#c6b3c4",
+                  "text":"Ideas are most effective when they are situated in the context of the problem. This helps to ensure that they are relevant, feasible, and scalable.",
+                  "children": [
+                   {
+                     "name": "How" , 
+                     "size": 5,
+                     "color": "#c6b3c4",
+                     "text":"Ideas are most effective when they are situated in the context of the problem. This helps to ensure that they are relevant, feasible, and scalable.",
+                     "children": [
+                      {
+                           "name": "Tools" , 
+                           "size": 6,
+                           "color": "#c6b3c4",
+                           "text": "Tool Engage A"
+                      },
+                      {
+                           "name": "Tools" , 
+                           "size": 6,
+                           "color": "#c6b3c4",
+                           "text": "Tool Engage B"
+                      },
+                      {
+                           "name": "Tools" , 
+                           "size": 6,
+                           "color": "#c6b3c4",
+                           "text": "Tool Engage C"
+                      }
+                     ]
+                   }
+                  ]
+                }
+               ]
+          }
+         ]
        }
-
-      ]
+    ]
   }
  ]
 }
