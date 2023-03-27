@@ -4,7 +4,7 @@ const svgns = "http://www.w3.org/2000/svg";
 // get real size of svg element
 var width = document.documentElement.clientWidth,
     height = document.documentElement.clientHeight;
-    console.log(width,height);
+ 
  var   root;
  var nodes;
 var  i = 0;
@@ -12,12 +12,12 @@ var testX =0;
 var gi =1;
 var test =0;
 var force = d3.layout.force()
-    .linkDistance(100)
-    .charge(-900)
-    .gravity(.05)
-    .friction(0.8)
-    .linkStrength(0.2)
-    .theta(0.8)
+    .linkDistance(160)
+    .charge(-1000)
+    .gravity(.02)
+    .friction(0.7)
+    .linkStrength(0.3)
+    .theta(0.1)
     .alpha(0.1)
     .size([width, height])
     .on("tick", tick);
@@ -32,12 +32,6 @@ svg.append("g")
     .attr("class", "groups")
     .attr("id", "groups")
 const groupsLayer = document.getElementById("groups");
-
-var description = d3.select("#svg").append("text")
-    .attr("dy", "12")
-    .attr("dx", width/2)
-    .attr("class", "description")
-    .text(function(d) { return "description"; });
 
 let zoom = d3.behavior.zoom()
     .on('zoom', handleZoom);
@@ -166,18 +160,25 @@ function update() {
       .attr("width", function(d) { return getRectWidth(d) -10})
       .attr("height",  getRectHeight )
       .attr("x", function(d) { return -getRectWidth(d)/2 +5;})
-      .attr("y", function(d) { if (d.text) return -5; else return 0; })
+      .attr("y", function(d) { if (d.text) return -getRectHeight(d)/2-5; else return 0; })
       .append("xhtml:div")
       .on("click", click)
       .attr("class", "node-label")
-      .html(function(d) { return d.text; })
-      .style("display", "flex")
-      .style("align-items", "center")
-      .style("justify-content", "center")
+      .html(function(d) { if (d.text.split(" ").length < 4)  return "<br><br>"  +d.text; else return "<b>" + d.name + "</b><br>"  +d.text; })
       .style("text-align", "left")
-      .style("font-size", "12px")
+      .style("font-size", function(d) { if ( d.text.split(" ").length < 4) return "11.5px"; else return "11.5px"; })
       .style("font-family", "Helvetica")
-      .style("display", function(d) { if (d.size ===0) return  "none"; else return "flex";})
+      .style("display", function(d) { if (d.size ===0 ) return  "none"; else return "block";})
+      // aligh text to center if count of words is less than 3
+      .style("text-align", function(d) { if (d.text.split(" ").length < 4) return "center"; else return "left";})
+      .style("width", function(d) { return getRectWidth(d) -10})
+      .style("height",  getRectHeight )
+      .style("text-overflow", "ellipsis")
+      .style("line-height",function(d) { if (d.text.split(" ").length < 4)  return  "1.0em"; else return "1.2em";})
+      .style("padding", "3px")
+      .style("color", "black")
+      // allign text vertically to center if count of words is less than 3
+      .style("vertical-align", function(d) { if (d.text.split(" ").length < 4) return "middle"; else return "top";} )
       .style("word-wrap", "break-word")
       ;
 
@@ -186,8 +187,8 @@ function update() {
   nodeEnter.append("image")
       .attr("xlink:href", "pin.png")
       .attr("id",function(d) { return "pin"+ d.id;})
-      .attr("x", function(d) { return -getRectWidth(d)/2 -11;;})
-      .attr("y", function(d) { if (d.text) return -22 ; else return 0; })
+      .attr("x", function(d) { if(d.size ===6)return -getRectWidth(d)/2 +2 ;return -getRectWidth(d)/2 -11;;})
+      .attr("y", function(d) {if(d.size ===6)return  -getRectHeight(d)/2 -10 ; else return -getRectHeight(d)/2-22; })
       .attr("width", 15)
       .attr("height", 15)
       .style("display", "none")
@@ -208,8 +209,8 @@ function update() {
      nodeEnter.append("image")
       .attr("xlink:href", "x.png")
       .attr("id",function(d) { return "x"+ d.id;})
-      .attr("x", function(d) { return getRectWidth(d)/2 -10;})
-      .attr("y", function(d) {  return -25;})
+      .attr("x", function(d) { if(d.size ===6)return getRectWidth(d)/2 -20; else return getRectWidth(d)/2 -10;})
+      .attr("y", function(d) { if(d.size ===6)return  -getRectHeight(d)/2 -10;return -getRectHeight(d)/2-25;})
       .attr("width", 15)
       .attr("height", 15)
       .style("display", "none")
@@ -274,20 +275,20 @@ function update() {
         }
       }
 
-  node.select("rect")
-      .style("fill", color)
-      ;
+
 
     
   node.selectAll("rect")
        .attr("id",function(d) { return "rect"+ d.id;})
        .attr("width", getRectWidth)
        .attr("height", getRectHeight )
+       .style("fill", color)
        .attr("x", function(d) { return -getRectWidth(d)/2;})
-       .attr("y", function(d) {if (d.text) return -10; else return 0;})
-        .attr("rx", function(d) {if (d.size ===6) return 60; else return 0;})
-        .attr("ry", function(d) {if (d.size ===6) return 60; else return 0;})
+       .attr("y", function(d) {if (d.text) return -getRectHeight(d)/2-10; else return 0;})
+        .attr("rx", function(d) {if (d.size ===6) return 70; else return 0;})
+        .attr("ry", function(d) {if (d.size ===6) return 70; else return 0;})
        ;
+       
 
        // add rectangle to node 
 
@@ -298,20 +299,19 @@ function update() {
     // get rect height
     function getRectHeight(d)
     { 
-      if(d.text) return Math.round(Math.sqrt(d.text.split(" ").length*1400)/10)*10;
-      else return 0;
+      if(d.text) 
+         return d.text.split(" ").length > 8 ? 200 : 70;
+      else 
+        return 0;
     }
     function getRectWidth(d)
     { 
-      // if(d.text) 
-      // {
-      //   if( Math.sqrt(d.text.split(" ").length <10) )return 80;
-      //   else return 160;
+      if(d.text) 
+      {
+        if( Math.sqrt(d.text.split(" ").length <9) )return 140;
+        else return 200;
          
-      // }
- 
-      //else return 0;
-      return 120;
+      }
     }
 
   function dragend(d) {
@@ -323,7 +323,7 @@ function update() {
     d3.selectAll('rect').each(function(e, i) {
     var distance = Math.sqrt(Math.pow(e.x - d.x, 2) + Math.pow(e.y- d.y, 2));
 
-    console.log(distance)
+
     if(distance < 50 && e.id !== d.id )
     {
       console.log("dragend");
@@ -374,19 +374,19 @@ function tick() {
   node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
   updateGroups();
 }
-document.onkeydown = function (e) {
+// document.onkeydown = function (e) {
   
-  force.charge(0)   
-  .gravity(.05)
-  .start();
+//   force.charge(0)   
+//   .gravity(.05)
+//   .start();
 
-};
+// };
 
-document.onkeyup = function (e) {
-  force.charge(-970)
-  .gravity(.05)
-  .start();
-};
+// document.onkeyup = function (e) {
+//   force.charge(-970)
+//   .gravity(.05)
+//   .start();
+// };
 
 function color(d) {
   return d.selected  ? d.color
@@ -479,7 +479,7 @@ function inser(object) {
         children : undefined,
         id : ++i, 
         _children : null,
-        size:1, 
+        size:object.size, 
         index: object.index, 
         selected: true,
         tools: object.tools,
@@ -581,7 +581,7 @@ function updateGroups()
      poly.setAttributeNS(null, "points", groups[key]);
      poly.setAttributeNS(null, "fill", "none");
      poly.setAttribute ("stroke" ,"#c6c6c6");
-     poly.setAttribute ("stroke-width" ,100);
+     poly.setAttribute ("stroke-width" ,280);
      poly.setAttribute ("stroke-linejoin" ,"round");
      poly.setAttribute ("stroke-linecap" ,"round");
      poly.setAttribute ("stroke-opacity" ,.3);
