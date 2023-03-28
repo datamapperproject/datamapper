@@ -11,6 +11,7 @@ var  i = 0;
 var testX =0;
 var gi =1;
 var test =0;
+holdingX = false;
 var force = d3.layout.force()
     .linkDistance(160)
     .charge(-1000)
@@ -50,10 +51,11 @@ var link = svg.selectAll(".link"),
 var buttons;   
 
 // draw crosses on grid 50x50
+var background = svg.append("g");
 for (var x = -width ; x <= 2*width; x += 50) {
   for (var y = -height; y <= 2*height; y += 50) {
     //draw little squares
-    svg.append("circle")
+    background.append("circle")
         .attr("cx", x)
         .attr("cy", y)
         .attr("r", 1,5)
@@ -328,7 +330,6 @@ function update() {
 
     if(distance < 50 && e.id !== d.id )
     {
-      console.log("dragend");
       links.push({"source": d , "target": e})
    
       link = link.data(links, function(f) { return f.target.id; });
@@ -352,7 +353,6 @@ function update() {
           e.groupID = gi;
                      ++gi;
         }    
-        console.log(" dragging ");
          updateGroups();
         }
 
@@ -589,38 +589,15 @@ function updateGroups()
      poly.setAttribute ("stroke-opacity" ,.3);
      groupsLayer.append(poly);
 
-     // change link to dashed line on hover
-      poly.addEventListener("mouseover", function(e) {
-
-        // keep mouse position (withou D3)
-        var mouseX =  e.clientX;
-        var mouseY =  e.clientY;
- 
-        // Wait for 2 seconds before stopping the force
-        setTimeout(function() {
-          // Check if the mouse is still in the same position
-          if (mouseX == e.clientX && mouseY == e.clientY) {
-            force.stop();
-            e.target.setAttribute ("stroke" ,"red");
-
-          }
-        }, 1000);
-      }
-      );
-
-      poly.addEventListener("mouseend", function(e) {
-        force.start();
-  
-          e.target.setAttribute ("stroke" ,"#c6c6c6");
-        
-      }
-      );
-
-
      // delete link outline on click
       poly.addEventListener("click", function(e) {
+
+        // check if "x" key is hold
+        if(holdingX)
+        {
+
         var id = e.target.id;
-        force.stop();
+    
         var node = d3.selectAll(".node").data().find(function(item){return item.groupID == id});
         if(node)
         {
@@ -628,9 +605,7 @@ function updateGroups()
           update();
         }
       }   
-
-
-
+     }
     );
     }
 }
@@ -641,3 +616,15 @@ function shadeColor(color, amount) {
   return '#' + color.replace(/^#/, '').replace(/../g, color => ('0'+Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
 
 }
+
+document.body.addEventListener('keydown', (event) => {
+  if(event.key === 'x') {
+    holdingX = true;
+    force.stop();
+  }
+});
+
+document.body.addEventListener('keyup', (event) => {
+  holdingX = false;
+  force.start();
+});
