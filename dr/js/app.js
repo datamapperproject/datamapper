@@ -579,7 +579,9 @@ function updateGroups()
    for (var key in groups) {
 
     let poly = document.createElementNS(svgns ,'polyline');
-     poly.id = key;
+     poly.id =  key;
+
+     poly.tagName = key;
      poly.setAttributeNS(null, "points", groups[key]);
      poly.setAttributeNS(null, "fill", "none");
      poly.setAttribute ("stroke" ,"#c6c6c6");
@@ -599,11 +601,31 @@ function updateGroups()
         var id = e.target.id;
     
         var node = d3.selectAll(".node").data().find(function(item){return item.groupID == id});
-        if(node)
-        {
+       
+
+         
+          //Find all elements by key id in the document
+          console.log(key);
+          var elements = document.getElementsByTagName("*"+key);
+          console.log(elements);
+          //Loop through the elements and remove the class
+          while(elements.length > 0){
+              elements[0].parentNode.removeChild(elements[0]);
+          }
+
+
+   
+
+          //remove group id from node
+      
+         
+
+          if(node){
           node.groupID = undefined;
-          update();
+          
+            
         }
+        update();
       }   
      }
     );
