@@ -51,6 +51,25 @@
                            "color": "#ff9999",
                            "text" : "Tool Sence C"
                         }
+                        ,
+                        {
+                           "name": "Tools" , 
+                           "size": 6, 
+                           "color": "#ff9999",
+                           "text" : "Case Sence A"
+                        },
+                        {
+                           "name": "Tools" , 
+                           "size": 6, 
+                           "color": "#ff9999",
+                           "text" : "Case Sence B"
+                        },
+                        {
+                           "name": "Tools" , 
+                           "size": 6, 
+                           "color": "#ff9999",
+                           "text" : "Link Sence A"
+                        }
                      ]
                   }
                ]
@@ -108,7 +127,25 @@
                      "size": 6, 
                      "color": "fff2b2",
                      "text" : "Tool Theorise C"
-                   }
+                   },
+                     {
+                        "name": "Tools" , 
+                        "size": 6, 
+                        "color": "fff2b2",
+                        "text" : "Case Theorise A"
+                     },
+                     {
+                        "name": "Tools" , 
+                        "size": 6, 
+                        "color": "fff2b2",
+                        "text" : "Case Theorise B"
+                     },
+                     {
+                        "name": "Tools" , 
+                        "size": 6, 
+                        "color": "fff2b2",
+                        "text" : "Link Theorise A"
+                     }
                  ]
               }
               ]
@@ -166,7 +203,27 @@
                "size": 6,
                "color": "#eefc9f",
                "text": "Tool Gather C"
-              }
+               },
+               {
+                  "name": "Tools" , 
+                  "size": 6,
+                  "color": "#eefc9f",
+                  "text": "Case Gather A"
+               },
+               {
+                  "name": "Tools" , 
+                  "size": 6,
+                  "color": "#eefc9f",
+                  "text": "Case Gather B"
+               },
+               {
+                  "name": "Tools" , 
+                  "size": 6,
+                  "color": "#eefc9f",
+                  "text": "Link Gather A"
+               }
+
+              
              ]
             }
            ]
@@ -224,6 +281,24 @@
                         "size": 6,
                         "color": "#ecede6",
                         "text": "Tool Experiment C"
+                     },
+                     {
+                        "name": "Tools" , 
+                        "size": 6,
+                        "color": "#ecede6",
+                        "text": "Case Experiment A"
+                     },
+                     {
+                        "name": "Tools" , 
+                        "size": 6,
+                        "color": "#ecede6",
+                        "text": "Case Experiment B"
+                     },
+                     {
+                        "name": "Tools" , 
+                        "size": 6,
+                        "color": "#ecede6",
+                        "text": "Link Experiment A"
                      }
                     ]
                  }
@@ -282,7 +357,25 @@
                            "size": 6,
                            "color": "#a1a8c4",
                            "text": "Tool Situate C"
-                      }
+                      },
+                        {
+                              "name": "Tools" , 
+                              "size": 6,
+                              "color": "#a1a8c4",
+                              "text": "Case Situate A"
+                        },
+                        {
+                              "name": "Tools" , 
+                              "size": 6,
+                              "color": "#a1a8c4",
+                              "text": "Case Situate B"
+                        },
+                        {
+                              "name": "Tools" , 
+                              "size": 6,
+                              "color": "#a1a8c4",
+                              "text": "Link Situate A"
+                        }
                      ]
                    }
                   ]
@@ -340,7 +433,25 @@
                            "size": 6,
                            "color": "#c6b3c4",
                            "text": "Tool Empower C"
-                      }
+                      },
+                        {
+                              "name": "Tools" , 
+                              "size": 6,
+                              "color": "#c6b3c4",
+                              "text": "Case Empower A"
+                        },
+                        {
+                              "name": "Tools" , 
+                              "size": 6,
+                              "color": "#c6b3c4",
+                              "text": "Case Empower B"
+                        },
+                        {
+                              "name": "Tools" , 
+                              "size": 6,
+                              "color": "#c6b3c4",
+                              "text": "Link Empower A"
+                        }
                      ]
                    }
                   ]

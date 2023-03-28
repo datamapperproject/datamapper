@@ -164,7 +164,9 @@ function update() {
       .append("xhtml:div")
       .on("click", click)
       .attr("class", "node-label")
-      .html(function(d) { if (d.text.split(" ").length < 4)  return "<br><br>"  +d.text; else return "<b>" + d.name + "</b><br>"  +d.text; })
+      .html(function(d) { if (d.size === 1 || d.size === 6)  return "<br><br>"  +d.text; 
+                          else if  (d.size === 2) return d.text;
+                          else return "<b>" + d.name + "</b><br>"  +d.text; })
       .style("text-align", "left")
       .style("font-size", function(d) { if ( d.text.split(" ").length < 4) return "11.5px"; else return "11.5px"; })
       .style("font-family", "Helvetica")
@@ -311,7 +313,7 @@ function update() {
         if( Math.sqrt(d.text.split(" ").length <9) )return 140;
         else return 200;
          
-      }
+      } else return 0;
     }
 
   function dragend(d) {
@@ -539,10 +541,10 @@ function updateSize(nodes) {
 }
 
 //Assign function to listen slider events
-var slider = document.getElementById("myRange");
-slider.oninput = function() {
-  //TODO
-}
+// var slider = document.getElementById("myRange");
+// slider.oninput = function() {
+//   //TODO
+// }
 
 function updateGroups()
 {
@@ -586,7 +588,51 @@ function updateGroups()
      poly.setAttribute ("stroke-linecap" ,"round");
      poly.setAttribute ("stroke-opacity" ,.3);
      groupsLayer.append(poly);
-   }
+
+     // change link to dashed line on hover
+      poly.addEventListener("mouseover", function(e) {
+
+        // keep mouse position (withou D3)
+        var mouseX =  e.clientX;
+        var mouseY =  e.clientY;
+ 
+        // Wait for 2 seconds before stopping the force
+        setTimeout(function() {
+          // Check if the mouse is still in the same position
+          if (mouseX == e.clientX && mouseY == e.clientY) {
+            force.stop();
+            e.target.setAttribute ("stroke" ,"red");
+
+          }
+        }, 1000);
+      }
+      );
+
+      poly.addEventListener("mouseend", function(e) {
+        force.start();
+  
+          e.target.setAttribute ("stroke" ,"#c6c6c6");
+        
+      }
+      );
+
+
+     // delete link outline on click
+      poly.addEventListener("click", function(e) {
+        var id = e.target.id;
+        force.stop();
+        var node = d3.selectAll(".node").data().find(function(item){return item.groupID == id});
+        if(node)
+        {
+          node.groupID = undefined;
+          update();
+        }
+      }   
+
+
+
+    );
+    }
 }
 
 
