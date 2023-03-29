@@ -36,7 +36,7 @@ var productTextEl =  document.getElementById("productTextID");
 var sourceInputEl =  document.getElementById("sourceID");
 var sourceTextEl =  document.getElementById("sourceTextID");
 drawLines();
-getCSV();
+//getCSV();
 
 function getSelected(selectEl, textEl) {
   var text = textEl.value;
@@ -176,7 +176,7 @@ function updateGraph()
 // get csv from google sheet
 function getCSV() {
   // get sheet id from link
-  var link = "https://docs.google.com/spreadsheets/d/{sheet_id}}/edit?usp=sharing
+  var link = "https://docs.google.com/spreadsheets/d/{sheet_id}}/edit?usp=sharing";
   var sheetId = link.split("/")[5];
   var url = "https://docs.google.com/spreadsheets/d/"+sheetId +"/gviz/tq?tqx=out:csv"       
   var request = new XMLHttpRequest();
