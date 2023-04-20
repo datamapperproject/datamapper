@@ -5,28 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
-
+    <script src="jquery-3.6.4.min.js"></script>
 </head>
 
 <body>
-    <?php
+  <script>
+    var data = "LOL";
 
-$data_array = array (
-            array ('col1','col2'),
-            array ('2','2'),
-            array ('3','6'),
-            array ('4','2'),
-            array ('6','5')
-        );
 
-$fp = fopen('csvfile.csv', 'w');
-
-foreach ($list as $fields) {
-    fputcsv($fp, $fields);
-}
-
-fclose($fp);
-?>
+    $.post('savedata.php', {data}, function(){console.log("success")});
+    </script>
 </body>
 
 </html>
