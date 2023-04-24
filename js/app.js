@@ -196,47 +196,6 @@ function getCSV() {
     }
   }
 }
-//Upload csv file to google sheet with rest api POST http request
-function postReq(url, callback, request = null) {
-  const accessToken = "###"; // <--- Please set your access token here.
-
-  // Sample request body?
-  var request = {
-   "majorDimension": "ROWS",
-   "values": [
-    [
-     "15:41 02/08/2019",
-     "Steven",
-     "20",
-     "Male",
-     "test@mail.com",
-     "FooBar"
-    ]
-   ]
-  };
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", url);
-  xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken); // Added
-  xhr.setRequestHeader('Content-Type', 'application/json'); // Added
-  xhr.onload = function (e) {
-      if (e) console.log(e);
-      if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-              console.log(xhr.responseText);
-              callback(xhr.responseText.toString());
-          } else {
-              callback(null);
-              console.log(xhr.status);
-          }
-      } else {
-          console.log(xhr.status);
-      };
-  };
-  xhr.send(JSON.stringify(request)); // Modified
-};
-
-
 
 
 function processCSV(content) {
@@ -388,18 +347,38 @@ function onProductChanged(){
 
   var selectEl = document.getElementById("producID");
   var textEl = document.getElementById("productTextID");
-    if (selectEl.value === "not in this list") {
+    if (selectEl.value === "Other") {
     textEl.style.display = "inline";
   } else {
     textEl.style.display = "none";
   }
 }
 
+function onTypeChanged(){
+
+  var selectEl = document.getElementById("typeID");
+  var textEl = document.getElementById("typeTextID");
+    if (selectEl.value === "Other") {
+    textEl.style.display = "inline";
+  } else {
+    textEl.style.display = "none";
+  }
+}
+function onLanduseChanged(){
+
+  var selectEl = document.getElementById("landuseID");
+  var textEl = document.getElementById("landuseTextID");
+    if (selectEl.value === "Other") {
+    textEl.style.display = "inline";
+  } else {
+    textEl.style.display = "none";
+  }
+}
 function onSourceChanged(){
 
   var selectEl = document.getElementById("sourceID");
   var textEl = document.getElementById("sourceTextID");
-    if (selectEl.value === "not in this list") {
+    if (selectEl.value === "Other") {
     textEl.style.display = "inline";
   } else {
     textEl.style.display = "none";
@@ -411,7 +390,7 @@ function onUnitChanged(){
   var selectEl = document.getElementById("unitID");
   var textEl = document.getElementById("customUnitID");
     console.log(selectEl.value )
-    if (selectEl.value === "not in this list") {
+    if (selectEl.value === "Other") {
     textEl.style.display = "inline";
   } else {
     textEl.style.display = "none";

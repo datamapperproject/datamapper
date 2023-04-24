@@ -26,31 +26,43 @@
                   <input class= "input" type="name" placeholder="full name of the dataset " id="nameID">
                   <br> <br> 
                   <h6>Theme</h6>
-                  <select class= "input" id="landuseID">
-                    <option>landuse</option>
-                     <option>demography</option>
-                     <option>economy</option>
-                     <option>transport</option>
-                     <option>geography</option>
-                     <option>agriculture</option>
-                     <option>soil</option>
-                     <option>geography</option>
-                     <option>climate</option>
-                     <option>other</option>
+                  <select class= "input" id="landuseID" onchange="onLanduseChanged(0)">
+                    <option>Landuse</option>
+                     <option>Demography</option>
+                     <option>Economy</option>
+                     <option>Transport</option>
+                     <option>Geography</option>
+                     <option>Agriculture</option>
+                     <option>Soil</option>
+                     <option>Geography</option>
+                     <option>Climate</option>
+                     <option>Other</option>
                    </select>
+                   <input class= "input" type="text" placeholder=" " id="landuseTextID" style="display:none;" >
                    <br> <br> 
                    <h6>File Type</h6>
-                   <select class= "input" id="typeID">
-                    <option>geojson</option>
-                     <option>georaster</option>
-                     <option>shapefile</option>
+                   <select class= "input" id="typeID" onchange="onTypeChanged(0)">
+                    <option>GeoJSON</option>
+                     <option>GeoTIFF</option>
+                     <option>Shapefile (SHP)</option>
+                     <option>Keyhole Markup Language (KML)</option>
+                     <option>Geographic Markup Language (GML)</option>
+                     <option>MapInfo Interchange Format (MIF/MID) </option>
+                     <option>Esri File Geodatabase (GDB)</option>
+                     <option>NetCDF (Network Common Data Form)</option>
+                     <option>TopoJSON</option>
+                     <option>LAS/LAZ</option>
+                     <option>Comma Separated Values CSV</option>
+                     <option>Other</option>
                    </select>
+                   <input class= "input" type="text" placeholder=" " id="typeTextID" style="display:none;">
                    <br> <br> 
                    <h6>Spatial Resolution</h6>
                    <select class= "input" id="spatialResolutionID">
                     <option>non spatial</option>
                     <option>10 km</option>
                     <option>1 km</option>
+                    <option>300 m</option>
                     <option>100 m</option>
                     <option>50 m</option>
                     <option>30 m</option>
@@ -86,6 +98,16 @@
                   <br> <br>
                   <h6>Temporal Extend (From -To)</h6>
                   <select class= "input" id="fromYearID" style="display:none;">
+                    <option>2020</option>
+                    <option>2001</option>
+                    <option>2002</option>
+                    <option>2003</option>
+                    <option>2004</option>
+                    <option>2005</option>
+                    <option>2006</option>
+                    <option>2007</option>
+                    <option>2008</option>
+                    <option>2009</option>
                     <option>2010</option>
                     <option>2011</option>
                     <option>2012</option>
@@ -100,6 +122,14 @@
                     <option>2021</option>
                     <option>2022</option>
                     <options>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                    <option>2028</option>
+                    <option>2029</option>
+                    <option>2030</option>
+
                   </select>
                   <select class= "input" id="fromMonthID" style="display:none;">
                     <option>January</option>
@@ -119,6 +149,16 @@
                   <input class= "input" type="text" placeholder="from hour" id="fromHourID" style="display:none;">
                   <input class= "input" type="text" placeholder="from minute" id="fromMinuteID" style="display:none;">
                   <select class= "input" id="toYearID" style="display:inline;">
+                    <option>2020</option>
+                    <option>2001</option>
+                    <option>2002</option>
+                    <option>2003</option>
+                    <option>2004</option>
+                    <option>2005</option>
+                    <option>2006</option>
+                    <option>2007</option>
+                    <option>2008</option>
+                    <option>2009</option>
                     <option>2010</option>
                     <option>2011</option>
                     <option>2012</option>
@@ -132,6 +172,14 @@
                     <option>2020</option>
                     <option>2021</option>
                     <option>2022</option>
+                    <options>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                    <option>2028</option>
+                    <option>2029</option>
+                    <option>2030</option>
                     <option selected="selected">2023</option>
                   </select>
                   <select class= "input" id="toMonthID" style="display:none;">
@@ -159,9 +207,32 @@
                     <option>ratio</option>
                     <option>index</option>
                     <option>yield</option>
-                    <option>people per sqkm</option>
-                    <option>people per ha<</option>
-                    <option>people per sqm</option>
+                    <option>people/km²</option>
+                    <option>people/mi²</option>
+                    <option>people/ha</option>
+                    <option>people/acre</option>     
+                    <option>% (percent)</option>
+                    <option>‰ (per mille)</option>     
+                    <option>meters (m)</option>
+                    <option>feet (ft)</option>
+                    <option>kilometers (km)</option>
+                    <option>miles (mi)</option>
+                    <option>square kilometers (km²)</option>
+                    <option>square miles (mi²)</option>
+                    <option>hectares (ha)</option>
+                    <option>acres</option>
+                    <option>meters (m)</option>
+                    <option>feet (ft)</option>
+                    <option>degrees Celsius (°C)</option>
+                    <option>degrees Fahrenheit (°F)</option>
+                    <option>millimeters (mm)</option>
+                    <option>inches (in)</option>
+                    <option>minutes (min)</option>
+                    <option>hours (hr)</option>
+                    <option>days (d)</option>
+                    <option>weeks (wk)</option>
+                    <option>months (mo)</option>
+                    <option>years (yr)</option>
                     <option>Other</option>
                   </select>
                   <input class= "input" type="text" placeholder="type units" id="customUnitID" style="display:none;">
@@ -184,8 +255,16 @@
                   <h6>Source of data</h6>
                   <select class= "input" id="sourceID" onchange="onSourceChanged(0)">
                     <option>n/a</option>
-                    <option>Nasa</option>
+                    <option>OpenStreetMap</option>
+                    <option>Natural Earth</option>
+                    <option>GeoNames</option>
+                    <option>WorldClim</option>
+                    <option>NASA Earth Observations (NEO)</option>
+                    <option>Global Administrative Areas (GADM)</option>
+                    <option>DIVA-GIS</option>
+                    <option>Copernicus Open Access Hub</option>
                     <option>CIESIN</option>
+                    <option>Geospatial Data Abstraction Library (GDAL)</option>
                     <option>Fao</option>
                     <option>Worldpop</option>
                     <option>usgs</option>
@@ -204,9 +283,15 @@
                   <h6>Known issues of data</h6>
                   <select class= "input" id="issuesID" onchange="onSourceChanged(0)">
                     <option>non</option>
-                    <option>low quality</option>
-                    <option>missing patches</option>
-                    <option>random wrong values</option>
+                    <option>Spatial resolution</option>
+                    <option>Data completeness</option>
+                    <option>Spatial accuracy</option>
+                    <option>Attribute accuracy</option>
+                    <option>Data format</option>
+                    <option>Coordinate reference system (CRS)</option>
+                    <option>Data projection</option>
+                    <option>Data scale</option>
+                    <option>Data quality</option>
                     <option>Other</option>
                   </select>
                   <input class= "input" type="text" placeholder="description" id="issuesTextID">
