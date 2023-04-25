@@ -19,8 +19,8 @@
             </div>
             <div class="box intput" id= "input" style="overflow-y:auto;">
              
-                <form>
-                  <br><br><br><br><br><br><br><br><br><br><br><br>
+                <form style=" top: 0px;position: absolute;margin-top: 0;vertical-align: top; height: 10px; right: 10px;left: 10px;">
+                  
                   <br> 
                   <h6>Name</h6>
                   <input class= "input" type="name" placeholder="full name of the dataset " id="nameID">
@@ -96,7 +96,7 @@
                     <option>minutely</option>
                   </select>
                   <br> <br>
-                  <h6>Temporal Extend (From -To)</h6>
+                  <h6>Temporal Extend</h6>
                   <select class= "input" id="fromYearID" style="display:none;">
                     <option>2020</option>
                     <option>2001</option>
@@ -281,7 +281,7 @@
                   <input class= "input" type="text" placeholder="email" id="contactID">
                   <br> <br>
                   <h6>Known issues of data</h6>
-                  <select class= "input" id="issuesID" onchange="onSourceChanged(0)">
+                  <select class= "input" id="issuesID" onchange="onIssueChanged(0)">
                     <option>non</option>
                     <option>Spatial resolution</option>
                     <option>Data completeness</option>
@@ -294,7 +294,7 @@
                     <option>Data quality</option>
                     <option>Other</option>
                   </select>
-                  <input class= "input" type="text" placeholder="description" id="issuesTextID">
+                  <input class= "input" type="text" placeholder="description" id="issuesTextID" style="display:none;">
                   <br> <br>
                   <h6>To start a new entry, please submit the current metadata information</h6>
                   <input class= "input" type="button" onclick="enable()" value="Submit">

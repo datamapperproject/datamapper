@@ -55,7 +55,7 @@ function enable() {
         trv: tr.selectedIndex, 
         temporalResolution : tr.options[tr.selectedIndex].text,
         count : dataExists(sr.options[sr.selectedIndex].text,  tr.options[tr.selectedIndex].text),
-        landuse : landuseInput.options[landuseInput.selectedIndex].text,
+        theme : landuseInput.options[landuseInput.selectedIndex].text,
         type : typeInput.options[typeInput.selectedIndex].text,
         fullName: nameInput.value,
         source: getSelected(sourceInputEl, sourceTextEl),
@@ -75,7 +75,7 @@ function enable() {
      var cleanRecord = {
       spatialResolution : sr.options[sr.selectedIndex].text,
       temporalResolution : tr.options[tr.selectedIndex].text,
-      landuse : landuseInput.options[landuseInput.selectedIndex].text,
+      theme : landuseInput.options[landuseInput.selectedIndex].text,
       fileType : typeInput.options[typeInput.selectedIndex].text,
       fullName: nameInput.value,
       source: getSelected(sourceInputEl, sourceTextEl),
@@ -240,7 +240,7 @@ function mouseEnter(e,data)
   panel.style.top =  e.clientY + 'px';
   panel.style.display = 'inline-block';
   panel.innerHTML = "Name: " + data.fullName + " <br>" +
-                    "Landuse: " + data.landuse + " <br>" + 
+                    "Theme: " + data.landuse + " <br>" + 
                     "Type: " + data.fileType + " <br>" +
                     "Spatial resolution: " + data.spatialResolution + " <br>" + 
                     "Spatial Extend Type: " + data.spatialExtendType + " <br>" + 
@@ -378,6 +378,17 @@ function onSourceChanged(){
 
   var selectEl = document.getElementById("sourceID");
   var textEl = document.getElementById("sourceTextID");
+    if (selectEl.value === "Other") {
+    textEl.style.display = "inline";
+  } else {
+    textEl.style.display = "none";
+  }
+}
+
+function onIssueChanged(){
+
+  var selectEl = document.getElementById("issueID");
+  var textEl = document.getElementById("issueTextID");
     if (selectEl.value === "Other") {
     textEl.style.display = "inline";
   } else {
