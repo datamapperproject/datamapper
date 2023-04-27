@@ -150,7 +150,7 @@ function updateGraph()
     {
       for (let j =0; j< data.length;j++)
       {
-         if(data[i].product === data[j].product && data[i].fullName !== data[j].fullName)
+         if(data[i].product === data[j].product && data[i].fullName !== data[j].fullName && data[j].product !== "n/a")
          {
              var line = document.createElementNS(svgns, 'line');
              var adjust1 = adjustArray[data[i].count];
@@ -174,28 +174,28 @@ function updateGraph()
 }
 
 // get csv from google sheet
-function getCSV() {
-  // get sheet id from link
-  var link = "https://docs.google.com/spreadsheets/d/{sheet_id}}/edit?usp=sharing";
-  var sheetId = link.split("/")[5];
-  var url = "https://docs.google.com/spreadsheets/d/"+sheetId +"/gviz/tq?tqx=out:csv"       
-  var request = new XMLHttpRequest();
+// function getCSV() {
+//   // get sheet id from link
+//   var link = "https://docs.google.com/spreadsheets/d/{sheet_id}}/edit?usp=sharing";
+//   var sheetId = link.split("/")[5];
+//   var url = "https://docs.google.com/spreadsheets/d/"+sheetId +"/gviz/tq?tqx=out:csv"       
+//   var request = new XMLHttpRequest();
   
-  // get data from request
-  request.open("GET", url, true);
-  request.send(null);
-  request.onreadystatechange = function () {
-    if (request.readyState === 4 && request.status === 200) {
-      var type = request.getResponseHeader("Content-Type");
-      if (type.indexOf("text") !== 1) {
-        var responseText = request.responseText;
-        //remove quates from responseText
-        responseText = responseText.replace(/"/g, "");
-        processCSV(responseText);
-      }
-    }
-  }
-}
+//   // get data from request
+//   request.open("GET", url, true);
+//   request.send(null);
+//   request.onreadystatechange = function () {
+//     if (request.readyState === 4 && request.status === 200) {
+//       var type = request.getResponseHeader("Content-Type");
+//       if (type.indexOf("text") !== 1) {
+//         var responseText = request.responseText;
+//         //remove quates from responseText
+//         responseText = responseText.replace(/"/g, "");
+//         processCSV(responseText);
+//       }
+//     }
+//   }
+// }
 
 
 function processCSV(content) {
@@ -305,7 +305,7 @@ function upload()
     // here we tell the reader what to do when it's done reading...
     reader.onload = readerEvent => {
       var content = readerEvent.target.result; // this is the content!
-      console.log("LOL");
+      console.log("uloaded file");
       processCSV(content);
     }
   }
