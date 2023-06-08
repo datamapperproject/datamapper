@@ -299,6 +299,7 @@ var toolsText;
 var arenaGroup = group.append("g");
 var rightGroup = group.append("g");
 var arenaArray = [];
+var rightArray = [];
 function crateTools(data, x,firstTime){
 
 
@@ -329,7 +330,10 @@ function crateTools(data, x,firstTime){
         d.y += d3.event.dy;
       d3.select(this).remove();
 
-      var newGroup = rightGroup.append("g")
+      rightArray.push(d);
+      var newGroup = rightGroup.selectAll("rect")
+      .data(rightArray)
+      .enter().append("g")
       .attr("transform", function () { return "translate(" + [d.x, d.y] + ")"; })
       .call(function () {
         return d3.drag().on('drag', function (d, i) {
