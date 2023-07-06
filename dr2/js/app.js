@@ -154,11 +154,12 @@ var toolsTest = group.append("g").selectAll("rect")
   ;
 
 //create node  as circle for each element in array with d3
-var nodes = group.append("g").selectAll("circle")
+var nodes = group.append("g").selectAll("ellipse")
   .data(proms)
   .enter()
-  .append("circle")
-  .attr("r", 30)
+  .append("ellipse")
+  .attr("rx", 50)
+  .attr("ry", 20)
   .attr("cx", function(d) {
     return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/4 +70 ;
   })
@@ -296,10 +297,15 @@ function reactivate(c, t){
 var links;
 var tools;
 var toolsText;
+var LinkGroup = group.append("g");
 var arenaGroup = group.append("g");
 var rightGroup = group.append("g");
 var arenaArray = [];
 var rightArray = [];
+var newGroup = group.append("g");
+var linkArray = [];
+
+
 function crateTools(data, x,firstTime){
 
 
@@ -331,9 +337,10 @@ function crateTools(data, x,firstTime){
       d3.select(this).remove();
 
       rightArray.push(d);
-      var newGroup = rightGroup.selectAll("rect")
+      newGroup = rightGroup.selectAll("rect")
       .data(rightArray)
       .enter().append("g")
+      .attr("id",function(d){return d.name;})
       .attr("transform", function () { return "translate(" + [d.x, d.y] + ")"; })
       .call(function () {
         return d3.drag().on('drag', function (d, i) {
@@ -342,9 +349,66 @@ function crateTools(data, x,firstTime){
             d3.select(this).attr("transform", function () {
                 return "translate(" + [d.x, d.y] + ")";
             });
-        }) }())
-      ;
+            updateGroups();
+        }).on('end', function (d, i) {
 
+          //Check for overlap with other elemnts in New Group
+          var thisG = document.getElementById(d.name);
+          var thisTrans = thisG.getAttribute("transform");
+          var tx = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[0])
+          var ax = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("x"));
+          var thisX = tx + ax;
+          var ty = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[1]);
+          var ay = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("y"));
+          var thisY = ty+ay ;
+          console.log("dragend " +  rightArray.length);
+          rightArray.forEach(function(e){
+          //Get d3 node by element id
+          var g = document.getElementById(e.name);
+          var test = g.getAttribute("transform");
+          var x = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[0])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("x"));
+          var y = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[1])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("y"));
+
+
+
+          var distance = Math.sqrt(Math.pow(x - thisX, 2) + Math.pow(y- thisY, 2));
+
+          if(distance<100 && distance >0)
+          {
+              //create link between two nodes
+              var newLink = LinkGroup.append("line")
+              .attr("x1", x + 50)
+              .attr("y1", y +25 )
+              .attr("x2", thisX + 50)
+              .attr("y2", thisY +25)
+              .attr("stroke" ,"#c6c6c6")
+              .attr("stroke-width" ,150)
+              .attr("stroke-linejoin" ,"round")
+              .attr("stroke-linecap" ,"round")
+              .attr("stroke-opacity",1)
+              ;
+              var fromName = d.name;
+              var toName = e.name;
+              linkArray.push({"link":newLink, "from":fromName, "to":toName});
+          }
+          }
+          );
+        })
+      
+      }())
+      ;
+      var name =  d3.select(this).select("text").text();
+      if(name.includes(".png"))
+      {
+        // add image to new group
+        newGroup.append("svg:image")
+        .attr("xlink:href", "data/" +name )
+        .attr("width", 100)
+        .attr("height", 50)
+        .attr("x", d3.select(this).select("rect").attr("x"))
+        .attr("y", d3.select(this).select("rect").attr("y"))
+
+      } else{
       newGroup.append("rect")
       .attr("width", 100)
       .attr("height", 50)
@@ -353,7 +417,6 @@ function crateTools(data, x,firstTime){
       .style("fill", "lightgrey")
       .style("stroke", "black")
       .attr("z-index", "10")
-      .attr("onclick", "this.remove()");
       
       newGroup.append("text")
       .attr("x", d3.select(this).select("rect").attr("x") )
@@ -369,19 +432,29 @@ function crateTools(data, x,firstTime){
       .text( d3.select(this).select("text").text())
       .style("pointer-events", "none")
       ;
+
+
+      }
       var name = d3.select(this).select("text").text();
       dna.text( dna.text() + " " + name[0].toUpperCase() + name.slice(1) + ". "  );
       dna.call(wrap,  layoutSetup[2].w *pageWidth-10); 
       })
     }())
     ;
-    
+
+    tools.append("svg:image")
+      .attr("xlink:href",function(d){ return d.name.includes(".png")?"data/" +d.name:"";})
+      .attr("width", 100)
+      .attr("height", 50)
+      .attr("x", function(d){return x-50}) 
+      .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index }) 
+   
     tools.append("rect")
     .attr("width", 100)
     .attr("height", 50)
     .attr("x", function(d){return x-50}) 
     .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index }) 
-    .style("fill", "white")
+    .style("fill", "transparent")
     .style("stroke", "black")
     .attr("z-index", "10")
     ;
@@ -393,14 +466,16 @@ function crateTools(data, x,firstTime){
     .attr("font-size", "12px")
     .attr("dy", "25")
     .attr("dx", "50")
-    .attr("fill", "black")
+    .attr("fill", function(d){ return d.name.includes(".png")?"transparent":"black"})
     .attr("text-anchor", "middle")
     .attr("alignment-baseline", "middle")
     .attr("pointer-events", "none")
     .attr("font-family", "helvetica")
-    .text( function(d) {return d.name;})
+    .text( function(d){ return d.name;})
     .style("pointer-events", "none")
     ;
+ 
+
 }
 
 function ticked() {
@@ -424,7 +499,6 @@ svg.call(zoom.on("zoom", function() {
 ));
 
 function wrap(text, width) {
-  console.log(text);
   text.each(function () {
       var text = d3.select(this),
           words = text.text().split(/\s+/).reverse(),
@@ -455,4 +529,33 @@ function wrap(text, width) {
           }
       }
   });
+}
+
+function updateGroups()
+{
+  linkArray.forEach(function(d){
+    var from = d.from;
+    var to = d.to;
+    var link =d.link;
+
+    var thisG = document.getElementById(from);
+    var thisTrans = thisG.getAttribute("transform");
+    var tx = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[0])
+    var ax = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("x"));
+    var thisX = tx + ax;
+    var ty = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[1]);
+    var ay = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("y"));
+    var thisY = ty+ay ;
+
+    //Get d3 node by element id
+    var g = document.getElementById(to);
+    var test = g.getAttribute("transform");
+    var x = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[0])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("x"));
+    var y = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[1])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("y"));
+    link.attr("x1", thisX + 50)
+        .attr("y1", thisY + 25)
+        .attr("x2", x + 50)
+        .attr("y2", y +25 );
+  });
+
 }
