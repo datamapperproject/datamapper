@@ -44,7 +44,6 @@ var toolsList = [
 
 ];
 
-
 // assign svg to D3 selection
 var svg = d3.select("body")
   .append("svg")
