@@ -1,29 +1,29 @@
 //create array of objects 
 var proms = [
-  {name: "sense", type: "verb", column: 0, action:0, active : true, links : ["link A", "link B", "story A", "case A"], desc: "sence can be listened, seen, felt, smelt, tasted", src : "165,-5037,23803,2546"},
-  {name: "lifeworlds", type: "subject", column:1, action:0, active : false, links : ["case A"],desc: "lifeworlds are the worlds we live in", src : "10165,-15037,13803,7546"},
-  {name:"to describe", type:"verb2", column:2, action:0, active : false, links : ["link B"], desc: "description is a way to understand", src : "10165,-15037,3803,546"},
-  {name: "needs and aspirations", type:"object", column:3, action:0 , active :false, links : ["case A"], desc: "needs and aspirations are the things we want"},
-  {name: "formulate", type: "verb", column: 0, action:1, active : true, links : ["case C"], desc: "formulation is a way to understand"},
-  {name: "concepts", type: "subject", column:1, action:1, active : false, links : ["link C"], desc: "concepts are the things we think"},
-  {name:"to frame", type:"verb2", column:2, action:1, active : false, links : ["link D"], desc: "framing is a way to understand"},
-  {name: "problems", type:"object", column:3 , action:1, active : false, links : ["story D"], desc: "problems are the things we want to change"},
-  {name: "gather", type: "verb", column: 0, action:2, active : true, links : ["link E"], desc: "gathering is a way to understand"},
-  {name: "data", type: "subject", column:1, action:2, active : false, links : ["case E"], desc: "data is the things we know"},
-  {name:"to analyse", type:"verb2", column:2, action:2, active : false, links : ["link F", "story B"], desc: "analysis is a way to understand"},
-  {name: "limits", type:"object", column:3, action:2, active : false , links : ["story B", "link K"], desc: "limits are the things we can't do"},
-  {name: "imagine", type: "verb", column: 0, action:3, active : true, links : ["link G"], desc: "imagination is a way to understand"},
-  {name: "potentials", type: "subject", column:1, action:3, active : false, links : ["link G"], desc: "potentials are the things we can do"},
-  {name:"to create", type:"verb2", column:2, action:3, active : false, links : ["link B", "story C"], desc: "creation is a way to understand"},
-  {name: "ideas", type:"object", column:3, action:3 , active : false, links : ["story C", "link A"], desc: "ideas are the things we can do"},
-  {name: "craft", type: "verb", column: 0, action:4, active : true, links : ["link H"], desc: "craft is a way to understand"},
-  {name: "cases", type: "subject", column:1, action:4, active : false, links : ["link H"], desc: "cases are the things we can do"},
-  {name:"to evaluate", type:"verb2", column:2, action:4, active : false, links : ["link D", "story D"], desc: "evaluation is a way to understand"},
-  {name: "solutions", type:"object", column:3 , action:4, active : false, links : ["story A", "case A"], desc: "solutions are the things we can do"},
-  {name: "empower", type: "verb", column: 0, action:5, active : true, links : ["link I"], desc: "empowerment is a way to understand"},
-  {name: "participants", type: "subject", column:1, action:5, active : false, links : ["link I", "link J"], desc: "participants are the things we can do"},
-  {name:"to negotiate", type:"verb2", column:2, action:5, active : false, links : ["link F", "story A","case A"], desc: "negotiation is a way to find compromises"},
-  {name: "projects", type:"object", column:3 , action:5, active : false, links : ["story C", "story D"], desc: "projects are the things we can do"},
+  {name: "sense", type: "verb", column: 0, action:0, active : true, links : ["link A", "link B", "story A", "case A"], desc: "sence can be listened, seen, felt, smelt, tasted", count : 0},
+  {name: "lifeworlds", type: "subject", column:1, action:0, active : false, links : ["case A"],desc: "lifeworlds are the worlds we live in", src : "10165,-15037,13803,7546", count : 0},
+  {name:"to describe", type:"verb2", column:2, action:0, active : false, links : ["link B"], desc: "description is a way to understand", src : "10165,-15037,3803,546", count : 0},
+  {name: "needs and aspirations", type:"object", column:3, action:0 , active :false, links : ["case A"], desc: "needs and aspirations are the things we want", count : 0},
+  {name: "formulate", type: "verb", column: 0, action:1, active : true, links : ["case C"], desc: "formulation is a way to understand", count : 0},
+  {name: "concepts", type: "subject", column:1, action:1, active : false, links : ["link C"], desc: "concepts are the things we think", count : 0},
+  {name:"to frame", type:"verb2", column:2, action:1, active : false, links : ["link D"], desc: "framing is a way to understand", count : 0},
+  {name: "problems", type:"object", column:3 , action:1, active : false, links : ["story D"], desc: "problems are the things we want to change", count : 0},
+  {name: "gather", type: "verb", column: 0, action:2, active : true, links : ["link E"], desc: "gathering is a way to understand", count : 0},
+  {name: "data", type: "subject", column:1, action:2, active : false, links : ["case E"], desc: "data is the things we know", count : 0},
+  {name:"to analyse", type:"verb2", column:2, action:2, active : false, links : ["link F", "story B"], desc: "analysis is a way to understand", count : 0},
+  {name: "limits", type:"object", column:3, action:2, active : false , links : ["story B", "link K"], desc: "limits are the things we can't do", count : 0},
+  {name: "imagine", type: "verb", column: 0, action:3, active : true, links : ["link G"], desc: "imagination is a way to understand", count : 0},
+  {name: "potentials", type: "subject", column:1, action:3, active : false, links : ["link G"], desc: "potentials are the things we can do", count : 0},
+  {name:"to create", type:"verb2", column:2, action:3, active : false, links : ["link B", "story C"], desc: "creation is a way to understand", count : 0},
+  {name: "ideas", type:"object", column:3, action:3 , active : false, links : ["story C", "link A"], desc: "ideas are the things we can do", count : 0},
+  {name: "craft", type: "verb", column: 0, action:4, active : true, links : ["link H"], desc: "craft is a way to understand", count : 0},
+  {name: "cases", type: "subject", column:1, action:4, active : false, links : ["link H"], desc: "cases are the things we can do", count : 0},
+  {name:"to evaluate", type:"verb2", column:2, action:4, active : false, links : ["link D", "story D"], desc: "evaluation is a way to understand", count : 0},
+  {name: "solutions", type:"object", column:3 , action:4, active : false, links : ["story A", "case A"], desc: "solutions are the things we can do", count : 0},
+  {name: "empower", type: "verb", column: 0, action:5, active : true, links : ["link I"], desc: "empowerment is a way to understand", count : 0},
+  {name: "participants", type: "subject", column:1, action:5, active : false, links : ["link I", "link J"], desc: "participants are the things we can do", count : 0},
+  {name:"to negotiate", type:"verb2", column:2, action:5, active : false, links : ["link F", "story A","case A"], desc: "negotiation is a way to find compromises", count : 0},
+  {name: "projects", type:"object", column:3 , action:5, active : false, links : ["story C", "story D"], desc: "projects are the things we can do", count : 0},
 ];
 
 layoutSetup = [
@@ -158,8 +158,8 @@ var nodes = group.append("g").selectAll("ellipse")
   .data(proms)
   .enter()
   .append("ellipse")
-  .attr("rx", 50)
-  .attr("ry", 20)
+  .attr("rx", function(d){return d.count + 50})
+  .attr("ry", function(d){return d.count + 20})
   .attr("cx", function(d) {
     return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/4 +70 ;
   })
@@ -167,9 +167,9 @@ var nodes = group.append("g").selectAll("ellipse")
     return d.action * 50 + 50;   
   })
   .style("fill", function(d) {
-    return d.active ? "lightblue" : "white";
+    return d.active ? "lightblue" : "lightgrey";
   })
-  .style("stroke", "black")
+  .style("stroke", "transparent")
   .attr("z-index", 100)
   .on("click", function(d) { 
      createlink(this,d);
@@ -202,9 +202,15 @@ var labels = group.append("g").selectAll("text")
 //create links between nodes
 var link;
 function createlink(t,data) {
-  //create line
+  data.count = data.count + 3;
+  console.log(data);
+// update all elepses
+  nodes
+  .attr("rx", function(d){return d.count + 50})
+  .attr("ry", function(d){return d.count + 20});
 
-  console.log("start");
+  //create line
+  console.log(t);
  if(link === undefined)   
  {
   link = linktemp.append("line")
@@ -285,7 +291,7 @@ function reactivate(c, t){
   .filter(function(d) {
     return d.column === c;
   })
-  .style("fill", t ? "lightblue" : "white")
+  .style("fill", t ? "lightblue" : "lightgrey")
   .data()
   .forEach(function(d) {
     d.active = t;
@@ -378,7 +384,7 @@ function crateTools(data, x,firstTime){
               //create link between two nodes
               var newLink = LinkGroup.append("line")
               .attr("x1", x + 50)
-              .attr("y1", y +25 )
+              .attr("y1", y + 25 )
               .attr("x2", thisX + 50)
               .attr("y2", thisY +25)
               .attr("stroke" ,"#c6c6c6")
