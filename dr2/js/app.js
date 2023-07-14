@@ -62,8 +62,10 @@ var zoom = d3.zoom();
 var group = svg.append("g");
 var tools;
 var positionArray = [{x:-1, y:0}, {x:1, y:0}, {x:0, y:1}, {x:0, y:-1}];
-var colorArray = ["red", "blue", "green", "yellow"];
+var colorArray = ["red", "blue", "green", "orange"];
+var colorArrayLight = ["ef8b8b", "8b96ef", "a0ef8b", "efcf8b"];
 var groupColor = colorArray[0];
+var groupColorLight = colorArrayLight[0];
 var currentGroup =0;
 var increase = 5;
 var circleColor = "black";
@@ -81,7 +83,7 @@ var dna = group
     .attr("text-anchor", "left")
     .style("font-size", "0.7em")
     .style("font-family", "helvetica")
-    .text("Project DNA:")
+    .text("DNA:")
     .style("fill", "black")
     .call(wrap,  layoutSetup[2].w *pageWidth-10); 
 
@@ -453,14 +455,14 @@ function crateTools(data, x,firstTime){
         // add image to new group
         newGroup.append("svg:image")
         .attr("xlink:href", "data/" +name )
-        .attr("width", 100)
+       .attr("width", 100)
         .attr("height", 50)
         .attr("x", d3.select(this).select("rect").attr("x"))
         .attr("y", d3.select(this).select("rect").attr("y"))
 
       } else{
       newGroup.append("rect")
-      .attr("width", 100)
+     .attr("width", 100)
       .attr("height", 50)
       .attr("x", d3.select(this).select("rect").attr("x"))
       .attr("y", d3.select(this).select("rect").attr("y"))
@@ -492,15 +494,15 @@ function crateTools(data, x,firstTime){
 
     tools.append("svg:image")
       .attr("xlink:href",function(d){ return d.name.includes(".png")?"data/" +d.name:"";})
-      .attr("width", 100)
+     .attr("width", 100)
       .attr("height", 50)
-      .attr("x", function(d){return layoutSetup[4].x * pageWidth- 10 + x*1.2 }) 
+      .attr("x", function(d){return layoutSetup[4].x * pageWidth- 50 + x*1.4 }) 
       .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index }) 
    
     tools.append("rect")
-    .attr("width", 100)
+   .attr("width", 100)
     .attr("height", 50)
-    .attr("x", function(d){return layoutSetup[4].x * pageWidth- 10 + x*1.2 }) 
+    .attr("x", function(d){return layoutSetup[4].x * pageWidth- 50 + x*1.4 }) 
     .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index }) 
     .style("fill", "transparent")
     .style("stroke", "black")
@@ -509,7 +511,7 @@ function crateTools(data, x,firstTime){
 
    // add text to rect as child
    tools.append("text")
-    .attr("x", function(d){return layoutSetup[4].x * pageWidth- 10 + x*1.2 })
+    .attr("x", function(d){return layoutSetup[4].x * pageWidth- 50 + x*1.4 })
     .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index })
     .attr("font-size", "12px")
     .attr("dy", "25")
@@ -630,6 +632,7 @@ function updateGroups()
 
       function groupChanged(value) {
         groupColor = colorArray[value];
+        groupColorLight = colorArrayLight[value];
         currentGroup = value;
       }
       var dnaArray = [];
@@ -646,27 +649,28 @@ function updateGroups()
         .data(dnaArray)
         .enter()
         .append("circle")
-        .attr("cx",layoutSetup[2].x *pageWidth +  dnaCounts[currentGroup] * 55)
-        .attr("cy", function(d){return (currentGroup+1) * 50;})
-        .attr("r", 30)
-        .style("fill", groupColor)
+        .attr("cx",layoutSetup[2].x *pageWidth +  dnaCounts[currentGroup] * 43)
+        .attr("cy", function(d){return 28 +( currentGroup) * 47;})
+        .attr("r", 22)
+        .style("fill",  groupColorLight)
         .style("stroke", "transparent");
         //add text to circle
 
         dnaLabels = group.append("g").selectAll("text").data([dnaArray])
         .enter()
         .append("text")
-        .attr("x",layoutSetup[2].x*pageWidth +  dnaCounts[currentGroup] * 55)
-        .attr("y", function(d){return (currentGroup+1) * 50;})
+        .attr("x",layoutSetup[2].x*pageWidth +  dnaCounts[currentGroup] * 43)
+        .attr("y", function(d){return 28 +( currentGroup) * 47;})
         .attr("dy", "0")
         .attr("dx", "0")
-        .attr("font-size", "12px")
+        .attr("font-size", "9px")
         .attr("fill", "black")
         .attr("text-anchor", "middle")
         .attr("alignment-baseline", "middle")
         .attr("pointer-events", "none")
         .attr("font-family", "helvetica")
         .text(function(d){return input;})
+        .call(wrap, 44)
         ;
 
 
