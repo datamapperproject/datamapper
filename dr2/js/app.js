@@ -1,38 +1,38 @@
 //create array of objects 
 var proms = [
-  {name: "sense", type: "verb", column: 0, action:0, active : true, links : ["link A", "link B", "story A", "case A"], desc: "sence can be listened, seen, felt, smelt, tasted", count : 0},
-  {name: "lifeworlds", type: "subject", column:1, action:0, active : false, links : ["case A"],desc: "lifeworlds are the worlds we live in", src : "10165,-15037,13803,7546", count : 0},
-  {name:"to describe", type:"verb2", column:2, action:0, active : false, links : ["link B"], desc: "description is a way to understand", src : "10165,-15037,3803,546", count : 0},
-  {name: "needs and aspirations", type:"object", column:3, action:0 , active :false, links : ["case A"], desc: "needs and aspirations are the things we want", count : 0},
-  {name: "formulate", type: "verb", column: 0, action:1, active : true, links : ["case C"], desc: "formulation is a way to understand", count : 0},
-  {name: "concepts", type: "subject", column:1, action:1, active : false, links : ["link C"], desc: "concepts are the things we think", count : 0},
-  {name:"to frame", type:"verb2", column:2, action:1, active : false, links : ["link D"], desc: "framing is a way to understand", count : 0},
-  {name: "problems", type:"object", column:3 , action:1, active : false, links : ["story D"], desc: "problems are the things we want to change", count : 0},
-  {name: "gather", type: "verb", column: 0, action:2, active : true, links : ["link E"], desc: "gathering is a way to understand", count : 0},
-  {name: "data", type: "subject", column:1, action:2, active : false, links : ["case E"], desc: "data is the things we know", count : 0},
-  {name:"to analyse", type:"verb2", column:2, action:2, active : false, links : ["link F", "story B"], desc: "analysis is a way to understand", count : 0},
-  {name: "limits", type:"object", column:3, action:2, active : false , links : ["story B", "link K"], desc: "limits are the things we can't do", count : 0},
-  {name: "imagine", type: "verb", column: 0, action:3, active : true, links : ["link G"], desc: "imagination is a way to understand", count : 0},
-  {name: "potentials", type: "subject", column:1, action:3, active : false, links : ["link G"], desc: "potentials are the things we can do", count : 0},
-  {name:"to create", type:"verb2", column:2, action:3, active : false, links : ["link B", "story C"], desc: "creation is a way to understand", count : 0},
-  {name: "ideas", type:"object", column:3, action:3 , active : false, links : ["story C", "link A"], desc: "ideas are the things we can do", count : 0},
-  {name: "craft", type: "verb", column: 0, action:4, active : true, links : ["link H"], desc: "craft is a way to understand", count : 0},
-  {name: "cases", type: "subject", column:1, action:4, active : false, links : ["link H"], desc: "cases are the things we can do", count : 0},
-  {name:"to evaluate", type:"verb2", column:2, action:4, active : false, links : ["link D", "story D"], desc: "evaluation is a way to understand", count : 0},
-  {name: "solutions", type:"object", column:3 , action:4, active : false, links : ["story A", "case A"], desc: "solutions are the things we can do", count : 0},
-  {name: "empower", type: "verb", column: 0, action:5, active : true, links : ["link I"], desc: "empowerment is a way to understand", count : 0},
-  {name: "participants", type: "subject", column:1, action:5, active : false, links : ["link I", "link J"], desc: "participants are the things we can do", count : 0},
-  {name:"to negotiate", type:"verb2", column:2, action:5, active : false, links : ["link F", "story A","case A"], desc: "negotiation is a way to find compromises", count : 0},
-  {name: "projects", type:"object", column:3 , action:5, active : false, links : ["story C", "story D"], desc: "projects are the things we can do", count : 0},
+  {name: "sense", type: "verb", column: 0, action:0, active : true, links : ["link A", "link B", "story A", "case A"], desc: "sence can be listened, seen, felt, smelt, tasted"},
+  {name: "lifeworlds", type: "subject", column:1, action:0, active : false, links : ["case A"],desc: "lifeworlds are the worlds we live in", src : "10165,-15037,13803,7546"},
+  {name:"to describe", type:"verb2", column:2, action:0, active : false, links : ["link B"], desc: "description is a way to understand", src : "10165,-15037,3803,546"},
+  {name: "needs & aspirations", type:"object", column:3, action:0 , active :false, links : ["case A"], desc: "needs and aspirations are the things we want"},
+  {name: "formulate", type: "verb", column: 0, action:1, active : true, links : ["case C"], desc: "formulation is a way to understand"},
+  {name: "concepts", type: "subject", column:1, action:1, active : false, links : ["link C"], desc: "concepts are the things we think"},
+  {name:"to frame", type:"verb2", column:2, action:1, active : false, links : ["link D"], desc: "framing is a way to understand"},
+  {name: "problems", type:"object", column:3 , action:1, active : false, links : ["story D"], desc: "problems are the things we want to change"},
+  {name: "gather", type: "verb", column: 0, action:2, active : true, links : ["link E"], desc: "gathering is a way to understand"},
+  {name: "data", type: "subject", column:1, action:2, active : false, links : ["case E"], desc: "data is the things we know"},
+  {name:"to analyse", type:"verb2", column:2, action:2, active : false, links : ["link F", "story B"], desc: "analysis is a way to understand"},
+  {name: "limits", type:"object", column:3, action:2, active : false , links : ["story B", "link K"], desc: "limits are the things we can't do"},
+  {name: "imagine", type: "verb", column: 0, action:3, active : true, links : ["link G"], desc: "imagination is a way to understand"},
+  {name: "potentials", type: "subject", column:1, action:3, active : false, links : ["link G"], desc: "potentials are the things we can do"},
+  {name:"to create", type:"verb2", column:2, action:3, active : false, links : ["link B", "story C"], desc: "creation is a way to understand"},
+  {name: "ideas", type:"object", column:3, action:3 , active : false, links : ["story C", "link A"], desc: "ideas are the things we can do"},
+  {name: "craft", type: "verb", column: 0, action:4, active : true, links : ["link H"], desc: "craft is a way to understand"},
+  {name: "cases", type: "subject", column:1, action:4, active : false, links : ["link H"], desc: "cases are the things we can do"},
+  {name:"to evaluate", type:"verb2", column:2, action:4, active : false, links : ["link D", "story D"], desc: "evaluation is a way to understand"},
+  {name: "solutions", type:"object", column:3 , action:4, active : false, links : ["story A", "case A"], desc: "solutions are the things we can do"},
+  {name: "empower", type: "verb", column: 0, action:5, active : true, links : ["link I"], desc: "empowerment is a way to understand"},
+  {name: "participants", type: "subject", column:1, action:5, active : false, links : ["link I", "link J"], desc: "participants are the things we can do"},
+  {name:"to negotiate", type:"verb2", column:2, action:5, active : false, links : ["link F", "story A","case A"], desc: "negotiation is a way to find compromises"},
+  {name: "projects", type:"object", column:3 , action:5, active : false, links : ["story C", "story D"], desc: "projects are the things we can do"},
 ];
 
 layoutSetup = [
-  {x: 0, y: 0,w : 20, h : 50},
-  {x: 20, y: 0,w : 60, h : 50},  
-  {x: 80, y: 0,w : 20, h : 50},
-  {x: 0, y: 50,w : 20, h : 60},
-  {x: 20, y: 50,w : 60, h : 60},
-  {x: 80, y: 50,w : 20, h : 60}
+  {x: 0, y: 0,w : 25, h : 30}, // header
+  {x: 0, y: 30,w : 25, h : 70},  //actions
+  {x: 25, y: 0,w : 75, h : 30}, //dna
+  {x: 60, y: 30,w : 10, h : 70}, //tools
+  {x: 25, y: 30,w : 35, h : 70}, //arena
+  {x: 70, y: 30,w : 30, h : 70} //right
 ];
 
 var toolsList = [
@@ -61,9 +61,15 @@ var zoom = d3.zoom();
 //Basic variablea
 var group = svg.append("g");
 var tools;
+var positionArray = [{x:-1, y:0}, {x:1, y:0}, {x:0, y:1}, {x:0, y:-1}];
+var colorArray = ["red", "blue", "green", "yellow"];
+var groupColor = colorArray[0];
+var currentGroup =0;
+var increase = 5;
+var circleColor = "black";
+
 
 // add text to svg
-
 var dna = group
     .selectAll("text")
     .data(["test"])
@@ -95,13 +101,12 @@ for (var i = 0; i < layoutSetup.length; i++) {
   .attr("width", layoutSetup[i].w+ "%")
   .attr("height", layoutSetup[i].h+ "%")
   .style("fill", "transparent")
-  .style("stroke", "lightgrey")
-  .style("stroke-width", 5)
+  .style("stroke", "black")
+  .style("stroke-width", 1)
   ;
 }
 
-//create tools from toolsList as rectangles for each element in array with d3
-
+//create tools from toolsList as rectangles for each element in array with d
 var toolsTest = group.append("g").selectAll("rect")
   .data(toolsList)
   .enter()
@@ -120,15 +125,15 @@ var toolsTest = group.append("g").selectAll("rect")
   
   toolsTest.append("rect")
   .attr("x", function(d,i) {
-    return  layoutSetup[3].w /2 * pageWidth - 35;
+    return  layoutSetup[3].x * pageWidth + 30;
   })
   .attr("y", function(d,i) {
     return  pageHeight * layoutSetup[3].y  + 80 * i +20 ;
   })
-  .attr("width", 70)
-  .attr("height", 70)
+  .attr("width", 60)
+  .attr("height", 60)
   .style("fill", "white")
-  .style("stroke", "black")
+  .style("stroke", circleColor )
   .attr("z-index", 100)
   .on("click", function(d) {
     console.log(d);
@@ -137,10 +142,10 @@ var toolsTest = group.append("g").selectAll("rect")
 
   toolsTest.append("text")
   .attr("x", function(d,i) {
-    return  layoutSetup[3].w /2 * pageWidth ;
+    return  layoutSetup[3].x * pageWidth + 60;
   })
   .attr("y", function(d,i) {
-    return  pageHeight * layoutSetup[3].y  + 80 * i +20 + 35  ;
+    return  pageHeight * layoutSetup[3].y  + 80 * i +20 + 30  ;
   })
   .attr("font-size", "12px")
   .attr("fill", "black")
@@ -157,22 +162,54 @@ var nodes = group.append("g").selectAll("ellipse")
   .data(proms)
   .enter()
   .append("ellipse")
-  .attr("rx", function(d){return d.count + 50})
-  .attr("ry", function(d){return d.count + 20})
+  .attr("rx", function(d){return  27})
+  .attr("ry", function(d){return  27})
   .attr("cx", function(d) {
-    return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/4 +70 ;
+    return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 ;
   })
   .attr("cy", function(d) {
-    return d.action * 50 + 50;   
+    return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70;   
   })
-  .style("fill", function(d) {
-    return d.active ? "lightblue" : "lightgrey";
-  })
-  .style("stroke", "transparent")
+  .style("fill", "white")
+  .style("stroke", circleColor )
+  .style("stroke-width", function(d) {return d.active ? 0.7: 0.5;})
   .attr("z-index", 100)
-  .on("click", function(d) { 
-     createlink(this,d);
-  }) 
+  .attr("pointer-events", "fill")
+  .on("click", function(d) {  createlink(this,d);}) 
+  ;
+  //Add sub nodes for count
+  var subNode;
+  var subNodesArray =  [];
+  for (var i = 0; i < colorArray.length; i++) {
+    for(var j = 0; j < proms.length; j++) {
+      var object = { 
+        group: i, 
+        count: 0, 
+        x: 0,
+        column: proms[j].column, 
+        action: proms[j].action
+      };
+      subNodesArray.push(object)
+    }
+   }
+   subNode = group.append("g").selectAll("circle")
+  .data(subNodesArray)
+  .enter()
+  .append("circle")
+  .attr("r", function(d){return d.count})
+  .attr("cx", function(d) { 
+    return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 + positionArray[d.group].x * d.count ;
+  })
+  .attr("cy", function(d) {
+    return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70 + positionArray[d.group].y * d.count;   
+  })
+  .style("fill", function(d) {return colorArray[d.group];})
+  .style("stroke", "transparent")
+  .style("opacity", 0.5)
+  .style("mix-blend-mode", "darken")
+  .style("stroke-width", 0)
+  .attr("z-index", 0)
+
   ;
 
 // add labels to each nodes
@@ -181,35 +218,46 @@ var labels = group.append("g").selectAll("text")
   .enter()
   .append("text")
   .attr("x", function(d) {
-    return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/4 +70 ;
+    return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 ;
   })
   .attr("y", function(d) {
-    return d.action * 50 + 52;
+    return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70 - d.name.split("&").length * 5+7;   
   })
   .text(function(d) {
     return d.name;
   })
   .attr("font-family", "helvetica")
-  .attr("font-size", "12px")
+  .attr("font-size", "9px")
   .attr("fill", "black")
   .attr("text-anchor", "middle")
   .attr("vertical-align", "middle")
   .attr("z-index", 0)
   .attr("pointer-events", "none")
+  .on("click", function(d) {  createlink(this,d);}) 
+  .call(wrap, 52);
   ;
 
 //create links between nodes
 var link;
 function createlink(t,data) {
-  data.count = data.count + 3;
-  console.log(data);
-// update all elepses
-  nodes
-  .attr("rx", function(d){return d.count + 50})
-  .attr("ry", function(d){return d.count + 20});
+  // find all elements with group equal to current group from subNodesArray
+  subNodesArray.forEach( (d, i) => {
+    if( d.group === currentGroup && d.column === data.column && d.action === data.action)
+      d.count = d.count + increase;});
+
+  //console.log(index);
+  //Update size of all subnodes
+  subNode 
+  .attr("r", function(d){return d.count })
+  .attr("cx", function(d) {
+    return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 + positionArray[d.group].x * d.count ;
+  })
+  .attr("cy", function(d) {
+    return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70+ positionArray[d.group].y * d.count ;   
+  })
+  
 
   //create line
-  console.log(t);
  if(link === undefined)   
  {
   link = linktemp.append("line")
@@ -217,16 +265,17 @@ function createlink(t,data) {
   .attr("y1", t.cy.baseVal.value)
   .attr("x2", t.cx.baseVal.value)
   .attr("y2", t.cy.baseVal.value)
-  .attr("stroke-width",4)
-  .attr("stroke", "black")
-  .attr("opacity", 0.2)
+  .attr("stroke-width",1)
+  .attr("stroke", colorArray[currentGroup])
+  .style("mix-blend-mode", "darken")
+  .attr("opacity", 1)
   .attr("onclick", "this.remove()") //remove line on click
   ;
   reactivate(0,false);
   reactivate(1,true);
   crateTools(data, t.cx.baseVal.value,true);
-  dna.text( dna.text() + " " + data.name[0].toUpperCase() + data.name.slice(1)  );
-  dna.call(wrap,  layoutSetup[2].w *pageWidth-10); 
+  dnaUpdate("");
+  dnaUpdate( data.name);
 
  }
   else  if  ( data.column === 3)
@@ -236,8 +285,7 @@ function createlink(t,data) {
      link = undefined;
      reactivate(3, false);
      crateTools(data, t.cx.baseVal.value, false);
-     dna.text( dna.text() + " " + data.name + ". ");
-     dna.call(wrap,  layoutSetup[2].w *pageWidth-10); 
+     dnaUpdate( data.name);
 
   } 
   else {
@@ -249,15 +297,15 @@ function createlink(t,data) {
   .attr("y1", t.cy.baseVal.value)
   .attr("x2", t.cx.baseVal.value)
   .attr("y2", t.cy.baseVal.value)
-  .attr("stroke-width",4)
-  .attr("stroke", "black")
-  .attr("opacity", 0.2)
+  .attr("stroke-width",1)
+  .attr("stroke", colorArray[currentGroup])
+  .style("mix-blend-mode", "darken")
+  .attr("opacity", 1)
   .attr("onclick", "this.remove()") //remove line on click
   reactivate(data.column,false);
   reactivate(data.column +1,true);
   crateTools(data, t.cx.baseVal.value, false);
-  dna.text( dna.text() + " " + data.name );
-  dna.call(wrap,  layoutSetup[2].w *pageWidth-10); 
+  dnaUpdate( data.name);
   }
   if(data != undefined && data.column === 3)
     reactivate(0,true);
@@ -290,7 +338,7 @@ function reactivate(c, t){
   .filter(function(d) {
     return d.column === c;
   })
-  .style("fill", t ? "lightblue" : "lightgrey")
+  .style("stroke-width", t ? 0.7 : 0.5)
   .data()
   .forEach(function(d) {
     d.active = t;
@@ -313,14 +361,14 @@ var linkArray = [];
 
 function crateTools(data, x,firstTime){
 
-
+   //preparation
    if(firstTime)
    {
      arenaGroup.remove();
      arenaGroup = group.append("g");
      arenaArray = [];
    }
-   data.links.map(function(d, i) {
+     data.links.map(function(d, i) {
     arenaArray.push( {name: d, index: i, x: 0, y:0});
   });
 
@@ -373,9 +421,6 @@ function crateTools(data, x,firstTime){
           var test = g.getAttribute("transform");
           var x = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[0])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("x"));
           var y = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[1])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("y"));
-
-
-
           var distance = Math.sqrt(Math.pow(x - thisX, 2) + Math.pow(y- thisY, 2));
 
           if(distance<100 && distance >0)
@@ -428,7 +473,7 @@ function crateTools(data, x,firstTime){
       .attr("y", d3.select(this).select("rect").attr("y"))
       .attr("dy", "25")
       .attr("dx", "50")
-      .attr("font-size", "12px")
+      .attr("font-size", "9px")
       .attr("fill", "black")
       .attr("text-anchor", "middle")
       .attr("alignment-baseline", "middle")
@@ -440,9 +485,7 @@ function crateTools(data, x,firstTime){
 
 
       }
-      var name = d3.select(this).select("text").text();
-      dna.text( dna.text() + " " + name[0].toUpperCase() + name.slice(1) + ". "  );
-      dna.call(wrap,  layoutSetup[2].w *pageWidth-10); 
+      dnaUpdate(name = d3.select(this).select("text").text());
       })
     }())
     ;
@@ -451,13 +494,13 @@ function crateTools(data, x,firstTime){
       .attr("xlink:href",function(d){ return d.name.includes(".png")?"data/" +d.name:"";})
       .attr("width", 100)
       .attr("height", 50)
-      .attr("x", function(d){return x-50}) 
+      .attr("x", function(d){return layoutSetup[4].x * pageWidth- 10 + x*1.2 }) 
       .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index }) 
    
     tools.append("rect")
     .attr("width", 100)
     .attr("height", 50)
-    .attr("x", function(d){return x-50}) 
+    .attr("x", function(d){return layoutSetup[4].x * pageWidth- 10 + x*1.2 }) 
     .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index }) 
     .style("fill", "transparent")
     .style("stroke", "black")
@@ -466,7 +509,7 @@ function crateTools(data, x,firstTime){
 
    // add text to rect as child
    tools.append("text")
-    .attr("x", function(d){return x-50})
+    .attr("x", function(d){return layoutSetup[4].x * pageWidth- 10 + x*1.2 })
     .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index })
     .attr("font-size", "12px")
     .attr("dy", "25")
@@ -564,3 +607,70 @@ function updateGroups()
   });
 
 }
+
+      /* When the user clicks on the button, 
+      toggle between hiding and showing the dropdown content */
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+
+      function groupChanged(value) {
+        groupColor = colorArray[value];
+        currentGroup = value;
+      }
+      var dnaArray = [];
+      var dnaNodes;
+      var dnaLabels;
+      var dnaCounts = [0,0,0,0];
+      function dnaUpdate(input) {
+        dnaArray.push(input);
+        dnaCounts[currentGroup] = dnaCounts[currentGroup] + 1;
+
+        if (input == "") return;
+        dnaNodes = group.append("g")
+        .selectAll("circle")
+        .data(dnaArray)
+        .enter()
+        .append("circle")
+        .attr("cx",layoutSetup[2].x *pageWidth +  dnaCounts[currentGroup] * 55)
+        .attr("cy", function(d){return (currentGroup+1) * 50;})
+        .attr("r", 30)
+        .style("fill", groupColor)
+        .style("stroke", "transparent");
+        //add text to circle
+
+        dnaLabels = group.append("g").selectAll("text").data([dnaArray])
+        .enter()
+        .append("text")
+        .attr("x",layoutSetup[2].x*pageWidth +  dnaCounts[currentGroup] * 55)
+        .attr("y", function(d){return (currentGroup+1) * 50;})
+        .attr("dy", "0")
+        .attr("dx", "0")
+        .attr("font-size", "12px")
+        .attr("fill", "black")
+        .attr("text-anchor", "middle")
+        .attr("alignment-baseline", "middle")
+        .attr("pointer-events", "none")
+        .attr("font-family", "helvetica")
+        .text(function(d){return input;})
+        ;
+
+
+
+        // dna.text( dna.text() + " " + input[0].toUpperCase() + input.slice(1) + ". "  );
+        // dna.call(wrap,  layoutSetup[2].w *pageWidth-10); 
+      }

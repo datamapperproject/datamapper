@@ -70,6 +70,7 @@ function enable() {
         product: getSelected(productInputEl, productTextEl),
         timeStamp: new Date(),
         draw: true,
+        group: "black",
      } 
 
      var cleanRecord = {
@@ -89,6 +90,7 @@ function enable() {
       product: getSelected(productInputEl, productTextEl),
       timeStamp: new Date(),
       units: getSelected(unitsInputEl, unitsTextEl),
+      group: "black",
    } 
      data.push(record);
      cleanData.push(cleanRecord)
@@ -135,13 +137,14 @@ function updateGraph()
         circle.setAttributeNS(null, 'cy', y+'%');
         circle.setAttributeNS(null, 'height', '50');
         circle.setAttributeNS(null, 'width', '50');
-        circle.setAttributeNS(null, 'fill', 'black');
+        circle.setAttributeNS(null, 'fill', data[i].group);
         circle.setAttributeNS(null, 'r', radius +'');
         circle.addEventListener("mouseenter", (e) =>  mouseEnter(e,data[i]));
         circle.addEventListener("mouseout", mouseExit);
         svg.appendChild(circle);
         data[i].draw = false;
       }
+      console.log(data[i].fullName + " " + data[i].group);
     }
 
     //itirate trru all combination of data and draw conenction of product
@@ -165,7 +168,7 @@ function updateGraph()
              line.setAttributeNS(null, 'y1', y1 + '%');
              line.setAttributeNS(null, 'x2', x2 + '%');
              line.setAttributeNS(null, 'y2', y2+  '%');
-             line.setAttributeNS(null, 'style', "stroke:black;stroke-width:1");
+             line.setAttributeNS(null, 'style', "stroke:"+data[i].group +";stroke-width:1");
              svg.appendChild(line);
 
          }
@@ -254,7 +257,8 @@ function mouseEnter(e,data)
                     "Link: " + data.link+ " <br>" +  
                     "Conatct: " + data.contact+ " <br>" +  
                     "Issues: " + data.issues+ " <br>"+
-                    "Time Stamp: " + data.timeStamp+ " <br>"  ;  
+                    "Time Stamp: " + data.timeStamp+ " <br>" +
+                    "Group: " + data.group+ " <br>" ;  
                     
 }
 function mouseExit(e)
