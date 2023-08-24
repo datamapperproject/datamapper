@@ -2,82 +2,38 @@
 <html lang="en">
 
 <head>
-    <title>Design Research App V2</title>
-    <style>
-      html, body {
-        height: 100%;
-      } 
-      /* Dropdown Button */
-.dropbtn {
-  background-color: #949494;
-  color: white;
-  padding: 16px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #626262;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: absolute;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
-      </style>
-
-    <title>Design Research App V2 </title>
+    <title>Design Research App V3</title>
     <link rel="stylesheet" href="css/main.css">
     
 </head>
 <body>
+
+
   <div class="dropdown">
     <button onclick="myFunction()" class="dropbtn">Change user group</button>
     <div id="myDropdown" class="dropdown-content">
-      <a onclick="groupChanged(0)" >Group A</a>
-      <a onclick="groupChanged(1)">Group B</a>
-      <a onclick="groupChanged(2)">Group C</a>
-      <a onclick="groupChanged(3)">Group D</a>
+      <a onclick="groupChanged(0)" >HoffenCity</a>
+      <a onclick="groupChanged(1)">Pallembang</a>
+      <a onclick="groupChanged(2)">Makasar</a>
+      <a onclick="groupChanged(3)">Bandung</a>
     </div>
   </div>
+
+<button onclick="onShowHistory()" class ="dropbtn history">Show history</button>
   
   
   <script src="//d3js.org/d3.v4.min.js"></script>
-    <script src="js/app.js"></script>
-    <script>
 
-      </script>
-      
-      
+    <script src="js/data.js"></script>
+    <script src="js/draw.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/app.js"></script>
+
+    <div class="hover-div none" id ="hoverPanel">
+      <div class="hover-content" id ="hoverContent">
+
+      </div>
+    </div>
 
 </body>
 </html>

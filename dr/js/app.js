@@ -156,35 +156,44 @@ function update() {
        .style("stroke",colorStroke)
        ;
 
+       d3.select("svg").append("foreignObject")
+       .attr("width", 100)
+       .attr("height", 100)
+       .attr("transform", "translate(200,200)")
+       .append("xhtml:div")
+       .html("5 ")
+       .append('xhtml:img').attr('src','https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-512.png')
+       .attr("height","12px")
+       .attr("width","12px");
 
 // create node with div as child text label
-  nodeEnter.append("foreignObject")
-      .attr("width", function(d) { return getRectWidth(d) -10})
-      .attr("height",  getRectHeight )
-      .attr("x", function(d) { return -getRectWidth(d)/2 +5;})
-      .attr("y", function(d) { if (d.text) return -getRectHeight(d)/2-5; else return 0; })
-      .append("xhtml:div")
-      .on("click", click)
-      .attr("class", "node-label")
-      .html(function(d) { if (d.size === 1 || d.size === 6)  return "<br><br>"  +d.text; 
-                          else if  (d.size === 2) return d.text;
-                          else return "<b>" + d.name + "</b><br>"  +d.text; })
-      .style("text-align", "left")
-      .style("font-size", function(d) { if ( d.text.split(" ").length < 4) return "11.5px"; else return "11.5px"; })
-      .style("font-family", "Helvetica")
-      .style("display", function(d) { if (d.size ===0 ) return  "none"; else return "block";})
-      // aligh text to center if count of words is less than 3
-      .style("text-align", function(d) { if (d.text.split(" ").length < 4) return "center"; else return "left";})
-      .style("width", function(d) { return getRectWidth(d) -10})
-      .style("height",  getRectHeight )
-      .style("text-overflow", "ellipsis")
-      .style("line-height",function(d) { if (d.text.split(" ").length < 4)  return  "1.0em"; else return "1.2em";})
-      .style("padding", "3px")
-      .style("color", "black")
-      // allign text vertically to center if count of words is less than 3
-      .style("vertical-align", function(d) { if (d.text.split(" ").length < 4) return "middle"; else return "top";} )
-      .style("word-wrap", "break-word")
-      ;
+  // nodeEnter.append("foreignObject")
+  //     .attr("width", function(d) { return getRectWidth(d) -10})
+  //     .attr("height",  getRectHeight )
+  //     .attr("x", function(d) { return -getRectWidth(d)/2 +5;})
+  //     .attr("y", function(d) { if (d.text) return -getRectHeight(d)/2-5; else return 0; })
+  //     .append("xhtml:div")
+  //     .on("click", click)
+  //     .attr("class", "node-label")
+  //     .html(function(d) { if (d.size === 1 || d.size === 6)  return "<br><br>"  +d.text; 
+  //                         else if  (d.size === 2) return d.text;
+  //                         else return "<b>" + d.name + "</b><br>"  +d.text; })
+  //     .style("text-align", "left")
+  //     .style("font-size", function(d) { if ( d.text.split(" ").length < 4) return "11.5px"; else return "11.5px"; })
+  //     .style("font-family", "Helvetica")
+  //     .style("display", function(d) { if (d.size ===0 ) return  "none"; else return "block";})
+  //     // aligh text to center if count of words is less than 3
+  //     .style("text-align", function(d) { if (d.text.split(" ").length < 4) return "center"; else return "left";})
+  //     .style("width", function(d) { return getRectWidth(d) -10})
+  //     .style("height",  getRectHeight )
+  //     .style("text-overflow", "ellipsis")
+  //     .style("line-height",function(d) { if (d.text.split(" ").length < 4)  return  "1.0em"; else return "1.2em";})
+  //     .style("padding", "3px")
+  //     .style("color", "black")
+  //     // allign text vertically to center if count of words is less than 3
+  //     .style("vertical-align", function(d) { if (d.text.split(" ").length < 4) return "middle"; else return "top";} )
+  //     .style("word-wrap", "break-word")
+  //     ;
 
 
      // apped pin to node
