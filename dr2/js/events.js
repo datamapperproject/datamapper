@@ -70,7 +70,7 @@ function onActionHover(t,data) {
   {
     text += "<br><b> User Reviews</b> <br> ";
     historyData.forEach( (h, i) => {
-      if(h.name.includes(data.name))
+      if(h.name.includes(data))
       {
         var decsArray = h.desc.split("|");
         for (var i = 0; i < decsArray.length; i++) {
