@@ -97,7 +97,7 @@ var nodes = group.append("g").selectAll("ellipse")
 // change color of node to grey when mouse is over
   .on("mouseover", function(d) {
     d3.select(this).style("fill", "lightgrey");
-    onActionHover(this,d.desc);
+    onActionHover(this,d.name, d.desc);
   })
   .on("mouseout", function(d) {
     d3.select(this).style("fill", "white");

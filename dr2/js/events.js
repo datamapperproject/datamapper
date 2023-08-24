@@ -50,7 +50,7 @@ function reactivate(c, t){
 }
 
 // Handle hover on node
-function onActionHover(t,data) {
+function onActionHover(t,name, data) {
 
   //Create text with listing links from data
   var decsArray = data.split("|");
@@ -68,10 +68,12 @@ function onActionHover(t,data) {
 
   if(useHistory > 0)
   {
+    console.log(data);
     text += "<br><b> User Reviews</b> <br> ";
     historyData.forEach( (h, i) => {
-      if(h.name.includes(data))
+      if(h.name.includes(name))
       {
+    
         var decsArray = h.desc.split("|");
         for (var i = 0; i < decsArray.length; i++) {
           //add image with name from data

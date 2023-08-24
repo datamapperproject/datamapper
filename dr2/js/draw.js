@@ -173,7 +173,7 @@ function drawTools(){
    tools = arenaGroup .selectAll("rect")
      .data(arenaArray)
      .enter().append("g")
-     .on("mouseover", d=> onActionHover(this,d.name))
+     .on("mouseover", d=> onActionHover(this,d.name, " - some description"))
      .on("mouseout", d=> onActionHoverOut(this,d))
      .call(function () {
        return d3.drag().on('drag', function (d, i) {
