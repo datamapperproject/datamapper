@@ -47,20 +47,20 @@ var hoverPanel = document.getElementById("hoverPanel");
 var hoverContent = document.getElementById("hoverContent");
 
 // add text to svg
-var dna = group
-    .selectAll("text")
-    .data(["test"])
-    .enter()
-    .append("text")
-    .attr("class", "dna")
-    .attr("x", layoutSetup[2].x+ 0.5 + "%")
-    .attr("y", layoutSetup[2].y +3 + "%")
-    .attr("text-anchor", "left")
-    .style("font-size", "0.7em")
-    .style("font-family", "helvetica")
-    .text("DNA:")
-    .style("fill", "black")
-    .call(wrap,  layoutSetup[2].w *pageWidth-10); 
+// var dna = group
+//     .selectAll("text")
+//     .data(["test"])
+//     .enter()
+//     .append("text")
+//     .attr("class", "dna")
+//     .attr("x", layoutSetup[2].x+ 0.5 + "%")
+//     .attr("y", layoutSetup[2].y +3 + "%")
+//     .attr("text-anchor", "left")
+//     .style("font-size", "0.7em")
+//     .style("font-family", "helvetica")
+//     .text("DNA:")
+//     .style("fill", "black")
+//     .call(wrap,  layoutSetup[2].w *pageWidth-10); 
 
 // add force in d3 v4
 const simulation = d3.forceSimulation()

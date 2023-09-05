@@ -155,171 +155,187 @@ function drawTools(){
     ;
   }
 
+  function onDrag(d,i)
+  {
+    //Change positon of the box 
+    d.x += d3.event.dx;
+    d.y += d3.event.dy;
+    d3.select(this).attr("transform", function () {
+        return "translate(" + [d.x, d.y] + ")";
+    });
+  }
 
-  function crateTools(data, x,firstTime){
-
-    //preparation
-    if(firstTime)
+  function onDragEnd(d,i) {
+    //Check for overlap with other elemnts in New Group
+    var thisG = document.getElementById(d.name);
+    var thisTrans = thisG.getAttribute("transform");
+    var tx = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[0])
+    var ax = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("x"));
+    var thisX = tx + ax;
+    var ty = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[1]);
+    var ay = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("y"));
+    var thisY = ty+ay ;
+    rightArray.forEach(function(e){
+    //Get d3 node by element id
+    var g = document.getElementById(e.name);
+    var test = g.getAttribute("transform");
+    var x = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[0])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("x"));
+    var y = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[1])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("y"));
+    var distance = Math.sqrt(Math.pow(x - thisX, 2) + Math.pow(y- thisY, 2));
+  
+    if(distance<100 && distance >0)
     {
-      arenaGroup.remove();
-      arenaGroup = group.append("g");
+        //create link between two nodes
+        var newLink = LinkGroup.append("line")
+        .attr("x1", x + 50)
+        .attr("y1", y + 25 )
+        .attr("x2", thisX + 50)
+        .attr("y2", thisY +25)
+        .attr("stroke" ,"red")
+        .attr("stroke-width" ,150)
+        .attr("stroke-linejoin" ,"round")
+        .attr("stroke-linecap" ,"round")
+        .attr("stroke-opacity",1)
+        ;
+        var fromName = d.name;
+        var toName = e.name;
+        linkArray.push({"link":newLink, "from":fromName, "to":toName});
+    }
+    }
+    );
+  }
+
+function onDragHandle ()
+{
+  return d3.drag()
+  .on('drag', onDrag)
+  .on('end', function (d, i) {
+
+    d.fixed = true;
+    //change parrent group to rightGroup
+    d.x += d3.event.dx;
+    d.y += d3.event.dy;
+    d3.select(this).remove();
+    
+    rightArray.push(d);
+    newGroup = rightGroup.selectAll("rect")
+    .data(rightArray)
+    .enter().append("g")
+    .attr("id",function(d){return d.name;})
+    .attr("transform", function () { return "translate(" + [d.x, d.y] + ")"; })
+    .call(function () {
+    return d3.drag().on('drag', function (d, i) {
+     d.x += d3.event.dx;
+     d.y += d3.event.dy;
+     d3.select(this).attr("transform", function () {
+         return "translate(" + [d.x, d.y] + ")";
+     });
+     updateGroups();
+    }).on('end', onDragEnd);
+    
+    }())
+    ;
+    var name =  d3.select(this).select("text").text();
+    if(name.includes(".jpg"))
+    {
+    // add image to new group
+    newGroup.append("svg:image")
+    .attr("xlink:href", "data/" +name )
+    .attr("width", 150)
+    .attr("height", 75)
+    .attr("x", d3.select(this).select("rect").attr("x"))
+    .attr("y", d3.select(this).select("rect").attr("y"))
+    
+    } else{
+    newGroup.append("rect")
+    .attr("width", 150)
+    .attr("height", 75)
+    .attr("x", d3.select(this).select("rect").attr("x"))
+    .attr("y", d3.select(this).select("rect").attr("y"))
+    .style("fill", "lightgrey")
+    .style("stroke", "black")
+    .attr("z-index", "10")
+    
+    newGroup.append("text")
+    .attr("x", d3.select(this).select("rect").attr("x") )
+    .attr("y", d3.select(this).select("rect").attr("y"))
+    .attr("dy", "25")
+    .attr("dx", "50")
+    .attr("font-size", "9px")
+    .attr("fill", "black")
+    .attr("text-anchor", "middle")
+    .attr("alignment-baseline", "middle")
+    .attr("pointer-events", "none")
+    .attr("font-family", "helvetica")
+    .text( d3.select(this).select("text").text())
+    .style("pointer-events", "none")
+    ;
+    
+    
+    }
+    dnaUpdate(name = d3.select(this).select("text").text());
+    })
+}
+
+function crateTools(data, x, clearUnfixed)
+{
+    //preparation
+    if(clearUnfixed)
+    {
+      // remove all unfixed nodes
+      rightArray = [];
+      rightGroup.selectAll("g").remove();
+
       arenaArray = [];
     }
-      data.links.map(function(d, i) {
+
+    data.links.map(function(d, i) {
       arenaArray.push( {name: d, index: i, x: 0, y:0});
-   });
+    });
  
-   //create new nodes
-   tools = arenaGroup .selectAll("rect")
-     .data(arenaArray)
-     .enter().append("g")
-     .on("mouseover", d=> onActionHover(this, d.name, d.name +" - some description"))
-     .on("mouseout", d=> onActionHoverOut(this,d))
-     .call(function () {
-       return d3.drag().on('drag', function (d, i) {
-           d.x += d3.event.dx;
-           d.y += d3.event.dy;
-           d3.select(this).attr("transform", function () {
-               return "translate(" + [d.x, d.y] + ")";
-           });
-       }).on('end', function (d, i) {
-         //change parrent group to rightGroup
-         d.x += d3.event.dx;
-         d.y += d3.event.dy;
-       d3.select(this).remove();
- 
-       rightArray.push(d);
-       newGroup = rightGroup.selectAll("rect")
-       .data(rightArray)
-       .enter().append("g")
-       .attr("id",function(d){return d.name;})
-       .attr("transform", function () { return "translate(" + [d.x, d.y] + ")"; })
-       .call(function () {
-         return d3.drag().on('drag', function (d, i) {
-             d.x += d3.event.dx;
-             d.y += d3.event.dy;
-             d3.select(this).attr("transform", function () {
-                 return "translate(" + [d.x, d.y] + ")";
-             });
-             updateGroups();
-         }).on('end', function (d, i) {
- 
-           //Check for overlap with other elemnts in New Group
-           var thisG = document.getElementById(d.name);
-           var thisTrans = thisG.getAttribute("transform");
-           var tx = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[0])
-           var ax = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("x"));
-           var thisX = tx + ax;
-           var ty = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[1]);
-           var ay = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("y"));
-           var thisY = ty+ay ;
-           rightArray.forEach(function(e){
-           //Get d3 node by element id
-           var g = document.getElementById(e.name);
-           var test = g.getAttribute("transform");
-           var x = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[0])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("x"));
-           var y = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[1])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("y"));
-           var distance = Math.sqrt(Math.pow(x - thisX, 2) + Math.pow(y- thisY, 2));
- 
-           if(distance<100 && distance >0)
-           {
-               //create link between two nodes
-               var newLink = LinkGroup.append("line")
-               .attr("x1", x + 50)
-               .attr("y1", y + 25 )
-               .attr("x2", thisX + 50)
-               .attr("y2", thisY +25)
-               .attr("stroke" ,"#c6c6c6")
-               .attr("stroke-width" ,150)
-               .attr("stroke-linejoin" ,"round")
-               .attr("stroke-linecap" ,"round")
-               .attr("stroke-opacity",1)
-               ;
-               var fromName = d.name;
-               var toName = e.name;
-               linkArray.push({"link":newLink, "from":fromName, "to":toName});
-           }
-           }
-           );
-         })
-       
-       }())
-       ;
-       var name =  d3.select(this).select("text").text();
-       if(name.includes(".png"))
-       {
-         // add image to new group
-         newGroup.append("svg:image")
-         .attr("xlink:href", "data/" +name )
-        .attr("width", 100)
-         .attr("height", 50)
-         .attr("x", d3.select(this).select("rect").attr("x"))
-         .attr("y", d3.select(this).select("rect").attr("y"))
- 
-       } else{
-       newGroup.append("rect")
-      .attr("width", 100)
-       .attr("height", 50)
-       .attr("x", d3.select(this).select("rect").attr("x"))
-       .attr("y", d3.select(this).select("rect").attr("y"))
-       .style("fill", "lightgrey")
-       .style("stroke", "black")
-       .attr("z-index", "10")
-       
-       newGroup.append("text")
-       .attr("x", d3.select(this).select("rect").attr("x") )
-       .attr("y", d3.select(this).select("rect").attr("y"))
-       .attr("dy", "25")
-       .attr("dx", "50")
-       .attr("font-size", "9px")
-       .attr("fill", "black")
-       .attr("text-anchor", "middle")
-       .attr("alignment-baseline", "middle")
-       .attr("pointer-events", "none")
-       .attr("font-family", "helvetica")
-       .text( d3.select(this).select("text").text())
-       .style("pointer-events", "none")
-       ;
- 
- 
-       }
-       dnaUpdate(name = d3.select(this).select("text").text());
-       })
-     }())
-     ;
- 
-     tools.append("svg:image")
-       .attr("xlink:href",function(d){ return d.name.includes(".png")?"data/" +d.name:"";})
-      .attr("width", 100)
-       .attr("height", 50)
-       .attr("x", function(d){return layoutSetup[4].x * pageWidth- 50 + x*1.4 }) 
-       .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index }) 
-    
-     tools.append("rect")
-    .attr("width", 100)
-     .attr("height", 50)
-     .attr("x", function(d){return layoutSetup[4].x * pageWidth- 50 + x*1.4 }) 
-     .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index }) 
+  //create new nodes
+  tools = arenaGroup .selectAll("rect")
+    .data(arenaArray)
+    .enter().append("g")
+    .on("mouseover", d=> onActionHover(this, d.name, d.name +" - some description"))
+    .on("mouseout", d=> onActionHoverOut(this,d))
+    .call(onDragHandle ())
+    ;
+
+  // create rect for each element in array with d  
+  tools.append("rect")
+    .attr("width", 150)
+     .attr("height",75)
+     .attr("x", d=> layoutSetup[4].x * pageWidth- 50 + x*1.4 ) 
+     .attr("y", d=> layoutSetup[4].y * pageHeight+ 20+  75 * d.index ) 
      .style("fill", "transparent")
-     .style("stroke", "black")
+     .style("stroke", d=> d.name.includes(".jpg")?"transparent":"black")
      .attr("z-index", "10")
      ;
- 
-    // add text to rect as child
-    tools.append("text")
-     .attr("x", function(d){return layoutSetup[4].x * pageWidth- 50 + x*1.4 })
-     .attr("y", function(d){return layoutSetup[4].y * pageHeight+ 20+  50 * d.index })
-     .attr("font-size", "12px")
-     .attr("dy", "25")
-     .attr("dx", "50")
-     .attr("fill", function(d){ return d.name.includes(".png")?"transparent":"black"})
-     .attr("text-anchor", "middle")
-     .attr("alignment-baseline", "middle")
-     .attr("pointer-events", "none")
-     .attr("font-family", "helvetica")
-     .text( function(d){ return d.name;})
-     .style("pointer-events", "none")
-     ;
+
+  // add image to new group
+  tools.append("svg:image")
+    .attr("xlink:href",d=> d.name.includes("jpg")?"data/" +d.name:"")
+    .attr("width",150)
+    .attr("height", 75)
+    .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.4 ) 
+    .attr("y", d=>layoutSetup[4].y * pageHeight+ 20+ 75 * d.index ) 
+    
+  // add text to rect as child
+  tools.append("text")
+    .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.4 )
+    .attr("y", d=> layoutSetup[4].y * pageHeight+ 20+  75 * d.index )
+    .attr("font-size", "12px")
+    .attr("dy", "25")
+    .attr("dx", "50")
+    .attr("fill", d=> d.name.includes(".jpg")?"transparent":"black")
+    .attr("text-anchor", "middle")
+    .attr("alignment-baseline", "middle")
+    .attr("pointer-events", "none")
+    .attr("font-family", "helvetica")
+    .text( d=> d.name)
+    .style("pointer-events", "none")
+    ;
   
  
  }
