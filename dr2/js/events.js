@@ -67,7 +67,6 @@ function onActionHover(t,name, data) {
 
   if(useHistory > 0)
   {
-    console.log(data);
     text += "<br><b> User Reviews</b> <br> ";
     historyData.forEach( (h, i) => {
       if(h.name.includes(name))
