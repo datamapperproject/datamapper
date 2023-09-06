@@ -45,22 +45,8 @@ var subNode;
 var subNodesArray =  [];
 var hoverPanel = document.getElementById("hoverPanel");
 var hoverContent = document.getElementById("hoverContent");
-
-// add text to svg
-// var dna = group
-//     .selectAll("text")
-//     .data(["test"])
-//     .enter()
-//     .append("text")
-//     .attr("class", "dna")
-//     .attr("x", layoutSetup[2].x+ 0.5 + "%")
-//     .attr("y", layoutSetup[2].y +3 + "%")
-//     .attr("text-anchor", "left")
-//     .style("font-size", "0.7em")
-//     .style("font-family", "helvetica")
-//     .text("DNA:")
-//     .style("fill", "black")
-//     .call(wrap,  layoutSetup[2].w *pageWidth-10); 
+var nodes;
+var labels
 
 // add force in d3 v4
 const simulation = d3.forceSimulation()
@@ -72,102 +58,8 @@ var linktemp = group.append('g');
 
 //Create layout
 createLayout();
-
-//- drawTools();
-
-//create node  as circle for each element in array with d3
-var nodes = group.append("g").selectAll("ellipse")
-  .data(proms)
-  .enter()
-  .append("ellipse")
-  .attr("rx", function(d){return  27})
-  .attr("ry", function(d){return  27})
-  .attr("cx", function(d) {
-    return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 ;
-  })
-  .attr("cy", function(d) {
-    return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70;   
-  })
-  .style("fill", "white")
-  .style("stroke", circleColor )
-  .style("stroke-width", function(d) {return d.active ? 0.7: 0.5;})
-  .attr("z-index", 100)
-  .attr("pointer-events", "fill")
-  .on("click", function(d) {  onActionClick(this,d);}) 
-// change color of node to grey when mouse is over
-  .on("mouseover", function(d) {
-    d3.select(this).style("fill", "lightgrey");
-    onActionHover(this,d.name, d.desc);
-  })
-  .on("mouseout", function(d) {
-    d3.select(this).style("fill", "white");
-    onActionHoverOut(this,d);
-  })
-  ;
-
-  //Add sub nodes for count
-
-  for (var i = 0; i < colorArray.length; i++) {
-    for(var j = 0; j < proms.length; j++) {
-      var object = { 
-        group: i, 
-        count: 0, 
-        x: 0,
-        column: proms[j].column, 
-        action: proms[j].action,
-        name: proms[j].name
-      };
-      subNodesArray.push(object)
-    }
-   }
-   subNode = group.append("g").selectAll("circle")
-  .data(subNodesArray)
-  .enter()
-  .append("circle")
-  .attr("r", function(d){return d.count})
-  .attr("cx", function(d) { 
-    return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 + positionArray[d.group].x * d.count ;
-  })
-  .attr("cy", function(d) {
-    return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70 + positionArray[d.group].y * d.count;   
-  })
-  .style("fill", function(d) {return colorArray[d.group];})
-  .style("stroke", "transparent")
-  .style("opacity", 0.5)
-  .style("mix-blend-mode", "darken")
-  .style("stroke-width", 0)
-  .attr("z-index", 0)
-
-  ;
-
-// add labels to each nodes
-var labels = group.append("g").selectAll("text")
-  .data(proms)
-  .enter()
-  .append("text")
-  .attr("x", function(d) {
-    return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 ;
-  })
-  .attr("y", function(d) {
-    return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70 - d.name.split("&").length * 5+7;   
-  })
-  .text(function(d) {
-    return d.name;
-  })
-  .attr("font-family", "helvetica")
-  .attr("font-size", "9px")
-  .attr("fill", "black")
-  .attr("text-anchor", "middle")
-  .attr("vertical-align", "middle")
-  .attr("z-index", 0)
-  .attr("pointer-events", "none")
-  .on("click", function(d) {  onActionClick(this,d);}) 
-  .call(wrap, 52);
-  ;
-
-
-  // Draw line between each nodes from one column to all nodes in next column
-  drawAllLinks();
+drawNodes();
+drawAllLinks();
 
 // create tools
 
@@ -177,22 +69,9 @@ var labels = group.append("g").selectAll("text")
 // create dummy reference for each action
 
 function ticked() {
-if (tools === undefined) return;
-// update tools position base on simulation
 }
 svg.call(zoom.on("zoom", function() {
   group.attr("transform", d3.event.transform);
-  // if (d3.event.transform.k > 1.5) {
-  //   labels.attr("font-size", "6px");
-  //   labels.text( function(d) {return d.desc;});
-  //   toolsText.attr("font-size", "6px");
-  //   toolsText.text( function(d) {return "this is dummy text for " + d.name;});
-  // } else {
-  //   labels.attr("font-size", "12px");
-  //   labels.text( function(d) {return d.name;});
-  //   toolsText.attr("font-size", "12px");
-  //   toolsText.text( function(d) {return d.name;});
-//  }
 }
 ));
 

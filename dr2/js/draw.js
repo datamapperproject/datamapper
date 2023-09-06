@@ -4,44 +4,150 @@ function drawAllLinks() {
 
   // itirate throght each proms and draw line to all next proms
   for (var i = 0; i < proms.length; i++) {
-    var prom = proms[i];
     var nextProms = proms.filter(function(d) {
-      return d.column == prom.column + 1;
+      return d.column == proms[i].column + 1;
     });
     for (var j = 0; j < nextProms.length; j++) {
-      var nextProm = nextProms[j];
       var link = {
-        source: prom,
-        target: nextProm,
+        desc: proms[i].desc + "<br>" + nextProms[j].desc,
+        sx: proms[i].column * pageWidth * layoutSetup[1].w / 5,
+        sy: proms[i].action * pageHeight * layoutSetup[1].h / 7,
+        tx: nextProms[j].column * pageWidth * layoutSetup[1].w / 5,
+        ty: nextProms[j].action * pageHeight * layoutSetup[1].h / 7,
+        sn: proms[i].name,
+        tn: nextProms[j].name,
         count : 1,
         color : "grey"
       };
       allLinksArray.push(link);
     }
+    //create link for all
+    if(proms[i].column == 0)
+    {
+       var link = {
+         desc: description.find(d=> d.name == proms[i].name + "Axis").desc,
+         sx: proms[i].column * pageWidth * layoutSetup[1].w / 5 -50,
+         sy: proms[i].action * pageHeight * layoutSetup[1].h / 7,
+         tx: proms[i].column * pageWidth * layoutSetup[1].w / 5 -35,
+         ty: proms[i].action * pageHeight * layoutSetup[1].h / 7,
+         sn: proms[i].name,
+         tn: proms[i].name,
+         count : 1,
+         color : "grey"
+       };
+       allLinksArray.push(link);
+    }
   }
   // Draw all links
   linksBackground=  linksGroup.selectAll("line").data(allLinksArray).enter()
   .append("line")
-  .attr("x1", function(d) {
-    return pageWidth * layoutSetup[1].x +  d.source.column *pageWidth * layoutSetup[1].w/5 +70 ;
-  })
-  .attr("y1", function(d) {
-    return pageHeight * layoutSetup[1].y +  d.source.action*pageHeight * layoutSetup[1].h/7  + 70;
-  })
-  .attr("x2", function(d) {
-    return pageWidth * layoutSetup[1].x +  d.target.column *pageWidth * layoutSetup[1].w/5 +70 ;
-  })
-  .attr("y2", function(d) {
-    return pageHeight * layoutSetup[1].y +   d.target.action*pageHeight * layoutSetup[1].h/7  + 70;
-  })
+  .attr("x1", d=> pageWidth * layoutSetup[1].x + d.sx + 70)
+  .attr("y1", d=> pageHeight * layoutSetup[1].y + d.sy  + 70)
+  .attr("x2", d=> pageWidth * layoutSetup[1].x + d.tx  + 70 )
+  .attr("y2", d=> pageHeight * layoutSetup[1].y + d.ty  + 70)
   .style("stroke", d => d.color)
-  .style("stroke-width", d => d.count*0.5)
-  .style("opacity", 1)
+  .style("stroke-width", d => d.count)
+  .style("opacity", 0.5)
   .attr("z-index", 0)
   .on("mouseover", function(d) { d3.select(this).style("stroke", "black");onLinkHover(this,d);})
   .on("mouseout", function(d) { d3.select(this).style("stroke", d=>d.color);onLinkHoverOut(this,d);})
   ;
 }
+
+
+//create node  as circle for each element in array with d3
+function drawNodes() {
+
+  nodes = group.append("g").selectAll("ellipse")
+    .data(proms)
+    .enter()
+    .append("ellipse")
+    .attr("rx", function(d){return  27})
+    .attr("ry", function(d){return  27})
+    .attr("cx", function(d) {
+      return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 ;
+    })
+    .attr("cy", function(d) {
+      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70;   
+    })
+    .style("fill", "white")
+    .style("stroke", circleColor )
+    .style("stroke-width", function(d) {return d.active ? 0.7: 0.5;})
+    .attr("z-index", 100)
+    .attr("pointer-events", "fill")
+    .on("click", function(d) {  onActionClick(this,d);}) 
+  // change color of node to grey when mouse is over
+    .on("mouseover", function(d) {
+      d3.select(this).style("fill", "lightgrey");
+      onActionHover(this,d.name, d.desc);
+    })
+    .on("mouseout", function(d) {
+      d3.select(this).style("fill", "white");
+      onActionHoverOut(this,d);
+    })
+    ;
+  
+    //Add sub nodes for count
+  
+    for (var i = 0; i < colorArray.length; i++) {
+      for(var j = 0; j < proms.length; j++) {
+        var object = { 
+          group: i, 
+          count: 0, 
+          x: 0,
+          column: proms[j].column, 
+          action: proms[j].action,
+          name: proms[j].name
+        };
+        subNodesArray.push(object)
+      }
+     }
+     subNode = group.append("g").selectAll("circle")
+    .data(subNodesArray)
+    .enter()
+    .append("circle")
+    .attr("r", function(d){return d.count})
+    .attr("cx", function(d) { 
+      return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 + positionArray[d.group].x * d.count ;
+    })
+    .attr("cy", function(d) {
+      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70 + positionArray[d.group].y * d.count;   
+    })
+    .style("fill", function(d) {return colorArray[d.group];})
+    .style("stroke", "transparent")
+    .style("opacity", 0.5)
+    .style("mix-blend-mode", "darken")
+    .style("stroke-width", 0)
+    .attr("z-index", 0)
+  
+    ;
+  
+  // add labels to each nodes
+  labels = group.append("g").selectAll("text")
+    .data(proms)
+    .enter()
+    .append("text")
+    .attr("x", function(d) {
+      return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 ;
+    })
+    .attr("y", function(d) {
+      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70 - d.name.split("&").length * 5+7;   
+    })
+    .text(function(d) {
+      return d.name;
+    })
+    .attr("font-family", "helvetica")
+    .attr("font-size", "9px")
+    .attr("fill", "black")
+    .attr("text-anchor", "middle")
+    .attr("vertical-align", "middle")
+    .attr("z-index", 0)
+    .attr("pointer-events", "none")
+    .on("click", function(d) {  onActionClick(this,d);}) 
+    .call(wrap, 52);
+    ;
+  
+  }
 
 // Handle update of the subnodes for each action
 function updateSubNodes(data) {
@@ -63,7 +169,6 @@ function updateSubLinks(data) {
   linksBackground.style("stroke", d=> d.color)
            .style("stroke-width",  d => d.count*0.2);
 }
-
 
 // Handle creation of the link between nodes
 function createLink (t) {
@@ -102,201 +207,28 @@ function createLayout() {
   }
 }
 
-//create tools from toolsList as rectangles for each element in array with d
-function drawTools(){
-  var toolsTest = group.append("g").selectAll("rect")
-    .data(toolsList)
-    .enter()
-    .append("g")
-    .call(function () {
-      return d3.drag().on('drag', function (d, i) {
-        if(d.x == undefined) { d.x = 0;d.y = 0;}
-           d.x += d3.event.dx;
-           d.y += d3.event.dy;
-          d3.select(this).attr("transform", function () {
-              return "translate(" + [d.x, d.y] + ")";
-          });
-      })
-    }())
-    ;
-    
-    toolsTest.append("rect")
-    .attr("x", function(d,i) {
-      return  layoutSetup[3].x * pageWidth + 30;
-    })
-    .attr("y", function(d,i) {
-      return  pageHeight * layoutSetup[3].y  + 80 * i +20 ;
-    })
-    .attr("width", 60)
-    .attr("height", 60)
-    .style("fill", "white")
-    .style("stroke", circleColor )
-    .attr("z-index", 100)
-    .on("click", function(d) {
-      console.log(d);
-    })
-    ;
-  
-    toolsTest.append("text")
-    .attr("x", function(d,i) {
-      return  layoutSetup[3].x * pageWidth + 60;
-    })
-    .attr("y", function(d,i) {
-      return  pageHeight * layoutSetup[3].y  + 80 * i +20 + 30  ;
-    })
-    .attr("font-size", "12px")
-    .attr("fill", "black")
-    .attr("text-anchor", "middle")
-    .attr("alignment-baseline", "middle")
-    .attr("pointer-events", "none")
-    .attr("font-family", "helvetica")
-    .text( function (d) { return d.name; } )
-    .style("pointer-events", "none")
-    ;
-  }
 
-  function onDrag(d,i)
-  {
-    //Change positon of the box 
-    d.x += d3.event.dx;
-    d.y += d3.event.dy;
-    d3.select(this).attr("transform", function () {
-        return "translate(" + [d.x, d.y] + ")";
-    });
-  }
-
-  function onDragEnd(d,i) {
-    //Check for overlap with other elemnts in New Group
-    var thisG = document.getElementById(d.name);
-    var thisTrans = thisG.getAttribute("transform");
-    var tx = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[0])
-    var ax = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("x"));
-    var thisX = tx + ax;
-    var ty = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[1]);
-    var ay = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("y"));
-    var thisY = ty+ay ;
-    rightArray.forEach(function(e){
-    //Get d3 node by element id
-    var g = document.getElementById(e.name);
-    var test = g.getAttribute("transform");
-    var x = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[0])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("x"));
-    var y = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[1])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("y"));
-    var distance = Math.sqrt(Math.pow(x - thisX, 2) + Math.pow(y- thisY, 2));
-  
-    if(distance<100 && distance >0)
-    {
-        //create link between two nodes
-        var newLink = LinkGroup.append("line")
-        .attr("x1", x + 50)
-        .attr("y1", y + 25 )
-        .attr("x2", thisX + 50)
-        .attr("y2", thisY +25)
-        .attr("stroke" ,"red")
-        .attr("stroke-width" ,150)
-        .attr("stroke-linejoin" ,"round")
-        .attr("stroke-linecap" ,"round")
-        .attr("stroke-opacity",1)
-        ;
-        var fromName = d.name;
-        var toName = e.name;
-        linkArray.push({"link":newLink, "from":fromName, "to":toName});
-    }
-    }
-    );
-  }
-
-function onDragHandle ()
-{
-  return d3.drag()
-  .on('drag', onDrag)
-  .on('end', function (d, i) {
-
-    d.fixed = true;
-    //change parrent group to rightGroup
-    d.x += d3.event.dx;
-    d.y += d3.event.dy;
-    d3.select(this).remove();
-    
-    rightArray.push(d);
-    newGroup = rightGroup.selectAll("rect")
-    .data(rightArray)
-    .enter().append("g")
-    .attr("id",function(d){return d.name;})
-    .attr("transform", function () { return "translate(" + [d.x, d.y] + ")"; })
-    .call(function () {
-    return d3.drag().on('drag', function (d, i) {
-     d.x += d3.event.dx;
-     d.y += d3.event.dy;
-     d3.select(this).attr("transform", function () {
-         return "translate(" + [d.x, d.y] + ")";
-     });
-     updateGroups();
-    }).on('end', onDragEnd);
-    
-    }())
-    ;
-    var name =  d3.select(this).select("text").text();
-    if(name.includes(".jpg"))
-    {
-    // add image to new group
-    newGroup.append("svg:image")
-    .attr("xlink:href", "data/" +name )
-    .attr("width", 150)
-    .attr("height", 75)
-    .attr("x", d3.select(this).select("rect").attr("x"))
-    .attr("y", d3.select(this).select("rect").attr("y"))
-    
-    } else{
-    newGroup.append("rect")
-    .attr("width", 150)
-    .attr("height", 75)
-    .attr("x", d3.select(this).select("rect").attr("x"))
-    .attr("y", d3.select(this).select("rect").attr("y"))
-    .style("fill", "lightgrey")
-    .style("stroke", "black")
-    .attr("z-index", "10")
-    
-    newGroup.append("text")
-    .attr("x", d3.select(this).select("rect").attr("x") )
-    .attr("y", d3.select(this).select("rect").attr("y"))
-    .attr("dy", "25")
-    .attr("dx", "50")
-    .attr("font-size", "9px")
-    .attr("fill", "black")
-    .attr("text-anchor", "middle")
-    .attr("alignment-baseline", "middle")
-    .attr("pointer-events", "none")
-    .attr("font-family", "helvetica")
-    .text( d3.select(this).select("text").text())
-    .style("pointer-events", "none")
-    ;
-    
-    
-    }
-    dnaUpdate(name = d3.select(this).select("text").text());
-    })
-}
 
 function crateTools(data, x, clearUnfixed)
 {
-    //preparation
+    // remove all unfixed nodes
     if(clearUnfixed)
     {
-      // remove all unfixed nodes
-      rightArray = [];
-      rightGroup.selectAll("g").remove();
-
-      arenaArray = [];
+      arenaGroup.selectAll("g").filter(d=> d.fixed == false).remove();
+      arenaArray = arenaArray.filter(d=> d.fixed == true);
     }
-
+    // update arena array
     data.links.map(function(d, i) {
-      arenaArray.push( {name: d, index: i, x: 0, y:0});
+      arenaArray.push( {name: d, index: i, x: 0, y:0, fixed: false});
     });
  
   //create new nodes
   tools = arenaGroup .selectAll("rect")
     .data(arenaArray)
     .enter().append("g")
+    .attr("id", d=> d.name)
+    .attr("transform", d=> "translate(" + [d.x, d.y] + ")")
+    .attr("z-index", 10)
     .on("mouseover", d=> onActionHover(this, d.name, d.name +" - some description"))
     .on("mouseout", d=> onActionHoverOut(this,d))
     .call(onDragHandle ())
@@ -304,11 +236,11 @@ function crateTools(data, x, clearUnfixed)
 
   // create rect for each element in array with d  
   tools.append("rect")
-    .attr("width", 150)
-     .attr("height",75)
+    .attr("width", pageWidth*10)
+     .attr("height" ,pageWidth*5)
      .attr("x", d=> layoutSetup[4].x * pageWidth- 50 + x*1.4 ) 
      .attr("y", d=> layoutSetup[4].y * pageHeight+ 20+  75 * d.index ) 
-     .style("fill", "transparent")
+     .style("fill", d=> d.name.includes(".jpg")?"transparent":"white")
      .style("stroke", d=> d.name.includes(".jpg")?"transparent":"black")
      .attr("z-index", "10")
      ;
@@ -316,11 +248,11 @@ function crateTools(data, x, clearUnfixed)
   // add image to new group
   tools.append("svg:image")
     .attr("xlink:href",d=> d.name.includes("jpg")?"data/" +d.name:"")
-    .attr("width",150)
-    .attr("height", 75)
+    .attr("width", pageWidth*10)
+    .attr("height" ,pageWidth*5)
     .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.4 ) 
     .attr("y", d=>layoutSetup[4].y * pageHeight+ 20+ 75 * d.index ) 
-    
+    ;
   // add text to rect as child
   tools.append("text")
     .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.4 )
@@ -336,7 +268,28 @@ function crateTools(data, x, clearUnfixed)
     .text( d=> d.name)
     .style("pointer-events", "none")
     ;
+
+  // add pin button
+  tools.append("svg:image")
+  .classed("pin", true)
+  .attr("xlink:href","ui/pin.png")
+  .attr("width", 15)
+  .attr("height" ,15)
+  .attr("z-index", 100)
+  .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.4 )
+  .attr("y", d=> layoutSetup[4].y * pageHeight+ 20+  75 * d.index -13 )
+  .on("click", function(d) {
+
+    var isFixed = d3.select(this).fixed;
+    d.fixed = !isFixed ;
+    arenaArray.filter(a=> d.name == a.name && d.index == a.index).fixed = !isFixed ;
+    d3.select(this).fixed = !isFixed ;
+    d3.select(this).attr("xlink:href",isFixed ?"ui/pin.png" :"ui/unpin.png")
+    ;
+  })
+  ;
   
  
  }
+
  

@@ -2,8 +2,7 @@
 function onActionClick(t,data) {
 
   //Hide description
-  onActionHoverOut();
-  
+  onClosePanel();
   //Update sub nodes (record of previous clicks)
   subNodesArray.forEach( (d, i) => {
     if( d.group === currentGroup && d.column === data.column && d.action === data.action)
@@ -17,7 +16,7 @@ function onActionClick(t,data) {
     reactivate(0,false);
     reactivate(1,true);
     crateTools(data, t.cx.baseVal.value,true);
-    dnaUpdate(""); // reset DNA
+    //dnaUpdate(""); // reset DNA
   } else if  ( data.column === 3){
     updateLink (t);
     reactivate(3, false);
@@ -30,7 +29,7 @@ function onActionClick(t,data) {
     crateTools(data, t.cx.baseVal.value, false);
   }
   // Update DNA
-  dnaUpdate( data.name);
+  //-dnaUpdate( data.name);
   if(data != undefined && data.column === 3)
     reactivate(0,true);
 }
@@ -60,7 +59,7 @@ function onActionHover(t,name, data) {
   for (var i = 1; i < decsArray.length; i++) {
     //add image with name from data
     if(decsArray[i].includes("img"))
-      text += "<img src='img/" + decsArray[i].trim() + ".jpg ' width='100%' height='auto' style='margin-top: 5px; margin-bottom: 5px;'>";
+      text += "<img src='data/" + decsArray[i].trim() + ".jpg ' width='100%' height='auto' style='margin-top: 5px; margin-bottom: 5px;'>";
     else
       text += decsArray[i] + "<br>";
   }
@@ -78,15 +77,13 @@ function onActionHover(t,name, data) {
         for (var i = 0; i < decsArray.length; i++) {
           //add image with name from data
           if(decsArray[i].includes("img"))
-            text += "<img src='img/" + decsArray[i].trim() + ".jpg ' width='100%' height='auto' style='margin-top: 5px; margin-bottom: 5px;'>";
+            text += "<img src='data/" + decsArray[i].trim() + ".jpg ' width='100%' height='auto' style='margin-top: 5px; margin-bottom: 5px;'>";
           else
             text += decsArray[i] + "<br>";
         }
       }
     });
   }
-
-  
   hoverPanel = document.getElementById("hoverPanel");
   hoverContent = document.getElementById("hoverContent"); 
   hoverPanel.classList.add("block");
@@ -95,33 +92,41 @@ function onActionHover(t,name, data) {
 }
 // Handle hover out of node
 function onActionHoverOut() {
+  // hoverPanel = document.getElementById("hoverPanel");
+  // hoverContent = document.getElementById("hoverContent"); 
+  // hoverPanel.classList.remove("block");
+  // hoverPanel.classList.add("none");
+}
+
+function onClosePanel() {
   hoverPanel = document.getElementById("hoverPanel");
-  hoverContent = document.getElementById("hoverContent"); 
+  hoverContent = document.getElementById("hoverContent");
   hoverPanel.classList.remove("block");
   hoverPanel.classList.add("none");
 }
-
 // Handle hover on node
 function onLinkHover(t,data) {
   //Create text with listing links from data
-  var text = data.source.desc + "<br> and <br>" + data.target.desc + "<br> ";
+  var text = data.desc ;
 
   if(useHistory > 0)
   {
     text += "<br><b> User Reviews</b>  ";
     historyData.forEach( (h, i) => {
-      if(h.name.includes(data.source.name) && h.name.includes(data.target.name))
+      if(h.name.includes(data.sn) && h.name.includes(data.tn))
         text += "<br>" + h.desc + "<br>---";
     });
   }
+  hoverPanel = document.getElementById("hoverPanel");
+  hoverContent = document.getElementById("hoverContent");
   hoverPanel.classList.add("block");
   hoverPanel.classList.remove("none");
   hoverContent.innerHTML = text;
 }
 // Handle hover out of node
 function onLinkHoverOut() {
-  hoverPanel.classList.remove("block");
-  hoverPanel.classList.add("none");
+  //+hoverPanel.classList.remove("block");
+  //+hoverPanel.classList.add("none");
 }
 
 
@@ -166,7 +171,7 @@ function onShowHistory()
  console.log(linksGroup);
  allLinksArray.forEach( (d, i) => {
    historyData.forEach( (h, i) => {
-      if(h.name.includes(d.source.name) && h.name.includes(d.target.name))
+      if(h.name.includes(d.sn) && h.name.includes(d.tn))
       {
          d.count = d.count + 1*increase*useHistory;
         d.color = useHistory >0 ?colorArray[h.user]:"grey";
@@ -208,7 +213,7 @@ function onShowHistory()
       var dnaLabels;
       var dnaCounts = [0,0,0,0];
 
-      function dnaUpdate(input) {
+ function dnaUpdate(input) {
         dnaArray.push(input);
         dnaCounts[currentGroup] = dnaCounts[currentGroup] + 1;
 
@@ -249,3 +254,73 @@ function onShowHistory()
           //            .attr("y", d=> e.pageY + 2)
           //           ;
       });
+
+function onDrag(d,i)
+{
+  //Change positon of the box 
+  d.x += d3.event.dx;
+  d.y += d3.event.dy;
+  d3.select(this).attr("transform", d=> "translate(" + [d.x, d.y] + ")");
+  updateGroups(d);
+}
+
+
+function onDragEnd(d,i) {
+
+  //Check for overlap with other elemnts in New Group
+  var thisG = document.getElementById(d.name);
+  var thisTrans = thisG.getAttribute("transform");
+  var tx = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[0])
+  var ax = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("x"));
+  var thisX = tx + ax;
+  var ty = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[1]);
+  var ay = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("y"));
+  var thisY = ty+ay ;
+
+  // get image from thisG
+
+  var image = thisG.getElementsByTagName("image")[1];
+  image.setAttribute("href","ui/unpin.png")
+
+  arenaArray.forEach(function(e){
+
+    if (e.fixed == false || d.fixed == false || e.name == d.name )
+        return;
+
+    //Get d3 node by element id
+    var g = document.getElementById(e.name);
+    var test = g.getAttribute("transform");
+    var x = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[0])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("x"));
+    var y = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[1])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("y"));
+    var distance = Math.sqrt(Math.pow(x - thisX, 2) + Math.pow(y- thisY, 2));
+
+    if(distance<100 && distance >0)
+    {
+        //create link between two nodes
+        var newLink = LinkGroup.append("line")
+        .classed("group-link", true)
+        .attr("x1", x + 50)
+        .attr("y1", y + 25 )
+        .attr("x2", thisX + 50)
+        .attr("y2", thisY +25)
+        ;
+
+        linkArray.push({"link":newLink, "from":d.name, "to":e.name});
+    }
+    }
+  );
+}
+
+function onDragHandle ()
+{
+return d3.drag()
+.on('drag', onDrag)
+.on('end', function (d, i) {
+  d.fixed = true;
+  arenaArray.filter(a=> d.name == a.name && d.index == a.index).fixed = true;
+  d3.select(this).fixed = true;
+
+  onDragEnd(d,i);
+//  dnaUpdate(name = d3.select(this).select("text").text());
+  })
+}
