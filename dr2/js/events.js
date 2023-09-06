@@ -51,6 +51,11 @@ function reactivate(c, t){
 // Handle hover on node
 function onActionHover(t,name, data) {
 
+  // if data in description the use it
+  cleanName = data.split(" - ")[0];
+   if (description.find(d=> d.name == cleanName) !== undefined)
+       data = description.find(d=> d.name == cleanName).desc;     
+
   //Create text with listing links from data
   var decsArray = data.split("|");
   var text = decsArray[0] + "<br>";
