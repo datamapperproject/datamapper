@@ -72,6 +72,7 @@ function ticked() {
 }
 svg.call(zoom.on("zoom", function() {
   group.attr("transform", d3.event.transform);
+  onZoom();
 }
 ));
 

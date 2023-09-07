@@ -328,3 +328,12 @@ return d3.drag()
 //  dnaUpdate(name = d3.select(this).select("text").text());
   })
 }
+
+//When zoom change replace contatnt of nodes
+function onZoom() {
+
+    // select all labels and change font size
+    d3.selectAll(".big").classed("hidden", d3.event.transform.k  < 5 || d3.event.transform.k  > 10);
+    d3.selectAll("text").classed("hidden", d3.event.transform.k  > 5);
+    d3.selectAll(".small").classed("hidden", d3.event.transform.k < 10);
+}

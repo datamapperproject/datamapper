@@ -99,4 +99,9 @@ left: 150px;
       stroke-linecap:round;
       stroke-opacity:1
     }
+    .hidden
+    {
+      display: none;
+    }
+
 

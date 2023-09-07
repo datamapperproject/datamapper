@@ -131,11 +131,9 @@ function drawNodes() {
       return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 ;
     })
     .attr("y", function(d) {
-      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 70 - d.name.split("&").length * 5+7;   
+      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 55 - d.name.split("&").length * 5+7;   
     })
-    .text(function(d) {
-      return d.name;
-    })
+    .text(d=> d.name)
     .attr("font-family", "helvetica")
     .attr("font-size", "9px")
     .attr("fill", "black")
@@ -144,7 +142,53 @@ function drawNodes() {
     .attr("z-index", 0)
     .attr("pointer-events", "none")
     .on("click", function(d) {  onActionClick(this,d);}) 
-    .call(wrap, 52);
+    .call(wrap, 2);
+    ;
+
+    group.append("g").append("g").selectAll("foreignObject")
+    .data(proms)
+    .enter()
+    .append("foreignObject")
+    .classed("big", true)
+    .classed("hidden", true)
+    .attr("width",35)
+    .attr("height",35)
+    .attr("x", function(d) {
+      return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +52 ;
+    })
+    .attr("y", function(d) {
+      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7 +52;   
+    })
+    .append("xhtml:div")
+    .style("font", "2px 'Helvetica Neue'")
+    .style("color", "black")
+    .attr("max-height",35)
+    .style("display", "block")
+    .style("overflow-y", "auto")
+    .html(d=>d.desc)
+    ;
+
+    group.append("g").append("g").selectAll("foreignObject")
+    .data(proms)
+    .enter()
+    .append("foreignObject")
+    .classed("small", true)
+    .classed("hidden", true)
+    .attr("width",35)
+    .attr("height",35)
+    .attr("x", function(d) {
+      return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +52 ;
+    })
+    .attr("y", function(d) {
+      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7 +52;   
+    })
+    .append("xhtml:div")
+    .style("font", "1px 'Helvetica Neue'")
+    .style("color", "black")
+    .attr("max-height",35)
+    .style("display", "block")
+    .style("overflow-y", "auto")
+    .html(d=>d.desc)
     ;
   
   }
