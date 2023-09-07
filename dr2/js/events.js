@@ -333,7 +333,7 @@ return d3.drag()
 function onZoom() {
 
     // select all labels and change font size
-    d3.selectAll(".big").classed("hidden", d3.event.transform.k  < 5 || d3.event.transform.k  > 10);
+    d3.selectAll(".big").classed("hidden", d3.event.transform.k  < 5 || d3.event.transform.k  > 20);
     d3.selectAll("text").classed("hidden", d3.event.transform.k  > 5);
-    d3.selectAll(".small").classed("hidden", d3.event.transform.k < 10);
+    d3.selectAll(".small").classed("hidden", d3.event.transform.k < 20);
 }
