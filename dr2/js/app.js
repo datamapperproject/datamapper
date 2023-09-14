@@ -56,11 +56,17 @@ const simulation = d3.forceSimulation()
 .on("tick", ticked);
 var linktemp = group.append('g');
 
-//Create layout
-createLayout();
-drawNodes();
-drawAllLinks();
+fetch("data/content.json")
+.then((response) => response.json())
+.then((json) => onLoad( json ));
 
+//Create layout
+function onLoad (json)
+{ 
+  createLayout();
+  drawNodes(json);
+  drawAllLinks(json);
+}
 // create tools
 
 

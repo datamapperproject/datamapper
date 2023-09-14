@@ -1,5 +1,5 @@
 // Handle click on node
-function onActionClick(t,data) {
+function onActionClick(t,data, json) {
 
   //Hide description
   onClosePanel();
@@ -15,23 +15,56 @@ function onActionClick(t,data) {
     createLink (t);
     reactivate(0,false);
     reactivate(1,true);
-    crateTools(data, t.cx.baseVal.value,true);
+    crateTools(data, t.cx.baseVal.value,true,json);
     //dnaUpdate(""); // reset DNA
   } else if  ( data.column === 3){
     updateLink (t);
     reactivate(3, false);
-    crateTools(data, t.cx.baseVal.value, false);
+    crateTools(data, t.cx.baseVal.value, false,json);
   } else {
     updateLink (t);
     createLink (t);
     reactivate(data.column,false);
     reactivate(data.column +1,true);
-    crateTools(data, t.cx.baseVal.value, false);
+    crateTools(data, t.cx.baseVal.value, false,json);
   }
   // Update DNA
   //-dnaUpdate( data.name);
   if(data != undefined && data.column === 3)
     reactivate(0,true);
+
+  hightlightLinks(data,json);
+}
+
+function hightlightLinks(data,json)
+{
+   // restart colors for all links
+    allLinksArray.forEach( (d, i) => {
+      d.color = "transparent";
+    });
+
+  // find in json.descriptions all elements constains data.name
+  var descArr = json.description.filter(d=> d.name.includes(data.name));
+  for (var i = 0; i < descArr.length; i++) {
+    var arr = descArr[i].name.split(",");
+    if(arr.length > 1)
+    {
+       //for (var j = 0; j < arr.length; j++) {
+        var link = allLinksArray.find(function(d){ console.log(d);return d.sn.includes(arr[0]) && d.tn.includes(arr[3])});
+        if(link != undefined)
+        {
+          link.color = "black";
+          link.desc = descArr[i].desc;
+          //link.count = link.count + 2*increase;
+        }
+
+      // }
+    }
+  }
+  // update all linksGroup with new color
+ d3.selectAll(".bgLink").style("stroke", d=> d.color)
+ .style("stroke-width", d=> d.count);;
+
 }
 
 // update node active status base on order of sentence 
@@ -49,12 +82,11 @@ function reactivate(c, t){
 }
 
 // Handle hover on node
-function onActionHover(t,name, data) {
+function onActionHover(t,name, data, json) {
 
   // if data in description the use it
-  cleanName = data.split(" - ")[0];
-   if (description.find(d=> d.name == cleanName) !== undefined)
-       data = description.find(d=> d.name == cleanName).desc;     
+  if (json.description.find(d=> d.name == name) !== undefined)
+       data =json.description.find(d=> d.name == name).desc;     
 
   //Create text with listing links from data
   var decsArray = data.split("|");

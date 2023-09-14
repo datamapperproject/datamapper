@@ -1,12 +1,16 @@
 // Draw all links beatween nodes
 
-function drawAllLinks() {
+function drawAllLinks(json) {
 
+  var proms = json.proms.filter(function(d) {
+    return d.column == 0;
+  });
+  var nextProms = json.proms.filter(function(d) {
+    return d.column == 3;
+  });
   // itirate throght each proms and draw line to all next proms
   for (var i = 0; i < proms.length; i++) {
-    var nextProms = proms.filter(function(d) {
-      return d.column == proms[i].column + 1;
-    });
+
     for (var j = 0; j < nextProms.length; j++) {
       var link = {
         desc: proms[i].desc + "<br>" + nextProms[j].desc,
@@ -17,49 +21,53 @@ function drawAllLinks() {
         sn: proms[i].name,
         tn: nextProms[j].name,
         count : 1,
-        color : "grey"
+        color : "transparent"
       };
       allLinksArray.push(link);
     }
     //create link for all
-    if(proms[i].column == 0)
-    {
-       var link = {
-         desc: description.find(d=> d.name == proms[i].name + "Axis").desc,
-         sx: proms[i].column * pageWidth * layoutSetup[1].w / 5 -50,
-         sy: proms[i].action * pageHeight * layoutSetup[1].h / 7,
-         tx: proms[i].column * pageWidth * layoutSetup[1].w / 5 -35,
-         ty: proms[i].action * pageHeight * layoutSetup[1].h / 7,
-         sn: proms[i].name,
-         tn: proms[i].name,
-         count : 1,
-         color : "grey"
-       };
-       allLinksArray.push(link);
-    }
+    // if(json.proms[i].column == 0)
+    // {
+    //    var link = {
+    //      desc: json.description.find(d=> d.name == json.proms[i].name + "Axis").desc,
+    //      sx: json.proms[i].column * pageWidth * layoutSetup[1].w / 5 -50,
+    //      sy: json.proms[i].action * pageHeight * layoutSetup[1].h / 7,
+    //      tx: json.proms[i].column * pageWidth * layoutSetup[1].w / 5 -35,
+    //      ty: json.proms[i].action * pageHeight * layoutSetup[1].h / 7,
+    //      sn: json.proms[i].name,
+    //      tn: json.proms[i].name,
+    //      count : 1,
+    //      color : "grey"
+    //    };
+    //    allLinksArray.push(link);
+    // }
   }
   // Draw all links
-  linksBackground=  linksGroup.selectAll("line").data(allLinksArray).enter()
+  linksBackground=  linksGroup.selectAll("line")
+  .data(allLinksArray)
+  .enter()
   .append("line")
+  .classed("bgLink", true)
   .attr("x1", d=> pageWidth * layoutSetup[1].x + d.sx + 70)
   .attr("y1", d=> pageHeight * layoutSetup[1].y + d.sy  + 70)
   .attr("x2", d=> pageWidth * layoutSetup[1].x + d.tx  + 70 )
   .attr("y2", d=> pageHeight * layoutSetup[1].y + d.ty  + 70)
   .style("stroke", d => d.color)
   .style("stroke-width", d => d.count)
-  .style("opacity", 0.5)
+  .style("opacity", 1)
   .attr("z-index", 0)
-  .on("mouseover", function(d) { d3.select(this).style("stroke", "black");onLinkHover(this,d);})
-  .on("mouseout", function(d) { d3.select(this).style("stroke", d=>d.color);onLinkHoverOut(this,d);})
+  .on("mouseover", function(d) { d3.select(this).style("stroke-width", d => d.count*5);onLinkHover(this,d);})
+  .on("mouseout", function(d) { d3.select(this).style("stroke-width", d => d.count);onLinkHoverOut(this,d);})
+
   ;
 }
 
 
 //create node  as circle for each element in array with d3
-function drawNodes() {
-
+function drawNodes(json) {
+  console.log(json);
   nodes = group.append("g").selectAll("ellipse")
-    .data(proms)
+    .data(json.proms)
     .enter()
     .append("ellipse")
     .attr("rx", function(d){return  27})
@@ -75,11 +83,11 @@ function drawNodes() {
     .style("stroke-width", function(d) {return d.active ? 0.7: 0.5;})
     .attr("z-index", 100)
     .attr("pointer-events", "fill")
-    .on("click", function(d) {  onActionClick(this,d);}) 
+    .on("click", function(d) {  onActionClick(this,d, json);}) 
   // change color of node to grey when mouse is over
     .on("mouseover", function(d) {
       d3.select(this).style("fill", "lightgrey");
-      onActionHover(this,d.name, d.desc);
+      onActionHover(this,d.name, d.desc, json);
     })
     .on("mouseout", function(d) {
       d3.select(this).style("fill", "white");
@@ -90,14 +98,14 @@ function drawNodes() {
     //Add sub nodes for count
   
     for (var i = 0; i < colorArray.length; i++) {
-      for(var j = 0; j < proms.length; j++) {
+      for(var j = 0; j < json.proms.length; j++) {
         var object = { 
           group: i, 
           count: 0, 
           x: 0,
-          column: proms[j].column, 
-          action: proms[j].action,
-          name: proms[j].name
+          column: json.proms[j].column, 
+          action: json.proms[j].action,
+          name: json.proms[j].name
         };
         subNodesArray.push(object)
       }
@@ -124,7 +132,7 @@ function drawNodes() {
   
   // add labels to each nodes
   labels = group.append("g").selectAll("text")
-    .data(proms)
+    .data(json.proms)
     .enter()
     .append("text")
     .attr("x", function(d) {
@@ -141,12 +149,12 @@ function drawNodes() {
     .attr("vertical-align", "middle")
     .attr("z-index", 0)
     .attr("pointer-events", "none")
-    .on("click", function(d) {  onActionClick(this,d);}) 
+    .on("click", function(d) {  onActionClick(this,d, json);}) 
     .call(wrap, 2);
     ;
 
     group.append("g").append("g").selectAll("foreignObject")
-    .data(proms)
+    .data(json.proms)
     .enter()
     .append("foreignObject")
     .classed("big", true)
@@ -169,7 +177,7 @@ function drawNodes() {
     ;
 
     group.append("g").append("g").selectAll("foreignObject")
-    .data(proms)
+    .data(json.proms)
     .enter()
     .append("foreignObject")
     .classed("small", true)
@@ -253,7 +261,7 @@ function createLayout() {
 
 
 
-function crateTools(data, x, clearUnfixed)
+function crateTools(data, x, clearUnfixed, json)
 {
     // remove all unfixed nodes
     if(clearUnfixed)
@@ -273,7 +281,7 @@ function crateTools(data, x, clearUnfixed)
     .attr("id", d=> d.name)
     .attr("transform", d=> "translate(" + [d.x, d.y] + ")")
     .attr("z-index", 10)
-    .on("mouseover", d=> onActionHover(this, d.name, d.name +" - some description"))
+    .on("mouseover", d=> onActionHover(this, d.name, d.name, json))
     .on("mouseout", d=> onActionHoverOut(this,d))
     .call(onDragHandle ())
     ;
