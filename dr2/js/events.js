@@ -1,8 +1,16 @@
 // Handle click on node
+var sentence = [-1,-1,-1,-1];
 function onActionClick(t,data, json) {
 
-  //Hide description
+  //Hide description with the new action
   onClosePanel();
+  var isFirst = sentence.every(function(d) { return d== -1; });
+
+  sentence[data.column] = data.action;
+  updateInteraction(json);
+  // deactivate nodes with column index which is true in sentence array
+
+
   //Update sub nodes (record of previous clicks)
   subNodesArray.forEach( (d, i) => {
     if( d.group === currentGroup && d.column === data.column && d.action === data.action)
@@ -10,30 +18,66 @@ function onActionClick(t,data, json) {
   });
   updateSubNodes(data);
 
-  //Decide what to do depending on the state of the node
-  if(link === undefined) {
-    createLink (t);
-    reactivate(0,false);
-    reactivate(1,true);
-    crateTools(data, t.cx.baseVal.value,true,json);
-    //dnaUpdate(""); // reset DNA
-  } else if  ( data.column === 3){
-    updateLink (t);
-    reactivate(3, false);
-    crateTools(data, t.cx.baseVal.value, false,json);
-  } else {
-    updateLink (t);
-    createLink (t);
-    reactivate(data.column,false);
-    reactivate(data.column +1,true);
-    crateTools(data, t.cx.baseVal.value, false,json);
-  }
-  // Update DNA
-  //-dnaUpdate( data.name);
-  if(data != undefined && data.column === 3)
-    reactivate(0,true);
+//Check if all elements in sentence array are not -1
 
-  hightlightLinks(data,json);
+console.log(isFirst);
+crateTools(data, t.cx.baseVal.value, isFirst ,json);
+
+  if(sentence.every(function(d) { return d > -1; }))
+   {
+     sentence = [-1,-1,-1,-1];
+     updateInteraction();
+     updateLink (t);
+
+  } else {
+    createLink (t);
+   
+  }
+
+
+  //Decide what to do depending on the state of the nod
+  // if(link === undefined) {
+  //   createLink (t);
+  //   reactivate(0,false);
+  //   reactivate(1,true);
+  //   crateTools(data, t.cx.baseVal.value,true,json);
+  //   //dnaUpdate(""); // reset DNA
+  // } else if  ( data.column === 3){
+  //   updateLink (t);
+  //   reactivate(3, false);
+  //   crateTools(data, t.cx.baseVal.value, false,json);
+  // } else {
+  //   updateLink (t);
+  //   createLink (t);
+  //   reactivate(data.column,false);
+  //   reactivate(data.column +1,true);
+  //   crateTools(data, t.cx.baseVal.value, false,json);
+  // }
+  // Update DNA
+  // if(data != undefined && data.column === 3)
+  //   reactivate(0,true);
+
+  //?hightlightLinks(data,json);
+}
+
+function updateInteraction(json)
+{
+  nodes
+  .style("stroke", function(d) {
+    return sentence[d.column] >= 0 && sentence[d.column] != d.action?
+    "lightgrey": "black";
+  })
+  .on ("click", function(d) {
+     return sentence[d.column] >= 0 ? 
+     null: onActionClick(this,d, json) ;
+  })
+  ;
+  labels
+  .style("fill", function(d) {
+    return sentence[d.column] >= 0 && sentence[d.column] != d.action?
+    "lightgrey": "black";
+  })
+  ;
 }
 
 function hightlightLinks(data,json)
@@ -68,18 +112,18 @@ function hightlightLinks(data,json)
 }
 
 // update node active status base on order of sentence 
-function reactivate(c, t){
-  nodes
-  .filter(function(d) {
-    return d.column === c;
-  })
-  .style("stroke-width", t ? 0.7 : 0.5)
-  .data()
-  .forEach(function(d) {
-    d.active = t;
-  })
-  ;
-}
+// function reactivate(c, t){
+//   nodes
+//   .filter(function(d) {
+//     return d.column === c;
+//   })
+//   .style("stroke-width", t ? 0.7 : 0.5)
+//   .data()
+//   .forEach(function(d) {
+//     d.active = t;
+//   })
+//   ;
+// }
 
 // Handle hover on node
 function onActionHover(t,name, data, json) {
@@ -169,22 +213,29 @@ function onLinkHoverOut() {
 
 // Update the link position base on mouse move
 document.onmousemove = function(e){
+  coor = getLinkCoor(e.pageX, e.pageY);
   if(link === undefined) return;
+ 
 
-  // get group transform attribute
-  var string = group.attr("transform");
-  if (string === null) 
-    string = "translate(0,0) scale(1)";
-  var ts = string.split(" ");
-  translate = ts[0].substring(ts[0].indexOf("(")+1, ts[0].indexOf(")")).split(",");
-  scale = ts[1].substring(ts[1].indexOf("scale(")+6, ts[1].indexOf(")")).split(",");
-
-  // get cursor position relative to group
-  cursorX = (e.pageX - parseFloat(translate[0])) * 1/scale;
-  cursorY = (e.pageY - parseFloat(translate[1])) * 1/scale;
   // update the link position
-  link.attr("x2", cursorX)
-      .attr("y2", cursorY);
+  link.attr("x2", coor.x)
+      .attr("y2", coor.y);
+}
+
+function getLinkCoor(x,y)
+{
+    // get group transform attribute
+    var string = group.attr("transform");
+    if (string === null) 
+      string = "translate(0,0) scale(1)";
+    var ts = string.split(" ");
+    translate = ts[0].substring(ts[0].indexOf("(")+1, ts[0].indexOf(")")).split(",");
+    scale = ts[1].substring(ts[1].indexOf("scale(")+6, ts[1].indexOf(")")).split(",");
+  
+    // get cursor position relative to group
+    cursorX = (x- parseFloat(translate[0])) * 1/scale;
+    cursorY = (y - parseFloat(translate[1])) * 1/scale;
+    return {x:cursorX -5, y:cursorY-5};
 }
 
 function onShowHistory()
@@ -204,7 +255,7 @@ function onShowHistory()
   });
 
  // update all linksGroup with new color
- console.log(linksGroup);
+
  allLinksArray.forEach( (d, i) => {
    historyData.forEach( (h, i) => {
       if(h.name.includes(d.sn) && h.name.includes(d.tn))

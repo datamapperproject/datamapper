@@ -47,6 +47,7 @@ var hoverPanel = document.getElementById("hoverPanel");
 var hoverContent = document.getElementById("hoverContent");
 var nodes;
 var labels
+var coor;
 
 // add force in d3 v4
 const simulation = d3.forceSimulation()
@@ -54,6 +55,7 @@ const simulation = d3.forceSimulation()
 .force("x", d3.forceX().strength(0.1))
 .force("y", d3.forceY())
 .on("tick", ticked);
+
 var linktemp = group.append('g');
 
 fetch("data/content.json")
@@ -74,8 +76,7 @@ function onLoad (json)
 
 // create dummy reference for each action
 
-function ticked() {
-}
+
 svg.call(zoom.on("zoom", function() {
   group.attr("transform", d3.event.transform);
   onZoom();

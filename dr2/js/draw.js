@@ -42,7 +42,7 @@ function drawAllLinks(json) {
     //    allLinksArray.push(link);
     // }
   }
-  // Draw all links
+  // // Draw all links
   linksBackground=  linksGroup.selectAll("line")
   .data(allLinksArray)
   .enter()
@@ -59,7 +59,7 @@ function drawAllLinks(json) {
   .on("mouseover", function(d) { d3.select(this).style("stroke-width", d => d.count*5);onLinkHover(this,d);})
   .on("mouseout", function(d) { d3.select(this).style("stroke-width", d => d.count);onLinkHoverOut(this,d);})
 
-  ;
+  // ;
 }
 
 
@@ -224,9 +224,11 @@ function updateSubLinks(data) {
 
 // Handle creation of the link between nodes
 function createLink (t) {
+  // get current mouse position
+
   link = linktemp.append("line")
-  .attr("x1", t.cx.baseVal.value)
-  .attr("y1", t.cy.baseVal.value)
+  .attr("x1", coor.x)
+  .attr("y1", coor.y)
   .attr("x2", t.cx.baseVal.value)
   .attr("y2", t.cy.baseVal.value)
   .attr("stroke-width",1)
@@ -239,8 +241,10 @@ function createLink (t) {
 
 // Handle update of the link between nodes
 function updateLink (t) {
-  link.attr("x2", t.cx.baseVal.value)
-      .attr("y2", t.cy.baseVal.value); 
+  if (link == undefined) return;
+  
+  // link.attr("x2", t.cx.baseVal.value)
+  //     .attr("y2", t.cy.baseVal.value ); 
   link = undefined;
 }
 
@@ -340,8 +344,10 @@ function crateTools(data, x, clearUnfixed, json)
     ;
   })
   ;
-  
- 
+ }
+
+ function ticked() {
+
  }
 
  
