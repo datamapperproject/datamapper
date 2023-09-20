@@ -1,348 +1,415 @@
 {
-    "proms" : [
-       {
-        "name": "sense", 
-        "type": "verb", 
-        "column": 0, 
-        "action":0, 
-        "active" : true, 
-        "links" : ["sence1.jpg", "link B", "story A", "case A"]
-       },
-       {
-        "name": "lifeworlds", 
-        "type": "subject", 
-        "column":1, 
-        "action":0, 
-        "active" : false, 
-        "links" : ["case A","sence2.jpg"]
-       },
-       {
-        "name": "to describe", 
-        "type":"verb2", 
-        "column":2, 
-        "action":0, 
-        "active" : false, 
-        "links" : ["link B"]
-       },
-       {
-        "name": "needs & aspirations", 
-        "type":"object", 
-        "column":3, 
-        "action":0 , 
-        "active" :false, 
-        "links" : ["case A","Tool A"]
-       },
-       {
-        "name": "formulate", 
-        "type": "verb", 
-        "column": 0, 
-        "action":1, 
-        "active" : true, 
-        "links" : ["case C"]
-       },
-       {
-        "name": "concepts", 
-        "type": "subject", 
-        "column":1, 
-        "action":1, 
-        "active" : false, 
-        "links" : ["link C"] 
-       },
-       {
-        "name": "to frame", 
-        "type":"verb2", 
-        "column":2, 
-        "action":1, 
-        "active" : false, 
-        "links" : ["link D"]
-       },
-       {
-        "name": "problems", 
-        "type":"object", 
-        "column":3, 
-        "action":1, 
-        "active" : false , 
-        "links" : ["story D", "Tool A"]
-       },
-       {
-        "name": "gather", 
-        "type": "verb", 
-        "column": 0, 
-        "action":2, 
-        "active" : true, 
-        "links" : ["gather.jpg","urscape"]
-       },
-       {
-        "name": "data", 
-        "type": "subject", 
-        "column":1, 
-        "action":2, 
-        "active" : false, 
-        "links" : ["urscape.jpg","imagine.jpg"]
-       },
-       {
-        "name": "to analyse", 
-        "type":"verb2", 
-        "column":2, 
-        "action":2, 
-        "active" : false, 
-        "links" : ["link F", "story B"]
-       },
-       {
-        "name": "limits", 
-        "type":"object", 
-        "column":3, 
-        "action":2, 
-        "active" : false , 
-        "links" : ["story B", "data.jpg"]
-       },
-       {
-        "name": "imagine", 
-        "type": "verb", 
-        "column": 0, 
-        "action":3, 
-        "active" : true, 
-        "links" : ["imagine2.jpg","link G"]
-       },
-       {
-        "name": "potentials", 
-        "type": "subject", 
-        "column":1, 
-        "action":3, 
-        "active" : false, 
-        "links" : ["link G"] 
-       },
-       {
-        "name": "to create", 
-        "type":"verb2", 
-        "column":2, 
-        "action":3, 
-        "active" : false, 
-        "links" : ["link B", "story C"] 
-       },
-       {
-        "name": "ideas", 
-        "type":"object", 
-        "column":3, 
-        "action":3 , 
-        "active" : false, 
-        "links" : ["story C", "link A"] 
-       },
-       {
-        "name": "craft", 
-        "type": "verb", 
-        "column": 0, 
-        "action":4, 
-        "active" : true, 
-        "links" : ["capacity.jpg", "craft.jpg"] 
-       },
-       {
-        "name": "cases", 
-        "type": "subject", 
-        "column":1, 
-        "action":4, 
-        "active" : false, 
-        "links" : ["link H"] 
-       },
-       {
-        "name": "to evaluate", 
-        "type":"verb2", 
-        "column":2, 
-        "action":4, 
-        "active" : false, 
-        "links" : ["link D", "story D"]
-       },
-       {
-        "name": "solutions", 
-        "type":"object", 
-        "column":3 , 
-        "action":4, 
-        "active" : false, 
-        "links" : ["story A", "case A","Tool A"]
-       },
-       {
-        "name": "empower", 
-        "type": "verb", 
-        "column": 0, 
-        "action":5, 
-        "active" : true, 
-        "links" : ["enpower.jpg","enpower2.jpg", "epower1.jpg"] 
-       },
-       {
-        "name": "participants", 
-        "type": "subject", 
-        "column":1, 
-        "action":5, 
-        "active" : false, 
-        "links" : ["participants.jpg"] 
-       },
-       {
-        "name": "to negotiate", 
-        "type":"verb2", 
-        "column":2, 
-        "action":5, 
-        "active" : false, 
-        "links" : ["negotatiate.jpg", "participants.jpg"] 
-       },
-       {
-        "name": "projects", 
-        "type":"object", 
-        "column":3 , 
-        "action":5, 
-        "active" : false, 
-        "links" : ["story C", "story D"] 
-       }
-    ],
-
-    "description": 
-    [
+    "proms": [
         {
-            "name":"sense,lifeworlds,to describe,needs & aspirations", 
-            "desc":"<b>Sense life worlds to describe needs & aspirations </b> <br> Using senses as a tool for understanding cities involves immersing ourselves in their sensory experiences. By engaging with the sights, sounds, and even the tactile sensations of urban environments, we can discern their unique rhythms, cultures, and dynamics.<br> <img src='data/img1.jpg' width='100%' height='auto'> </img> <br>This sensory-driven approach deepens our connection to cities, unveiling layers of meaning that go beyond conventional analyses. <br> Lifeworld refers to the subjective and experiential reality of individuals within their immediate living environment. In the context of livable spaces, lifeworld encompasses the personal perceptions, emotions, and interactions that individuals have with their surroundings. It includes how people interpret and make sense of their environment, the routines and rituals they engage in, and the emotional connections they develop with the spaces they inhabit. Understanding lifeworld is crucial for creating truly livable spaces that cater to the holistic needs and well-being of the people who inhabit them. <br> To describe n refers to the process of articulating and detailing the various sensory, experiential, and perceptual aspects of the environment. This involves using language to convey the visual, auditory, tactile, and even emotional qualities of a place, capturing its unique character, ambiance, and the feelings it evokes. describing livable spaces enables individuals to share their perspectives, insights, and personal connections, contributing to a richer and more comprehensive understanding of the environment's impact on human experience. needs & aspirations is important because it helps us to understand the needs and aspirations of people who inhabit the spaces we design. This allows us to create environments that not only fulfill basic needs but also foster a sense of fulfillment, belonging, and personal development."
+            "name": "sense",
+            "type": "verb",
+            "column": 0,
+            "action": 0,
+            "active": true,
+            "links": [
+                "sence1.jpg",
+                "link B",
+                "story A",
+                "case A"
+            ]
         },
         {
-            "name":"formulate,concepts,to frame,problems", 
-            "desc":"<b> Formulate concepts to frame problems </b> <br> <br> <b> Formulate </b> <br> Formulation is a way to understand <br> <br> <b> Concepts </b> <br> Concepts are the things we think <br> <br> <b> To frame </b> <br> Framing helps us to formulate"
+            "name": "lifeworlds",
+            "type": "subject",
+            "column": 1,
+            "action": 0,
+            "active": false,
+            "links": [
+                "case A",
+                "sence2.jpg"
+            ]
         },
         {
-            "name":"gather,data,to analyse,limits",
-            "desc":"<b> Gather data to analyse limits </b> <br> <br> <b> Gather </b> <br> Gathering put things together <br> <br> <b> Data </b> <br> Data is the things we know <br> <br> <b> To analyse </b> <br> Analysis gives us insights"
+            "name": "to describe",
+            "type": "verb2",
+            "column": 2,
+            "action": 0,
+            "active": false,
+            "links": [
+                "link B"
+            ]
         },
         {
-            "name":"imagine,potentials,to create,ideas", 
-            "desc":"<b> Imagine data to frame needs & aspirations </b> <br> <br> <b> Imagine </b> <br> Imagination gives us ideas <br> <br> <b> Data </b> <br> Data is the things we know <br> <br> <b> To frame </b> <br> Framing helps us to formulate"
+            "name": "needs & aspirations",
+            "type": "object",
+            "column": 3,
+            "action": 0,
+            "active": false,
+            "links": [
+                "case A",
+                "Tool A"
+            ]
         },
         {
-            "name":"craft,cases,to evaluate,solutions", 
-            "desc":"<b> Craft cases to create limits </b> <br> <br> <b> Craft </b> <br> Craft helps us to elevate our ideas <br> <br> <b> Cases </b> <br> Cases are the things we can do <br> <br> <b> To create </b> <br> Creation is process of making things"
+            "name": "formulate",
+            "type": "verb",
+            "column": 0,
+            "action": 1,
+            "active": true,
+            "links": [
+                "case C"
+            ]
         },
         {
-            "name":"empower,participants,to negotiate,projects", 
-            "desc":"<b> Empower participants to negotiate projects </b> <br> <br> <b> Empower </b> <br> Empowerment pushes others to do things <br> <br> <b> Participants </b> <br> Participants are the things we can do <br> <br> <b> To negotiate </b> <br> Negotiation is a way to find compromises"
+            "name": "concepts",
+            "type": "subject",
+            "column": 1,
+            "action": 1,
+            "active": false,
+            "links": [
+                "link C"
+            ]
         },
         {
-            "name":"sense,concept,to analyse,ideas", 
-            "desc":"<b> Sense concepts to analyse ideas </b> <br> <br> <b> We want to sense possible concepts because it helps us to analyse ideas </b> <br><img src='data/craft.jpg' width='100%' height='auto'> </img>  <br> <b> Sense </b> <br> Using senses as a tool for understanding cities involves immersing ourselves in their sensory experiences. By engaging with the sights, sounds, and even the tactile sensations of urban environments, we can discern their unique rhythms, cultures, and dynamics. This sensory-driven approach deepens our connection to cities, unveiling layers of meaning that go beyond conventional analyses. <br> <img src='data/img2.jpg' width='100%' height='auto'> </img> <br> <b> Concepts </b> <br> Concepts are the things we think <br> <br> <b> To analyse </b> <br> Analysis gives us insights"
+            "name": "to frame",
+            "type": "verb2",
+            "column": 2,
+            "action": 1,
+            "active": false,
+            "links": [
+                "link D"
+            ]
         },
         {
-            "name":"formulate,data,to create,solutions",
-            "desc":"<b> Formulate data to create solutions <br> <br> <b> descrption</b> "
+            "name": "problems",
+            "type": "object",
+            "column": 3,
+            "action": 1,
+            "active": false,
+            "links": [
+                "story D",
+                "Tool A"
+            ]
         },
         {
-            "name":"gather,potentials,to evaluate,project",
-            "desc":"<b> Gather potentials to evaluate project <br> <br> <b> descrption</b> "
+            "name": "gather",
+            "type": "verb",
+            "column": 0,
+            "action": 2,
+            "active": true,
+            "links": [
+                "gather.jpg",
+                "urscape"
+            ]
         },
         {
-            "name":"imagine,data,to frame,needs & aspirations",
-            "desc":"<b> Imagine data to frame needs & aspirations</b> <br> <br> <b> descrption</b> "
+            "name": "data",
+            "type": "subject",
+            "column": 1,
+            "action": 2,
+            "active": false,
+            "links": [
+                "urscape.jpg",
+                "imagine.jpg"
+            ]
         },
         {
-            "name":"craft,potentials,to analyse,problems",
-            "desc":"<b> Craft potentials to anaylse problems</b> <br> <br> <b> descrption</b> "
+            "name": "to analyse",
+            "type": "verb2",
+            "column": 2,
+            "action": 2,
+            "active": false,
+            "links": [
+                "link F",
+                "story B"
+            ]
         },
         {
-            "name":"empower,cases,to create,limits",
-            "desc":"<b>Empower cases to create limits</b> <br> <br> <b> descrption</b> "
+            "name": "limits",
+            "type": "object",
+            "column": 3,
+            "action": 2,
+            "active": false,
+            "links": [
+                "story B",
+                "data.jpg"
+            ]
         },
         {
-            "name":"sense", 
-            "desc":"<b> Sence </b> <br> <br> Using senses as a tool for understanding cities involves immersing ourselves in their sensory experiences. By engaging with the sights, sounds, and even the tactile sensations of urban environments, we can discern their unique rhythms, cultures, and dynamics. This sensory-driven approach deepens our connection to cities, unveiling layers of meaning that go beyond conventional analyses. <img src='data/img1.jpg' width='100%' height='auto'> </img>"
+            "name": "imagine",
+            "type": "verb",
+            "column": 0,
+            "action": 3,
+            "active": true,
+            "links": [
+                "imagine2.jpg",
+                "link G"
+            ]
         },
         {
-            "name":"lifeworlds", 
-            "desc":"<b> Lifeworlds </b> <br> <br> Lifeworld refers to the subjective and experiential reality of individuals within their immediate living environment. In the context of livable spaces, lifeworld encompasses the personal perceptions, emotions, and interactions that individuals have with their surroundings. It includes how people interpret and make sense of their environment, the routines and rituals they engage in, and the emotional connections they develop with the spaces they inhabit. Understanding lifeworld is crucial for creating truly livable spaces that cater to the holistic needs and well-being of the people who inhabit them."
+            "name": "potentials",
+            "type": "subject",
+            "column": 1,
+            "action": 3,
+            "active": false,
+            "links": [
+                "link G"
+            ]
         },
         {
-            "name":"to describe", 
-            "desc":"<b> To describe </b> <br> <br> To describe refers to the process of articulating and detailing the various sensory, experiential, and perceptual aspects of the environment. This involves using language to convey the visual, auditory, tactile, and even emotional qualities of a place, capturing its unique character, ambiance, and the feelings it evokes. Describing livable spaces enables individuals to share their perspectives, insights, and personal connections, contributing to a richer and more comprehensive understanding of the environment's impact on human experience."
+            "name": "to create",
+            "type": "verb2",
+            "column": 2,
+            "action": 3,
+            "active": false,
+            "links": [
+                "link B",
+                "story C"
+            ]
         },
         {
-            "name":"needs & aspirations", 
-            "desc":"<b> Needs & aspirations </b> <br> <br> Needs and aspirations refer to the essential requirements and desires that individuals have in relation to their lives and living environments.Needs: These are the fundamental necessities that individuals require for their well-being and survival. These can include things like shelter, clean water, food, safety, and access to basic services. In the context of livable spaces, understanding the needs of people helps in designing environments that meet their fundamental requirements, ensuring comfort and security.Aspirations: Aspirations are the higher-level goals, hopes, and desires that individuals strive to achieve. These can include factors like personal growth, social connections"
+            "name": "ideas",
+            "type": "object",
+            "column": 3,
+            "action": 3,
+            "active": false,
+            "links": [
+                "story C",
+                "link A"
+            ]
         },
         {
-            "name":"formulate", 
-            "desc":"<b> Formulate </b> <br> <br> Lifeworld refers to the subjective and experiential reality of individuals within their immediate living environment. In the context of livable spaces, lifeworld encompasses the personal perceptions, emotions, and interactions that individuals have with their surroundings. It includes how people interpret and make sense of their environment, the routines and rituals they engage in, and the emotional connections they develop with the spaces they inhabit. Understanding lifeworld is crucial for creating truly livable spaces that cater to the holistic needs and well-being of the people who inhabit them.<img src='data/img2 width='100%' height='auto'> </img>"
+            "name": "craft",
+            "type": "verb",
+            "column": 0,
+            "action": 4,
+            "active": true,
+            "links": [
+                "capacity.jpg",
+                "craft.jpg"
+            ]
         },
         {
-            "name":"concepts", 
-            "desc":"<b> Concepts </b> <br> <br> Concepts are the things we think"
-        },
-        {
-            "name":"to frame", 
-            "desc":"<b> To frame </b> <br> <br> Framing helps us to formulate"
-        },
-        {
-            "name":"problems",
-            "desc":"<b> Problems </b> <br> <br> Problems are the things we can solve"
-        },
-        {
-            "name":"gather", 
-            "desc":"<b> Gather </b> <br> <br> An action refers to the process of articulating and detailing the various sensory, experiential, and perceptual aspects of the environment. This involves using language to convey the visual, auditory, tactile, and even emotional qualities of a place, capturing its unique character, ambiance, and the feelings it evokes. Describing livable spaces enables individuals to share their perspectives, insights, and personal connections, contributing to a richer and more comprehensive understanding of the environment's impact on human experience."
-        },
-        {
-            "name":"data", 
-            "desc":"<b> Data </b> <br> <br> Data is the things we know"
-        },
-        {
-            "name":"to analyse",
-            "desc":"<b> To analyse </b> <br> <br> Analysis gives us insights"
-        },
-        {
-            "name":"limits",
-            "desc":"<b> Limits </b> <br> <br> Limits are the things we can't do"
-        },
-        {
-            "name":"imagine", 
-            "desc":"<b> Imagine </b> <br> <br> Needs and aspirations refer to the essential requirements and desires that individuals have in relation to their lives and living environments.Needs: These are the fundamental necessities that individuals require for their well-being and survival. These can include things like shelter, clean water, food, safety, and access to basic services. In the context of livable spaces, understanding the needs of people helps in designing environments that meet their fundamental requirements, ensuring comfort and security.Aspirations: Aspirations are the higher-level goals, hopes, and desires that individuals strive to achieve. These can include factors like personal growth, social connections, a sense of purpose, and opportunities for advancement. In terms of livable spaces, acknowledging people's aspirations allows for the creation of environments that not only fulfill basic needs but also foster a sense of fulfillment, belonging, and personal development.When designing cities and spaces, considering both the needs and aspirations of the people who will inhabit them is essential for creating environments that promote well-being, satisfaction, and a high quality of life."
-        },
-        {
-            "name":"potentials", 
-            "desc":"<b> Potentials </b> <br> <br> Potentials are the"
-        },
-        {
-            "name":"to create", 
-            "desc":"<b> To create </b> <br> <br> Creation is process of making things"
-        },
-        {
-            "name":"ideas", 
-            "desc":"<b> Ideas </b> <br> <br> Ideas are the things we can do"
-        },
-        {
-            "name":"craft", 
-            "desc":"<b> Craft </b> <br> <br> A case refers to a specific instance or example of a concept. In the context of livable spaces, a case can be a specific place, project, or initiative that embodies the concept of livability. For example, a case could be a park that is designed to meet the needs and aspirations of the people who use it. It could also be a community project that aims to improve the quality of life in a particular neighborhood. Cases are important because they provide concrete examples of how the concept of livability can be applied in practice. They can also serve as sources of inspiration and ideas for future projects."
-        },
-        {
-            "name":"cases", 
-            "desc":"<b> Cases </b> <br> <br> Cases are the things we can do"
+            "name": "cases",
+            "type": "subject",
+            "column": 1,
+            "action": 4,
+            "active": false,
+            "links": [
+                "link H"
+            ]
         },
         {
             "name": "to evaluate",
-            "desc":"<b> To evaluate </b> <br> <br> Evaluation is a way to understand"
+            "type": "verb2",
+            "column": 2,
+            "action": 4,
+            "active": false,
+            "links": [
+                "link D",
+                "story D"
+            ]
         },
         {
-            "name":"solutions", 
-            "desc":"<b> Solutions </b> <br> <br> Solutions are the things we can do"
+            "name": "solutions",
+            "type": "object",
+            "column": 3,
+            "action": 4,
+            "active": false,
+            "links": [
+                "story A",
+                "case A",
+                "Tool A"
+            ]
         },
         {
-            "name":"empower", 
-            "desc":"<b> Empower </b> <br> <br> Participants refer to the people who are involved in a project or initiative. In the context of livable spaces, participants can include designers, planners, architects, community members, and other stakeholders. Empowering participants is important because it allows them to take ownership of the project and contribute to its success. It also helps to build trust and foster collaboration between different stakeholders, leading to better outcomes for everyone involved."
+            "name": "empower",
+            "type": "verb",
+            "column": 0,
+            "action": 5,
+            "active": true,
+            "links": [
+                "enpower.jpg",
+                "enpower2.jpg",
+                "epower1.jpg"
+            ]
         },
         {
-            "name":"participants", 
-            "desc":"<b> Participants </b> <br> <br> Participants are the things we can do"
+            "name": "participants",
+            "type": "subject",
+            "column": 1,
+            "action": 5,
+            "active": false,
+            "links": [
+                "participants.jpg"
+            ]
         },
         {
-            "name":"to negotiate", 
-            "desc":"<b> To negotiate </b> <br> <br> Negotiation is a way to find compromises"
+            "name": "to negotiate",
+            "type": "verb2",
+            "column": 2,
+            "action": 5,
+            "active": false,
+            "links": [
+                "negotatiate.jpg",
+                "participants.jpg"
+            ]
         },
         {
-            "name":"projects",
-            "desc":"<b> Projects </b> <br> <br> Projects are the things we can do"
-        },
-        {
-            "name":"urscape.jpg", 
-            "desc":"<a href='https://ur-scape.sec.sg/en/home' target='_blank'> ur-scape </a>is a tool for creating and sharing interactive maps. It allows users to create custom maps and populate them with points of interest, images, and text. These maps can then be shared with others, allowing for collaborative exploration and discussion. Urscape is a useful tool for creating interactive maps that can be used to explore and discuss the sensory and experiential aspects of urban environments. It can be used to create maps that highlight the unique character and ambiance of a place, as well as the personal connections and experiences that people have with it. These maps can then be used to facilitate discussions about the sensory and experiential aspects of urban environments, allowing for a deeper understanding of their impact on human experience."
+            "name": "projects",
+            "type": "object",
+            "column": 3,
+            "action": 5,
+            "active": false,
+            "links": [
+                "story C",
+                "story D"
+            ]
         }
-      ]     
+    ],
+    "description": [
+        {
+            "name": "sense,lifeworlds,to describe,needs & aspirations",
+            "desc": "<b>Sense life worlds to describe needs & aspirations </b> <br> Using senses as a tool for understanding cities involves immersing ourselves in their sensory experiences. By engaging with the sights, sounds, and even the tactile sensations of urban environments, we can discern their unique rhythms, cultures, and dynamics.<br> <img src='data/img1.jpg' width='100%' height='auto'> </img> <br>This sensory-driven approach deepens our connection to cities, unveiling layers of meaning that go beyond conventional analyses. <br> Lifeworld refers to the subjective and experiential reality of individuals within their immediate living environment. In the context of livable spaces, lifeworld encompasses the personal perceptions, emotions, and interactions that individuals have with their surroundings. It includes how people interpret and make sense of their environment, the routines and rituals they engage in, and the emotional connections they develop with the spaces they inhabit. Understanding lifeworld is crucial for creating truly livable spaces that cater to the holistic needs and well-being of the people who inhabit them. <br> To describe n refers to the process of articulating and detailing the various sensory, experiential, and perceptual aspects of the environment. This involves using language to convey the visual, auditory, tactile, and even emotional qualities of a place, capturing its unique character, ambiance, and the feelings it evokes. describing livable spaces enables individuals to share their perspectives, insights, and personal connections, contributing to a richer and more comprehensive understanding of the environment's impact on human experience. needs & aspirations is important because it helps us to understand the needs and aspirations of people who inhabit the spaces we design. This allows us to create environments that not only fulfill basic needs but also foster a sense of fulfillment, belonging, and personal development."
+        },
+        {
+            "name": "formulate,concepts,to frame,problems",
+            "desc": "<b> Formulate concepts to frame problems </b> <br> <br> <b> Formulate </b> <br> Formulation is a way to understand <br> <br> <b> Concepts </b> <br> Concepts are the things we think <br> <br> <b> To frame </b> <br> Framing helps us to formulate"
+        },
+        {
+            "name": "gather,data,to analyse,limits",
+            "desc": "<b> Gather data to analyse limits </b> <br> <br> <b> Gather </b> <br> Gathering put things together <br> <br> <b> Data </b> <br> Data is the things we know <br> <br> <b> To analyse </b> <br> Analysis gives us insights"
+        },
+        {
+            "name": "imagine,potentials,to create,ideas",
+            "desc": "<b> Imagine data to frame needs & aspirations </b> <br> <br> <b> Imagine </b> <br> Imagination gives us ideas <br> <br> <b> Data </b> <br> Data is the things we know <br> <br> <b> To frame </b> <br> Framing helps us to formulate"
+        },
+        {
+            "name": "craft,cases,to evaluate,solutions",
+            "desc": "<b> Craft cases to create limits </b> <br> <br> <b> Craft </b> <br> Craft helps us to elevate our ideas <br> <br> <b> Cases </b> <br> Cases are the things we can do <br> <br> <b> To create </b> <br> Creation is process of making things"
+        },
+        {
+            "name": "empower,participants,to negotiate,projects",
+            "desc": "<b> Empower participants to negotiate projects </b> <br> <br> <b> Empower </b> <br> Empowerment pushes others to do things <br> <br> <b> Participants </b> <br> Participants are the things we can do <br> <br> <b> To negotiate </b> <br> Negotiation is a way to find compromises"
+        },
+        {
+            "name": "sense,concept,to analyse,ideas",
+            "desc": "<b> Sense concepts to analyse ideas </b> <br> <br> <b> We want to sense possible concepts because it helps us to analyse ideas </b> <br><img src='data/craft.jpg' width='100%' height='auto'> </img>  <br> <b> Sense </b> <br> Using senses as a tool for understanding cities involves immersing ourselves in their sensory experiences. By engaging with the sights, sounds, and even the tactile sensations of urban environments, we can discern their unique rhythms, cultures, and dynamics. This sensory-driven approach deepens our connection to cities, unveiling layers of meaning that go beyond conventional analyses. <br> <img src='data/img2.jpg' width='100%' height='auto'> </img> <br> <b> Concepts </b> <br> Concepts are the things we think <br> <br> <b> To analyse </b> <br> Analysis gives us insights"
+        },
+        {
+            "name": "formulate,data,to create,solutions",
+            "desc": "<b> Formulate data to create solutions <br> <br> <b> descrption</b> "
+        },
+        {
+            "name": "gather,potentials,to evaluate,project",
+            "desc": "<b> Gather potentials to evaluate project <br> <br> <b> descrption</b> "
+        },
+        {
+            "name": "imagine,data,to frame,needs & aspirations",
+            "desc": "<b> Imagine data to frame needs & aspirations</b> <br> <br> <b> descrption</b> "
+        },
+        {
+            "name": "craft,potentials,to analyse,problems",
+            "desc": "<b> Craft potentials to anaylse problems</b> <br> <br> <b> descrption</b> "
+        },
+        {
+            "name": "empower,cases,to create,limits",
+            "desc": "<b>Empower cases to create limits</b> <br> <br> <b> descrption</b> "
+        },
+        {
+            "name": "sense",
+            "desc": "<b> Sence </b> <br> <br> Using senses as a tool for understanding cities involves immersing ourselves in their sensory experiences. By engaging with the sights, sounds, and even the tactile sensations of urban environments, we can discern their unique rhythms, cultures, and dynamics. This sensory-driven approach deepens our connection to cities, unveiling layers of meaning that go beyond conventional analyses. <img src='data/img1.jpg' width='100%' height='auto'> </img>"
+        },
+        {
+            "name": "lifeworlds",
+            "desc": "<b> Lifeworlds </b> <br> <br> Lifeworld refers to the subjective and experiential reality of individuals within their immediate living environment. In the context of livable spaces, lifeworld encompasses the personal perceptions, emotions, and interactions that individuals have with their surroundings. It includes how people interpret and make sense of their environment, the routines and rituals they engage in, and the emotional connections they develop with the spaces they inhabit. Understanding lifeworld is crucial for creating truly livable spaces that cater to the holistic needs and well-being of the people who inhabit them."
+        },
+        {
+            "name": "to describe",
+            "desc": "<b> To describe </b> <br> <br> To describe refers to the process of articulating and detailing the various sensory, experiential, and perceptual aspects of the environment. This involves using language to convey the visual, auditory, tactile, and even emotional qualities of a place, capturing its unique character, ambiance, and the feelings it evokes. Describing livable spaces enables individuals to share their perspectives, insights, and personal connections, contributing to a richer and more comprehensive understanding of the environment's impact on human experience."
+        },
+        {
+            "name": "needs & aspirations",
+            "desc": "<b> Needs & aspirations </b> <br> <br> Needs and aspirations refer to the essential requirements and desires that individuals have in relation to their lives and living environments.Needs: These are the fundamental necessities that individuals require for their well-being and survival. These can include things like shelter, clean water, food, safety, and access to basic services. In the context of livable spaces, understanding the needs of people helps in designing environments that meet their fundamental requirements, ensuring comfort and security.Aspirations: Aspirations are the higher-level goals, hopes, and desires that individuals strive to achieve. These can include factors like personal growth, social connections"
+        },
+        {
+            "name": "formulate",
+            "desc": "<b> Formulate </b> <br> <br> Lifeworld refers to the subjective and experiential reality of individuals within their immediate living environment. In the context of livable spaces, lifeworld encompasses the personal perceptions, emotions, and interactions that individuals have with their surroundings. It includes how people interpret and make sense of their environment, the routines and rituals they engage in, and the emotional connections they develop with the spaces they inhabit. Understanding lifeworld is crucial for creating truly livable spaces that cater to the holistic needs and well-being of the people who inhabit them.<img src='data/img2 width='100%' height='auto'> </img>"
+        },
+        {
+            "name": "concepts",
+            "desc": "<b> Concepts </b> <br> <br> Concepts are the things we think"
+        },
+        {
+            "name": "to frame",
+            "desc": "<b> To frame </b> <br> <br> Framing helps us to formulate"
+        },
+        {
+            "name": "problems",
+            "desc": "<b> Problems </b> <br> <br> Problems are the things we can solve"
+        },
+        {
+            "name": "gather",
+            "desc": "<b> Gather </b> <br> <br> An action refers to the process of articulating and detailing the various sensory, experiential, and perceptual aspects of the environment. This involves using language to convey the visual, auditory, tactile, and even emotional qualities of a place, capturing its unique character, ambiance, and the feelings it evokes. Describing livable spaces enables individuals to share their perspectives, insights, and personal connections, contributing to a richer and more comprehensive understanding of the environment's impact on human experience."
+        },
+        {
+            "name": "data",
+            "desc": "<b> Data </b> <br> <br> Data is the things we know"
+        },
+        {
+            "name": "to analyse",
+            "desc": "<b> To analyse </b> <br> <br> Analysis gives us insights"
+        },
+        {
+            "name": "limits",
+            "desc": "<b> Limits </b> <br> <br> Limits are the things we can't do"
+        },
+        {
+            "name": "imagine",
+            "desc": "<b> Imagine </b> <br> <br> Needs and aspirations refer to the essential requirements and desires that individuals have in relation to their lives and living environments.Needs: These are the fundamental necessities that individuals require for their well-being and survival. These can include things like shelter, clean water, food, safety, and access to basic services. In the context of livable spaces, understanding the needs of people helps in designing environments that meet their fundamental requirements, ensuring comfort and security.Aspirations: Aspirations are the higher-level goals, hopes, and desires that individuals strive to achieve. These can include factors like personal growth, social connections, a sense of purpose, and opportunities for advancement. In terms of livable spaces, acknowledging people's aspirations allows for the creation of environments that not only fulfill basic needs but also foster a sense of fulfillment, belonging, and personal development.When designing cities and spaces, considering both the needs and aspirations of the people who will inhabit them is essential for creating environments that promote well-being, satisfaction, and a high quality of life."
+        },
+        {
+            "name": "potentials",
+            "desc": "<b> Potentials </b> <br> <br> Potentials are the"
+        },
+        {
+            "name": "to create",
+            "desc": "<b> To create </b> <br> <br> Creation is process of making things"
+        },
+        {
+            "name": "ideas",
+            "desc": "<b> Ideas </b> <br> <br> Ideas are the things we can do"
+        },
+        {
+            "name": "craft",
+            "desc": "<b> Craft </b> <br> <br> A case refers to a specific instance or example of a concept. In the context of livable spaces, a case can be a specific place, project, or initiative that embodies the concept of livability. For example, a case could be a park that is designed to meet the needs and aspirations of the people who use it. It could also be a community project that aims to improve the quality of life in a particular neighborhood. Cases are important because they provide concrete examples of how the concept of livability can be applied in practice. They can also serve as sources of inspiration and ideas for future projects."
+        },
+        {
+            "name": "cases",
+            "desc": "<b> Cases </b> <br> <br> Cases are the things we can do"
+        },
+        {
+            "name": "to evaluate",
+            "desc": "<b> To evaluate </b> <br> <br> Evaluation is a way to understand"
+        },
+        {
+            "name": "solutions",
+            "desc": "<b> Solutions </b> <br> <br> Solutions are the things we can do"
+        },
+        {
+            "name": "empower",
+            "desc": "<b> Empower </b> <br> <br> Participants refer to the people who are involved in a project or initiative. In the context of livable spaces, participants can include designers, planners, architects, community members, and other stakeholders. Empowering participants is important because it allows them to take ownership of the project and contribute to its success. It also helps to build trust and foster collaboration between different stakeholders, leading to better outcomes for everyone involved."
+        },
+        {
+            "name": "participants",
+            "desc": "<b> Participants </b> <br> <br> Participants are the things we can do"
+        },
+        {
+            "name": "to negotiate",
+            "desc": "<b> To negotiate </b> <br> <br> Negotiation is a way to find compromises"
+        },
+        {
+            "name": "projects",
+            "desc": "<b> Projects </b> <br> <br> Projects are the things we can do"
+        },
+        {
+            "name": "urscape.jpg",
+            "desc": "<a href='https://ur-scape.sec.sg/en/home' target='_blank'> ur-scape </a> is an open-source planning support tool specifically designed to assist towns, cities and regions experiencing rapid urbanisation. It addresses urgent and complex challenges that arise in such areas by harnessing the available geospatial data however diverse and varied in quality. By seamlessly combining different types, scales and sources of those data, ur-scape provides intuitive, interactive and reliable outputs that can be easily navigated and analysed in real-time."
+        }
+    ]
 }

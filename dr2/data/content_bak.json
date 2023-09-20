@@ -6,7 +6,12 @@
             "column": 0,
             "action": 0,
             "active": true,
-            "links": "['sence1.jpg', 'link B', 'story A', 'case A']"
+            "links": [
+                "sence1.jpg",
+                "link B",
+                "story A",
+                "case A"
+            ]
         },
         {
             "name": "lifeworlds",
@@ -14,7 +19,10 @@
             "column": 1,
             "action": 0,
             "active": false,
-            "links": "['case A', 'sence2.jpg']"
+            "links": [
+                "case A",
+                "sence2.jpg"
+            ]
         },
         {
             "name": "to describe",
@@ -22,7 +30,9 @@
             "column": 2,
             "action": 0,
             "active": false,
-            "links": "['link B']"
+            "links": [
+                "link B"
+            ]
         },
         {
             "name": "needs & aspirations",
@@ -30,7 +40,10 @@
             "column": 3,
             "action": 0,
             "active": false,
-            "links": "['case A', 'Tool A']"
+            "links": [
+                "case A",
+                "Tool A"
+            ]
         },
         {
             "name": "formulate",
@@ -38,7 +51,9 @@
             "column": 0,
             "action": 1,
             "active": true,
-            "links": "['case C']"
+            "links": [
+                "case C"
+            ]
         },
         {
             "name": "concepts",
@@ -46,7 +61,9 @@
             "column": 1,
             "action": 1,
             "active": false,
-            "links": "['link C']"
+            "links": [
+                "link C"
+            ]
         },
         {
             "name": "to frame",
@@ -54,7 +71,9 @@
             "column": 2,
             "action": 1,
             "active": false,
-            "links": "['link D']"
+            "links": [
+                "link D"
+            ]
         },
         {
             "name": "problems",
@@ -62,7 +81,10 @@
             "column": 3,
             "action": 1,
             "active": false,
-            "links": "['story D', 'Tool A']"
+            "links": [
+                "story D",
+                "Tool A"
+            ]
         },
         {
             "name": "gather",
@@ -70,7 +92,10 @@
             "column": 0,
             "action": 2,
             "active": true,
-            "links": "['gather.jpg', 'urscape']"
+            "links": [
+                "gather.jpg",
+                "urscape"
+            ]
         },
         {
             "name": "data",
@@ -78,7 +103,10 @@
             "column": 1,
             "action": 2,
             "active": false,
-            "links": "['urscape.jpg', 'imagine.jpg']"
+            "links": [
+                "urscape.jpg",
+                "imagine.jpg"
+            ]
         },
         {
             "name": "to analyse",
@@ -86,7 +114,10 @@
             "column": 2,
             "action": 2,
             "active": false,
-            "links": "['link F', 'story B']"
+            "links": [
+                "link F",
+                "story B"
+            ]
         },
         {
             "name": "limits",
@@ -94,7 +125,10 @@
             "column": 3,
             "action": 2,
             "active": false,
-            "links": "['story B', 'data.jpg']"
+            "links": [
+                "story B",
+                "data.jpg"
+            ]
         },
         {
             "name": "imagine",
@@ -102,7 +136,10 @@
             "column": 0,
             "action": 3,
             "active": true,
-            "links": "['imagine2.jpg', 'link G']"
+            "links": [
+                "imagine2.jpg",
+                "link G"
+            ]
         },
         {
             "name": "potentials",
@@ -110,7 +147,9 @@
             "column": 1,
             "action": 3,
             "active": false,
-            "links": "['link G']"
+            "links": [
+                "link G"
+            ]
         },
         {
             "name": "to create",
@@ -118,7 +157,10 @@
             "column": 2,
             "action": 3,
             "active": false,
-            "links": "['link B', 'story C']"
+            "links": [
+                "link B",
+                "story C"
+            ]
         },
         {
             "name": "ideas",
@@ -126,7 +168,10 @@
             "column": 3,
             "action": 3,
             "active": false,
-            "links": "['story C', 'link A']"
+            "links": [
+                "story C",
+                "link A"
+            ]
         },
         {
             "name": "craft",
@@ -134,7 +179,10 @@
             "column": 0,
             "action": 4,
             "active": true,
-            "links": "['capacity.jpg', 'craft.jpg']"
+            "links": [
+                "capacity.jpg",
+                "craft.jpg"
+            ]
         },
         {
             "name": "cases",
@@ -142,7 +190,9 @@
             "column": 1,
             "action": 4,
             "active": false,
-            "links": "['link H']"
+            "links": [
+                "link H"
+            ]
         },
         {
             "name": "to evaluate",
@@ -150,7 +200,10 @@
             "column": 2,
             "action": 4,
             "active": false,
-            "links": "['link D', 'story D']"
+            "links": [
+                "link D",
+                "story D"
+            ]
         },
         {
             "name": "solutions",
@@ -158,7 +211,11 @@
             "column": 3,
             "action": 4,
             "active": false,
-            "links": "['story A', 'case A', 'Tool A']"
+            "links": [
+                "story A",
+                "case A",
+                "Tool A"
+            ]
         },
         {
             "name": "empower",
@@ -166,7 +223,11 @@
             "column": 0,
             "action": 5,
             "active": true,
-            "links": "['enpower.jpg', 'enpower2.jpg', 'epower1.jpg']"
+            "links": [
+                "enpower.jpg",
+                "enpower2.jpg",
+                "epower1.jpg"
+            ]
         },
         {
             "name": "participants",
@@ -174,7 +235,9 @@
             "column": 1,
             "action": 5,
             "active": false,
-            "links": "['participants.jpg']"
+            "links": [
+                "participants.jpg"
+            ]
         },
         {
             "name": "to negotiate",
@@ -182,7 +245,10 @@
             "column": 2,
             "action": 5,
             "active": false,
-            "links": "['negotatiate.jpg', 'participants.jpg']"
+            "links": [
+                "negotatiate.jpg",
+                "participants.jpg"
+            ]
         },
         {
             "name": "projects",
@@ -190,7 +256,10 @@
             "column": 3,
             "action": 5,
             "active": false,
-            "links": "['story C', 'story D']"
+            "links": [
+                "story C",
+                "story D"
+            ]
         }
     ],
     "description": [
@@ -340,7 +409,7 @@
         },
         {
             "name": "urscape.jpg",
-            "desc": "<a href='https://ur-scape.sec.sg/en/home' target='_blank'> ur-scape </a> is an open-source planning support tool specifically designed to assist towns, cities and regions experiencing rapid urbanisation. It addresses urgent and complex challenges that arise in such areas by harnessing the available geospatial data however diverse and varied in quality. By seamlessly combining different types, scales and sources of those data, ur-scape provides intuitive, interactive and reliable outputs that can be easily navigated and analysed in real-time."
+            "desc": "<a href='https://ur-scape.sec.sg/en/home' target='_blank'> ur-scape </a>is a tool for creating and sharing interactive maps. It allows users to create custom maps and populate them with points of interest, images, and text. These maps can then be shared with others, allowing for collaborative exploration and discussion. Urscape is a useful tool for creating interactive maps that can be used to explore and discuss the sensory and experiential aspects of urban environments. It can be used to create maps that highlight the unique character and ambiance of a place, as well as the personal connections and experiences that people have with it. These maps can then be used to facilitate discussions about the sensory and experiential aspects of urban environments, allowing for a deeper understanding of their impact on human experience."
         }
     ]
 }
