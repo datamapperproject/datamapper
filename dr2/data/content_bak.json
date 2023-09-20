@@ -401,7 +401,7 @@
         {
             "Unnamed: 0": 36,
             "name": "urscape.jpg",
-            "desc": "<a href='https://ur-scape.sec.sg/en/home' target='_blank'> ur-scape </a>is an open-source planning support tool specifically designed to assist towns, cities and regions experiencing rapid urbanisation. It addresses urgent and complex challenges that arise in such areas by harnessing the available geospatial data however diverse and varied in quality. By seamlessly combining different types, scales and sources of those data, ur-scape provides intuitive, interactive and reliable outputs that can be easily navigated and analysed in real-time."
+            "desc": "<a href='https://ur-scape.sec.sg/en/home' target='_blank'> ur-scape </a>is a tool for creating and sharing interactive maps. It allows users to create custom maps and populate them with points of interest, images, and text. These maps can then be shared with others, allowing for collaborative exploration and discussion. Urscape is a useful tool for creating interactive maps that can be used to explore and discuss the sensory and experiential aspects of urban environments. It can be used to create maps that highlight the unique character and ambiance of a place, as well as the personal connections and experiences that people have with it. These maps can then be used to facilitate discussions about the sensory and experiential aspects of urban environments, allowing for a deeper understanding of their impact on human experience."
         }
     ]
 }
