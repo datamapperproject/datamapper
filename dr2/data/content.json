@@ -226,7 +226,8 @@
             "links": [
                 "enpower.jpg",
                 "enpower2.jpg",
-                "epower1.jpg"
+                "epower1.jpg",
+                "pudhu-vaazhvu.jpg"
             ]
         },
         {
@@ -410,6 +411,10 @@
         {
             "name": "urscape.jpg",
             "desc": "<a href='https://ur-scape.sec.sg/en/home' target='_blank'> ur-scape </a> is an open-source planning support tool specifically designed to assist towns, cities and regions experiencing rapid urbanisation. It addresses urgent and complex challenges that arise in such areas by harnessing the available geospatial data however diverse and varied in quality. By seamlessly combining different types, scales and sources of those data, ur-scape provides intuitive, interactive and reliable outputs that can be easily navigated and analysed in real-time."
+        },
+        {
+            "name": "pudhu-vaazhvu.jpg",
+            "desc": "<b>Pudhu Vaazhvu</b><br>An experiment in modernising village-level democracy using iPads, supported by the Social Observatory and the World Bank and focusing on gender mainstreaming."
         }
     ]
 }
