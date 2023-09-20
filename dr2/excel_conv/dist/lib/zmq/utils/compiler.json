@@ -1,0 +1,23 @@
+{
+  "libraries": [
+    "zmq"
+  ],
+  "include_dirs": [
+    "/Users/jvargas/anaconda3/envs/geospatial/include",
+    "zmq/utils"
+  ],
+  "library_dirs": [
+    "/Users/jvargas/anaconda3/envs/geospatial/lib"
+  ],
+  "runtime_library_dirs": [],
+  "extra_link_args": [
+    "-Wl,-rpath",
+    "-Wl,/Users/jvargas/anaconda3/envs/geospatial/lib"
+  ],
+  "define_macros": [
+    [
+      "HAVE_SYS_UN_H",
+      1
+    ]
+  ]
+}
