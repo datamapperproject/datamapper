@@ -89,7 +89,8 @@
             "action": 2,
             "active": true,
             "links": [
-                "test"
+                "test",
+                "ur-scape.jpg"
             ]
         },
         {
@@ -99,7 +100,10 @@
             "action": 2,
             "active": false,
             "links": [
-                "test"
+                "test",
+                "volunteered-geographic-information:-a-haiti-case-study.jpg",
+                "mobile-phone-data.jpg",
+                "mobile-phone-data.jpg"
             ]
         },
         {
@@ -109,7 +113,8 @@
             "action": 2,
             "active": false,
             "links": [
-                "test"
+                "test",
+                "gamified-traffic-simulation.jpg"
             ]
         },
         {
@@ -205,7 +210,9 @@
                 "road-pricing.jpg",
                 "community-gardens.jpg",
                 "bike-sharing.jpg",
-                "mass-transit.jpg"
+                "mass-transit.jpg",
+                "heritage-preservation.jpg",
+                "transit-oriented-development.jpg"
             ]
         },
         {
@@ -217,7 +224,8 @@
             "links": [
                 "test",
                 "pudhu-vaazhvu.jpg",
-                "participatory-budgeting---a-seoul-case-study.jpg"
+                "participatory-budgeting---a-seoul-case-study.jpg",
+                "turku-3d-model-survey.jpg"
             ]
         },
         {
@@ -444,6 +452,38 @@
         {
             "name": "mass-transit.jpg",
             "desc": "<b>Mass transit</b><br>Mass transit systems are transformative urban solutions that provide efficient, affordable, and sustainable transportation options for densely populated cities, even in challenging circumstances. One remarkable example comes from Bogot\u00e1, Colombia, which faced daunting traffic congestion and limited resources.\n\nBogot\u00e1 successfully implemented its Bus Rapid Transit (BRT) system, known as TransMilenio, to address these challenges. TransMilenio features dedicated bus lanes, stations with rapid boarding, and integrated fare collection. This system has significantly reduced congestion, improved air quality, and provided affordable transportation for millions of residents.\n\nDespite facing economic constraints common in developing countries, Bogot\u00e1's TransMilenio demonstrates that mass transit solutions can be both effective and resource-efficient. While adapting such systems to other urban areas, local factors such as population density, existing infrastructure, and public transportation habits should be considered. Successful implementation also requires strong leadership, community engagement, and ongoing maintenance to ensure that mass transit continues to benefit urban populations."
+        },
+        {
+            "name": "gamified-traffic-simulation.jpg",
+            "desc": "<b>Gamified traffic simulation</b><br>Norra Djurg\u00e5rdstaden is an area in central Stockholm that\u2019s currently undergoing substantial urban redevelopment. The Swedish Building Service, Svensk Byggtj\u00e4nst, has partnered with city officials and, with a focus on long-term sustainability, the on-going initiative plans to add 12,000 new homes and 35,000 workspaces to the region in a bid to offset its ever-increasing population. How does this relate to the world of videogames? City-building simulator Cities: Skylinesis at the forefront of the project.\n\nBy simulating real-life environments and scenarios in-game, Paradox and Colossal Order\u2019s city-builder is being used by real-world city planners to explore ways to support the needs of the new district\u2019s residents. \u201cNorra Djurg\u00e5rdstaden is seeking new ways of engaging people that are normally not involved in the discussions of the future of our city, and how to plan for its desired direction,\u201d says project director Staffan Lorentz. \u201cGames can be an entry port for a new group having a real say and having new ways of looking at things.\u201d"
+        },
+        {
+            "name": "ur-scape.jpg",
+            "desc": "<b>ur-scape</b><br>ur-scape is an open-source planning support tool specifically designed to assist towns, cities and regions experiencing rapid urbanisation. It addresses urgent and complex challenges that arise in such areas by harnessing the available geospatial data however diverse and varied in quality. By seamlessly combining different types, scales and sources of those data, ur-scape provides intuitive, interactive and reliable outputs that can be easily navigated and analysed in real-time."
+        },
+        {
+            "name": "heritage-preservation.jpg",
+            "desc": "<b>Heritage preservation</b><br>Heritage preservation is a crucial aspect of urban planning, dedicated to safeguarding and revitalizing culturally significant sites, buildings, and traditions that reflect a nation's history and identity. This practice plays a vital role in preserving a country's cultural heritage for future generations.\n\nIndia's efforts to preserve its rich cultural heritage offer a noteworthy example. The country has successfully conserved historic temples, palaces, and ancient cities like Jaipur through meticulous restoration and adaptive reuse. These efforts not only protect valuable heritage but also boost tourism and economic development.\n\nHowever, heritage preservation in the Global South often encounters unique challenges, including limited resources and rapid urbanization pressures. Adaptive strategies, such as repurposing heritage sites for community activities or small-scale tourism ventures, can be sustainable solutions.\n\nImplementing heritage preservation in Global South countries necessitates tailored approaches that consider local conditions, engage with communities, and find innovative ways to balance preservation with urban growth. Clear guidelines, partnerships with heritage organizations, and grassroots involvement are essential for preserving the cultural identity and heritage of these nations."
+        },
+        {
+            "name": "volunteered-geographic-information:-a-haiti-case-study.jpg",
+            "desc": "<b>Volunteered Geographic Information: a Haiti Case Study</b><br>In 2010, a disastrous earthquake hit Port-au-Prince in Haiti. At the time, humanitarian relief efforts were hampered by a lack of quality geospatial data on the city, even in commercial mapping platforms. Volunteers stepped up to map the city on OpenStreetMap, and an understanding of the city's road network, major landmarks, and crisis stress points emerged that enabled humanitarian teams to deliver significantly improved disaster relief. This is an example of how volunteered geographic information (VGI) can help in solving complex urban problems: by speeding up data acquisition while also bringing communities together and inspiring collective action and resilience."
+        },
+        {
+            "name": "transit-oriented-development.jpg",
+            "desc": "<b>Transit-Oriented Development</b><br>Transit-Oriented Development (TOD) is an urban planning concept that aims to create sustainable and connected communities by integrating various modes of transportation with retail and community centers. This approach focuses on reducing car dependency, promoting public transit use, and enhancing the overall urban living experience.\n\nAn illustrative case of TOD can be found in Jakarta, Indonesia. In response to the city's rapid urbanization and traffic congestion, Jakarta has embarked on ambitious TOD initiatives. By strategically placing commercial and residential developments around transit hubs like the Jakarta MRT and TransJakarta Bus Rapid Transit (BRT) system, the city has not only improved transportation access but also fostered vibrant, mixed-use neighborhoods.\n\nTOD projects like these in Jakarta have the potential to reduce traffic congestion, lower carbon emissions, and improve the quality of life for residents. They encourage people to rely less on private vehicles, promoting walking, cycling, and the use of public transportation for daily commuting and leisure activities.\n\nSuccessful TOD implementation depends on adapting the concept to local conditions and needs. Collaboration between government authorities, developers, and community stakeholders is essential to ensure that TOD initiatives align with the specific goals and characteristics of each urban area. By doing so, TOD can contribute to the creation of more sustainable, livable, and connected cities worldwide."
+        },
+        {
+            "name": "turku-3d-model-survey.jpg",
+            "desc": "<b>Turku 3D model survey</b><br>The University of Turku and the City of Turku in Finland collaborated on a pilot project that tested 3D participatory planning. Their research team created an engagement survey based on 3D maps. The public was asked to comment on the city planning project \u2014 the redevelopment plan of the Aninkainen district in Turku, which is one of the largest urban areas in Finland."
+        },
+        {
+            "name": "mobile-phone-data.jpg",
+            "desc": "<b>Mobile Phone Data</b><br>The integration of mobile phone geolocation, mobility, and survey data has emerged as a game-changer in urban planning, offering invaluable insights into urban dynamics and transforming the way cities are designed and managed. By analyzing geolocation data from mobile phones, urban planners gain real-time information about traffic patterns, population movements, and transportation infrastructure usage. This data can inform decisions related to traffic management, public transportation planning, and the optimization of urban infrastructure. For example, in Singapore, the government utilizes mobile phone data to monitor and improve public transportation services, reducing congestion and enhancing mobility. Additionally, survey data collected through mobile apps and platforms enable residents to contribute their preferences and feedback on urban development projects, fostering a more participatory and citizen-centric approach to urban planning. This integration of data sources empowers cities to make informed decisions, enhance livability, and create more sustainable and responsive urban environments."
+        },
+        {
+            "name": "mobile-phone-data.jpg",
+            "desc": "<b>Mobile Phone Data</b><br>The integration of mobile phone geolocation, mobility, and survey data has emerged as a game-changer in urban planning, offering invaluable insights into urban dynamics and transforming the way cities are designed and managed. By analyzing geolocation data from mobile phones, urban planners gain real-time information about traffic patterns, population movements, and transportation infrastructure usage. This data can inform decisions related to traffic management, public transportation planning, and the optimization of urban infrastructure. For example, in Singapore, the government utilizes mobile phone data to monitor and improve public transportation services, reducing congestion and enhancing mobility. Additionally, survey data collected through mobile apps and platforms enable residents to contribute their preferences and feedback on urban development projects, fostering a more participatory and citizen-centric approach to urban planning. This integration of data sources empowers cities to make informed decisions, enhance livability, and create more sustainable and responsive urban environments."
         }
     ]
 }
