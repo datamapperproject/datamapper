@@ -7,10 +7,7 @@
             "action": 0,
             "active": true,
             "links": [
-                "sence1.jpg",
-                "link B",
-                "story A",
-                "case A"
+                "test"
             ]
         },
         {
@@ -20,8 +17,7 @@
             "action": 0,
             "active": false,
             "links": [
-                "case A",
-                "sence2.jpg"
+                "test"
             ]
         },
         {
@@ -31,7 +27,7 @@
             "action": 0,
             "active": false,
             "links": [
-                "link B"
+                "test"
             ]
         },
         {
@@ -41,8 +37,7 @@
             "action": 0,
             "active": false,
             "links": [
-                "case A",
-                "Tool A"
+                "test"
             ]
         },
         {
@@ -52,7 +47,7 @@
             "action": 1,
             "active": true,
             "links": [
-                "case C"
+                "test"
             ]
         },
         {
@@ -62,7 +57,9 @@
             "action": 1,
             "active": false,
             "links": [
-                "link C"
+                "test",
+                "15-minute-city.jpg",
+                "regenerative-design.jpg"
             ]
         },
         {
@@ -72,7 +69,7 @@
             "action": 1,
             "active": false,
             "links": [
-                "link D"
+                "test"
             ]
         },
         {
@@ -82,8 +79,7 @@
             "action": 1,
             "active": false,
             "links": [
-                "story D",
-                "Tool A"
+                "test"
             ]
         },
         {
@@ -93,8 +89,7 @@
             "action": 2,
             "active": true,
             "links": [
-                "gather.jpg",
-                "urscape"
+                "test"
             ]
         },
         {
@@ -104,8 +99,7 @@
             "action": 2,
             "active": false,
             "links": [
-                "urscape.jpg",
-                "imagine.jpg"
+                "test"
             ]
         },
         {
@@ -115,8 +109,8 @@
             "action": 2,
             "active": false,
             "links": [
-                "link F",
-                "story B"
+                "test",
+                "gamified-traffic-simulation.jpg"
             ]
         },
         {
@@ -126,8 +120,7 @@
             "action": 2,
             "active": false,
             "links": [
-                "story B",
-                "data.jpg"
+                "test"
             ]
         },
         {
@@ -137,8 +130,9 @@
             "action": 3,
             "active": true,
             "links": [
-                "imagine2.jpg",
-                "link G"
+                "test",
+                "sugpat-youth-talks:-scale-models-for-participatory-imagining.jpg",
+                "lego-blocks-in-participatory-planning.jpg"
             ]
         },
         {
@@ -148,7 +142,7 @@
             "action": 3,
             "active": false,
             "links": [
-                "link G"
+                "test"
             ]
         },
         {
@@ -158,8 +152,7 @@
             "action": 3,
             "active": false,
             "links": [
-                "link B",
-                "story C"
+                "test"
             ]
         },
         {
@@ -169,8 +162,7 @@
             "action": 3,
             "active": false,
             "links": [
-                "story C",
-                "link A"
+                "test"
             ]
         },
         {
@@ -180,8 +172,7 @@
             "action": 4,
             "active": true,
             "links": [
-                "capacity.jpg",
-                "craft.jpg"
+                "test"
             ]
         },
         {
@@ -191,7 +182,7 @@
             "action": 4,
             "active": false,
             "links": [
-                "link H"
+                "test"
             ]
         },
         {
@@ -201,8 +192,7 @@
             "action": 4,
             "active": false,
             "links": [
-                "link D",
-                "story D"
+                "test"
             ]
         },
         {
@@ -212,9 +202,11 @@
             "action": 4,
             "active": false,
             "links": [
-                "story A",
-                "case A",
-                "Tool A"
+                "test",
+                "road-pricing.jpg",
+                "community-gardens.jpg",
+                "bike-sharing.jpg",
+                "mass-transit.jpg"
             ]
         },
         {
@@ -224,10 +216,9 @@
             "action": 5,
             "active": true,
             "links": [
-                "enpower.jpg",
-                "enpower2.jpg",
-                "epower1.jpg",
-                "pudhu-vaazhvu.jpg"
+                "test",
+                "pudhu-vaazhvu.jpg",
+                "participatory-budgeting---a-seoul-case-study.jpg"
             ]
         },
         {
@@ -237,7 +228,7 @@
             "action": 5,
             "active": false,
             "links": [
-                "participants.jpg"
+                "test"
             ]
         },
         {
@@ -247,8 +238,7 @@
             "action": 5,
             "active": false,
             "links": [
-                "negotatiate.jpg",
-                "participants.jpg"
+                "test"
             ]
         },
         {
@@ -258,8 +248,8 @@
             "action": 5,
             "active": false,
             "links": [
-                "story C",
-                "story D"
+                "test",
+                "chulalongkorn-university-centenary-park,-bangkok.jpg"
             ]
         }
     ],
@@ -415,6 +405,50 @@
         {
             "name": "pudhu-vaazhvu.jpg",
             "desc": "<b>Pudhu Vaazhvu</b><br>An experiment in modernising village-level democracy using iPads, supported by the Social Observatory and the World Bank and focusing on gender mainstreaming."
+        },
+        {
+            "name": "sugpat-youth-talks:-scale-models-for-participatory-imagining.jpg",
+            "desc": "<b>SUGPAT Youth Talks: Scale Models for Participatory Imagining</b><br>Armed with nothing but a handful of art materials, their creative spirits, and the hope for a safer Zamboanga, almost a hundred youth came together to re-imagine safe spaces in Asia\u2019s Latin City last August 17 at Palacio del Sur, Zamboanga City. \nIn line with the National Youth Commission\u2019s celebration of International Youth Day with the theme \u201cSafe Spaces for the Youth,\u201d miniature models of the ideal safe community were built by the youth as an output during \u201cSUGPAT Youth Talks #2: Creating Safe Spaces for the Youth.\u201d\nThis is the second iteration of the SUGPAT Youth Talks, a series of fora uniquely designed to discuss timely issues and programs, identify areas of convergence, and leverage resources for better outcomes for Filipino children and adolescents."
+        },
+        {
+            "name": "chulalongkorn-university-centenary-park,-bangkok.jpg",
+            "desc": "<b>Chulalongkorn University Centenary Park, Bangkok</b><br>Opened in 2017, Chulalongkorn Centenary Park is the first critical piece of green infrastructure in Bangkok to mitigate detrimental ecological issues and disaster risk reduction. Unlike other public parks around the city, this one is the first in Thailand to demonstrate how a park can help reduce urban flood risks and help city confronts climate change, all while offering city dwellers a place to reconnect with nature. Designed with various ecological design components, the park reminds the city of ways to live with water, rather than fear it."
+        },
+        {
+            "name": "15-minute-city.jpg",
+            "desc": "<b>15-Minute City</b><br>The \"15-Minute City\" is an urban planning concept that envisions cities designed to ensure that residents can access most of their daily needs and activities within a 15-minute walk or bike ride from their homes. This concept promotes compact, mixed-use neighborhoods with easy access to services, jobs, green spaces, and public transportation. The goal is to reduce dependence on cars, decrease traffic congestion, lower pollution, and improve overall urban livability by creating more self-sufficient and sustainable urban environments."
+        },
+        {
+            "name": "lego-blocks-in-participatory-planning.jpg",
+            "desc": "<b>LEGO blocks in participatory planning</b><br>The use of LEGO bricks in participatory urban planning, as demonstrated by Olafur Eliasson's LEGO town planning projects in Denmark and Albania, highlights the versatility and creativity these iconic building blocks bring to the field. This approach effectively engages communities in the collaborative design of urban spaces. By involving residents in the co-creation of their city's future, LEGO becomes a valuable tool for fostering a sense of ownership and pride in shaping more sustainable and vibrant urban environments."
+        },
+        {
+            "name": "road-pricing.jpg",
+            "desc": "<b>Road pricing</b><br>Road pricing has been shown to be an effective way to reduce congestion through making it more expensive to use cars. In road pricing, drivers are charged toll fees when they use specific roads. This aims to discourage driving unless absolutely necessary, and is usually used to regulate cars going into city centres or using high-end roads like expressways.\n\nOne notable example is Singapore\u2019s Electronic Road Pricing (ERP) system, which uses electronic gates to automatically charge drivers passing through, without needing drivers to slow down or queue to pay toll fees in cash.\n\nWhile road pricing has been shown to work in Singapore and London, it is not always an appropriate solution. There have to be alternative ways for people to get to their destinations; for example, Singapore has invested into public transportation so that people do not need to drive to move from their homes to their jobs in the city centre.\n\nThis might not be a good solution for cities that do not have the infrastructure to give people alternatives. It is also a hard policy to sell to voters, especially in countries that have a deep car culture. If a government is sure that they want to do road pricing, they must convince citizens that this is beneficial for them while also making the effort to mitigate negative outcomes such as lower-income workers being unable to access jobs.\n\nThis is why it is important to adapt all solutions, including road pricing, to the local context."
+        },
+        {
+            "name": "community-gardens.jpg",
+            "desc": "<b>Community gardens</b><br>Community gardens are a proven strategy for fostering sustainable urban living by transforming unused spaces into vibrant hubs of local food production and community engagement. In community gardens, residents collectively cultivate fruits, vegetables, and herbs, often on city-owned or communal land. These green pockets not only provide fresh, locally grown produce but also serve as spaces for social interaction and skill-sharing among community members.\n\nOne exemplary case is the \"P-Patch\" program in Seattle, Washington, which has successfully established over 50 community gardens throughout the city. These gardens have become essential components of neighborhood life, promoting urban sustainability while also offering a sense of belonging and community pride.\n\nHowever, the viability of community gardens can vary based on local factors. It's essential to ensure that adequate land is available for garden plots and that there's community interest and commitment to maintaining the gardens. Additionally, successful community garden initiatives often require ongoing support and education to help residents maximize their gardening potential.\n\nThis solution may not be universally suitable, especially in densely populated urban areas with limited available land. In such cases, vertical or rooftop gardening may be explored as alternatives. Moreover, cultural and demographic factors should be considered, as community gardening may not align with the preferences or traditions of all residents.\n\nTo effectively implement community gardens, local governments and community organizations should tailor their approaches to suit the specific needs and interests of the area. Building partnerships with local schools, businesses, and non-profits can help provide resources, education, and a sense of shared responsibility, ensuring that community gardens thrive and contribute positively to the local urban environment"
+        },
+        {
+            "name": "regenerative-design.jpg",
+            "desc": "<b>Regenerative Design</b><br>Regenerative design, as exemplified in the book \"Flourish\" by Sarah Ichioka and Michael Pawlyn, is a holistic and sustainable approach to design and architecture that seeks to create regenerative and thriving ecosystems. It goes beyond traditional sustainability by aiming to restore and enhance natural systems while meeting human needs. This approach emphasizes biomimicry, drawing inspiration from nature's designs and processes to develop innovative and environmentally-friendly solutions. Regenerative design not only minimizes negative impacts but actively contributes to the regeneration of ecosystems, fostering a harmonious relationship between human-made structures and the natural world."
+        },
+        {
+            "name": "participatory-budgeting---a-seoul-case-study.jpg",
+            "desc": "<b>Participatory Budgeting - a Seoul Case Study</b><br>Participatory budgeting in Seoul is a groundbreaking approach that empowers citizens to directly influence the allocation of public funds and resources in their city. Through this inclusive process, residents have the opportunity to propose, discuss, and prioritize various community projects and initiatives. Seoul's commitment to participatory budgeting reflects a strong desire for transparency, accountability, and citizen engagement in municipal decision-making. By involving residents in shaping the city's budget priorities, Seoul not only enhances civic participation but also fosters a sense of ownership and responsibility among its citizens, ultimately contributing to more responsive and community-driven urban development."
+        },
+        {
+            "name": "bike-sharing.jpg",
+            "desc": "<b>Bike-sharing</b><br>Bike-sharing programs are popular urban mobility solutions, providing sustainable transportation options while reducing traffic congestion and emissions. These programs offer short-term bicycle rentals through strategically placed docking stations, making them convenient for short trips and commutes.\n\nA notable case study is the Citi Bike program in New York City, one of the largest and most successful bike-sharing systems in the United States. Launched in 2013, Citi Bike has provided millions of residents and tourists with a flexible, eco-friendly mode of transportation. With thousands of bikes and hundreds of docking stations, it has become an integral part of New York City's transportation landscape, reducing reliance on cars and taxis.\n\nHowever, successful bike-sharing relies on factors like dedicated bike lanes, public awareness, and local infrastructure. It may not be suitable for all cities, depending on factors like topography and cultural preferences.\n\nTo implement bike-sharing effectively, cities should assess local conditions, infrastructure, and community interest to tailor the program to their unique needs and maximize its benefits."
+        },
+        {
+            "name": "mass-transit.jpg",
+            "desc": "<b>Mass transit</b><br>Mass transit systems are transformative urban solutions that provide efficient, affordable, and sustainable transportation options for densely populated cities, even in challenging circumstances. One remarkable example comes from Bogot\u00e1, Colombia, which faced daunting traffic congestion and limited resources.\n\nBogot\u00e1 successfully implemented its Bus Rapid Transit (BRT) system, known as TransMilenio, to address these challenges. TransMilenio features dedicated bus lanes, stations with rapid boarding, and integrated fare collection. This system has significantly reduced congestion, improved air quality, and provided affordable transportation for millions of residents.\n\nDespite facing economic constraints common in developing countries, Bogot\u00e1's TransMilenio demonstrates that mass transit solutions can be both effective and resource-efficient. While adapting such systems to other urban areas, local factors such as population density, existing infrastructure, and public transportation habits should be considered. Successful implementation also requires strong leadership, community engagement, and ongoing maintenance to ensure that mass transit continues to benefit urban populations."
+        },
+        {
+            "name": "gamified-traffic-simulation.jpg",
+            "desc": "<b>Gamified traffic simulation</b><br>Norra Djurg\u00e5rdstaden is an area in central Stockholm that\u2019s currently undergoing substantial urban redevelopment. The Swedish Building Service, Svensk Byggtj\u00e4nst, has partnered with city officials and, with a focus on long-term sustainability, the on-going initiative plans to add 12,000 new homes and 35,000 workspaces to the region in a bid to offset its ever-increasing population. How does this relate to the world of videogames? City-building simulator Cities: Skylinesis at the forefront of the project.\n\nBy simulating real-life environments and scenarios in-game, Paradox and Colossal Order\u2019s city-builder is being used by real-world city planners to explore ways to support the needs of the new district\u2019s residents. \u201cNorra Djurg\u00e5rdstaden is seeking new ways of engaging people that are normally not involved in the discussions of the future of our city, and how to plan for its desired direction,\u201d says project director Staffan Lorentz. \u201cGames can be an entry port for a new group having a real say and having new ways of looking at things.\u201d"
         }
     ]
 }
