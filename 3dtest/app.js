@@ -39,29 +39,53 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
 scene.add(camera);
 
 var boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-var basicMaterial = new THREE.MeshPhongMaterial({color: 0x005C53});
+var basicMaterial = new THREE.MeshPhongMaterial({color: 0xCCCCCC});
+// basic material chnge color to ligt grey
+
+
+const length = 12, width = 8;
+const shape = new THREE.Shape();
+shape.moveTo( 0,0 );
+shape.lineTo( 0, width );
+shape.lineTo( length/3, width );
+shape.lineTo( length/3, width + width/3 );
+shape.lineTo( length/3*2, width + width/3 );
+shape.lineTo( length/3*2, width );
+shape.lineTo( length, width );
+shape.lineTo( length, 0 );
+shape.lineTo( 0, 0 );
+const extrudeSettings = {
+	steps: 2,
+	depth: 16,
+	bevelEnabled: false,
+};
+
 // create cubes grid 20 x 20
-for (var i = -5; i < 5; i++) {
-  for (var j = -5; j < 5; j++) {
-    var cube = new THREE.Mesh(boxGeometry, basicMaterial);
+for (var i = -30; i < 30; i++) {
+  for (var j = -30; j < 30; j++) {
+    const geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
+    const cube = new THREE.Mesh( geometry, basicMaterial )    
+    cube.rotation.x = -Math.PI / 2;
     cube.position.x = i*10;
     cube.position.y = 0.5;
     cube.position.z = j*10;
-    cube.scale.x = 10-ga;
-    cube.scale.z = 10-ga;
-    cube.scale.y = gfa /(10-ga) ;
+    cube.scale.x = 0.5;
+    cube.scale.z = 0.5;
+    cube.scale.y = 0.5;
     cube.castShadow = true; //default is false
     scene.add(cube);
     cubes.push(cube);
   }
 }
 var greenMaterial = new THREE.MeshPhongMaterial({color: 0x9FC131});
+
+
 var cube = new THREE.Mesh(boxGeometry, greenMaterial );
 cube.position.x = -5;
 cube.position.y = -gfa /(10-ga)/2;
 cube.position.z = -5;
-cube.scale.x = 100;
-cube.scale.z = 100;
+cube.scale.x = 1000;
+cube.scale.z = 1000;
 cube.scale.y = 1 ;
 
 // add shadow
@@ -79,7 +103,7 @@ function render() {
 // make camera rotating around the scene
   camera.position.x = Math.cos(time) * 100;
   camera.position.z = Math.sin(time) * 100;
-  camera.position.y =  50;
+  camera.position.y =  30;
   camera.lookAt(0, -18, 0);
 
     requestAnimationFrame(render);
@@ -96,10 +120,10 @@ document.getElementById("gfa").addEventListener("input", function() {
  // itirate through cubes array
   for (var i = 0; i < cubes.length; i++) {
     // scale cubes
-    cube.position.y = -gfa /(10-ga)/2;
-    cubes[i].scale.x = size;
-    cubes[i].scale.z = size;
-    cubes[i].scale.y = height ;
+    cube.position.y = -gfa /(10-ga)/2 *0.1;
+    cubes[i].scale.x =  size*0.1;
+    cubes[i].scale.z =  height*0.1;
+    cubes[i].scale.y =size*0.1;
   }
 });
 document.getElementById("ga").addEventListener("input", function() { 
@@ -111,9 +135,9 @@ document.getElementById("ga").addEventListener("input", function() {
 
   for (var i = 0; i < cubes.length; i++) {
     // scale cubes
-    cube.position.y = -gfa /(10-ga)/2;
-    cubes[i].scale.x = size;
-    cubes[i].scale.z = size;
-    cubes[i].scale.y = height ;
+    cube.position.y = -gfa /(10-ga)/2*0.1;
+    cubes[i].scale.x = size*0.1;
+    cubes[i].scale.z = height *0.1;
+    cubes[i].scale.y =size *0.1 ;
   }
 });
