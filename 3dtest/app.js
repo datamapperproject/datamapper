@@ -1,7 +1,6 @@
 var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
 
-
 // import trhee.js
 import * as THREE from 'https://threejs.org/build/three.module.js';
 
