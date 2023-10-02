@@ -263,8 +263,6 @@ function createLayout() {
   }
 }
 
-
-
 function crateTools(data, x, clearUnfixed, json)
 {
     // remove all unfixed nodes

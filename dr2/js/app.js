@@ -48,6 +48,7 @@ var hoverContent = document.getElementById("hoverContent");
 var nodes;
 var labels
 var coor;
+var isBeginerMode = true;
 
 // add force in d3 v4
 const simulation = d3.forceSimulation()

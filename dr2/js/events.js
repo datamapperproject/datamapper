@@ -64,17 +64,27 @@ function updateInteraction(json)
 {
   nodes
   .style("stroke", function(d) {
-    return sentence[d.column] >= 0 && sentence[d.column] != d.action?
-    "lightgrey": "black";
+    if (isBeginerMode)
+       return sentence[d.column-1] == d.action || sentence[0] ==-1 ? "black": "lightgrey";
+    else 
+       return sentence[d.column] >= 0 && sentence[d.column] != d.action ?
+      "lightgrey": "black";
   })
   .on ("click", function(d) {
+    if (isBeginerMode)
+      return sentence[d.column-1] == d.action || sentence[0] ==-1?
+      onActionClick(this,d, json):null;
+    else
      return sentence[d.column] >= 0 ? 
      null: onActionClick(this,d, json) ;
   })
   ;
   labels
   .style("fill", function(d) {
-    return sentence[d.column] >= 0 && sentence[d.column] != d.action?
+    if (isBeginerMode)
+    return sentence[d.column-1] == d.action || sentence[0] ==-1 ? "black": "lightgrey";
+    else 
+    return sentence[d.column] >= 0 && sentence[d.column] != d.action ?
     "lightgrey": "black";
   })
   ;
@@ -419,4 +429,19 @@ function onZoom() {
     d3.selectAll(".big").classed("hidden", d3.event.transform.k  < 5 || d3.event.transform.k  > 20);
     d3.selectAll("text").classed("hidden", d3.event.transform.k  > 5);
     d3.selectAll(".small").classed("hidden", d3.event.transform.k < 20);
+}
+
+function onMode()
+{
+  //switch isBeginer mode
+  if(isBeginerMode)
+  {
+    isBeginerMode = false;
+     document.getElementById("modeButton").innerHTML = "Beginer Mode";
+  } else
+  {
+    isBeginerMode = true;
+    document.getElementById("modeButton").innerHTML = "Pro Mode";
+
+  }
 }
