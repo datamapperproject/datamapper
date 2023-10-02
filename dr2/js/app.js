@@ -49,6 +49,8 @@ var nodes;
 var labels
 var coor;
 var isBeginerMode = true;
+var sentence = [-1,-1,-1,-1];
+var json;
 
 // add force in d3 v4
 const simulation = d3.forceSimulation()
@@ -64,11 +66,13 @@ fetch("data/content.json")
 .then((json) => onLoad( json ));
 
 //Create layout
-function onLoad (json)
+function onLoad (thisJson)
 { 
+  json = json;
   createLayout();
-  drawNodes(json);
-  drawAllLinks(json);
+  drawNodes(thisJson);
+  drawAllLinks(thisJson);
+  updateInteraction(thisJson);
 }
 // create tools
 

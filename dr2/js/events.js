@@ -1,5 +1,5 @@
 // Handle click on node
-var sentence = [-1,-1,-1,-1];
+
 function onActionClick(t,data, json) {
 
   //Hide description with the new action
@@ -62,17 +62,18 @@ crateTools(data, t.cx.baseVal.value, isFirst ,json);
 
 function updateInteraction(json)
 {
+  console.log("update interaction" + isBeginerMode);
   nodes
   .style("stroke", function(d) {
     if (isBeginerMode)
-       return sentence[d.column-1] == d.action || sentence[0] ==-1 ? "black": "lightgrey";
+       return sentence[d.column-1] == d.action || (sentence[0] ==-1  && d.column == 0) ? "black": "lightgrey";
     else 
        return sentence[d.column] >= 0 && sentence[d.column] != d.action ?
       "lightgrey": "black";
   })
   .on ("click", function(d) {
     if (isBeginerMode)
-      return sentence[d.column-1] == d.action || sentence[0] ==-1?
+      return sentence[d.column-1] == d.action || (sentence[0] ==-1  && d.column == 0)?
       onActionClick(this,d, json):null;
     else
      return sentence[d.column] >= 0 ? 
@@ -82,7 +83,7 @@ function updateInteraction(json)
   labels
   .style("fill", function(d) {
     if (isBeginerMode)
-    return sentence[d.column-1] == d.action || sentence[0] ==-1 ? "black": "lightgrey";
+    return sentence[d.column-1] == d.action || (sentence[0] ==-1  && d.column == 0) ?"black": "lightgrey";
     else 
     return sentence[d.column] >= 0 && sentence[d.column] != d.action ?
     "lightgrey": "black";
@@ -444,4 +445,7 @@ function onMode()
     document.getElementById("modeButton").innerHTML = "Pro Mode";
 
   }
+  sentence = [-1,-1,-1,-1];
+  updateInteraction(json);
+
 }
