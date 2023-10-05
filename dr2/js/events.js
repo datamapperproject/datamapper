@@ -66,7 +66,7 @@ function updateInteraction(json)
   nodes
   .style("stroke", function(d) {
     if (isBeginerMode)
-       return sentence[d.column-1] == d.action || (sentence[0] ==-1  && d.column == 0) ? "black": "lightgrey";
+       return sentence[d.column-1]== d.action || (sentence[0] ==-1  && d.column == 0) ? "black": "lightgrey";
     else 
        return sentence[d.column] >= 0 && sentence[d.column] != d.action ?
       "lightgrey": "black";
@@ -246,17 +246,16 @@ function getLinkCoor(x,y)
     // get cursor position relative to group
     cursorX = (x- parseFloat(translate[0])) * 1/scale;
     cursorY = (y - parseFloat(translate[1])) * 1/scale;
-    return {x:cursorX -5, y:cursorY-5};
+    return {x:cursorX -5, y:cursorY-70};
 }
 
 function onShowHistory()
 {
-  console.log("show history");
+  var button = document.getElementById("historyButton");
+  button.innerHTML = useHistory > 0 ? "Show History" : "Hide History";
+
   useHistory = useHistory* -1;
-  // hide subnodes
-  // subNode.style("opacity", historyOpacity); 
-  // // hide links
-  // linktemp.selectAll("line").style("opacity", historyOpacity);
+
 
   subNodesArray.forEach( (d, i) => {
       historyData.forEach( (h, i) => {
@@ -272,7 +271,7 @@ function onShowHistory()
       if(h.name.includes(d.sn) && h.name.includes(d.tn))
       {
          d.count = d.count + 1*increase*useHistory;
-        d.color = useHistory >0 ?colorArray[h.user]:"grey";
+        d.color = useHistory >0 ?colorArray[h.user]:"white";
       }
     });
 });
@@ -301,11 +300,16 @@ function onShowHistory()
         }
       }
 
-      function groupChanged(value) {
-        groupColor = colorArray[value];
-        groupColorLight = colorArrayLight[value];
-        currentGroup = value;
-      }
+function groupChanged(value) {
+
+  groupColor = colorArray[value];
+  groupColorLight = colorArrayLight[value];
+  currentGroup = value;
+
+  // update color of dropbtn class style
+  var account = document.getElementById('account');
+  account.style.backgroundColor =  groupColor;
+}
       var dnaArray = [];
       var dnaNodes;
       var dnaLabels;
@@ -366,7 +370,8 @@ function onDrag(d,i)
 function onDragEnd(d,i) {
 
   //Check for overlap with other elemnts in New Group
-  var thisG = document.getElementById(d.name);
+  //console.log(d);
+  var thisG = document.getElementById(d.name + d.index + d.c);
   var thisTrans = thisG.getAttribute("transform");
   var tx = parseInt(thisTrans.substring(thisTrans.indexOf("(")+1, thisTrans.indexOf(")")).split(",")[0])
   var ax = parseInt(thisG.getElementsByTagName("rect")[0].getAttribute("x"));
@@ -386,7 +391,7 @@ function onDragEnd(d,i) {
         return;
 
     //Get d3 node by element id
-    var g = document.getElementById(e.name);
+    var g = document.getElementById(e.name+e.index+e.c);
     var test = g.getAttribute("transform");
     var x = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[0])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("x"));
     var y = parseInt(test.substring(test.indexOf("(")+1, test.indexOf(")")).split(",")[1])+parseInt(g.getElementsByTagName("rect")[0].getAttribute("y"));
@@ -398,12 +403,12 @@ function onDragEnd(d,i) {
         var newLink = LinkGroup.append("line")
         .classed("group-link", true)
         .attr("x1", x + 50)
-        .attr("y1", y + 25 )
+        .attr("y1", y  )
         .attr("x2", thisX + 50)
-        .attr("y2", thisY +25)
+        .attr("y2", thisY +45 )
         ;
 
-        linkArray.push({"link":newLink, "from":d.name, "to":e.name});
+        linkArray.push({"link":newLink, "from":d.name + d.index + d.c, "to":e.name + e.index + e.c});
     }
     }
   );
@@ -424,13 +429,13 @@ return d3.drag()
 }
 
 //When zoom change replace contatnt of nodes
-function onZoom() {
+// function onZoom() {
 
-    // select all labels and change font size
-    d3.selectAll(".big").classed("hidden", d3.event.transform.k  < 5 || d3.event.transform.k  > 20);
-    d3.selectAll("text").classed("hidden", d3.event.transform.k  > 5);
-    d3.selectAll(".small").classed("hidden", d3.event.transform.k < 20);
-}
+//     // select all labels and change font size
+//     d3.selectAll(".big").classed("hidden", d3.event.transform.k  < 5 || d3.event.transform.k  > 20);
+//     d3.selectAll("text").classed("hidden", d3.event.transform.k  > 5);
+//     d3.selectAll(".small").classed("hidden", d3.event.transform.k < 20);
+// }
 
 function onMode()
 {
@@ -438,11 +443,11 @@ function onMode()
   if(isBeginerMode)
   {
     isBeginerMode = false;
-     document.getElementById("modeButton").innerHTML = "Beginer Mode";
+     document.getElementById("modeButton").innerHTML = "Demo Mode";
   } else
   {
     isBeginerMode = true;
-    document.getElementById("modeButton").innerHTML = "Pro Mode";
+    document.getElementById("modeButton").innerHTML = "Full Mode";
 
   }
   sentence = [-1,-1,-1,-1];

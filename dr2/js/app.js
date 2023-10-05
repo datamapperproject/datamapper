@@ -76,17 +76,18 @@ function onLoad (thisJson)
 }
 // create tools
 
-
-
-
 // create dummy reference for each action
-
-
 svg.call(zoom.on("zoom", function() {
+
   group.attr("transform", d3.event.transform);
-  onZoom();
+  //onZoom();
 }
 ));
+
+//set default zoom bases on the width of the page
+var zoomLevel = pageWidth/17;
+zoom.scaleTo(svg, zoomLevel);
+//zoom.translateBy(svg, pageWidth/2, pageHeight/2);
 
 function wrap(text, width) {
   text.each(function () {
@@ -124,7 +125,8 @@ function wrap(text, width) {
 function updateGroups()
 {
   linkArray.forEach(function(d){
-    var from = d.from;
+
+    var from = d.from ;
     var to = d.to;
     var link =d.link;
 

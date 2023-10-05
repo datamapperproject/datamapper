@@ -12,10 +12,10 @@ var historyData = [
 
 layoutSetup = [
   {x: 0, y: 0,w : 0, h : 0}, // header
-  {x: 0, y: 10,w : 40, h : 70},  //actions
+  {x: 10, y: 10,w : 40, h : 70},  //actions
   {x: 0, y: 80,w : 100, h : 20}, //dna
-  {x: 60, y: 0,w : 0, h : 0}, //tools
-  {x: 40, y: 10,w : 60, h : 70}, //arena
+  {x: 50, y: 0,w : 0, h : 0}, //tools
+  {x: 35, y: 10,w : 60, h : 70}, //arena
   {x: 70, y: 0,w : 0, h : 70} //right
 ];
 

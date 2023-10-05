@@ -7,20 +7,21 @@
     
 </head>
 <body>
-
-
+ <div class="header">
+  <img src="ui/logo.png" class ="logo">
   <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Change user group</button>
+    <img onclick="myFunction()" class="dropbtn" id = "account" src="ui/account.png" width="42px" height ="42px">
     <div id="myDropdown" class="dropdown-content">
-      <a onclick="groupChanged(0)" >HoffenCity</a>
+      <a onclick="groupChanged(0)">HoffenCity</a>
       <a onclick="groupChanged(1)">Pallembang</a>
       <a onclick="groupChanged(2)">Makasar</a>
       <a onclick="groupChanged(3)">Bandung</a>
     </div>
   </div>
-<button onclick="onShowHistory()" class ="dropbtn history">Show history</button>
-<button onclick="onMode()" class ="dropbtn pro" id ="modeButton">PRO Mode</button>
+<button onclick="onShowHistory()" class ="button history" id="historyButton">Show history</button>
+<button onclick="onMode()" class ="button pro" id ="modeButton">Full Mode</button>
 
+</div>
 
   <script src="//d3js.org/d3.v4.min.js"></script>
 
@@ -30,7 +31,7 @@
     <script src="js/app.js"></script>
 
     <div class="hover-div none" id ="hoverPanel">
-      <img src="ui/ux.png" onclick="onClosePanel()" class ="dropbtn close"  width='20px' height='20px'> </img>
+      <img src="ui/ux.png" onclick="onClosePanel()" class ="button close"  width='20px' height='20px'> </img>
       <div class="hover-content" id ="hoverContent">
 
       </div>

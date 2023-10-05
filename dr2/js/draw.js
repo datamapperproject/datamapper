@@ -86,11 +86,11 @@ function drawNodes(json) {
     .on("click", function(d) {  onActionClick(this,d, json);}) 
   // change color of node to grey when mouse is over
     .on("mouseover", function(d) {
-      d3.select(this).style("fill", "lightgrey");
+      d3.select(this).style("stroke-width", "2px");
       onActionHover(this,d.name, d.desc, json);
     })
     .on("mouseout", function(d) {
-      d3.select(this).style("fill", "white");
+      d3.select(this).style("stroke-width", "1px");
       onActionHoverOut(this,d);
     })
     ;
@@ -139,7 +139,7 @@ function drawNodes(json) {
       return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +70 ;
     })
     .attr("y", function(d) {
-      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 55 - d.name.split("&").length * 5+7;   
+      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7  + 55 - d.name.split(" ").length * 6+12;   
     })
     .text(d=> d.name)
     .attr("font-family", "helvetica")
@@ -153,51 +153,51 @@ function drawNodes(json) {
     .call(wrap, 2);
     ;
 
-    group.append("g").append("g").selectAll("foreignObject")
-    .data(json.proms)
-    .enter()
-    .append("foreignObject")
-    .classed("big", true)
-    .classed("hidden", true)
-    .attr("width",35)
-    .attr("height",35)
-    .attr("x", function(d) {
-      return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +52 ;
-    })
-    .attr("y", function(d) {
-      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7 +52;   
-    })
-    .append("xhtml:div")
-    .style("font", "2px 'Helvetica Neue'")
-    .style("color", "black")
-    .attr("max-height",35)
-    .style("display", "block")
-    .style("overflow-y", "auto")
-    .html(d=>d.desc)
-    ;
+    // group.append("g").append("g").selectAll("foreignObject")
+    // .data(json.proms)
+    // .enter()
+    // .append("foreignObject")
+    // .classed("big", true)
+    // .classed("hidden", false)
+    // .attr("width",35)
+    // .attr("height",35)
+    // .attr("x", function(d) {
+    //   return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +52 ;
+    // })
+    // .attr("y", function(d) {
+    //   return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7 +52;   
+    // })
+    // .append("xhtml:div")
+    // .style("font", "2px 'Helvetica Neue'")
+    // .style("color", "black")
+    // .attr("max-height",35)
+    // .style("display", "block")
+    // .style("overflow-y", "auto")
+    // .html(d=>d.name)
+    // ;
 
-    group.append("g").append("g").selectAll("foreignObject")
-    .data(json.proms)
-    .enter()
-    .append("foreignObject")
-    .classed("small", true)
-    .classed("hidden", true)
-    .attr("width",35)
-    .attr("height",35)
-    .attr("x", function(d) {
-      return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +52 ;
-    })
-    .attr("y", function(d) {
-      return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7 +52;   
-    })
-    .append("xhtml:div")
-    .style("font", "1px 'Helvetica Neue'")
-    .style("color", "black")
-    .attr("max-height",35)
-    .style("display", "block")
-    .style("overflow-y", "auto")
-    .html(d=>d.desc)
-    ;
+    // group.append("g").append("g").selectAll("foreignObject")
+    // .data(json.proms)
+    // .enter()
+    // .append("foreignObject")
+    // .classed("small", true)
+    // .classed("hidden", true)
+    // .attr("width",35)
+    // .attr("height",35)
+    // .attr("x", function(d) {
+    //   return pageWidth * layoutSetup[1].x +  d.column *pageWidth * layoutSetup[1].w/5 +52 ;
+    // })
+    // .attr("y", function(d) {
+    //   return pageHeight * layoutSetup[1].y +  d.action*pageHeight * layoutSetup[1].h/7 +52;   
+    // })
+    // .append("xhtml:div")
+    // .style("font", "1px 'Helvetica Neue'")
+    // .style("color", "black")
+    // .attr("max-height",35)
+    // .style("display", "block")
+    // .style("overflow-y", "auto")
+    // .html(d=>d.desc)
+    // ;
   
   }
 
@@ -273,14 +273,14 @@ function crateTools(data, x, clearUnfixed, json)
     }
     // update arena array
     data.links.map(function(d, i) {
-      arenaArray.push( {name: d, index: i, x: 0, y:0, fixed: false});
+      arenaArray.push( {name: d, index: i, x: 0, y:0, fixed: false, c : x});
     });
  
   //create new nodes
   tools = arenaGroup .selectAll("rect")
     .data(arenaArray)
     .enter().append("g")
-    .attr("id", d=> d.name)
+    .attr("id", d=> d.name + d.index + d.c) 
     .attr("transform", d=> "translate(" + [d.x, d.y] + ")")
     .attr("z-index", 10)
     .on("mouseover", d=> onActionHover(this, d.name, d.name, json))
@@ -290,9 +290,9 @@ function crateTools(data, x, clearUnfixed, json)
 
   // create rect for each element in array with d  
   tools.append("rect")
-    .attr("width", pageWidth*10)
-     .attr("height" ,pageWidth*5)
-     .attr("x", d=> layoutSetup[4].x * pageWidth- 50 + x*1.4 ) 
+    .attr("width", 100)
+     .attr("height" ,50)
+     .attr("x", d=> layoutSetup[4].x * pageWidth- 50 + x*1.2 ) 
      .attr("y", d=> layoutSetup[4].y * pageHeight+ 20+  80 * d.index ) 
      .style("fill", d=> d.name.includes(".jpg")?"transparent":"white")
      .style("stroke", d=> d.name.includes(".jpg")?"transparent":"black")
@@ -302,14 +302,14 @@ function crateTools(data, x, clearUnfixed, json)
   // add image to new group
   tools.append("svg:image")
     .attr("xlink:href",d=> d.name.includes("jpg")?"data/" +d.name:"")
-    .attr("width", pageWidth*10)
-    .attr("height" ,pageWidth*5)
-    .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.4 ) 
+    .attr("width", 100)
+    //.attr("height" ,pageWidth*5)
+    .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.2 ) 
     .attr("y", d=>layoutSetup[4].y * pageHeight+ 20+ 75 * d.index ) 
     ;
   // add text to rect as child
   tools.append("text")
-    .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.4 )
+    .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.2 )
     .attr("y", d=> layoutSetup[4].y * pageHeight+ 20+  75 * d.index )
     .attr("font-size", "12px")
     .attr("dy", "25")
@@ -330,7 +330,7 @@ function crateTools(data, x, clearUnfixed, json)
   .attr("width", 15)
   .attr("height" ,15)
   .attr("z-index", 100)
-  .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.4 )
+  .attr("x", d=>layoutSetup[4].x * pageWidth- 50 + x*1.2 )
   .attr("y", d=> layoutSetup[4].y * pageHeight+ 20+  75 * d.index -13 )
   .on("click", function(d) {
 
