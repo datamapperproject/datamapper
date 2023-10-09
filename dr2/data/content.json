@@ -84,7 +84,7 @@
             ]
         },
         {
-            "name": "gather",
+            "name": "analyse",
             "type": "verb",
             "column": 0,
             "action": 2,
@@ -106,7 +106,7 @@
             ]
         },
         {
-            "name": "to analyse",
+            "name": "to test",
             "type": "verb2",
             "column": 2,
             "action": 2,
@@ -189,7 +189,7 @@
             ]
         },
         {
-            "name": "to evaluate",
+            "name": "to adapt",
             "type": "verb2",
             "column": 2,
             "action": 4,
@@ -269,15 +269,15 @@
             "desc": "<b> Formulate concepts to frame problems </b> <br> <br> <b> Formulate </b> <br> Formulation is a way to understand <br> <br> <b> Concepts </b> <br> Concepts are the things we think <br> <br> <b> To frame </b> <br> Framing helps us to formulate"
         },
         {
-            "name": "gather,data,to analyse,limits",
-            "desc": "<b> Gather data to analyse limits </b> <br> <br> <b> Gather </b> <br> Gathering put things together <br> <br> <b> Data </b> <br> Data is the things we know <br> <br> <b> To analyse </b> <br> Analysis gives us insights"
+            "name": "analyse,data,to test,limits",
+            "desc": "<b> Analyse data to test limits </b> <br> <br> <b> Analyse </b> <br> Analysing put things together <br> <br> <b> Data </b> <br> Data is the things we know <br> <br> <b> To teste </b> <br> Tests gives us insights"
         },
         {
             "name": "imagine,potentials,to create,ideas",
             "desc": "<b> Imagine data to frame needs & aspirations </b> <br> <br> <b> Imagine </b> <br> Imagination gives us ideas <br> <br> <b> Data </b> <br> Data is the things we know <br> <br> <b> To frame </b> <br> Framing helps us to formulate"
         },
         {
-            "name": "craft,cases,to evaluate,solutions",
+            "name": "craft,cases,to adapt,solutions",
             "desc": "<b> Craft cases to create limits </b> <br> <br> <b> Craft </b> <br> Craft helps us to elevate our ideas <br> <br> <b> Cases </b> <br> Cases are the things we can do <br> <br> <b> To create </b> <br> Creation is process of making things"
         },
         {
@@ -285,23 +285,23 @@
             "desc": "<b> Empower participants to negotiate projects </b> <br> <br> <b> Empower </b> <br> Empowerment pushes others to do things <br> <br> <b> Participants </b> <br> Participants are the things we can do <br> <br> <b> To negotiate </b> <br> Negotiation is a way to find compromises"
         },
         {
-            "name": "sense,concept,to analyse,ideas",
-            "desc": "<b> Sense concepts to analyse ideas </b> <br> <br> <b> We want to sense possible concepts because it helps us to analyse ideas </b> <br><img src='data/craft.jpg' width='100%' height='auto'> </img>  <br> <b> Sense </b> <br> Using senses as a tool for understanding cities involves immersing ourselves in their sensory experiences. By engaging with the sights, sounds, and even the tactile sensations of urban environments, we can discern their unique rhythms, cultures, and dynamics. This sensory-driven approach deepens our connection to cities, unveiling layers of meaning that go beyond conventional analyses. <br> <img src='data/img2.jpg' width='100%' height='auto'> </img> <br> <b> Concepts </b> <br> Concepts are the things we think <br> <br> <b> To analyse </b> <br> Analysis gives us insights"
+            "name": "sense,concept,to test,ideas",
+            "desc": "<b> Sense concepts to test ideas </b> <br> <br> <b> We want to sense possible concepts because it helps us to test ideas </b> <br><img src='data/craft.jpg' width='100%' height='auto'> </img>  <br> <b> Sense </b> <br> Using senses as a tool for understanding cities involves immersing ourselves in their sensory experiences. By engaging with the sights, sounds, and even the tactile sensations of urban environments, we can discern their unique rhythms, cultures, and dynamics. This sensory-driven approach deepens our connection to cities, unveiling layers of meaning that go beyond conventional analyses. <br> <img src='data/img2.jpg' width='100%' height='auto'> </img> <br> <b> Concepts </b> <br> Concepts are the things we think <br> <br> <b> To test </b> <br> Analysis gives us insights"
         },
         {
             "name": "formulate,data,to create,solutions",
             "desc": "<b> Formulate data to create solutions <br> <br> <b> descrption</b> "
         },
         {
-            "name": "gather,potentials,to evaluate,project",
-            "desc": "<b> Gather potentials to evaluate project <br> <br> <b> descrption</b> "
+            "name": "analyse,potentials,to adapt,project",
+            "desc": "<b> Analyse potentials to adapt project <br> <br> <b> descrption</b> "
         },
         {
             "name": "imagine,data,to frame,needs & aspirations",
             "desc": "<b> Imagine data to frame needs & aspirations</b> <br> <br> <b> descrption</b> "
         },
         {
-            "name": "craft,potentials,to analyse,problems",
+            "name": "craft,potentials,to test,problems",
             "desc": "<b> Craft potentials to anaylse problems</b> <br> <br> <b> descrption</b> "
         },
         {
@@ -341,16 +341,16 @@
             "desc": "<b> Problems </b> <br> <br> Problems are the things we can solve"
         },
         {
-            "name": "gather",
-            "desc": "<b> Gather </b> <br> <br> An action refers to the process of articulating and detailing the various sensory, experiential, and perceptual aspects of the environment. This involves using language to convey the visual, auditory, tactile, and even emotional qualities of a place, capturing its unique character, ambiance, and the feelings it evokes. Describing livable spaces enables individuals to share their perspectives, insights, and personal connections, contributing to a richer and more comprehensive understanding of the environment's impact on human experience."
+            "name": "analyse",
+            "desc": "<b> Analyse </b> <br> <br> An action refers to the process of articulating and detailing the various sensory, experiential, and perceptual aspects of the environment. This involves using language to convey the visual, auditory, tactile, and even emotional qualities of a place, capturing its unique character, ambiance, and the feelings it evokes. Describing livable spaces enables individuals to share their perspectives, insights, and personal connections, contributing to a richer and more comprehensive understanding of the environment's impact on human experience."
         },
         {
             "name": "data",
             "desc": "<b> Data </b> <br> <br> Data is the things we know"
         },
         {
-            "name": "to analyse",
-            "desc": "<b> To analyse </b> <br> <br> Analysis gives us insights"
+            "name": "to test",
+            "desc": "<b> To test </b> <br> <br> Test gives us insights"
         },
         {
             "name": "limits",
@@ -381,8 +381,8 @@
             "desc": "<b> Cases </b> <br> <br> Cases are the things we can do"
         },
         {
-            "name": "to evaluate",
-            "desc": "<b> To evaluate </b> <br> <br> Evaluation is a way to understand"
+            "name": "to adapt",
+            "desc": "<b> To adapt </b> <br> <br> Evaluation is a way to understand"
         },
         {
             "name": "solutions",
