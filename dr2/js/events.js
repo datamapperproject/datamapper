@@ -246,7 +246,8 @@ function getLinkCoor(x,y)
     // get cursor position relative to group
     cursorX = (x- parseFloat(translate[0])) * 1/scale;
     cursorY = (y - parseFloat(translate[1])) * 1/scale;
-    return {x:cursorX -5, y:cursorY-70};
+    var adjust = 150 - pageHeight*8;
+    return {x:cursorX -5, y:cursorY-adjust};
 }
 
 function onShowHistory()
