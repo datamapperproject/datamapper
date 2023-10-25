@@ -1,0 +1,675 @@
+{
+ "name": "root",
+ "level": 0,
+ "fixed": true,
+ "row": 1.5,
+ "col": 2.5,
+ "text" :  "root",
+ "children": [
+  {
+   "name": "sence", 
+   "level": 1,
+   "fixed": true,
+   "row": 0,
+   "col": 0,
+   "text" :  "Sense",
+   "review": "In our project we tried to sense how people dance",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"Sence Case A <img src='data/img1.jpg'> </img>", 
+     "review": "This is a review of the sense Case A",
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "Maybe not only image"
+      },
+      {
+         "name": "Case A 2" , 
+         "level": 3, 
+         "text" : "Case A2<img src='data/img3.jpg'> </img>"
+      }
+     ]
+    },
+    {
+      "name": "Case B",
+      "level": 2,
+      "text" : 	"Sence B <img src='data/img4.jpg'> </img>", 
+      "review": "This is a review of the sense Case B",
+      "children": [
+       {
+          "name": "Case B 1" , 
+          "level": 3, 
+          "text" : "Some text here"
+       },
+       {
+          "name": "Case B 2" , 
+          "level": 3, 
+          "text" : "CaseB2 <img src='data/img6.jpg'> </img>"
+       },
+       {
+          "name": "Case B 3" , 
+          "level": 3, 
+          "text" : "CaseB3 <img src='data/img7.jpg'> </img>"
+       }
+      ]
+     }
+   ]
+  },
+  {
+   "name": "lifeworlds",
+   "level": 1,
+   "fixed": true,
+   "row": 1,
+   "col": 0,
+   "text" :  "Lifeworlds",
+   "review": "This is a review of the lifeworlds",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"Lifeworld A <img src='data/img8.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "This has more<img src='data/img9.jpg'> </img>",
+         "children": [
+            {
+               "name": "Case A 1" , 
+               "level": 4, 
+               "text" : "Some detailed text"
+            },
+            {
+               "name": "Case A 2" , 
+               "level": 4, 
+               "text" : "Very down to sensing"
+            }
+           ]
+      },
+      {
+         "name": "Case A 2" , 
+         "level": 3, 
+         "text" : "<img src='data/img10.jpg'> </img>"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "to describe",
+   "level": 1,
+   "fixed": true,
+   "row": 2,
+   "col": 0,
+   "text" :  "To describe",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"Describe <img src='data/img11.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "What<img src='data/img12.jpg'> </img>"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "needs & aspirations",
+   "level": 1,
+   "fixed": true,
+   "row": 3,
+   "col": 0,
+   "text" :  "Needs & aspirations",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"<img src='data/img13.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img14.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2" , 
+         "level": 3, 
+         "text" : "<img src='data/img15.jpg'> </img>"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "formulate",
+   "level": 1,
+   "fixed": true,
+   "row": 0,
+   "col": 1,
+   "text" :  "Formulate",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"<img src='data/img16.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img17.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   },
+   {
+      "name": "Case B",
+      "level": 2,
+      "text" : 	"<img src='data/img16.jpg'> </img>", 
+      "children": [
+       {
+          "name": "Case B 1" , 
+          "level": 3, 
+          "text" : "<img src='data/img17.jpg'> </img>"
+       },
+       {
+          "name": "Case B 2", 
+          "level": 3, 
+          "text" : "<img src='data/img3.jpg'> </img>"
+       }
+      ]
+    }
+   ]
+  },
+  {
+   "name": "concepts",
+   "level": 1,
+   "fixed": true,
+   "row": 1,
+   "col": 1,
+   "text" :  "Concepts",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"<img src='data/img4.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2" , 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "to frame",
+   "level": 1,
+   "fixed": true,
+   "row": 2,
+   "col": 1,
+   "text" :  "To frame",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"<img src='data/img8.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2" , 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "problems",
+   "level": 1,
+   "fixed": true,
+   "row": 3,
+   "col": 1,
+   "text" :  "Problems",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : 	"<img src='data/img9.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1" , 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "analyse",
+   "level": 1,
+   "fixed": true,
+   "row": 0,
+   "col": 2,
+   "text" :  "Analyse",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "<img src='data/img10.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "data",
+   "level": 1,
+   "fixed": true,
+   "row": 1,
+   "col": 2,
+   "text" :  "Data",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "<img src='data/img18.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "to test",
+   "level": 1,
+   "fixed": true,
+   "row": 2,
+   "col": 2,
+   "text" :  "To test",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "<img src='data/img11.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "limits",
+   "level": 1,
+   "fixed": true,
+   "row": 3,
+   "col": 2,
+   "text" :  "Limits",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "<img src='data/img12.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "imagine",
+   "level": 1,
+   "fixed": true,
+   "row": 0,
+   "col": 3,
+   "text" :  "Imagine",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img1.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "potentials",
+   "level": 1,
+   "fixed": true,
+   "row": 1,
+   "col": 3,
+   "text" :  "Potentials",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "<img src='data/img9.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "to create",
+   "level": 1,
+   "fixed": true,
+   "row": 2,
+   "col": 3,
+   "text" :  "To create",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img10.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      },
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img3.jpg'> </img>"
+      },
+      {
+         "name": "Case A 3", 
+         "level": 3, 
+         "text" : "<img src='data/img4.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "ideas",
+   "level": 1,
+   "fixed": true,
+   "row": 3,
+   "col": 3,
+   "text" :  "Ideas",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img2.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "craft",
+   "level": 1,
+   "fixed": true,
+   "row": 0,
+   "col": 4,
+   "text" :  "Craft",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img3.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "cases",
+   "level": 1,
+   "fixed": true,
+   "row": 1,
+   "col": 4,
+   "text" :  "Cases",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img4.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "to adapt",
+   "level": 1,
+   "fixed": true,
+   "row": 2,
+   "col": 4,
+   "text" :  "To adapt",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img6.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "solutions",
+   "level": 1,
+   "fixed": true,
+   "row": 3,
+   "col": 4,
+   "text" :  "Solutions",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img8.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "empower",
+   "level": 1,
+   "fixed": true,
+   "row": 0,
+   "col": 5,
+   "text" :  "Empower",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img10.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 1", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>",
+         "children": [
+          {
+           "name": "Case A 1", 
+           "level": 4, 
+           "text" : "<img src='data/img3.jpg'> </img>"
+          }
+         ]
+      }
+     ]
+   }
+   ]
+  },
+  {
+   "name": "participants",
+   "level": 1,
+   "fixed": true,
+   "row": 1,
+   "col": 5,
+   "text" :  "Participants",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img17.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+   {
+   "name": "to negotiate",
+   "level": 1,
+   "fixed": true,
+   "row": 2,
+   "col": 5,
+   "text" :  "To negotiate",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Something <img src='data/img16.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  },
+   {
+   "name": "projects",
+   "level": 1,
+   "fixed": true,
+   "row": 3,
+   "col": 5,
+   "text" :  "Projects",
+   "children": [
+    {
+     "name": "Case A",
+     "level": 2,
+     "text" : "Projects <img src='data/img1.jpg'> </img>", 
+     "children": [
+      {
+         "name": "Case A 2", 
+         "level": 3, 
+         "text" : "<img src='data/img2.jpg'> </img>"
+      }
+     ]
+   }
+   ]
+  }
+ ]  
+}
