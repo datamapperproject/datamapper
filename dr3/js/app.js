@@ -139,6 +139,7 @@ nodeEnter.append("rect")
       .attr("y", d=> d.level > 1 ? -33 : -nodeSize/2)
       .attr("rx", d=> d.level > 1 ? 0 : nodeSize/2)
       .attr("ry", d=> d.level > 1 ? 0 : nodeSize/2)
+
       .style("z-index", 1000)
       .on("click", onNodeClick) // don't listen to click on root node
       ;
@@ -153,6 +154,7 @@ nodeEnter.append("rect")
       .attr("class",d=> d.level>1? "toolLabel" : "actionLabel" )
       .style("width", d=> d.level > 1 ? 100 : nodeSize)
       .style("height", d=> d.level > 1 ? 70 : nodeSize)
+
       .html(d=>d.text)
       .on("click",onNodeClick) // don't listen to click on root node
       ;

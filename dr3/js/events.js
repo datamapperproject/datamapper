@@ -57,20 +57,36 @@ function onNodeClick(d) {
 
     if(d.childrenHide) //HACK hierarchy
     {
-      d.childrenHide.forEach(e => d.children.push(e));
-      d.childrenHide = null;
+      if(d.childrenHide.length == 0) 
+      {
+        alert("No more actions to show");
+         return;
+
+      };
+      if(!d.children)d.children = [];
+      d.children.push(d.childrenHide.shift())
+
+      //d.childrenHide.forEach(e => d.children.push(e));
+      //d.childrenHide = null;
      
     } 
     else //Original hierarchy
     {
-       d.children = d._children;
-        d._children = null;
+      if(d._children.length == 0) 
+      {
+        alert("No more actions to show");
+         return;
+         
+      };
+       if(!d.children)d.children = [];
+       d.children.push(d._children.shift())
+
+        //d._children = null;
       
     }
 
     // set start position to action position
     d.children.forEach(e => { e.x = d.x; e.y = d.y; }); 
-    console.log("expand l1 " +d.name);
 
   } else
   {
@@ -78,13 +94,11 @@ function onNodeClick(d) {
       d._children = d.children;
       d.children = null;
       d.selected = false;
-      console.log("collapse l2 " +d.name);
     } else {
   
       d.children = d._children;
       d._children = null;
       d.selected = true;
-      console.log("expand l2 " +d.name);
   
     }
    
@@ -100,9 +114,12 @@ function onNodeClick(d) {
 function updateInteraction(){
 
   var last = history.getLastClick();
+  // node.classed("active", d=> !isBeginerMode|| d.level > 1 ||
+  //      (last.row +  1 == d.row && last.col == d.col)   || 
+  //      (last.row ==3 && d.row ==0)   );
   node.classed("active", d=> !isBeginerMode|| d.level > 1 ||
-       (last.row +  1 == d.row && last.col == d.col)   || 
-       (last.row ==3 && d.row ==0) 
+  (last.row +  1 >= d.row && last.col == d.col)   || 
+  (last.row ==3 && d.row ==0) 
   );
 }
 
@@ -136,7 +153,7 @@ function onMouseOver(d)
         d3.select("#pin"+d.id).style("display", "flex");
         d3.select("#x"+d.id).style("display", "flex");
         d3.select("#thumb"+d.id).style("display", "flex");
-        d3.select("#likes"+d.id).style("display", d.likes ==0? "none" :"flex");
+        d3.select("likes"+d.id).style("display", "flex");
     }
     const light = shadeColor(  d.color ,50);
     d3.select("#rect"+d.id).style("fill",light);
@@ -145,13 +162,13 @@ function onMouseOver(d)
     current = d.id;
     setTimeout(function() {
       if(current==d.id) {    
-        
+
       hoverPanel = document.getElementById("hoverPanel");
       hoverContent = document.getElementById("hoverContent"); 
+      hoverPanel.style.left = d.level ==1 ? d.x + 20 + "px" : d.x + 20 + "px";
+      hoverPanel.style.top = d.level ==1 ? d.y + 50 + "px" : d.y + 50 + "px";
       hoverPanel.classList.add("block");
       hoverPanel.classList.remove("none");
-      hoverPanel.style.left = d.x + "px";
-      hoverPanel.style.top = d.y + "px";
       if(d.review)
         hoverContent.innerHTML = d.review;
       else
@@ -174,9 +191,8 @@ function onMouseOut(d)
     {
         d3.select("#x"+d.id).style("display", "none");
     }
-    
     d3.select("#thumb"+d.id).style("display", "none");
-    d3.select("#likes"+d.id).style("display", "none");    
+    d3.select("likes"+d.id).style("display", "none");
 
     if(d.children|| (d.selected && d.level>0))
     {
@@ -200,8 +216,9 @@ function onMouseOut(d)
 
 function dragstart(d) {
 
+    //ignore click on node
+//if (d3.event.defaultPrevented) return; // ignore drag
     testX = d.x; //Test if clik on node
-    console.log(d);
 }
 
 function onUserChanged(user)
