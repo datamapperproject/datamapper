@@ -30,8 +30,6 @@ class History {
             timeStamp: Date.now()
         };
 
-
-      
         //Handle temp line
         this.count = this.count +1;
         this.restart = this.count>3;

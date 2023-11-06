@@ -29,7 +29,6 @@ var force = d3.layout.force()
     .size([width, height])
     .on("tick", onTick);
 
-
 var svg = d3.select("#svg")
     .attr("width", width)
     .attr("height", height)
@@ -130,6 +129,7 @@ function update() {
       //donť drag root and action 
       force.drag().on("dragend", dragend);  
       force.drag().on("dragstart",dragstart);
+      force.drag().on("drag",drag);
 
 nodeEnter.append("rect")
       .attr("id", function(d) { return "rect"+ d.id;})
@@ -204,12 +204,59 @@ nodeEnter.append("rect")
             d3.select("#text"+d.id).remove();
             // remove image
             d3.select("#image"+d.id).remove();
-     
            })
       ;
+
+           // apped x to node
+     nodeEnter.append("image")
+     .attr("xlink:href", "thumpup.png")
+     .attr("id",function(d) { return "thumb"+ d.id;})
+     .attr("x", 35)
+     .attr("y", 16)
+     .attr("width", 30)
+     .attr("height", 30)
+     .style("display", "none")
+     .on("click", function(d) {
+        d.likes++;
+        d3.select("#likes"+d.id).style("display", "flex");
+        d3.select("#likes"+d.id).text(d.likes);
+        d3.select("#thumb"+d.id).attr("xlink:href", "dot.png")
+        })
+     ;
+
+     nodeEnter.append("text")
+      .attr("id",function(d) { return "likes"+ d.id;})
+      .attr("x", 50)
+      .attr("y", 34)
+      .attr("width", 25)
+      .attr("height", 25)
+      .style("display", "none")
+      .attr("color", "red")
+      .attr("stroke", "white")
+      .attr("font-size", "10px")
+      .attr("font-family", "sans-serif")
+      .attr("text-anchor", "middle")
+      .text(d=>d.likes)
+      .on("click", function(d) {
+        d.likes++;
+        d3.select("#likes"+d.id).text(d.likes);
+      })
+      ;
+    
+     
 }
+function dragresizestart(d) {
+  console.log("dragresizestart");
+}
+function dragresizeend(d) {
+  console.log("dragresizeend");
+}
+function drag(d)
+{
+console.log("drag");
+d.dx = d3.event.x;;
 
-
+}
 // Returns a list of all nodes under the root.
 function flatten(root) {
   var nodes = [], i = 0;

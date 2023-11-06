@@ -64,6 +64,12 @@ img {
   max-width: 100%;
   max-height: 100%;
 }
+
+video {
+  position: absolute;
+  left: -50%;
+  transform:translateX(-50%);
+}
 div {
 
   font-size: 10px;
@@ -80,12 +86,12 @@ header {
 
 /* Dropdown Button */
 .dropbtn {
-background-color: #f90202;
-color: white;
-padding: 0px;
-border: none;
-cursor: pointer;
-border-radius: 25px;
+  background-color: #f90202;
+  color: white;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
 }
 /* Button */
 .button {
@@ -97,7 +103,7 @@ border-radius: 25px;
   border: none;
   cursor: pointer;
   border-radius: 25px;
-  }
+}
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
@@ -166,26 +172,27 @@ right: 80px;
 
 .hover-div 
 {
-  height: 100%;
-  width: 300px;
+  height: 230px;
+  width: 200px;
   position: absolute;
   right: 0;
-  top: 80px;
+  top: 0px;
   padding-top: 0px;
+  margin-top: 0px;
   background-color: rgb(0, 0, 0);
 }
 
-   .hover-content
-   {
+.hover-content
+{
     top : 0;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: -10px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
     display: block;
-    max-height: 85vh;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 0px;
+    max-height: 90vh;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
     overflow-y: auto;
     font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;

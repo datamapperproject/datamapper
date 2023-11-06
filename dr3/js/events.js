@@ -135,6 +135,8 @@ function onMouseOver(d)
     {        
         d3.select("#pin"+d.id).style("display", "flex");
         d3.select("#x"+d.id).style("display", "flex");
+        d3.select("#thumb"+d.id).style("display", "flex");
+        d3.select("#likes"+d.id).style("display", d.likes ==0? "none" :"flex");
     }
     const light = shadeColor(  d.color ,50);
     d3.select("#rect"+d.id).style("fill",light);
@@ -148,12 +150,14 @@ function onMouseOver(d)
       hoverContent = document.getElementById("hoverContent"); 
       hoverPanel.classList.add("block");
       hoverPanel.classList.remove("none");
+      hoverPanel.style.left = d.x + "px";
+      hoverPanel.style.top = d.y + "px";
       if(d.review)
         hoverContent.innerHTML = d.review;
       else
       hoverContent.innerHTML = d.name + " has no review yet" ;
      }
-    }, 500);
+    }, 1000);
 
 }
 
@@ -170,8 +174,9 @@ function onMouseOut(d)
     {
         d3.select("#x"+d.id).style("display", "none");
     }
-    // if(d3.select("#thumb"+d.id).attr("xlink:href") === "thump.png")
-    //     d3.select("#thumb"+d.id).style("display", "none");
+    
+    d3.select("#thumb"+d.id).style("display", "none");
+    d3.select("#likes"+d.id).style("display", "none");    
 
     if(d.children|| (d.selected && d.level>0))
     {
@@ -195,9 +200,8 @@ function onMouseOut(d)
 
 function dragstart(d) {
 
-    //ignore click on node
-//if (d3.event.defaultPrevented) return; // ignore drag
     testX = d.x; //Test if clik on node
+    console.log(d);
 }
 
 function onUserChanged(user)
